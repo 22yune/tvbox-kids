@@ -27,6 +27,7 @@ async function main() {
   const catalogSource = await read("spider-src/com/github/catvod/spider/Catalog.java");
   const kidsSource = await read("spider-src/com/github/catvod/spider/Kids.java");
   const live = await readJson("data/live.json");
+  const extra = await readJson("data/extra_sites.json");
 
   const ages = new Set(taxonomy.ages.map((item) => item.id));
   const paths = new Set(taxonomy.paths.map((item) => item.id));
@@ -69,12 +70,28 @@ async function main() {
 
   requireField(typeof config.spider === "string" && /^https?:\/\/.+\.jar;md5;[0-9a-f]{32}$/.test(config.spider), "kids.json 的 spider 必须是 <jar 地址>;md5;<32 位 md5>");
   requireField(Array.isArray(config.sites) && config.sites.length >= 3, "kids.json 站点数量不足");
+  const seenKeys = new Set();
   for (const site of config.sites || []) {
     requireField(site.key && site.name && site.api, "站点缺少 key/name/api");
+    requireField(!seenKeys.has(site.key), "站点 key 重复：" + site.key);
+    seenKeys.add(site.key);
     if (site.type === 3) {
       requireField(site.api === "csp_Kids", site.key + " 的 api 必须是 csp_Kids");
       requireField(typeof site.ext === "string", site.key + " 的 ext 必须是字符串，FongMi 用 Gson 反序列化为 String");
     }
+    if (site.type === 1) {
+      requireField(/^https?:\/\//.test(site.api), site.key + " 的 api 必须是绝对地址");
+      requireField(Array.isArray(site.categories) && site.categories.length > 0, site.key + " 缺少分类白名单");
+      requireField(site.searchable === 0 && site.quickSearch === 0, site.key + " 必须关闭搜索");
+    }
+  }
+  requireField(
+    (config.sites || []).filter((site) => site.type === 1).length === (extra.sites || []).length,
+    "data/extra_sites.json 与 kids.json 的补充站点数量不一致"
+  );
+  for (const item of extra.sites || []) {
+    requireField(item.key && item.name && item.api, "extra_sites.json 条目缺少 key/name/api");
+    requireField(Array.isArray(item.categories) && item.categories.length > 0, (item.key || item.name) + " 缺少分类白名单");
   }
 
   try {

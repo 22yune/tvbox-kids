@@ -190,7 +190,21 @@ function site(key, name, mode) {
   };
 }
 
-function buildConfig(live, jar) {
+function extraSite(item) {
+  return {
+    key: item.key,
+    name: item.name,
+    type: 1,
+    api: item.api,
+    categories: item.categories,
+    searchable: 0,
+    quickSearch: 0,
+    changeable: 0,
+    header: { "User-Agent": UA, "Referer": item.referer || new URL(item.api).origin + "/" },
+  };
+}
+
+function buildConfig(live, jar, extra) {
   return {
     spider: jarUrl() + ";md5;" + jar.md5,
     notice: "儿童模式：已关闭搜索，仅保留央视少儿与精选直播。补充点播来自第三方采集站，内容不可控，不需要时在站点管理里关闭。",
@@ -198,17 +212,7 @@ function buildConfig(live, jar) {
       site("kids_age", "按年龄", "age"),
       site("kids_path", "按学习路线", "path"),
       site("kids_topic", "精选专题", "topic"),
-      {
-        key: "kids_extra",
-        name: "补充点播（家长可选）",
-        type: 1,
-        api: "https://jszyapi.com/api.php/provide/vod/at/json",
-        categories: ["动漫", "动画片", "中国动漫"],
-        searchable: 0,
-        quickSearch: 0,
-        changeable: 0,
-        header: { "User-Agent": UA, "Referer": "https://jszyapi.com/" },
-      },
+      ...extra.sites.map(extraSite),
     ],
     lives: [
       {
@@ -223,6 +227,7 @@ function buildConfig(live, jar) {
 async function main() {
   const taxonomy = await readJson("data/taxonomy.json");
   const live = await readJson("data/live.json");
+  const extra = await readJson("data/extra_sites.json");
   let catalog;
 
   if (process.env.KIDS_SKIP_FETCH === "1") {
@@ -271,7 +276,7 @@ async function main() {
 
   await writeFile("spider-src/com/github/catvod/spider/Catalog.java", buildCatalogSource(taxonomy, catalog));
   const jar = buildJar();
-  const config = buildConfig(live, jar);
+  const config = buildConfig(live, jar, extra);
   await writeFile("kids.json", JSON.stringify(config, null, 2));
 
   const series = catalog.series || [];

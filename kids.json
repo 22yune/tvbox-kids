@@ -50,7 +50,6 @@
       "type": 1,
       "api": "https://jszyapi.com/api.php/provide/vod/at/json",
       "categories": [
-        "动漫",
         "动画片",
         "中国动漫"
       ],
@@ -60,6 +59,95 @@
       "header": {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
         "Referer": "https://jszyapi.com/"
+      }
+    },
+    {
+      "key": "kids_extra_sony",
+      "name": "补充儿歌·索尼",
+      "type": 1,
+      "api": "https://suoniapi.com/api.php/provide/vod",
+      "categories": [
+        "儿童儿歌",
+        "有声动漫",
+        "国产动漫",
+        "动画片"
+      ],
+      "searchable": 0,
+      "quickSearch": 0,
+      "changeable": 0,
+      "header": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "Referer": "https://suoniapi.com/"
+      }
+    },
+    {
+      "key": "kids_extra_wujin",
+      "name": "补充儿歌·无尽",
+      "type": 1,
+      "api": "https://api.wujinapi.net/api.php/provide/vod",
+      "categories": [
+        "儿童儿歌",
+        "有声动漫",
+        "国产动漫",
+        "动画片"
+      ],
+      "searchable": 0,
+      "quickSearch": 0,
+      "changeable": 0,
+      "header": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "Referer": "https://api.wujinapi.net/"
+      }
+    },
+    {
+      "key": "kids_extra_bfzy",
+      "name": "补充动画·暴风",
+      "type": 1,
+      "api": "https://bfzyapi.com/api.php/provide/vod",
+      "categories": [
+        "国产动漫",
+        "动画片",
+        "动漫片"
+      ],
+      "searchable": 0,
+      "quickSearch": 0,
+      "changeable": 0,
+      "header": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "Referer": "https://bfzyapi.com/"
+      }
+    },
+    {
+      "key": "kids_extra_taopian",
+      "name": "补充动画·淘片",
+      "type": 1,
+      "api": "https://taopianapi.com/cjapi/mc/vod/json.html",
+      "categories": [
+        "动漫/国产动漫",
+        "电影/动画片"
+      ],
+      "searchable": 0,
+      "quickSearch": 0,
+      "changeable": 0,
+      "header": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "Referer": "https://taopianapi.com/"
+      }
+    },
+    {
+      "key": "kids_extra_cxkj",
+      "name": "补充动画·创享",
+      "type": 1,
+      "api": "https://ys.cxkjg.cn/api/provide/vod/",
+      "categories": [
+        "动漫"
+      ],
+      "searchable": 0,
+      "quickSearch": 0,
+      "changeable": 0,
+      "header": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "Referer": "https://ys.cxkjg.cn/"
       }
     }
   ],

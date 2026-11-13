@@ -1,0 +1,47 @@
+{
+  "note": "第三方 MacCMS 采集站。只保留少儿相关分类，条目失效或不想用时删掉对应项即可。播放地址多为直连 m3u8，少数需要网页解析的源没有收录。",
+  "sites": [
+    {
+      "key": "kids_extra",
+      "name": "补充点播（家长可选）",
+      "api": "https://jszyapi.com/api.php/provide/vod/at/json",
+      "referer": "https://jszyapi.com/",
+      "categories": ["动画片", "中国动漫"]
+    },
+    {
+      "key": "kids_extra_sony",
+      "name": "补充儿歌·索尼",
+      "api": "https://suoniapi.com/api.php/provide/vod",
+      "referer": "https://suoniapi.com/",
+      "categories": ["儿童儿歌", "有声动漫", "国产动漫", "动画片"]
+    },
+    {
+      "key": "kids_extra_wujin",
+      "name": "补充儿歌·无尽",
+      "api": "https://api.wujinapi.net/api.php/provide/vod",
+      "referer": "https://api.wujinapi.net/",
+      "categories": ["儿童儿歌", "有声动漫", "国产动漫", "动画片"]
+    },
+    {
+      "key": "kids_extra_bfzy",
+      "name": "补充动画·暴风",
+      "api": "https://bfzyapi.com/api.php/provide/vod",
+      "referer": "https://bfzyapi.com/",
+      "categories": ["国产动漫", "动画片", "动漫片"]
+    },
+    {
+      "key": "kids_extra_taopian",
+      "name": "补充动画·淘片",
+      "api": "https://taopianapi.com/cjapi/mc/vod/json.html",
+      "referer": "https://taopianapi.com/",
+      "categories": ["动漫/国产动漫", "电影/动画片"]
+    },
+    {
+      "key": "kids_extra_cxkj",
+      "name": "补充动画·创享",
+      "api": "https://ys.cxkjg.cn/api/provide/vod/",
+      "referer": "https://ys.cxkjg.cn/",
+      "categories": ["动漫"]
+    }
+  ]
+}
