@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-13T07:55:52.491Z",
+  "updatedAt": "2026-11-13T08:18:34.444Z",
   "source": "cctv",
   "series": [
     {
@@ -71,8 +71,8 @@
       "latestGuid": "a72f61e721e441f19968d2ddb09e239f",
       "count": 1000,
       "stale": false,
-      "playable": true,
-      "verifyReason": "OK"
+      "playable": false,
+      "verifyReason": "fetch failed"
     },
     {
       "id": "cctv-qqb",
