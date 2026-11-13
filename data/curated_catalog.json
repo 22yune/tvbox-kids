@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-13T10:36:49.487Z",
+  "updatedAt": "2026-11-13T11:22:09.446Z",
   "source": "curation",
   "series": [
     {
@@ -724,13 +724,13 @@
       "id": "bili-peppa",
       "name": "小猪佩奇 中文版",
       "source": "bili",
-      "bvid": "BV1vfdrBJEpP",
-      "biliTitle": "小猪佩奇1",
-      "pic": "https://i0.hdslb.com/bfs/archive/706dca4122bce37791ba476055d2f2ccc1b55b75.jpg",
-      "episodes": 100,
-      "latest": "100集",
-      "latestTime": 1776744300,
-      "count": 100,
+      "bvid": "BV1FB38zFEjG",
+      "biliTitle": "Peppa Pig 小猪佩奇英文版中英文字幕第一季 Recycling 快乐环保 每天20分钟 轻松学英语",
+      "pic": "https://i0.hdslb.com/bfs/archive/cc415de74a59ee4608b471fb95297640ea3b9d05.jpg",
+      "episodes": 1,
+      "latest": "1集",
+      "latestTime": 1751468509,
+      "count": 1,
       "stale": false,
       "ageMin": 2,
       "ageMax": 6,
