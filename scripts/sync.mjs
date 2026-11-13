@@ -5,7 +5,7 @@ import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 
 import { buildJar } from "./build-jar.mjs";
-import { resolveBili } from "./bili.mjs";
+import { resolveCuration } from "./curate.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const LIST_API = "https://api.cntv.cn/NewVideo/getVideoListByColumn";
@@ -229,12 +229,12 @@ async function main() {
   const taxonomy = await readJson("data/taxonomy.json");
   const live = await readJson("data/live.json");
   const extra = await readJson("data/extra_sites.json");
-  const biliInput = await readJson("data/bili.json");
-  let biliPrevious = { series: [] };
+  const curationInput = await readJson("data/curation.json");
+  let curatedPrevious = { series: [] };
   try {
-    biliPrevious = await readJson("data/bili_catalog.json");
+    curatedPrevious = await readJson("data/curated_catalog.json");
   } catch (error) {
-    biliPrevious = { series: [] };
+    curatedPrevious = { series: [] };
   }
   let catalog;
 
@@ -282,21 +282,26 @@ async function main() {
     await writeFile("data/catalog.json", JSON.stringify(catalog, null, 2));
   }
 
-  let bili;
+  let curated;
   if (process.env.KIDS_SKIP_FETCH === "1") {
-    bili = biliPrevious;
-    if (!(bili.series || []).length) console.warn("[warn] 缺少 data/bili_catalog.json，本次不包含 B 站内容");
+    curated = curatedPrevious;
+    if (!(curated.series || []).length) console.warn("[warn] 缺少 data/curated_catalog.json，本次不包含名单内容");
   } else {
-    console.log("同步哔哩哔哩目录：");
-    bili = {
+    console.log("按名单解析来源：");
+    const result = await resolveCuration(curationInput.series || [], curatedPrevious.series || []);
+    curated = {
       updatedAt: new Date().toISOString(),
-      source: "bili",
-      series: await resolveBili(biliInput.series || [], biliPrevious.series || []),
+      source: "curation",
+      series: result.series,
+      missing: result.missing,
     };
-    await writeFile("data/bili_catalog.json", JSON.stringify(bili, null, 2));
+    await writeFile("data/curated_catalog.json", JSON.stringify(curated, null, 2));
+    if (result.missing.length) {
+      console.warn("[missing] " + result.missing.length + " 条名单没找到源，已写入 curated_catalog.json 的 missing 字段");
+    }
   }
 
-  const merged = { series: (catalog.series || []).concat(bili.series || []) };
+  const merged = { series: (catalog.series || []).concat(curated.series || []) };
   await writeFile("spider-src/com/github/catvod/spider/Catalog.java", buildCatalogSource(taxonomy, merged));
   const jar = buildJar();
   const config = buildConfig(live, jar, extra);
@@ -305,14 +310,15 @@ async function main() {
   const series = catalog.series || [];
   const stale = series.filter((item) => item.stale).length;
   const unplayable = series.filter((item) => item.playable === false).length;
-  const biliSeries = bili.series || [];
-  const biliStale = biliSeries.filter((item) => item.stale).length;
+  const curatedSeries = curated.series || [];
+  const curatedStale = curatedSeries.filter((item) => item.stale).length;
   console.log(
-    "Synced " + series.length + " series + B站 " + biliSeries.length +
+    "Synced " + series.length + " series + 名单 " + curatedSeries.length +
+    (curated.missing && curated.missing.length ? "（缺源 " + curated.missing.length + "）" : "") +
     (stale ? "，stale " + stale : "") +
-    (biliStale ? "，B站 stale " + biliStale : "") +
+    (curatedStale ? "，名单 stale " + curatedStale : "") +
     (VERIFY ? "，unplayable " + unplayable : "") +
-    "。输出：data/catalog.json、data/bili_catalog.json、spider-src/.../Catalog.java、spider/kids.jar（md5 " + jar.md5 + "）、kids.json"
+    "。输出：data/catalog.json、data/curated_catalog.json、spider-src/.../Catalog.java、spider/kids.jar（md5 " + jar.md5 + "）、kids.json"
   );
 }
 

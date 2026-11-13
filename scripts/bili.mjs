@@ -9,7 +9,7 @@ const REFERER = "https://www.bilibili.com/";
 const SEARCH_REFERER = "https://search.bilibili.com/";
 const MAX_PAGES = 100;
 
-const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+export const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 function hex() {
   return Math.floor(Math.random() * 16).toString(16).toUpperCase();
@@ -19,7 +19,7 @@ function segment(length) {
   return Array.from({ length }, hex).join("");
 }
 
-function cookies() {
+export function cookies() {
   const buvid = [segment(8), segment(4), segment(4), segment(4), segment(12)].join("-") + "infoc";
   return "buvid3=" + buvid + "; b_nut=" + Math.floor(Date.now() / 1000);
 }
@@ -58,13 +58,13 @@ export function strip(value) {
   return String(value || "").replace(/<[^>]+>/g, "").replace(/&quot;/g, "\"");
 }
 
-async function search(keyword, jar) {
+export async function search(keyword, jar) {
   const url = SEARCH_API + "?search_type=video&keyword=" + encodeURIComponent(keyword) + "&page=1&page_size=20";
   const data = await request(url, SEARCH_REFERER, jar);
   return (data.data && data.data.result) || [];
 }
 
-async function viewOf(bvid) {
+export async function viewOf(bvid) {
   try {
     const data = await request(VIEW_API + "?bvid=" + encodeURIComponent(bvid), REFERER, cookies());
     const view = data.data;
@@ -81,7 +81,7 @@ async function viewOf(bvid) {
   }
 }
 
-async function playable(bvid, cid) {
+export async function playable(bvid, cid) {
   const url = PLAY_API + "?bvid=" + encodeURIComponent(bvid) + "&cid=" + encodeURIComponent(cid) +
     "&qn=64&fnval=1&fnver=0&fourk=0";
   try {
@@ -103,9 +103,18 @@ function blocked(entry, title) {
   return (entry.exclude || []).some((word) => title.includes(word));
 }
 
-async function choose(entry, jar) {
+// 按别名依次搜索，命中一个合格合集就停。
+export async function choose(entry, jar) {
+  for (const alias of entry.aliases || []) {
+    const view = await chooseOne(entry, alias, jar);
+    if (view) return view;
+  }
+  return null;
+}
+
+async function chooseOne(entry, alias, jar) {
   const minPages = Number.isFinite(entry.minPages) ? entry.minPages : 5;
-  const results = (await search(entry.query, jar)).filter((video) => video && video.bvid);
+  const results = (await search(alias, jar)).filter((video) => video && video.bvid);
   const candidates = results
     .map((video) => ({ ...video, cleanTitle: strip(video.title) }))
     .filter((video) => matches(entry, video.cleanTitle) && !blocked(entry, video.cleanTitle))
@@ -130,10 +139,12 @@ async function choose(entry, jar) {
   return null;
 }
 
-function resolved(entry, view) {
+// 只保留播放需要的字段：名单里的 pin/aliases/pick/exclude 是同步期用的，不进 jar。
+export function resolved(entry, view) {
   const episodes = Math.min(MAX_PAGES, view.pages.length);
   return {
-    ...entry,
+    id: entry.id,
+    name: entry.name,
     source: "bili",
     bvid: view.bvid,
     biliTitle: view.title,
@@ -143,49 +154,14 @@ function resolved(entry, view) {
     latestTime: view.pubdate,
     count: episodes,
     stale: false,
+    ageMin: entry.ageMin,
+    ageMax: entry.ageMax,
+    paths: entry.paths,
+    stages: entry.stages,
+    tags: entry.tags,
+    order: entry.order,
+    why: entry.why,
+    list: entry.list,
+    desc: entry.desc,
   };
-}
-
-export async function resolveBili(entries, previous) {
-  const previousById = new Map((previous || []).map((item) => [item.id, item]));
-  const jar = cookies();
-  const output = [];
-
-  for (const entry of entries) {
-    const old = previousById.get(entry.id);
-    try {
-      if (entry.bvid) {
-        const view = await viewOf(entry.bvid);
-        if (view && (await playable(view.bvid, view.pages[0].cid))) {
-          output.push(resolved(entry, view));
-          process.stdout.write(".");
-          continue;
-        }
-      } else if (old && old.bvid) {
-        const view = await viewOf(old.bvid);
-        if (view) {
-          output.push({ ...resolved(entry, view), stale: Boolean(old.stale) });
-          process.stdout.write(".");
-          continue;
-        }
-      }
-      const view = await choose(entry, jar);
-      if (!view) throw new Error("搜索不到合适的视频");
-      output.push(resolved(entry, view));
-      process.stdout.write("+");
-      await sleep(250);
-    } catch (error) {
-      if (old && old.bvid) {
-        output.push({ ...entry, ...old, stale: true });
-        process.stdout.write("x");
-        console.warn("\n[stale] " + entry.name + "：" + String((error && error.message) || error));
-      } else {
-        process.stdout.write("x");
-        console.warn("\n[skip] " + entry.name + "：" + String((error && error.message) || error));
-      }
-    }
-  }
-
-  process.stdout.write("\n");
-  return output;
 }

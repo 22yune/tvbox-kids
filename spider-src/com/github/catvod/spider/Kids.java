@@ -421,6 +421,8 @@ public class Kids extends Spider {
         List<String> lines = new ArrayList<>();
         String desc = clean(item.optString("desc"));
         if (!desc.isEmpty()) lines.add(desc);
+        String why = clean(item.optString("why"));
+        if (!why.isEmpty()) lines.add("入选理由：" + why);
         lines.add("适龄：" + ageLabel(item));
 
         List<String> paths = new ArrayList<>();

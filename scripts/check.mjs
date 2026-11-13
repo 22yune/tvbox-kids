@@ -28,7 +28,8 @@ async function main() {
   const kidsSource = await read("spider-src/com/github/catvod/spider/Kids.java");
   const live = await readJson("data/live.json");
   const extra = await readJson("data/extra_sites.json");
-  const bili = await readJson("data/bili_catalog.json");
+  const curation = await readJson("data/curation.json");
+  const curated = await readJson("data/curated_catalog.json");
 
   const ages = new Set(taxonomy.ages.map((item) => item.id));
   const paths = new Set(taxonomy.paths.map((item) => item.id));
@@ -64,13 +65,35 @@ async function main() {
     requireField(catalog.series.some((item) => (item.tags || []).some((tag) => taxonomy.topics.find((x) => x.id === topicId).tags.includes(tag))), "专题没有内容：" + topicId);
   }
 
-  const biliIds = new Set();
+  const knownLists = new Set(curation.lists || []);
   const cctvIds = new Set(catalog.series.map((item) => item.id));
-  for (const item of bili.series || []) {
+  const curationIds = new Set();
+  for (const item of curation.series || []) {
     requireField(item.id && item.name, (item.id || "?") + " 缺少 id/name");
-    requireField(!biliIds.has(item.id), "B 站条目 id 重复：" + item.id);
-    requireField(!cctvIds.has(item.id), "B 站条目 id 与央视栏目重复：" + item.id);
-    biliIds.add(item.id);
+    requireField(!curationIds.has(item.id), "名单 id 重复：" + item.id);
+    requireField(!cctvIds.has(item.id), "名单 id 与央视栏目重复：" + item.id);
+    curationIds.add(item.id);
+    requireField(Array.isArray(item.aliases) && item.aliases.length > 0, item.id + " 缺少搜索别名");
+    requireField(Number.isFinite(item.ageMin) && Number.isFinite(item.ageMax) && item.ageMin < item.ageMax, item.id + " 的年龄段不合法");
+    requireField(Array.isArray(item.paths) && item.paths.length > 0, item.id + " 未绑定学习路线");
+    for (const pathId of item.paths || []) {
+      requireField(paths.has(pathId), item.id + " 引用了未知路线 " + pathId);
+    }
+    for (const tag of item.tags || []) {
+      requireField(topicTags.has(tag), item.id + " 的标签未被任何专题使用：" + tag);
+    }
+    requireField(Array.isArray(item.list) && item.list.length > 0, item.id + " 缺少名单来源");
+    for (const name of item.list || []) {
+      requireField(knownLists.has(name), item.id + " 使用了未知名单来源 " + name);
+    }
+    requireField(Boolean(item.why), item.id + " 缺少入选理由");
+  }
+
+  const curatedIds = new Set();
+  for (const item of curated.series || []) {
+    requireField(curationIds.has(item.id), "解析结果不在名单里：" + (item.id || "?"));
+    requireField(!curatedIds.has(item.id), "解析结果 id 重复：" + item.id);
+    curatedIds.add(item.id);
     requireField(/^BV[0-9A-Za-z]+$/.test(item.bvid || ""), item.id + " 的 bvid 格式不正确");
     requireField(item.source === "bili", item.id + " 的 source 必须是 bili");
     requireField(Number.isFinite(item.ageMin) && Number.isFinite(item.ageMax) && item.ageMin < item.ageMax, item.id + " 的年龄段不合法");
@@ -81,6 +104,9 @@ async function main() {
     for (const tag of item.tags || []) {
       requireField(topicTags.has(tag), item.id + " 的标签未被任何专题使用：" + tag);
     }
+  }
+  for (const item of curated.missing || []) {
+    requireField(curationIds.has(item.id), "缺失记录不在名单里：" + (item.id || "?"));
   }
 
   requireField(catalogSource.includes("final class Catalog"), "Catalog.java 结构异常");
@@ -130,14 +156,21 @@ async function main() {
     }
   }
 
-  const allSeries = catalog.series.concat(bili.series || []);
+  const allSeries = catalog.series.concat(curated.series || []);
   const ageCounts = taxonomy.ages.map((age) => {
     const count = allSeries.filter((item) => item.ageMin < age.max && item.ageMax > age.min).length;
     return age.name + " " + count;
   });
   const pathCounts = taxonomy.paths.map((item) => item.name + " " + allSeries.filter((s) => (s.paths || []).includes(item.id)).length);
+  const listCounts = (curation.lists || []).map((name) => name + " " + (curation.series || []).filter((s) => (s.list || []).includes(name)).length);
 
-  console.log("系列：" + catalog.series.length + "（央视）+ " + (bili.series || []).length + "（B站）");
+  console.log("名单：" + (curation.series || []).length + "，已找到源：" + (curated.series || []).length +
+    (curated.missing && curated.missing.length ? "，缺源：" + curated.missing.length : ""));
+  if (curated.missing && curated.missing.length) {
+    console.warn("缺源条目：" + curated.missing.map((item) => item.name).join("、"));
+  }
+  console.log("名单来源：" + listCounts.join(" / "));
+  console.log("系列：" + catalog.series.length + "（央视）+ " + (curated.series || []).length + "（名单）");
   console.log("年龄：" + ageCounts.join(" / "));
   console.log("路线：" + pathCounts.join(" / "));
   console.log("站点：" + config.sites.length + "，直播频道：" + live.groups.reduce((sum, g) => sum + g.channel.length, 0));

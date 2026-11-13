@@ -1,9 +1,10 @@
 # 儿童 TVBox 源（0-12 岁）
 
-面向 [FongMi/Release](https://github.com/FongMi/Release)（影视）的儿童点播源。按 **年龄、学习路线、主题** 三种逻辑组织央视少儿与科教内容，附精选少儿直播和哔哩哔哩补充池。
+面向 [FongMi/Release](https://github.com/FongMi/Release)（影视）的儿童点播源。按 **年龄、学习路线、主题** 三种逻辑组织央视少儿与精选内容，附精选少儿直播和第三方补充站。
 
 - 央视内容只收录央视少儿/科教/纪录片，无广告、无第三方聚合影视
-- 哔哩哔哩补充池收录儿歌、动画、识字、小学课堂和纪录片，和央视内容混排在同一套年龄/路线/专题里
+- **名单驱动**：先在 `data/curation.json` 定「该有什么」（国际获奖、高分、教育部、家长口碑、绘本 IP、央视科普），再由脚本逐条找源，找不到就进 missing 列表，不硬凑
+- 名单条目当前主要解析到哔哩哔哩（儿歌、动画、识字、小学课堂、纪录片），和央视内容混排在同一套年龄/路线/专题里
 - 第三方采集站单独成站、默认显示，可按需关闭，见「家长设置」
 - 关闭搜索，避免孩子搜到站外内容
 - 每日自动同步栏目更新，播放时实时解析央视 HLS / B 站直链，不托管任何影视文件
@@ -13,9 +14,9 @@
 
 | 入口 | 组织方式 | 内容 |
 |---|---|---|
-| 按年龄 | 0-3 / 3-6 / 6-9 / 9-12 岁 | 央视 + B 站，按适龄区间筛选 |
-| 按学习路线 | 8 条路线 | 央视 + B 站，按阶段排序 |
-| 精选专题 | 8 个专题 | 央视 + B 站，按标签聚合 |
+| 按年龄 | 0-3 / 3-6 / 6-9 / 9-12 岁 | 央视 + 名单，按适龄区间筛选 |
+| 按学习路线 | 8 条路线 | 央视 + 名单，按阶段排序 |
+| 精选专题 | 8 个专题 | 央视 + 名单，按标签聚合 |
 | 少儿直播 | 6 个频道 | CCTV-14、卡酷、浙江少儿、CCTV-9/10/15 |
 | 补充点播 | 6 个第三方采集站 | 每个站只保留儿歌/动漫分类，默认显示，内容不可控 |
 
@@ -30,14 +31,26 @@
 
 每条资源还标注领域、学习路线和阶段。阶段用于在同一路线内排序，例如「科学探究」是：动物好伙伴 → 科学动物园/芝麻开门 → 异想天开/是真的吗。
 
-## 哔哩哔哩补充池
+## 名单驱动的选片池
 
-央视栏目之外，`data/bili.json` 维护了 27 个 B 站条目（小猪佩奇、布鲁伊、汪汪队、海底小纵队、贝瓦儿歌、洪恩识字、Scratch 入门、人教版一年级语数英等），按同样的年龄/路线/专题元数据和央视内容混排。
+`data/curation.json` 是内容清单，不是搜索结果。每条先写清楚「要什么」：名称、搜索别名、年龄段、学习路线、专题标签、入选理由和名单来源（`国际获奖` / `高分` / `教育部` / `家长社区` / `绘本IP` / `央视` / `平台自制`）。
 
-- 同步时用关键词搜一次 B 站，固定 `bvid`、封面和集数到 `data/bili_catalog.json`；之后只调用 `view` / `playurl`，不再搜索
+`scripts/curate.mjs` 按固定优先级逐条找源：
+
+1. `pin`：已验证的 `bvid`，直接用
+2. 上一次 `data/curated_catalog.json` 里的 `bvid`，仍然有效就沿用
+3. 按 `aliases` 依次搜索 B 站，用 `pick` / `exclude` 过滤标题，按集数和播放量排序，再探活播放地址
+4. 都不行就写进 `curated_catalog.json` 的 `missing`，下次同步自动重试
+
+找源的细节：
+
+- 搜索接口需要 `buvid3` / `b_nut` Cookie，脚本本地生成，不需要账号
 - 详情页的分 P 就是集数；播放时按 `bvid + cid` 换临时直链（匿名最高 720p），并带 `Referer: https://www.bilibili.com/`
-- 站上很多整季会被压成一个长视频，这种单 P 内容同样收录
+- 站上很多整季会被压成一个长视频，单 P 但时长 ≥ 20 分钟也算合格
+- `minPages` 是集数下限；`skip` 用来标记「确认平台没有可播正片」的条目，避免每次同步重复搜索
 - 视频被 UP 主删除或设为付费时，同步会尝试重新搜索；失败则保留上一次数据并标记 `stale`
+
+当前 56 条名单里 49 条找到源，7 条因平台只有片段/音频/英文版而标记缺源（朵拉、小马宝莉、数学城小兄妹、哪吒传奇、不一样的卡梅拉、航拍中国、门捷列夫很忙）。
 
 ## 快速开始
 
@@ -110,7 +123,7 @@ FongMi 配置地址填 `http://<电脑局域网 IP>:8000/kids.json`。本地没�
 
 ## 家长设置
 
-- 三个央视点播站点和 6 个补充站点都已设置 `searchable: 0`、`quickSearch: 0`，不要在配置里改回 1
+- 三个 JAR 点播站点和 6 个补充站点都已设置 `searchable: 0`、`quickSearch: 0`，不要在配置里改回 1
 - 补充站点列表在 `data/extra_sites.json`，每个站用 `categories` 白名单只放开少儿分类。它们来自第三方盗版采集站，广告（尤其片头贴片）和内容都不可控，**不建议让孩子单独看**；不需要哪个就在 App 的站点管理里取消勾选，或从 `data/extra_sites.json` 删掉对应条目后重新生成
 - 补充站点的播放地址多为直连 m3u8；需要网页解析的源（如量子、非凡）没有收录，避免依赖解析器
 - FongMi 没有站点密码锁，最稳妥的做法是专用设备/专用账号，或把可用站点限制在本配置内
@@ -123,7 +136,7 @@ FongMi 配置地址填 `http://<电脑局域网 IP>:8000/kids.json`。本地没�
 | 路径 | 说明 |
 |---|---|
 | `spider-src/com/github/catvod/spider/Kids.java` | 爬虫逻辑（首页/分类/详情/播放） |
-| `spider-src/com/github/catvod/spider/Catalog.java` | 由 `data/catalog.json` + `data/taxonomy.json` 自动生成，勿手改 |
+| `spider-src/com/github/catvod/spider/Catalog.java` | 由 `data/catalog.json` + `data/curated_catalog.json` + `data/taxonomy.json` 自动生成，勿手改 |
 | `spider-stub/com/github/catvod/crawler/Spider.java` | 编译用桩类，签名对齐 FongMi 的 `Spider`，不打进 jar |
 | `scripts/build-jar.mjs` | `javac` 编译 → `d8 --min-api 21` 转 dex → 打包 `spider/kids.jar` |
 | `spider/kids.jar` | 产物，dex jar，App 用 `DexClassLoader` 直接加载 |
@@ -150,33 +163,37 @@ FongMi 配置地址填 `http://<电脑局域网 IP>:8000/kids.json`。本地没�
 
 栏目 ID 可以从栏目页源码里的 `TOPC...` 提取，例如 `https://tv.cctv.com/lm/dwhhb/`。
 
-### 加一个 B 站条目
+### 加一条名单
 
-编辑 `data/bili.json`：
+编辑 `data/curation.json`：
 
 ```json
 {
   "id": "bili-xxx",
   "name": "显示名",
-  "query": "B站搜索关键词",
+  "aliases": ["B站搜索关键词1", "备选关键词"],
   "pick": ["标题里必须出现的词"],
   "exclude": ["盘点", "混剪"],
   "minPages": 5,
-  "bvid": "BV1xxxxxxxxx",
+  "pin": "BV1xxxxxxxxx",
   "ageMin": 3,
   "ageMax": 6,
   "paths": ["path-language"],
   "stages": { "path-language": 1 },
   "tags": ["低幼"],
   "order": 330,
-  "desc": "一句话说明。"
+  "why": "为什么值得让孩子看。",
+  "list": ["国际获奖", "高分"],
+  "desc": "一句话说明。",
+  "skip": "可选：确认平台没有正片时写原因"
 }
 ```
 
-- 填了 `bvid` 就直接固定，不再搜索；不填则按 `query` 搜，`pick` 过滤标题、`exclude` 剔掉盘点/混剪/歌曲合集这类视频
+- 先写 `why` 和 `list`，再去找源；找不到就让它进 `missing`，不要为了凑数放宽 `pick`
+- `pin` 填了就直接固定；没有则按 `aliases` 搜，`pick` 过滤标题、`exclude` 剔掉盘点/混剪/歌曲合集这类视频
 - `minPages` 是集数下限；单 P 但时长 ≥ 20 分钟的整季视频不受这个限制
 - 搜索接口需要 `buvid3`/`b_nut` Cookie，脚本会本地生成，不需要账号
-- 改完跑 `npm run sync`，确认 `data/bili_catalog.json` 里的标题和集数对得上
+- 改完跑 `npm run sync`，确认 `data/curated_catalog.json` 里的标题和集数对得上；缺源清单在同文件的 `missing` 里
 
 ### 加直播频道
 
@@ -201,9 +218,9 @@ FongMi 配置地址填 `http://<电脑局域网 IP>:8000/kids.json`。本地没�
 ### 命令
 
 ```bash
-npm run sync          # 同步央视目录 + B 站目录，生成 Catalog.java 并重新打 jar
+npm run sync          # 同步央视目录 + 按名单找源，生成 Catalog.java 并重新打 jar
 npm run sync:verify   # 同步后校验每个央视系列最新一集能否取到 HLS
-npm run check         # 校验年龄/路线/专题覆盖、jar md5 与配置一致性
+npm run check         # 校验名单字段、缺源列表、年龄/路线/专题覆盖、jar md5
 npm run jar           # 只重建 spider/kids.jar（数据已生成时用）
 ```
 
@@ -216,7 +233,8 @@ npm run jar           # 只重建 spider/kids.jar（数据已生成时用）
 - 目前覆盖 0-12 岁。13-18 岁的学科课程需要接入国家中小学智慧教育平台，接口和授权更复杂，暂未包含
 - 封面取最新一集的剧照，不是栏目海报
 - 央视栏目列表最多取 60 集，老栏目可能看不到更早的集数
-- B 站匿名播放最高 720p；部分视频被 UP 主删除、设为付费或仅限登录后播放，需要等下一次同步自动换源或手动改 `bvid`
+- B 站匿名播放最高 720p；部分视频被 UP 主删除、设为付费或仅限登录后播放，需要等下一次同步自动换源或手动改 `pin`
+- 名单里找不到正片的条目会一直留在 `missing`（当前 7 条），可以手动补 `pin` 或换成平台有的同名系列
 - 第三方补充站随时可能换域名、失效或插入贴片广告，不保证可用；分类里的「国产动漫」也混有青少年向作品，需要家长把关
 
 ## 版权
