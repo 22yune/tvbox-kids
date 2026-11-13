@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // 名单驱动解析：curation.json 定义「要什么」，这里逐条找源。
 // 顺序：pin（已验证 bvid）→ 上次结果 → 别名搜索 → 标记 missing。
-import { choose, cookies, playable, resolved, sleep, viewOf } from "./bili.mjs";
+import { choose, cookies, resolved, sleep, viewOf } from "./bili.mjs";
 
 export async function resolveCuration(entries, previous) {
   const previousById = new Map((previous || []).map((item) => [item.id, item]));
@@ -22,9 +22,11 @@ export async function resolveCuration(entries, previous) {
     }
     const old = previousById.get(entry.id);
     try {
+      // pin 是人工核对过的源，只看视频是否还在，不再探播放地址：
+      // CI 在海外节点常常拿不到 playurl，按播放探测会误判成失效并换成错的视频。
       if (entry.pin) {
         const view = await viewOf(entry.pin);
-        if (view && (await playable(view.bvid, view.pages[0].cid))) {
+        if (view) {
           series.push(resolved(entry, view));
           process.stdout.write("=");
           continue;
