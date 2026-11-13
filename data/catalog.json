@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-13T11:33:54.227Z",
+  "updatedAt": "2026-11-13T11:35:41.912Z",
   "source": "cctv",
   "series": [
     {
@@ -34,9 +34,7 @@
       "latestTime": 1794535807265,
       "latestGuid": "8b1886cee5e04766b6159dd8b29c5945",
       "count": 1000,
-      "stale": false,
-      "playable": true,
-      "verifyReason": "OK"
+      "stale": false
     },
     {
       "id": "cctv-zhs",
@@ -70,9 +68,7 @@
       "latestTime": 1794503768254,
       "latestGuid": "a72f61e721e441f19968d2ddb09e239f",
       "count": 1000,
-      "stale": false,
-      "playable": true,
-      "verifyReason": "OK"
+      "stale": false
     },
     {
       "id": "cctv-qqb",
@@ -102,9 +98,7 @@
       "latestTime": 1794018841511,
       "latestGuid": "88ded9391f3943ed8b308f286942c272",
       "count": 942,
-      "stale": false,
-      "playable": true,
-      "verifyReason": "OK"
+      "stale": false
     },
     {
       "id": "cctv-dfc",
@@ -134,9 +128,7 @@
       "latestTime": 1794275406742,
       "latestGuid": "42db5de4951a4537b199cfa6e53213f0",
       "count": 1000,
-      "stale": false,
-      "playable": true,
-      "verifyReason": "OK"
+      "stale": false
     },
     {
       "id": "cctv-dhc",
@@ -163,9 +155,7 @@
       "latestTime": 1295433659068,
       "latestGuid": "22b435a67e2a4ded3a34c9a1ab8fd925",
       "count": 987,
-      "stale": false,
-      "playable": true,
-      "verifyReason": "OK"
+      "stale": false
     },
     {
       "id": "cctv-dhdfy",
@@ -192,9 +182,7 @@
       "latestTime": 1794555729606,
       "latestGuid": "7b19f5f375ba4d11a0a70dd3bdeaa3a4",
       "count": 1000,
-      "stale": false,
-      "playable": true,
-      "verifyReason": "OK"
+      "stale": false
     },
     {
       "id": "cctv-kldb",
@@ -223,9 +211,7 @@
       "latestTime": 1793356432413,
       "latestGuid": "553bbcc9b18541a6a54378859fb5efc8",
       "count": 1000,
-      "stale": false,
-      "playable": true,
-      "verifyReason": "OK"
+      "stale": false
     },
     {
       "id": "cctv-yykd",
@@ -252,9 +238,7 @@
       "latestTime": 1794448809094,
       "latestGuid": "14ca77cf1d954e19868e167bc1ba277d",
       "count": 865,
-      "stale": false,
-      "playable": true,
-      "verifyReason": "OK"
+      "stale": false
     },
     {
       "id": "cctv-dwhhb",
@@ -279,9 +263,7 @@
       "latestTime": 1534679116630,
       "latestGuid": "73cd0db2a8e445cab939a349d1ea1efc",
       "count": 110,
-      "stale": false,
-      "playable": true,
-      "verifyReason": "OK"
+      "stale": false
     },
     {
       "id": "cctv-kxdwy",
@@ -306,9 +288,7 @@
       "latestTime": 1794272646821,
       "latestGuid": "015270c1919a41fd806a3172f124e286",
       "count": 364,
-      "stale": false,
-      "playable": true,
-      "verifyReason": "OK"
+      "stale": false
     },
     {
       "id": "cctv-zmkm",
@@ -336,9 +316,7 @@
       "latestTime": 1649220480720,
       "latestGuid": "044bd87d02804f6c9380eee5ee52ddad",
       "count": 1000,
-      "stale": false,
-      "playable": true,
-      "verifyReason": "OK"
+      "stale": false
     },
     {
       "id": "cctv-yxtk",
@@ -368,9 +346,7 @@
       "latestTime": 1794186844433,
       "latestGuid": "3efb68f90dbd4505af1d910e03ec771a",
       "count": 851,
-      "stale": false,
-      "playable": true,
-      "verifyReason": "OK"
+      "stale": false
     },
     {
       "id": "cctv-kw72b",
@@ -398,9 +374,7 @@
       "latestTime": 1794393007650,
       "latestGuid": "570b599c1ac34962b9b6eb4bb4acc55a",
       "count": 592,
-      "stale": false,
-      "playable": true,
-      "verifyReason": "OK"
+      "stale": false
     },
     {
       "id": "cctv-dsqxs",
@@ -428,9 +402,7 @@
       "latestTime": 1794224040929,
       "latestGuid": "64a0e1f67c2348fab1bec971f5abe320",
       "count": 1000,
-      "stale": false,
-      "playable": true,
-      "verifyReason": "OK"
+      "stale": false
     },
     {
       "id": "cctv-szdm",
@@ -457,9 +429,7 @@
       "latestTime": 1594478997681,
       "latestGuid": "8e9c099e3baa433aaea90519ee51a57e",
       "count": 18,
-      "stale": false,
-      "playable": true,
-      "verifyReason": "OK"
+      "stale": false
     },
     {
       "id": "cctv-xwddk",
@@ -486,9 +456,7 @@
       "latestTime": 1794531608784,
       "latestGuid": "91311c8749624550841897a5d6ad2fa0",
       "count": 1000,
-      "stale": false,
-      "playable": true,
-      "verifyReason": "OK"
+      "stale": false
     },
     {
       "id": "cctv-gsldzg",
@@ -514,9 +482,7 @@
       "latestTime": 1579965473550,
       "latestGuid": "4e63d21d0a8648b29cfd41a290dc6ded",
       "count": 11,
-      "stale": false,
-      "playable": true,
-      "verifyReason": "OK"
+      "stale": false
     },
     {
       "id": "cctv-djldzg",
@@ -542,9 +508,7 @@
       "latestTime": 1791124151708,
       "latestGuid": "49d5b80d6f2e4e7da8c804728b056900",
       "count": 23,
-      "stale": false,
-      "playable": true,
-      "verifyReason": "OK"
+      "stale": false
     },
     {
       "id": "cctv-ldz",
@@ -571,9 +535,7 @@
       "latestTime": 1507458472470,
       "latestGuid": "4d6bf8f676aa44f0af8b3b915c6f6178",
       "count": 10,
-      "stale": false,
-      "playable": true,
-      "verifyReason": "OK"
+      "stale": false
     }
   ]
 }

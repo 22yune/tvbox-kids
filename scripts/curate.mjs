@@ -3,6 +3,16 @@
 // 顺序：pin（已验证 bvid）→ 上次结果 → 别名搜索 → 标记 missing。
 import { choose, cookies, resolved, sleep, viewOf } from "./bili.mjs";
 
+const META = ["name", "ageMin", "ageMax", "paths", "stages", "tags", "order", "why", "list", "desc"];
+
+function reuse(entry, old) {
+  const item = { ...old };
+  for (const key of META) {
+    if (entry[key] !== undefined) item[key] = entry[key];
+  }
+  return item;
+}
+
 export async function resolveCuration(entries, previous) {
   const previousById = new Map((previous || []).map((item) => [item.id, item]));
   const jar = cookies();
@@ -31,6 +41,12 @@ export async function resolveCuration(entries, previous) {
           process.stdout.write("=");
           continue;
         }
+        // 部分正版内容对海外 IP 返回 404，看不到详情不等于视频没了
+        if (old && old.bvid === entry.pin) {
+          series.push(reuse(entry, old));
+          process.stdout.write("=");
+          continue;
+        }
       }
       if (old && old.bvid) {
         const view = await viewOf(old.bvid);
@@ -48,11 +64,7 @@ export async function resolveCuration(entries, previous) {
     } catch (error) {
       if (old && old.bvid) {
         // 复用上一次的 bvid 和集数，但元数据以名单为准。
-        const item = { ...old, stale: true };
-        for (const key of ["name", "ageMin", "ageMax", "paths", "stages", "tags", "order", "why", "list", "desc"]) {
-          if (entry[key] !== undefined) item[key] = entry[key];
-        }
-        series.push(item);
+        series.push({ ...reuse(entry, old), stale: true });
         process.stdout.write("x");
         console.warn("\n[stale] " + entry.name + "：" + String((error && error.message) || error));
       } else {
