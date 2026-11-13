@@ -28,6 +28,8 @@ jobs:
       - name: Sync CCTV catalog
         env:
           KIDS_BASE_URL: ${{ vars.KIDS_BASE_URL }}
+          KIDS_SPIDER_URL: ${{ vars.KIDS_SPIDER_URL }}
+          KIDS_USE_RAW: ${{ vars.KIDS_USE_RAW }}
         run: node scripts/sync.mjs --verify
 
       - name: Check generated files

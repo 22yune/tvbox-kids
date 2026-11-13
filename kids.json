@@ -5,7 +5,7 @@
       "key": "kids_age",
       "name": "按年龄",
       "type": 3,
-      "api": "https://raw.githubusercontent.com/22yune/tvbox-kids/refs/heads/main/spider/kids.js",
+      "api": "https://gh-proxy.com/https://raw.githubusercontent.com/22yune/tvbox-kids/refs/heads/main/spider/kids.js",
       "ext": {
         "mode": "age"
       },
@@ -21,7 +21,7 @@
       "key": "kids_path",
       "name": "按学习路线",
       "type": 3,
-      "api": "https://raw.githubusercontent.com/22yune/tvbox-kids/refs/heads/main/spider/kids.js",
+      "api": "https://gh-proxy.com/https://raw.githubusercontent.com/22yune/tvbox-kids/refs/heads/main/spider/kids.js",
       "ext": {
         "mode": "path"
       },
@@ -37,7 +37,7 @@
       "key": "kids_topic",
       "name": "精选专题",
       "type": 3,
-      "api": "https://raw.githubusercontent.com/22yune/tvbox-kids/refs/heads/main/spider/kids.js",
+      "api": "https://gh-proxy.com/https://raw.githubusercontent.com/22yune/tvbox-kids/refs/heads/main/spider/kids.js",
       "ext": {
         "mode": "topic"
       },

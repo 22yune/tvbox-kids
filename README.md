@@ -67,16 +67,18 @@ https://cdn.jsdelivr.net/gh/<你的用户名>/<仓库名>@main/kids.json
 
 导入后首页会出现「按年龄 / 按学习路线 / 精选专题」三个站点，直播在「直播」页。
 
-> 点播站点是 type 3 的 JS 爬虫，`api` 必须是**绝对地址**（FongMi 只认 `http(s)://` 或 `assets://`，不会按配置地址解析 `./spider/kids.js`）。`scripts/sync.mjs` 会自动按 `GITHUB_REPOSITORY` 生成对应 raw 地址；如果你用代理或 jsDelivr 导入配置，需要让爬虫走同一个前缀，否则国内网络可能加载不到：
+> 点播站点是 type 3 的 JS 爬虫，`api` 必须是**绝对地址**（FongMi 只认 `http(s)://` 或 `assets://`，不会按配置地址解析 `./spider/kids.js`）。`scripts/sync.mjs` 默认生成 `https://gh-proxy.com/https://raw.githubusercontent.com/.../spider/kids.js`，和上面的代理导入地址保持一致。如果要换成别的镜像或直连 raw：
 >
 > ```bash
-> # 本地：用代理前缀
+> # 直连 raw（海外网络）
+> KIDS_USE_RAW=1 node scripts/sync.mjs
+> # 换镜像前缀
 > KIDS_BASE_URL=https://gh-proxy.com/https://raw.githubusercontent.com/<你的用户名>/<仓库名>/main node scripts/sync.mjs
-> # 或者直接指定完整地址
+> # 直接指定完整地址
 > KIDS_SPIDER_URL=https://cdn.jsdelivr.net/gh/<你的用户名>/<仓库名>@main/spider/kids.js node scripts/sync.mjs
 > ```
 >
-> 用 Actions 更新时，在仓库 Settings → Secrets and variables → Actions → Variables 里加 `KIDS_BASE_URL` 即可。
+> 用 Actions 更新时，把上面的变量加到仓库 Settings → Secrets and variables → Actions → Variables（名字相同），工作流会把它传给脚本，否则每次同步都会回到默认的 gh-proxy 地址。
 
 ### 本地预览（可选）
 

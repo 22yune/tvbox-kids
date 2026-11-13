@@ -116,24 +116,30 @@ function gitRemote() {
 
 // FongMi 的 QuickJS 加载器只接受 http(s):// 或 assets:// 开头的 api，
 // 不会按配置文件地址解析 "./spider/kids.js"，因此这里必须给出绝对地址。
+// raw.githubusercontent.com 在国内多数网络不可达，默认套一层 gh-proxy；
+// 想直连 raw 就用 KIDS_SPIDER_URL 指定完整地址。
+function spiderRepo() {
+  if (process.env.GITHUB_REPOSITORY) {
+    return { repo: process.env.GITHUB_REPOSITORY, ref: process.env.GITHUB_REF_NAME || "main" };
+  }
+  const match = gitRemote().match(/github\.com[/:]([^/]+)\/([^/.]+?)(?:\.git)?$/);
+  if (match) return { repo: match[1] + "/" + match[2], ref: "main" };
+  return null;
+}
+
 function spiderUrl() {
   if (process.env.KIDS_SPIDER_URL) return process.env.KIDS_SPIDER_URL;
   if (process.env.KIDS_BASE_URL) {
     return process.env.KIDS_BASE_URL.replace(/\/+$/, "") + "/spider/kids.js";
   }
-  if (process.env.GITHUB_REPOSITORY) {
-    const ref = process.env.GITHUB_REF_NAME || "main";
-    return "https://raw.githubusercontent.com/" + process.env.GITHUB_REPOSITORY +
-      "/refs/heads/" + ref + "/spider/kids.js";
+  const target = spiderRepo();
+  if (!target) {
+    console.warn("[warn] 无法确定仓库地址，spider 使用本地预览地址 http://127.0.0.1:8000/spider/kids.js");
+    return "http://127.0.0.1:8000/spider/kids.js";
   }
-  const remote = gitRemote();
-  const match = remote.match(/github\.com[/:]([^/]+)\/([^/.]+?)(?:\.git)?$/);
-  if (match) {
-    return "https://raw.githubusercontent.com/" + match[1] + "/" + match[2] +
-      "/refs/heads/main/spider/kids.js";
-  }
-  console.warn("[warn] 无法确定仓库地址，spider 使用本地预览地址 http://127.0.0.1:8000/spider/kids.js");
-  return "http://127.0.0.1:8000/spider/kids.js";
+  const raw = "https://raw.githubusercontent.com/" + target.repo +
+    "/refs/heads/" + target.ref + "/spider/kids.js";
+  return process.env.KIDS_USE_RAW === "1" ? raw : "https://gh-proxy.com/" + raw;
 }
 
 function site(key, name, mode, api) {
