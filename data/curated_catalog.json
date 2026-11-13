@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-13T11:22:09.446Z",
+  "updatedAt": "2026-11-13T11:28:44.713Z",
   "source": "curation",
   "series": [
     {
@@ -724,13 +724,13 @@
       "id": "bili-peppa",
       "name": "小猪佩奇 中文版",
       "source": "bili",
-      "bvid": "BV1FB38zFEjG",
-      "biliTitle": "Peppa Pig 小猪佩奇英文版中英文字幕第一季 Recycling 快乐环保 每天20分钟 轻松学英语",
-      "pic": "https://i0.hdslb.com/bfs/archive/cc415de74a59ee4608b471fb95297640ea3b9d05.jpg",
-      "episodes": 1,
-      "latest": "1集",
-      "latestTime": 1751468509,
-      "count": 1,
+      "bvid": "BV1vfdrBJEpP",
+      "biliTitle": "小猪佩奇1",
+      "pic": "https://i0.hdslb.com/bfs/archive/706dca4122bce37791ba476055d2f2ccc1b55b75.jpg",
+      "episodes": 100,
+      "latest": "100集",
+      "latestTime": 1776744300,
+      "count": 100,
       "stale": false,
       "ageMin": 2,
       "ageMax": 6,
@@ -1595,6 +1595,819 @@
         "家长社区"
       ],
       "desc": "拖积木做小游戏，第一次接触编程。"
+    },
+    {
+      "id": "bili-heyduggee",
+      "name": "嗨！道奇 Hey Duggee",
+      "source": "bili",
+      "bvid": "BV1FL4y1W7Km",
+      "biliTitle": "《 hey! duggee》中文版，共90集，分一季二季，每集7分钟左右",
+      "pic": "https://i0.hdslb.com/bfs/archive/e66291a6864f31f86d43d0a6b740700602be841d.png",
+      "episodes": 10,
+      "latest": "10集",
+      "latestTime": 1638367170,
+      "count": 10,
+      "stale": false,
+      "ageMin": 2,
+      "ageMax": 5,
+      "paths": [
+        "path-social",
+        "path-health"
+      ],
+      "stages": {
+        "path-social": 1,
+        "path-health": 1
+      },
+      "tags": [
+        "低幼",
+        "情绪"
+      ],
+      "order": 229,
+      "why": "BAFTA 获奖，每集一个小任务和一枚徽章，讲合作和情绪。",
+      "list": [
+        "国际获奖",
+        "高分"
+      ],
+      "desc": "松鼠俱乐部做任务领徽章，练合作和情绪表达。"
+    },
+    {
+      "id": "bili-bing",
+      "name": "小兔兵兵 Bing（英语）",
+      "source": "bili",
+      "bvid": "BV1hT4y1N7MM",
+      "biliTitle": "【英语成长树】小兔兵兵 Bing Bunny(第一季+第二季共78集)",
+      "pic": "https://i0.hdslb.com/bfs/archive/a9093da4f3982523edd710e263dca16c8f56356e.jpg",
+      "episodes": 78,
+      "latest": "78集",
+      "latestTime": 1610097596,
+      "count": 78,
+      "stale": false,
+      "ageMin": 2,
+      "ageMax": 5,
+      "paths": [
+        "path-social",
+        "path-language"
+      ],
+      "stages": {
+        "path-social": 1,
+        "path-language": 1
+      },
+      "tags": [
+        "低幼",
+        "情绪"
+      ],
+      "order": 230,
+      "why": "专讲幼儿日常冲突和情绪，画面柔和，适合睡前看。",
+      "list": [
+        "国际获奖",
+        "绘本IP"
+      ],
+      "desc": "小兔兵兵的日常小冲突，学表达情绪和道歉；B站现有版本为英语原声。"
+    },
+    {
+      "id": "bili-charlie",
+      "name": "查理和罗拉 Charlie and Lola",
+      "source": "bili",
+      "bvid": "BV1mW411K7bt",
+      "biliTitle": "查理和罗拉(中字版) [高清]",
+      "pic": "https://i1.hdslb.com/bfs/archive/f517dc0342825bdb4ad264101aeffebf17563f7e.jpg",
+      "episodes": 24,
+      "latest": "24集",
+      "latestTime": 1523387171,
+      "count": 24,
+      "stale": false,
+      "ageMin": 3,
+      "ageMax": 6,
+      "paths": [
+        "path-social",
+        "path-arts"
+      ],
+      "stages": {
+        "path-social": 2,
+        "path-arts": 1
+      },
+      "tags": [
+        "动画",
+        "艺术",
+        "情绪"
+      ],
+      "order": 231,
+      "why": "绘本改编，拼贴画风辨识度高，讲兄妹相处和想象力。",
+      "list": [
+        "国际获奖",
+        "绘本IP"
+      ],
+      "desc": "哥哥哄妹妹的故事，讲耐心、想象和兄妹相处。"
+    },
+    {
+      "id": "bili-benholly",
+      "name": "本和霍利的小王国",
+      "source": "bili",
+      "bvid": "BV1Ut411s7fU",
+      "biliTitle": "本和霍利的小王国第一季",
+      "pic": "https://i2.hdslb.com/bfs/archive/6dee82f0eaf42745c252d94e37cf15a800301122.jpg",
+      "episodes": 52,
+      "latest": "52集",
+      "latestTime": 1547019478,
+      "count": 52,
+      "stale": false,
+      "ageMin": 3,
+      "ageMax": 6,
+      "paths": [
+        "path-social",
+        "path-language"
+      ],
+      "stages": {
+        "path-social": 2,
+        "path-language": 1
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 232,
+      "why": "《小猪佩奇》团队作品，笑点密，适合练英语和同伴交往。",
+      "list": [
+        "国际获奖",
+        "家长社区"
+      ],
+      "desc": "小精灵和仙女的日常，讲朋友相处和规则。"
+    },
+    {
+      "id": "bili-maisy",
+      "name": "小鼠波波 Maisy",
+      "source": "bili",
+      "bvid": "BV1g9MX6xEpB",
+      "biliTitle": "小鼠波波 绘本视频 13集 4K版",
+      "pic": "https://i1.hdslb.com/bfs/archive/ab3b942cb08aa065b9e81fd1d015ac257f82f24b.jpg",
+      "episodes": 13,
+      "latest": "13集",
+      "latestTime": 1785747704,
+      "count": 13,
+      "stale": false,
+      "ageMin": 1,
+      "ageMax": 4,
+      "paths": [
+        "path-language",
+        "path-social"
+      ],
+      "stages": {
+        "path-language": 1,
+        "path-social": 1
+      },
+      "tags": [
+        "低幼"
+      ],
+      "order": 233,
+      "why": "低幼绘本经典，画面大、句子短，适合第一套动画。",
+      "list": [
+        "绘本IP",
+        "家长社区"
+      ],
+      "desc": "小鼠波波和朋友的日常，认识颜色、数字和生活场景。"
+    },
+    {
+      "id": "bili-shaun",
+      "name": "小羊肖恩（第4季）",
+      "source": "bili",
+      "bvid": "BV1SoHx61E2u",
+      "biliTitle": "【小羊肖恩】第4季",
+      "pic": "https://i1.hdslb.com/bfs/archive/dc4933ceea5365cbd14f59d75be3135a280debc9.jpg",
+      "episodes": 30,
+      "latest": "30集",
+      "latestTime": 1791201552,
+      "count": 30,
+      "stale": false,
+      "ageMin": 4,
+      "ageMax": 8,
+      "paths": [
+        "path-arts",
+        "path-social"
+      ],
+      "stages": {
+        "path-arts": 2,
+        "path-social": 2
+      },
+      "tags": [
+        "动画",
+        "艺术"
+      ],
+      "order": 234,
+      "why": "定格黏土动画代表作，无对白也能看懂，幽默感高级。",
+      "list": [
+        "国际获奖",
+        "高分"
+      ],
+      "desc": "农场羊群的默剧式喜剧，看动作和表情理解故事；B站现有第4季全集。"
+    },
+    {
+      "id": "bili-poli",
+      "name": "变形警车珀利",
+      "source": "bili",
+      "bvid": "BV1YR4y1D79s",
+      "biliTitle": "变形警车珀利01 小朋友不可以乱穿马路",
+      "pic": "https://i2.hdslb.com/bfs/archive/0f7864cd11ae2adea704147330c48da869583397.png",
+      "episodes": 17,
+      "latest": "17集",
+      "latestTime": 1672138403,
+      "count": 17,
+      "stale": false,
+      "ageMin": 3,
+      "ageMax": 6,
+      "paths": [
+        "path-health",
+        "path-social"
+      ],
+      "stages": {
+        "path-health": 1,
+        "path-social": 1
+      },
+      "tags": [
+        "动画",
+        "安全"
+      ],
+      "order": 235,
+      "why": "交通安全动画，每个场景都有明确的对错示范。",
+      "list": [
+        "家长社区"
+      ],
+      "desc": "救援小队处理交通和居家险情，讲安全规则。"
+    },
+    {
+      "id": "bili-sid",
+      "name": "科学小子席德",
+      "source": "bili",
+      "bvid": "BV1d4zkBGE67",
+      "biliTitle": "中文版【科学小子席德】全66集 | 经典儿童科学启蒙动画",
+      "pic": "https://i1.hdslb.com/bfs/archive/527b8ad1c0e336200059dd2771345060592a42a4.jpg",
+      "episodes": 66,
+      "latest": "66集",
+      "latestTime": 1769269805,
+      "count": 66,
+      "stale": false,
+      "ageMin": 3,
+      "ageMax": 6,
+      "paths": [
+        "path-science"
+      ],
+      "stages": {
+        "path-science": 1
+      },
+      "tags": [
+        "动画",
+        "科学"
+      ],
+      "order": 237,
+      "why": "每集一个科学问题，用观察和实验找答案，方法完整。",
+      "list": [
+        "国际获奖",
+        "家长社区"
+      ],
+      "desc": "席德每天问一个为什么，跟着做观察和小实验。"
+    },
+    {
+      "id": "bili-curiousgeorge",
+      "name": "好奇猴乔治（英语绘本动画）",
+      "source": "bili",
+      "bvid": "BV1ht4y1V7Ex",
+      "biliTitle": "【165集全】幼儿启蒙 英语绘本动画 好奇猴乔治 全7季",
+      "pic": "https://i0.hdslb.com/bfs/archive/3edf9a6cbfb1e25f25cbc3478fe39722824a2e1c.jpg",
+      "episodes": 100,
+      "latest": "100集",
+      "latestTime": 1658979892,
+      "count": 100,
+      "stale": false,
+      "ageMin": 3,
+      "ageMax": 6,
+      "paths": [
+        "path-science",
+        "path-math"
+      ],
+      "stages": {
+        "path-science": 1,
+        "path-math": 1
+      },
+      "tags": [
+        "动画",
+        "科学"
+      ],
+      "order": 238,
+      "why": "经典绘本 IP，把科学和数学藏在日常捣蛋里。",
+      "list": [
+        "国际获奖",
+        "绘本IP"
+      ],
+      "desc": "小猴子的城市冒险，顺带接触测量、形状和因果；B站现有版本为英语绘本动画。"
+    },
+    {
+      "id": "bili-pegcat",
+      "name": "佩格和小猫 Peg + Cat",
+      "source": "bili",
+      "bvid": "BV1sY4y137m4",
+      "biliTitle": "80集  佩格和小猫 中文   数学启蒙",
+      "pic": "https://i1.hdslb.com/bfs/archive/8159336115aa96edb972f74ca849ede845fc0185.jpg",
+      "episodes": 15,
+      "latest": "15集",
+      "latestTime": 1656155398,
+      "count": 15,
+      "stale": false,
+      "ageMin": 3,
+      "ageMax": 6,
+      "paths": [
+        "path-math"
+      ],
+      "stages": {
+        "path-math": 2
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 239,
+      "why": "艾美奖数学动画，每集用数学解决一个具体麻烦。",
+      "list": [
+        "国际获奖"
+      ],
+      "desc": "女孩和小猫用数学闯关，练数感、图形和规律。"
+    },
+    {
+      "id": "bili-numberjacks",
+      "name": "数字小精灵 Numberjacks",
+      "source": "bili",
+      "bvid": "BV1cr421H7YH",
+      "biliTitle": "【第二季Numberjacks 】数字小精灵 Numberjacks一二季全集，学习数学学习英语好帮手",
+      "pic": "https://i1.hdslb.com/bfs/archive/6d04bc3ddf72d208c69f3866aea656cb3dfa271b.png",
+      "episodes": 20,
+      "latest": "20集",
+      "latestTime": 1710816310,
+      "count": 20,
+      "stale": false,
+      "ageMin": 3,
+      "ageMax": 6,
+      "paths": [
+        "path-math"
+      ],
+      "stages": {
+        "path-math": 1
+      },
+      "tags": [
+        "低幼"
+      ],
+      "order": 240,
+      "why": "BBC 低幼数学动画，数字拟人化，讲数量关系。",
+      "list": [
+        "国际获奖"
+      ],
+      "desc": "数字小精灵解决数量难题，建立数感；B站现有版本带英语。"
+    },
+    {
+      "id": "bili-cyberchase",
+      "name": "数学小先锋 Cyberchase",
+      "source": "bili",
+      "bvid": "BV1YW411a724",
+      "biliTitle": "【合集】数学小先锋",
+      "pic": "https://i2.hdslb.com/bfs/archive/7de387ffb903303d63e980640edacd3aeac4303c.jpg",
+      "episodes": 52,
+      "latest": "52集",
+      "latestTime": 1512131422,
+      "count": 52,
+      "stale": false,
+      "ageMin": 6,
+      "ageMax": 9,
+      "paths": [
+        "path-math",
+        "path-science"
+      ],
+      "stages": {
+        "path-math": 3,
+        "path-science": 2
+      },
+      "tags": [
+        "动画",
+        "科学"
+      ],
+      "order": 241,
+      "why": "PBS 数学动画，把方程、几何、概率放进冒险任务。",
+      "list": [
+        "国际获奖"
+      ],
+      "desc": "三个孩子用数学阻止反派，练中阶数学思维。"
+    },
+    {
+      "id": "bili-mathisland",
+      "name": "数学荒岛历险记",
+      "source": "bili",
+      "bvid": "BV1uW411a7nb",
+      "biliTitle": "【合集】数学荒岛历险记I",
+      "pic": "https://i0.hdslb.com/bfs/archive/16181b3c83476ea6a8266836e1d484f3391b7ad9.png",
+      "episodes": 40,
+      "latest": "40集",
+      "latestTime": 1569859200,
+      "count": 40,
+      "stale": false,
+      "ageMin": 6,
+      "ageMax": 9,
+      "paths": [
+        "path-math"
+      ],
+      "stages": {
+        "path-math": 2
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 242,
+      "why": "国产数学动画，剧情连续，适合小学低年级当数学故事看。",
+      "list": [
+        "高分",
+        "家长社区"
+      ],
+      "desc": "荒岛冒险里解数学题，覆盖计算、图形和逻辑。"
+    },
+    {
+      "id": "bili-dinotrain",
+      "name": "恐龙列车",
+      "source": "bili",
+      "bvid": "BV1R44y1o7pQ",
+      "biliTitle": "恐龙列车（Dinosau Train）第一季",
+      "pic": "https://i1.hdslb.com/bfs/archive/799c6ea5068008a32d369a312b8382d001e36882.png",
+      "episodes": 11,
+      "latest": "11集",
+      "latestTime": 1672230471,
+      "count": 11,
+      "stale": false,
+      "ageMin": 3,
+      "ageMax": 6,
+      "paths": [
+        "path-science"
+      ],
+      "stages": {
+        "path-science": 1
+      },
+      "tags": [
+        "动画",
+        "科学"
+      ],
+      "order": 243,
+      "why": "每集认识一种恐龙，带古生物、地理和观察方法。",
+      "list": [
+        "家长社区"
+      ],
+      "desc": "坐恐龙列车旅行，认识不同恐龙和史前环境。"
+    },
+    {
+      "id": "bili-andydino",
+      "name": "安迪的恐龙冒险",
+      "source": "bili",
+      "bvid": "BV1EsQFBoE5A",
+      "biliTitle": "【安迪的史前冒险】中文版 25集全｜儿童趣味探险科普",
+      "pic": "https://i1.hdslb.com/bfs/archive/d3b52f9a4fa13c2fb02c00ee5cb0644f0413facd.jpg",
+      "episodes": 25,
+      "latest": "25集",
+      "latestTime": 1775806770,
+      "count": 25,
+      "stale": false,
+      "ageMin": 4,
+      "ageMax": 8,
+      "paths": [
+        "path-science"
+      ],
+      "stages": {
+        "path-science": 2
+      },
+      "tags": [
+        "科学",
+        "纪录片"
+      ],
+      "order": 244,
+      "why": "真人加特效回到恐龙时代，知识密度比动画高。",
+      "list": [
+        "国际获奖",
+        "家长社区"
+      ],
+      "desc": "安迪穿越到史前，观察恐龙行为和生存环境。"
+    },
+    {
+      "id": "bili-wildkratts",
+      "name": "动物兄弟 Wild Kratts",
+      "source": "bili",
+      "bvid": "BV1T7V66cEYm",
+      "biliTitle": "【最全合集】Wild Kratts动物兄弟1-6季｜英文版动画+音频+台词本+中文版，科普英语启蒙一步到位",
+      "pic": "https://i0.hdslb.com/bfs/archive/59362989cc6e3376a850d5c89a0a8560f9f6ac92.jpg",
+      "episodes": 66,
+      "latest": "66集",
+      "latestTime": 1781611200,
+      "count": 66,
+      "stale": false,
+      "ageMin": 6,
+      "ageMax": 10,
+      "paths": [
+        "path-science"
+      ],
+      "stages": {
+        "path-science": 3
+      },
+      "tags": [
+        "动画",
+        "科学"
+      ],
+      "order": 245,
+      "why": "动物行为科普，每集一种动物的生存策略。",
+      "list": [
+        "家长社区"
+      ],
+      "desc": "兄弟俩变身动物，观察捕食、迁徙和共生。"
+    },
+    {
+      "id": "bili-pincode",
+      "name": "平博士密码",
+      "source": "bili",
+      "bvid": "BV1Z9fbYvEAF",
+      "biliTitle": "【平博士密码】第一季",
+      "pic": "https://i0.hdslb.com/bfs/archive/94b231fef2a4e05157c18f2b548d24853a37acee.jpg",
+      "episodes": 52,
+      "latest": "52集",
+      "latestTime": 1737532201,
+      "count": 52,
+      "stale": false,
+      "ageMin": 6,
+      "ageMax": 10,
+      "paths": [
+        "path-science",
+        "path-tech"
+      ],
+      "stages": {
+        "path-science": 3,
+        "path-tech": 1
+      },
+      "tags": [
+        "动画",
+        "科学",
+        "科技"
+      ],
+      "order": 247,
+      "why": "俄罗斯科普动画，物理、化学、天文概念讲得通俗。",
+      "list": [
+        "高分",
+        "家长社区"
+      ],
+      "desc": "平博士带队做实验，解释自然现象和发明原理。"
+    },
+    {
+      "id": "bili-cells",
+      "name": "工作细胞",
+      "source": "bili",
+      "bvid": "BV1cr4y117ot",
+      "biliTitle": "第一季[BD/NC/OP/ED/特典]工作细胞",
+      "pic": "https://i2.hdslb.com/bfs/archive/34f09559c50ee1d50bbd53af1fe9713bae035de3.jpg",
+      "episodes": 39,
+      "latest": "39集",
+      "latestTime": 1635388755,
+      "count": 39,
+      "stale": false,
+      "ageMin": 8,
+      "ageMax": 12,
+      "paths": [
+        "path-science"
+      ],
+      "stages": {
+        "path-science": 4
+      },
+      "tags": [
+        "动画",
+        "科学"
+      ],
+      "order": 248,
+      "why": "把免疫系统拍成职场剧，生物入门记忆点极强。",
+      "list": [
+        "高分"
+      ],
+      "desc": "红细胞和白细胞的身体日常，认识免疫和循环。"
+    },
+    {
+      "id": "bili-frozenplanet",
+      "name": "冰冻星球",
+      "source": "bili",
+      "bvid": "BV1aP411U7ZM",
+      "biliTitle": "【豆瓣评分9.7】神级电子榨菜！自我提升必备高分纪录片《冰冻星球》中文版",
+      "pic": "https://i2.hdslb.com/bfs/archive/885b95c854da435a10ee89990e1411571a1ccaae.png",
+      "episodes": 8,
+      "latest": "8集",
+      "latestTime": 1682567228,
+      "count": 8,
+      "stale": false,
+      "ageMin": 8,
+      "ageMax": 12,
+      "paths": [
+        "path-science"
+      ],
+      "stages": {
+        "path-science": 4
+      },
+      "tags": [
+        "科学",
+        "纪录片"
+      ],
+      "order": 250,
+      "why": "极地生态纪录片，讲气候和适应，画面震撼。",
+      "list": [
+        "高分",
+        "国际获奖"
+      ],
+      "desc": "南极北极的动物怎么过冬，讲气候和生态。"
+    },
+    {
+      "id": "bili-humanplanet",
+      "name": "小小人类星球",
+      "source": "bili",
+      "bvid": "BV1sguE6DEmf",
+      "biliTitle": "小小人类星球",
+      "pic": "https://i2.hdslb.com/bfs/archive/b6bde0db5796faa54ed1bee387a97e9bcc5b4f54.jpg",
+      "episodes": 16,
+      "latest": "16集",
+      "latestTime": 1785998892,
+      "count": 16,
+      "stale": false,
+      "ageMin": 4,
+      "ageMax": 8,
+      "paths": [
+        "path-humanities",
+        "path-science"
+      ],
+      "stages": {
+        "path-humanities": 2,
+        "path-science": 1
+      },
+      "tags": [
+        "人文",
+        "纪录片"
+      ],
+      "order": 252,
+      "why": "BBC 儿童版，跟着各地小朋友看居住环境，时长短、画面友好。",
+      "list": [
+        "国际获奖",
+        "家长社区"
+      ],
+      "desc": "拜访不同国家的小朋友，看他们的家、食物和游戏。"
+    },
+    {
+      "id": "bili-cats",
+      "name": "如果历史是一群喵",
+      "source": "bili",
+      "bvid": "BV1TmVwzKEK6",
+      "biliTitle": "如果历史是一群喵",
+      "pic": "https://i1.hdslb.com/bfs/archive/ce7b674cab4d33ac58243099b6cc7292f96b671a.jpg",
+      "episodes": 38,
+      "latest": "38集",
+      "latestTime": 1746348340,
+      "count": 38,
+      "stale": false,
+      "ageMin": 6,
+      "ageMax": 12,
+      "paths": [
+        "path-humanities"
+      ],
+      "stages": {
+        "path-humanities": 2
+      },
+      "tags": [
+        "动画",
+        "人文"
+      ],
+      "order": 253,
+      "why": "猫演历史，时间线和人物关系清楚，中国史入门友好。",
+      "list": [
+        "高分",
+        "家长社区"
+      ],
+      "desc": "用猫咪重演历史事件，建立朝代和时间线概念。"
+    },
+    {
+      "id": "bili-poetry",
+      "name": "中国唱诗班",
+      "source": "bili",
+      "bvid": "BV12S4y1u75V",
+      "biliTitle": "《中国唱诗班》-中国古诗启蒙课程",
+      "pic": "https://i0.hdslb.com/bfs/archive/c202e1cfcab5d7e6f47fdf38eb17cd764c62b2a3.png",
+      "episodes": 12,
+      "latest": "12集",
+      "latestTime": 1647324288,
+      "count": 12,
+      "stale": false,
+      "ageMin": 6,
+      "ageMax": 12,
+      "paths": [
+        "path-humanities",
+        "path-arts"
+      ],
+      "stages": {
+        "path-humanities": 1,
+        "path-arts": 2
+      },
+      "tags": [
+        "动画",
+        "人文",
+        "艺术"
+      ],
+      "order": 254,
+      "why": "古诗配水墨动画，画面和意境都在线，美育和国学兼顾。",
+      "list": [
+        "高分"
+      ],
+      "desc": "每集一首古诗，用水墨动画讲诗里的故事。"
+    },
+    {
+      "id": "bili-artattack",
+      "name": "艺术创想 Art Attack",
+      "source": "bili",
+      "bvid": "BV1tt41147nf",
+      "biliTitle": "【小神龙俱乐部】《艺术创想》童年回忆全两季 90集全",
+      "pic": "https://i2.hdslb.com/bfs/archive/52715854d71beec1371fe7cdffbd3f63ff707353.png",
+      "episodes": 90,
+      "latest": "90集",
+      "latestTime": 1548436271,
+      "count": 90,
+      "stale": false,
+      "ageMin": 5,
+      "ageMax": 12,
+      "paths": [
+        "path-arts"
+      ],
+      "stages": {
+        "path-arts": 3
+      },
+      "tags": [
+        "艺术"
+      ],
+      "order": 255,
+      "why": "经典儿童手工节目，材料家里都有，能直接照着做。",
+      "list": [
+        "家长社区"
+      ],
+      "desc": "用纸、颜料和日用品做手工，每集一个可复刻的作品。"
+    },
+    {
+      "id": "bili-palace100",
+      "name": "故宫100",
+      "source": "bili",
+      "bvid": "BV1AT421Y7xR",
+      "biliTitle": "【全100集】暑假不出门就可以走进京城故宫，了解故宫，弘扬中华优秀传统文化~",
+      "pic": "https://i0.hdslb.com/bfs/archive/46dd275174fe201fc08e92d3890de79cc10bf5fe.png",
+      "episodes": 65,
+      "latest": "65集",
+      "latestTime": 1719199244,
+      "count": 65,
+      "stale": false,
+      "ageMin": 8,
+      "ageMax": 12,
+      "paths": [
+        "path-humanities"
+      ],
+      "stages": {
+        "path-humanities": 4
+      },
+      "tags": [
+        "人文",
+        "纪录片"
+      ],
+      "order": 256,
+      "why": "每集几分钟讲一座建筑或一件器物，适合碎片时间。",
+      "list": [
+        "高分",
+        "央视"
+      ],
+      "desc": "从建筑和器物看故宫，短小、门槛低。"
+    },
+    {
+      "id": "bili-bob",
+      "name": "巴布工程师",
+      "source": "bili",
+      "bvid": "BV1Q23TzWEZX",
+      "biliTitle": "巴布工程师央视国语全集（1~100）",
+      "pic": "https://i1.hdslb.com/bfs/archive/5fc53d8678c69091a5ef3146d4f00454c3495929.jpg",
+      "episodes": 100,
+      "latest": "100集",
+      "latestTime": 1751519569,
+      "count": 100,
+      "stale": false,
+      "ageMin": 3,
+      "ageMax": 6,
+      "paths": [
+        "path-social",
+        "path-tech"
+      ],
+      "stages": {
+        "path-social": 2,
+        "path-tech": 1
+      },
+      "tags": [
+        "动画",
+        "科技"
+      ],
+      "order": 258,
+      "why": "工程车合作完成项目，讲分工、计划和「能不能做到」。",
+      "list": [
+        "家长社区"
+      ],
+      "desc": "工程队一起盖房子修路，讲合作和工程常识。"
     }
   ],
   "missing": [
@@ -1632,6 +2445,31 @@
       "id": "bili-mendeleev",
       "name": "门捷列夫很忙",
       "reason": "B站只有分集切片，没有整季合集"
+    },
+    {
+      "id": "bili-fireman",
+      "name": "消防员山姆",
+      "reason": "B站只有零散分集和资源包，没有中文整季"
+    },
+    {
+      "id": "bili-fixies",
+      "name": "螺丝钉 The Fixies",
+      "reason": "B站只有大电影和短片，没有整季正片"
+    },
+    {
+      "id": "bili-life",
+      "name": "生命脉动 Life",
+      "reason": "B站只有单集切片，没有整季合集"
+    },
+    {
+      "id": "bili-blueplanet2",
+      "name": "蓝色星球2",
+      "reason": "B站正片未开放，只有片段和预告"
+    },
+    {
+      "id": "bili-palacerestore",
+      "name": "我在故宫修文物",
+      "reason": "B站只有片段和幕后，没有完整三集版"
     }
   ]
 }
