@@ -28,6 +28,7 @@ async function main() {
   const kidsSource = await read("spider-src/com/github/catvod/spider/Kids.java");
   const live = await readJson("data/live.json");
   const extra = await readJson("data/extra_sites.json");
+  const bili = await readJson("data/bili_catalog.json");
 
   const ages = new Set(taxonomy.ages.map((item) => item.id));
   const paths = new Set(taxonomy.paths.map((item) => item.id));
@@ -61,6 +62,25 @@ async function main() {
   }
   for (const topicId of topics) {
     requireField(catalog.series.some((item) => (item.tags || []).some((tag) => taxonomy.topics.find((x) => x.id === topicId).tags.includes(tag))), "专题没有内容：" + topicId);
+  }
+
+  const biliIds = new Set();
+  const cctvIds = new Set(catalog.series.map((item) => item.id));
+  for (const item of bili.series || []) {
+    requireField(item.id && item.name, (item.id || "?") + " 缺少 id/name");
+    requireField(!biliIds.has(item.id), "B 站条目 id 重复：" + item.id);
+    requireField(!cctvIds.has(item.id), "B 站条目 id 与央视栏目重复：" + item.id);
+    biliIds.add(item.id);
+    requireField(/^BV[0-9A-Za-z]+$/.test(item.bvid || ""), item.id + " 的 bvid 格式不正确");
+    requireField(item.source === "bili", item.id + " 的 source 必须是 bili");
+    requireField(Number.isFinite(item.ageMin) && Number.isFinite(item.ageMax) && item.ageMin < item.ageMax, item.id + " 的年龄段不合法");
+    requireField(Array.isArray(item.paths) && item.paths.length > 0, item.id + " 未绑定学习路线");
+    for (const pathId of item.paths || []) {
+      requireField(paths.has(pathId), item.id + " 引用了未知路线 " + pathId);
+    }
+    for (const tag of item.tags || []) {
+      requireField(topicTags.has(tag), item.id + " 的标签未被任何专题使用：" + tag);
+    }
   }
 
   requireField(catalogSource.includes("final class Catalog"), "Catalog.java 结构异常");
@@ -110,13 +130,14 @@ async function main() {
     }
   }
 
+  const allSeries = catalog.series.concat(bili.series || []);
   const ageCounts = taxonomy.ages.map((age) => {
-    const count = catalog.series.filter((item) => item.ageMin < age.max && item.ageMax > age.min).length;
+    const count = allSeries.filter((item) => item.ageMin < age.max && item.ageMax > age.min).length;
     return age.name + " " + count;
   });
-  const pathCounts = taxonomy.paths.map((item) => item.name + " " + catalog.series.filter((s) => (s.paths || []).includes(item.id)).length);
+  const pathCounts = taxonomy.paths.map((item) => item.name + " " + allSeries.filter((s) => (s.paths || []).includes(item.id)).length);
 
-  console.log("系列：" + catalog.series.length);
+  console.log("系列：" + catalog.series.length + "（央视）+ " + (bili.series || []).length + "（B站）");
   console.log("年龄：" + ageCounts.join(" / "));
   console.log("路线：" + pathCounts.join(" / "));
   console.log("站点：" + config.sites.length + "，直播频道：" + live.groups.reduce((sum, g) => sum + g.channel.length, 0));

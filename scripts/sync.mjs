@@ -5,6 +5,7 @@ import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 
 import { buildJar } from "./build-jar.mjs";
+import { resolveBili } from "./bili.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const LIST_API = "https://api.cntv.cn/NewVideo/getVideoListByColumn";
@@ -228,6 +229,13 @@ async function main() {
   const taxonomy = await readJson("data/taxonomy.json");
   const live = await readJson("data/live.json");
   const extra = await readJson("data/extra_sites.json");
+  const biliInput = await readJson("data/bili.json");
+  let biliPrevious = { series: [] };
+  try {
+    biliPrevious = await readJson("data/bili_catalog.json");
+  } catch (error) {
+    biliPrevious = { series: [] };
+  }
   let catalog;
 
   if (process.env.KIDS_SKIP_FETCH === "1") {
@@ -274,7 +282,22 @@ async function main() {
     await writeFile("data/catalog.json", JSON.stringify(catalog, null, 2));
   }
 
-  await writeFile("spider-src/com/github/catvod/spider/Catalog.java", buildCatalogSource(taxonomy, catalog));
+  let bili;
+  if (process.env.KIDS_SKIP_FETCH === "1") {
+    bili = biliPrevious;
+    if (!(bili.series || []).length) console.warn("[warn] 缺少 data/bili_catalog.json，本次不包含 B 站内容");
+  } else {
+    console.log("同步哔哩哔哩目录：");
+    bili = {
+      updatedAt: new Date().toISOString(),
+      source: "bili",
+      series: await resolveBili(biliInput.series || [], biliPrevious.series || []),
+    };
+    await writeFile("data/bili_catalog.json", JSON.stringify(bili, null, 2));
+  }
+
+  const merged = { series: (catalog.series || []).concat(bili.series || []) };
+  await writeFile("spider-src/com/github/catvod/spider/Catalog.java", buildCatalogSource(taxonomy, merged));
   const jar = buildJar();
   const config = buildConfig(live, jar, extra);
   await writeFile("kids.json", JSON.stringify(config, null, 2));
@@ -282,11 +305,14 @@ async function main() {
   const series = catalog.series || [];
   const stale = series.filter((item) => item.stale).length;
   const unplayable = series.filter((item) => item.playable === false).length;
+  const biliSeries = bili.series || [];
+  const biliStale = biliSeries.filter((item) => item.stale).length;
   console.log(
-    "Synced " + series.length + " series" +
+    "Synced " + series.length + " series + B站 " + biliSeries.length +
     (stale ? "，stale " + stale : "") +
+    (biliStale ? "，B站 stale " + biliStale : "") +
     (VERIFY ? "，unplayable " + unplayable : "") +
-    "。输出：data/catalog.json、spider-src/.../Catalog.java、spider/kids.jar（md5 " + jar.md5 + "）、kids.json"
+    "。输出：data/catalog.json、data/bili_catalog.json、spider-src/.../Catalog.java、spider/kids.jar（md5 " + jar.md5 + "）、kids.json"
   );
 }
 

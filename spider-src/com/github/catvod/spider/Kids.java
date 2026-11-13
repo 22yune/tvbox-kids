@@ -25,8 +25,11 @@ public class Kids extends Spider {
 
     private static final String LIST_API = "https://api.cntv.cn/NewVideo/getVideoListByColumn";
     private static final String PLAY_API = "https://vdn.apps.cntv.cn/api/getHttpVideoInfo.do";
+    private static final String BILI_VIEW_API = "https://api.bilibili.com/x/web-interface/view";
+    private static final String BILI_PLAY_API = "https://api.bilibili.com/x/player/playurl";
     private static final String UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36";
     private static final String REFERER = "https://tv.cctv.com/";
+    private static final String BILI_REFERER = "https://www.bilibili.com/";
     private static final int PAGE_SIZE = 12;
 
     private final JSONArray catalog;
@@ -120,19 +123,20 @@ public class Kids extends Spider {
         JSONObject item = find(toList(catalog), id);
         if (item == null) return message("未找到该系列");
 
+        boolean bili = "bili".equals(item.optString("source"));
         JSONArray episodes;
         try {
-            episodes = episodes(item);
+            episodes = bili ? biliEpisodes(item) : episodes(item);
         } catch (Exception e) {
-            return message("央视接口请求失败：" + text(e));
+            return message((bili ? "哔哩哔哩" : "央视") + "接口请求失败：" + text(e));
         }
-        if (episodes.length() == 0) return message("该栏目暂时没有可播放的节目");
+        if (episodes.length() == 0) return message("该系列暂时没有可播放的内容");
 
         try {
             JSONObject vod = card(item);
             vod.put("vod_remarks", "共 " + episodes.length() + " 集");
             vod.put("vod_content", content(item));
-            vod.put("vod_play_from", "央视");
+            vod.put("vod_play_from", bili ? "哔哩哔哩" : "央视");
             vod.put("vod_play_url", playUrl(episodes));
             JSONObject result = new JSONObject();
             result.put("list", new JSONArray().put(vod));
@@ -162,6 +166,7 @@ public class Kids extends Spider {
     public String playerContent(String flag, String id, List<String> vipFlags) {
         String pid = id == null ? "" : id.trim();
         if (pid.isEmpty()) return playerMessage("缺少节目 ID");
+        if (pid.startsWith("bili:")) return biliPlayer(pid);
         try {
             JSONObject data = new JSONObject(get(PLAY_API + "?pid=" + encode(pid)));
             String url = data.optString("hls_url", "");
@@ -364,6 +369,54 @@ public class Kids extends Spider {
         return result;
     }
 
+    // B 站视频的分 P 就是集数；播放时用 bvid+cid 再换临时直链。
+    private JSONArray biliEpisodes(JSONObject item) throws Exception {
+        String bvid = item.optString("bvid");
+        if (bvid.isEmpty()) throw new IllegalStateException("缺少 bvid");
+        JSONObject data = new JSONObject(get(BILI_VIEW_API + "?bvid=" + encode(bvid), BILI_REFERER));
+        JSONObject view = data.optJSONObject("data");
+        JSONArray pages = view == null ? null : view.optJSONArray("pages");
+        JSONArray result = new JSONArray();
+        for (JSONObject page : toList(pages)) {
+            if (result.length() >= 100) break;
+            String cid = page.optString("cid");
+            if (cid.isEmpty()) continue;
+            String name = clean(page.optString("part"));
+            if (name.isEmpty()) name = "第" + (result.length() + 1) + "集";
+            JSONObject episode = new JSONObject();
+            episode.put("name", name);
+            episode.put("id", "bili:" + bvid + ":" + cid);
+            result.put(episode);
+        }
+        return result;
+    }
+
+    private String biliPlayer(String pid) {
+        String[] parts = pid.split(":");
+        if (parts.length < 3) return playerMessage("播放参数异常");
+        try {
+            String url = BILI_PLAY_API + "?bvid=" + encode(parts[1]) + "&cid=" + encode(parts[2])
+                    + "&qn=64&fnval=1&fnver=0&fourk=0";
+            JSONObject data = new JSONObject(get(url, BILI_REFERER));
+            JSONObject payload = data.optJSONObject("data");
+            JSONArray durl = payload == null ? null : payload.optJSONArray("durl");
+            if (durl == null || durl.length() == 0) return playerMessage("哔哩哔哩未返回播放地址");
+            JSONObject first = durl.optJSONObject(0);
+            String play = first == null ? "" : first.optString("url");
+            if (play.isEmpty()) return playerMessage("哔哩哔哩未返回播放地址");
+            JSONObject header = new JSONObject();
+            header.put("User-Agent", UA);
+            header.put("Referer", BILI_REFERER);
+            JSONObject result = new JSONObject();
+            result.put("parse", 0);
+            result.put("url", play);
+            result.put("header", header);
+            return result.toString();
+        } catch (Exception e) {
+            return playerMessage("哔哩哔哩播放地址解析失败：" + text(e));
+        }
+    }
+
     private String content(JSONObject item) {
         List<String> lines = new ArrayList<>();
         String desc = clean(item.optString("desc"));
@@ -379,7 +432,8 @@ public class Kids extends Spider {
             }
         }
         if (!paths.isEmpty()) lines.add("学习路线：" + join(paths, "、"));
-        lines.add("内容来源：央视网，播放时实时解析。");
+        boolean bili = "bili".equals(item.optString("source"));
+        lines.add(bili ? "内容来源：哔哩哔哩（B站）UP 主上传，播放时实时取流。" : "内容来源：央视网，播放时实时解析。");
         return join(lines, "\n");
     }
 
@@ -510,12 +564,16 @@ public class Kids extends Spider {
     }
 
     private String get(String url) throws Exception {
+        return get(url, REFERER);
+    }
+
+    private String get(String url, String referer) throws Exception {
         HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
         try {
             connection.setConnectTimeout(15000);
             connection.setReadTimeout(20000);
             connection.setRequestProperty("User-Agent", UA);
-            connection.setRequestProperty("Referer", REFERER);
+            connection.setRequestProperty("Referer", referer);
             connection.setRequestProperty("Accept", "application/json, text/plain, */*");
             connection.setRequestProperty("Accept-Encoding", "gzip");
             int code = connection.getResponseCode();
