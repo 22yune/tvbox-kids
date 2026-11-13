@@ -1,14 +1,13 @@
 {
+  "spider": "https://gh-proxy.com/https://raw.githubusercontent.com/22yune/tvbox-kids/refs/heads/main/spider/kids.jar;md5;6b71b74a84c5650e8a7eb2dca142a4e8",
   "notice": "儿童模式：已关闭搜索，仅保留央视少儿与精选直播。补充点播源默认隐藏，启用前请家长确认内容安全。",
   "sites": [
     {
       "key": "kids_age",
       "name": "按年龄",
       "type": 3,
-      "api": "https://gh-proxy.com/https://raw.githubusercontent.com/22yune/tvbox-kids/refs/heads/main/spider/kids.js",
-      "ext": {
-        "mode": "age"
-      },
+      "api": "csp_Kids",
+      "ext": "{\"mode\":\"age\"}",
       "searchable": 0,
       "quickSearch": 0,
       "changeable": 0,
@@ -21,10 +20,8 @@
       "key": "kids_path",
       "name": "按学习路线",
       "type": 3,
-      "api": "https://gh-proxy.com/https://raw.githubusercontent.com/22yune/tvbox-kids/refs/heads/main/spider/kids.js",
-      "ext": {
-        "mode": "path"
-      },
+      "api": "csp_Kids",
+      "ext": "{\"mode\":\"path\"}",
       "searchable": 0,
       "quickSearch": 0,
       "changeable": 0,
@@ -37,10 +34,8 @@
       "key": "kids_topic",
       "name": "精选专题",
       "type": 3,
-      "api": "https://gh-proxy.com/https://raw.githubusercontent.com/22yune/tvbox-kids/refs/heads/main/spider/kids.js",
-      "ext": {
-        "mode": "topic"
-      },
+      "api": "csp_Kids",
+      "ext": "{\"mode\":\"topic\"}",
       "searchable": 0,
       "quickSearch": 0,
       "changeable": 0,

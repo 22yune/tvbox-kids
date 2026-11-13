@@ -36,9 +36,9 @@
 首次推送后：
 
 1. 打开 Actions → `sync-catalog` → Run workflow
-2. 等待 `data/catalog.json`、`spider/kids.js`、`kids.json` 生成并自动提交
+2. 等待 `data/catalog.json`、`spider/kids.jar`、`kids.json` 生成并自动提交
 
-也可以本地先跑：
+也可以本地先跑（需要 JDK 和 Android SDK build-tools，脚本用 `javac` + `d8` 把 Java 爬虫打成 dex jar）：
 
 ```bash
 node scripts/sync.mjs --verify
@@ -67,18 +67,22 @@ https://cdn.jsdelivr.net/gh/<你的用户名>/<仓库名>@main/kids.json
 
 导入后首页会出现「按年龄 / 按学习路线 / 精选专题」三个站点，直播在「直播」页。
 
-> 点播站点是 type 3 的 JS 爬虫，`api` 必须是**绝对地址**（FongMi 只认 `http(s)://` 或 `assets://`，不会按配置地址解析 `./spider/kids.js`）。`scripts/sync.mjs` 默认生成 `https://gh-proxy.com/https://raw.githubusercontent.com/.../spider/kids.js`，和上面的代理导入地址保持一致。如果要换成别的镜像或直连 raw：
+> 点播站点是 type 3 的 **JAR 爬虫**：配置里的 `spider` 指向 `spider/kids.jar;md5;<32 位 md5>`，站点 `api` 为 `csp_Kids`。JAR 由 App 自己用 `DexClassLoader` 加载，**不需要安装 QuickJS/Python/Node 运行时模块**，兼容 FongMi 和各路 catvod 系 TVBox。
+>
+> `scripts/sync.mjs` 默认生成 `https://gh-proxy.com/https://raw.githubusercontent.com/.../spider/kids.jar`，和上面的代理导入地址保持一致。如果要换成别的镜像或直连 raw：
 >
 > ```bash
 > # 直连 raw（海外网络）
 > KIDS_USE_RAW=1 node scripts/sync.mjs
 > # 换镜像前缀
 > KIDS_BASE_URL=https://gh-proxy.com/https://raw.githubusercontent.com/<你的用户名>/<仓库名>/main node scripts/sync.mjs
-> # 直接指定完整地址
-> KIDS_SPIDER_URL=https://cdn.jsdelivr.net/gh/<你的用户名>/<仓库名>@main/spider/kids.js node scripts/sync.mjs
+> # 直接指定 jar 完整地址
+> KIDS_JAR_URL=https://cdn.jsdelivr.net/gh/<你的用户名>/<仓库名>@main/spider/kids.jar node scripts/sync.mjs
 > ```
 >
 > 用 Actions 更新时，把上面的变量加到仓库 Settings → Secrets and variables → Actions → Variables（名字相同），工作流会把它传给脚本，否则每次同步都会回到默认的 gh-proxy 地址。
+>
+> 注意：`spider` 里的 md5 必须和仓库里的 `spider/kids.jar` 完全对应，所以**别手动改 jar**，改完源码或数据后重新跑一次 `node scripts/sync.mjs` 或让 Actions 生成。
 
 ### 本地预览（可选）
 
@@ -88,9 +92,9 @@ https://cdn.jsdelivr.net/gh/<你的用户名>/<仓库名>@main/kids.json
 python3 -m http.server 8000
 ```
 
-FongMi 配置地址填 `http://<电脑局域网 IP>:8000/kids.json`。本地没有 git 远端时，脚本会把爬虫地址写成 `http://127.0.0.1:8000/spider/kids.js`，需要改成你电脑的局域网 IP，或者用 `KIDS_SPIDER_URL` 指定。
+FongMi 配置地址填 `http://<电脑局域网 IP>:8000/kids.json`。本地没有 git 远端时，脚本会把 `spider` 写成 `http://127.0.0.1:8000/spider/kids.jar;md5;...`，需要改成你电脑的局域网 IP，或者用 `KIDS_JAR_URL` 指定。
 
-目录内容更新后，重启 FongMi 或重新加载配置即可生效（JS 模块有内存缓存）。
+目录内容更新后，重启 FongMi 或重新加载配置即可生效（爬虫有内存缓存，md5 变化后会重新下载 jar）。
 
 ## 家长设置
 
@@ -100,6 +104,16 @@ FongMi 配置地址填 `http://<电脑局域网 IP>:8000/kids.json`。本地没�
 - 幼儿内容建议亲子共看，尤其是动画和综艺类
 
 ## 维护
+
+### 爬虫代码结构
+
+| 路径 | 说明 |
+|---|---|
+| `spider-src/com/github/catvod/spider/Kids.java` | 爬虫逻辑（首页/分类/详情/播放） |
+| `spider-src/com/github/catvod/spider/Catalog.java` | 由 `data/catalog.json` + `data/taxonomy.json` 自动生成，勿手改 |
+| `spider-stub/com/github/catvod/crawler/Spider.java` | 编译用桩类，签名对齐 FongMi 的 `Spider`，不打进 jar |
+| `scripts/build-jar.mjs` | `javac` 编译 → `d8 --min-api 21` 转 dex → 打包 `spider/kids.jar` |
+| `spider/kids.jar` | 产物，dex jar，App 用 `DexClassLoader` 直接加载 |
 
 ### 加一个央视栏目
 
@@ -130,9 +144,10 @@ FongMi 配置地址填 `http://<电脑局域网 IP>:8000/kids.json`。本地没�
 ### 命令
 
 ```bash
-npm run sync          # 同步目录并生成配置
+npm run sync          # 同步目录、生成 Catalog.java 并重新打 jar
 npm run sync:verify   # 同步后校验每个系列最新一集能否取到 HLS
-npm run check         # 校验年龄/路线/专题覆盖和生成文件
+npm run check         # 校验年龄/路线/专题覆盖、jar md5 与配置一致性
+npm run jar           # 只重建 spider/kids.jar（数据已生成时用）
 ```
 
 每日 03:17（北京时间）自动执行一次。接口失败时保留上一次的数据并标记 `stale`，不会清空目录。

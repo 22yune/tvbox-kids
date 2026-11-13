@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import fs from "node:fs/promises";
+import { createHash } from "node:crypto";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -23,7 +24,8 @@ async function main() {
   const series = await readJson("data/series.json");
   const catalog = await readJson("data/catalog.json");
   const config = await readJson("kids.json");
-  const spider = await read("spider/kids.js");
+  const catalogSource = await read("spider-src/com/github/catvod/spider/Catalog.java");
+  const kidsSource = await read("spider-src/com/github/catvod/spider/Kids.java");
   const live = await readJson("data/live.json");
 
   const ages = new Set(taxonomy.ages.map((item) => item.id));
@@ -60,16 +62,27 @@ async function main() {
     requireField(catalog.series.some((item) => (item.tags || []).some((tag) => taxonomy.topics.find((x) => x.id === topicId).tags.includes(tag))), "专题没有内容：" + topicId);
   }
 
-  requireField(!spider.includes("__CATALOG__") && !spider.includes("__TAXONOMY__"), "spider/kids.js 仍含占位符");
-  requireField(spider.includes("export default class Kids extends Spider"), "spider/kids.js 结构异常");
-  requireField(spider.includes("vod_play_url"), "spider/kids.js 缺少播放列表");
+  requireField(catalogSource.includes("final class Catalog"), "Catalog.java 结构异常");
+  requireField(catalogSource.includes("class Catalog") && !catalogSource.includes("__CATALOG__"), "Catalog.java 仍是模板");
+  requireField(kidsSource.includes("extends Spider"), "Kids.java 必须继承 com.github.catvod.crawler.Spider");
+  requireField(kidsSource.includes("vod_play_url"), "Kids.java 缺少播放列表");
 
+  requireField(typeof config.spider === "string" && /^https?:\/\/.+\.jar;md5;[0-9a-f]{32}$/.test(config.spider), "kids.json 的 spider 必须是 <jar 地址>;md5;<32 位 md5>");
   requireField(Array.isArray(config.sites) && config.sites.length >= 3, "kids.json 站点数量不足");
   for (const site of config.sites || []) {
     requireField(site.key && site.name && site.api, "站点缺少 key/name/api");
     if (site.type === 3) {
-      requireField(/^https?:\/\/.+\.js$/.test(site.api), site.key + " 的 api 必须是绝对 http(s) .js 地址，FongMi 不解析相对路径");
+      requireField(site.api === "csp_Kids", site.key + " 的 api 必须是 csp_Kids");
+      requireField(typeof site.ext === "string", site.key + " 的 ext 必须是字符串，FongMi 用 Gson 反序列化为 String");
     }
+  }
+
+  try {
+    const jar = await fs.readFile(path.join(ROOT, "spider/kids.jar"));
+    const md5 = createHash("md5").update(jar).digest("hex");
+    requireField(config.spider.endsWith(";md5;" + md5), "spider/kids.jar 的 md5 与 kids.json 不一致，请重新构建");
+  } catch (error) {
+    errors.push("缺少 spider/kids.jar，请先执行 node scripts/sync.mjs");
   }
   requireField(Array.isArray(config.lives) && config.lives.length > 0, "kids.json 缺少直播配置");
   requireField((live.groups || []).length > 0, "live.json 缺少分组");
