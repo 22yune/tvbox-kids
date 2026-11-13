@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-13T08:23:17.813Z",
+  "updatedAt": "2026-11-13T08:34:04.100Z",
   "source": "cctv",
   "series": [
     {
@@ -35,8 +35,8 @@
       "latestGuid": "8b1886cee5e04766b6159dd8b29c5945",
       "count": 1000,
       "stale": false,
-      "playable": true,
-      "verifyReason": "OK"
+      "playable": false,
+      "verifyReason": "fetch failed"
     },
     {
       "id": "cctv-zhs",
