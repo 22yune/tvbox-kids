@@ -5,7 +5,7 @@
       "key": "kids_age",
       "name": "按年龄",
       "type": 3,
-      "api": "./spider/kids.js",
+      "api": "https://raw.githubusercontent.com/22yune/tvbox-kids/refs/heads/main/spider/kids.js",
       "ext": {
         "mode": "age"
       },
@@ -21,7 +21,7 @@
       "key": "kids_path",
       "name": "按学习路线",
       "type": 3,
-      "api": "./spider/kids.js",
+      "api": "https://raw.githubusercontent.com/22yune/tvbox-kids/refs/heads/main/spider/kids.js",
       "ext": {
         "mode": "path"
       },
@@ -37,7 +37,7 @@
       "key": "kids_topic",
       "name": "精选专题",
       "type": 3,
-      "api": "./spider/kids.js",
+      "api": "https://raw.githubusercontent.com/22yune/tvbox-kids/refs/heads/main/spider/kids.js",
       "ext": {
         "mode": "topic"
       },
@@ -62,7 +62,7 @@
       "searchable": 0,
       "quickSearch": 0,
       "changeable": 0,
-      "hide": 1,
+      "hide": 0,
       "header": {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
         "Referer": "https://jszyapi.com/"

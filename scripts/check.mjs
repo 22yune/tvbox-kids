@@ -67,7 +67,9 @@ async function main() {
   requireField(Array.isArray(config.sites) && config.sites.length >= 3, "kids.json 站点数量不足");
   for (const site of config.sites || []) {
     requireField(site.key && site.name && site.api, "站点缺少 key/name/api");
-    if (site.type === 3) requireField(site.api.endsWith(".js"), site.key + " 的 api 必须是 .js");
+    if (site.type === 3) {
+      requireField(/^https?:\/\/.+\.js$/.test(site.api), site.key + " 的 api 必须是绝对 http(s) .js 地址，FongMi 不解析相对路径");
+    }
   }
   requireField(Array.isArray(config.lives) && config.lives.length > 0, "kids.json 缺少直播配置");
   requireField((live.groups || []).length > 0, "live.json 缺少分组");

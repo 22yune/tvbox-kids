@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import fs from "node:fs/promises";
 import path from "node:path";
+import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -101,12 +102,46 @@ function buildSpider(template, taxonomy, catalog) {
     .replace("/*__TAXONOMY__*/ {}", JSON.stringify(taxonomy));
 }
 
-function site(key, name, mode) {
+function gitRemote() {
+  try {
+    return execFileSync("git", ["remote", "get-url", "origin"], {
+      cwd: ROOT,
+      encoding: "utf8",
+      stdio: ["ignore", "pipe", "ignore"],
+    }).trim();
+  } catch (error) {
+    return "";
+  }
+}
+
+// FongMi 的 QuickJS 加载器只接受 http(s):// 或 assets:// 开头的 api，
+// 不会按配置文件地址解析 "./spider/kids.js"，因此这里必须给出绝对地址。
+function spiderUrl() {
+  if (process.env.KIDS_SPIDER_URL) return process.env.KIDS_SPIDER_URL;
+  if (process.env.KIDS_BASE_URL) {
+    return process.env.KIDS_BASE_URL.replace(/\/+$/, "") + "/spider/kids.js";
+  }
+  if (process.env.GITHUB_REPOSITORY) {
+    const ref = process.env.GITHUB_REF_NAME || "main";
+    return "https://raw.githubusercontent.com/" + process.env.GITHUB_REPOSITORY +
+      "/refs/heads/" + ref + "/spider/kids.js";
+  }
+  const remote = gitRemote();
+  const match = remote.match(/github\.com[/:]([^/]+)\/([^/.]+?)(?:\.git)?$/);
+  if (match) {
+    return "https://raw.githubusercontent.com/" + match[1] + "/" + match[2] +
+      "/refs/heads/main/spider/kids.js";
+  }
+  console.warn("[warn] 无法确定仓库地址，spider 使用本地预览地址 http://127.0.0.1:8000/spider/kids.js");
+  return "http://127.0.0.1:8000/spider/kids.js";
+}
+
+function site(key, name, mode, api) {
   return {
     key,
     name,
     type: 3,
-    api: "./spider/kids.js",
+    api,
     ext: { mode },
     searchable: 0,
     quickSearch: 0,
@@ -116,12 +151,13 @@ function site(key, name, mode) {
 }
 
 function buildConfig(live) {
+  const api = spiderUrl();
   return {
     notice: "儿童模式：已关闭搜索，仅保留央视少儿与精选直播。补充点播源默认隐藏，启用前请家长确认内容安全。",
     sites: [
-      site("kids_age", "按年龄", "age"),
-      site("kids_path", "按学习路线", "path"),
-      site("kids_topic", "精选专题", "topic"),
+      site("kids_age", "按年龄", "age", api),
+      site("kids_path", "按学习路线", "path", api),
+      site("kids_topic", "精选专题", "topic", api),
       {
         key: "kids_extra",
         name: "补充点播（家长可选）",

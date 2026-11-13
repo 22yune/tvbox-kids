@@ -67,6 +67,17 @@ https://cdn.jsdelivr.net/gh/<你的用户名>/<仓库名>@main/kids.json
 
 导入后首页会出现「按年龄 / 按学习路线 / 精选专题」三个站点，直播在「直播」页。
 
+> 点播站点是 type 3 的 JS 爬虫，`api` 必须是**绝对地址**（FongMi 只认 `http(s)://` 或 `assets://`，不会按配置地址解析 `./spider/kids.js`）。`scripts/sync.mjs` 会自动按 `GITHUB_REPOSITORY` 生成对应 raw 地址；如果你用代理或 jsDelivr 导入配置，需要让爬虫走同一个前缀，否则国内网络可能加载不到：
+>
+> ```bash
+> # 本地：用代理前缀
+> KIDS_BASE_URL=https://gh-proxy.com/https://raw.githubusercontent.com/<你的用户名>/<仓库名>/main node scripts/sync.mjs
+> # 或者直接指定完整地址
+> KIDS_SPIDER_URL=https://cdn.jsdelivr.net/gh/<你的用户名>/<仓库名>@main/spider/kids.js node scripts/sync.mjs
+> ```
+>
+> 用 Actions 更新时，在仓库 Settings → Secrets and variables → Actions → Variables 里加 `KIDS_BASE_URL` 即可。
+
 ### 本地预览（可选）
 
 不想先推 GitHub，可以在电脑上起一个静态服务：
@@ -75,7 +86,7 @@ https://cdn.jsdelivr.net/gh/<你的用户名>/<仓库名>@main/kids.json
 python3 -m http.server 8000
 ```
 
-FongMi 配置地址填 `http://<电脑局域网 IP>:8000/kids.json`。相对路径 `./spider/kids.js` 会按配置地址自动解析，可以直接在电视上试。
+FongMi 配置地址填 `http://<电脑局域网 IP>:8000/kids.json`。本地没有 git 远端时，脚本会把爬虫地址写成 `http://127.0.0.1:8000/spider/kids.js`，需要改成你电脑的局域网 IP，或者用 `KIDS_SPIDER_URL` 指定。
 
 目录内容更新后，重启 FongMi 或重新加载配置即可生效（JS 模块有内存缓存）。
 
