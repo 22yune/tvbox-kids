@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-13T08:59:33.761Z",
+  "updatedAt": "2026-11-13T09:02:28.877Z",
   "source": "bili",
   "series": [
     {
@@ -9,7 +9,7 @@
       "pick": [
         "佩奇"
       ],
-      "bvid": "BV1vfdrBJEpP",
+      "bvid": "BV1wo2YBjE51",
       "minPages": 10,
       "ageMin": 2,
       "ageMax": 6,
@@ -28,12 +28,12 @@
       "order": 300,
       "desc": "佩奇一家的日常故事，练听力和生活用语，适合亲子共看。",
       "source": "bili",
-      "biliTitle": "小猪佩奇1",
-      "pic": "https://i0.hdslb.com/bfs/archive/706dca4122bce37791ba476055d2f2ccc1b55b75.jpg",
-      "episodes": 100,
-      "latest": "100集",
-      "latestTime": 1776744300,
-      "count": 100,
+      "biliTitle": "【小猪佩奇 双语版 S1全52集】中英双音频 专治听不懂 告别无效磨耳朵",
+      "pic": "https://i1.hdslb.com/bfs/archive/075e1fde9f9bd8180da471d2c8167219f24c68e4.jpg",
+      "episodes": 52,
+      "latest": "52集",
+      "latestTime": 1764848190,
+      "count": 52,
       "stale": false
     },
     {
