@@ -193,7 +193,7 @@ function site(key, name, mode) {
 function buildConfig(live, jar) {
   return {
     spider: jarUrl() + ";md5;" + jar.md5,
-    notice: "儿童模式：已关闭搜索，仅保留央视少儿与精选直播。补充点播源默认隐藏，启用前请家长确认内容安全。",
+    notice: "儿童模式：已关闭搜索，仅保留央视少儿与精选直播。补充点播来自第三方采集站，内容不可控，不需要时在站点管理里关闭。",
     sites: [
       site("kids_age", "按年龄", "age"),
       site("kids_path", "按学习路线", "path"),
@@ -207,7 +207,6 @@ function buildConfig(live, jar) {
         searchable: 0,
         quickSearch: 0,
         changeable: 0,
-        hide: 1,
         header: { "User-Agent": UA, "Referer": "https://jszyapi.com/" },
       },
     ],

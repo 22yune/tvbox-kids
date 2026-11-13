@@ -99,6 +99,12 @@ export function buildJar() {
   ]);
   if (!fs.existsSync(path.join(DEX, "classes.dex"))) throw new Error("d8 没有输出 classes.dex");
 
+  const dex = fs.readFileSync(path.join(DEX, "classes.dex"));
+  if (existingDex().equals(dex)) {
+    const cached = fs.readFileSync(JAR);
+    return { file: JAR, bytes: cached.length, md5: createHash("md5").update(cached).digest("hex") };
+  }
+
   fs.mkdirSync(path.dirname(JAR), { recursive: true });
   fs.rmSync(JAR, { force: true });
   java("jar", ["cf", JAR, "-C", DEX, "classes.dex"]);
@@ -109,6 +115,16 @@ export function buildJar() {
     bytes: buffer.length,
     md5: createHash("md5").update(buffer).digest("hex"),
   };
+}
+
+// 逻辑没变时保留旧 jar，避免每天换 md5 导致电视反复重新下载
+function existingDex() {
+  if (!fs.existsSync(JAR)) return Buffer.alloc(0);
+  try {
+    return execFileSync("unzip", ["-p", JAR, "classes.dex"], { maxBuffer: 64 * 1024 * 1024 });
+  } catch (error) {
+    return Buffer.alloc(0);
+  }
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {

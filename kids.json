@@ -1,6 +1,6 @@
 {
-  "spider": "https://gh-proxy.com/https://raw.githubusercontent.com/22yune/tvbox-kids/refs/heads/main/spider/kids.jar;md5;402b685fd359d5a5ab7bd955fda7926c",
-  "notice": "儿童模式：已关闭搜索，仅保留央视少儿与精选直播。补充点播源默认隐藏，启用前请家长确认内容安全。",
+  "spider": "https://gh-proxy.com/https://raw.githubusercontent.com/22yune/tvbox-kids/refs/heads/main/spider/kids.jar;md5;6b71b74a84c5650e8a7eb2dca142a4e8",
+  "notice": "儿童模式：已关闭搜索，仅保留央视少儿与精选直播。补充点播来自第三方采集站，内容不可控，不需要时在站点管理里关闭。",
   "sites": [
     {
       "key": "kids_age",
@@ -57,7 +57,6 @@
       "searchable": 0,
       "quickSearch": 0,
       "changeable": 0,
-      "hide": 1,
       "header": {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
         "Referer": "https://jszyapi.com/"
