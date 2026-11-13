@@ -8,6 +8,7 @@
     "sync": "node scripts/sync.mjs",
     "sync:verify": "node scripts/sync.mjs --verify",
     "check": "node scripts/check.mjs",
+    "backups": "node scripts/backups.mjs",
     "jar": "node scripts/build-jar.mjs",
     "build": "node scripts/sync.mjs && node scripts/check.mjs"
   },

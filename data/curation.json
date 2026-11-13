@@ -1,1438 +1,6450 @@
 {
   "note": "名单驱动的选片清单。先定「该有什么」（获奖、高分、教育部、家长口碑、绘本 IP、央视科普），再由 scripts/curate.mjs 逐条找源：pin（已验证 bvid）→ 上次结果 → 别名搜索 → 标记 missing。只存元数据，不同步、不缓存视频。",
-  "lists": ["国际获奖", "高分", "教育部", "家长社区", "绘本IP", "央视", "平台自制"],
+  "lists": [
+    "国际获奖",
+    "高分",
+    "教育部",
+    "家长社区",
+    "绘本IP",
+    "央视",
+    "平台自制"
+  ],
   "series": [
     {
       "id": "bili-inthenightgarden",
       "name": "花园宝宝 In the Night Garden",
-      "aliases": ["花园宝宝 中文版 全集"],
-      "pick": ["花园宝宝"],
+      "aliases": [
+        "花园宝宝 中文版 全集"
+      ],
+      "pick": [
+        "花园宝宝"
+      ],
       "minPages": 1,
       "pin": "BV1J7T6zUE8G",
       "ageMin": 1,
       "ageMax": 4,
-      "paths": ["path-language", "path-social"],
-      "stages": { "path-language": 1, "path-social": 1 },
-      "tags": ["低幼", "情绪"],
+      "paths": [
+        "path-language",
+        "path-social"
+      ],
+      "stages": {
+        "path-language": 1,
+        "path-social": 1
+      },
+      "tags": [
+        "低幼",
+        "情绪"
+      ],
       "order": 200,
       "why": "BBC 婴幼儿安抚动画，台词极少、节奏极慢，睡前首选。",
-      "list": ["国际获奖", "高分"],
+      "list": [
+        "国际获奖",
+        "高分"
+      ],
       "desc": "睡前安抚动画，画面和声音都很轻，适合 1-4 岁。"
     },
     {
       "id": "bili-penelope",
       "name": "蓝色小考拉 Penelope",
-      "aliases": ["蓝色小考拉 中文版 全集"],
-      "pick": ["考拉"],
+      "aliases": [
+        "蓝色小考拉 中文版 全集"
+      ],
+      "pick": [
+        "考拉"
+      ],
       "minPages": 3,
       "ageMin": 2,
       "ageMax": 4,
-      "paths": ["path-language", "path-social"],
-      "stages": { "path-language": 1, "path-social": 1 },
-      "tags": ["低幼", "情绪"],
+      "paths": [
+        "path-language",
+        "path-social"
+      ],
+      "stages": {
+        "path-language": 1,
+        "path-social": 1
+      },
+      "tags": [
+        "低幼",
+        "情绪"
+      ],
       "order": 201,
       "why": "绘本改编，句子短、情节生活化，幼儿园适应期很有用。",
-      "list": ["绘本IP", "家长社区"],
+      "list": [
+        "绘本IP",
+        "家长社区"
+      ],
       "desc": "考拉宝宝上幼儿园的日常，练生活用语和情绪表达。"
     },
     {
       "id": "bili-superjojo",
       "name": "超级宝贝JOJO",
-      "aliases": ["超级宝贝JOJO 中文 儿歌"],
-      "pick": ["超级宝贝"],
+      "aliases": [
+        "超级宝贝JOJO 中文 儿歌"
+      ],
+      "pick": [
+        "超级宝贝"
+      ],
       "minPages": 5,
       "ageMin": 1,
       "ageMax": 4,
-      "paths": ["path-language", "path-arts"],
-      "stages": { "path-language": 1, "path-arts": 1 },
-      "tags": ["低幼", "艺术"],
+      "paths": [
+        "path-language",
+        "path-arts"
+      ],
+      "stages": {
+        "path-language": 1,
+        "path-arts": 1
+      },
+      "tags": [
+        "低幼",
+        "艺术"
+      ],
       "order": 202,
       "why": "低幼行为习惯儿歌，刷牙、洗手、收玩具都有对应歌。",
-      "list": ["平台自制", "家长社区"],
+      "list": [
+        "平台自制",
+        "家长社区"
+      ],
       "desc": "生活场景儿歌，边唱边学自理和礼貌。"
     },
     {
       "id": "bili-qiaohu",
       "name": "巧虎 幼幼版（2-3岁）",
-      "aliases": ["巧虎系列幼幼版 2-3岁"],
-      "pick": ["巧虎"],
+      "aliases": [
+        "巧虎系列幼幼版 2-3岁"
+      ],
+      "pick": [
+        "巧虎"
+      ],
       "pin": "BV1WNrTBtEJ3",
       "minPages": 5,
       "ageMin": 2,
       "ageMax": 4,
-      "paths": ["path-social", "path-health"],
-      "stages": { "path-social": 1, "path-health": 1 },
-      "tags": ["低幼", "情绪"],
+      "paths": [
+        "path-social",
+        "path-health"
+      ],
+      "stages": {
+        "path-social": 1,
+        "path-health": 1
+      },
+      "tags": [
+        "低幼",
+        "情绪"
+      ],
       "order": 203,
       "why": "分龄设计的老牌早教内容，生活习惯和社交规则讲得细。",
-      "list": ["家长社区"],
+      "list": [
+        "家长社区"
+      ],
       "desc": "巧虎和朋友的日常，练自理、礼貌和情绪。"
     },
     {
       "id": "bili-mickey",
       "name": "米奇妙妙屋",
-      "aliases": ["米奇妙妙屋 中文版 全集"],
-      "pick": ["妙妙屋"],
+      "aliases": [
+        "米奇妙妙屋 中文版 全集"
+      ],
+      "pick": [
+        "妙妙屋"
+      ],
       "pin": "BV1upyeYwEZ7",
       "minPages": 2,
       "ageMin": 3,
       "ageMax": 6,
-      "paths": ["path-math", "path-social"],
-      "stages": { "path-math": 1, "path-social": 2 },
-      "tags": ["动画"],
+      "paths": [
+        "path-math",
+        "path-social"
+      ],
+      "stages": {
+        "path-math": 1,
+        "path-social": 2
+      },
+      "tags": [
+        "动画"
+      ],
       "order": 204,
       "why": "每集一个数学小任务，数数、形状、排序都能跟着做。",
-      "list": ["高分", "家长社区"],
+      "list": [
+        "高分",
+        "家长社区"
+      ],
       "desc": "迪士尼互动动画，用工具解决问题，带数感和形状。"
     },
     {
       "id": "bili-dora",
       "name": "爱探险的朵拉",
-      "aliases": ["爱探险的朵拉 中文版 全集"],
-      "pick": ["朵拉"],
+      "aliases": [
+        "爱探险的朵拉 中文版 全集"
+      ],
+      "pick": [
+        "朵拉"
+      ],
       "minPages": 3,
       "skip": "B站只有零散分集和片段，没有可用的整季合集",
       "ageMin": 3,
       "ageMax": 6,
-      "paths": ["path-language", "path-math"],
-      "stages": { "path-language": 2, "path-math": 1 },
-      "tags": ["动画"],
+      "paths": [
+        "path-language",
+        "path-math"
+      ],
+      "stages": {
+        "path-language": 2,
+        "path-math": 1
+      },
+      "tags": [
+        "动画"
+      ],
       "order": 205,
       "why": "互动式英语启蒙经典，每集邀请孩子重复单词和方位词。",
-      "list": ["国际获奖", "家长社区"],
+      "list": [
+        "国际获奖",
+        "家长社区"
+      ],
       "desc": "和朵拉一起闯关，跟读英语单词、认方向。"
     },
     {
       "id": "bili-thomas",
       "name": "托马斯和朋友们",
-      "aliases": ["托马斯和他的朋友们 中文版 全集"],
-      "pick": ["托马斯"],
+      "aliases": [
+        "托马斯和他的朋友们 中文版 全集"
+      ],
+      "pick": [
+        "托马斯"
+      ],
       "minPages": 3,
       "ageMin": 3,
       "ageMax": 6,
-      "paths": ["path-social"],
-      "stages": { "path-social": 2 },
-      "tags": ["动画", "情绪"],
+      "paths": [
+        "path-social"
+      ],
+      "stages": {
+        "path-social": 2
+      },
+      "tags": [
+        "动画",
+        "情绪"
+      ],
       "order": 206,
       "why": "经典品格动画，讲合作、责任和承认错误。",
-      "list": ["家长社区", "绘本IP"],
+      "list": [
+        "家长社区",
+        "绘本IP"
+      ],
       "desc": "小火车们的故事，每集一个品格小课题。"
     },
     {
       "id": "bili-mylittlepony",
       "name": "小马宝莉",
-      "aliases": ["小马宝莉 中文版 第一季"],
-      "pick": ["小马宝莉"],
+      "aliases": [
+        "小马宝莉 中文版 第一季"
+      ],
+      "pick": [
+        "小马宝莉"
+      ],
       "minPages": 5,
       "skip": "官方整季未开放，B站只有前 9 集和同人内容",
       "ageMin": 4,
       "ageMax": 8,
-      "paths": ["path-social", "path-arts"],
-      "stages": { "path-social": 3, "path-arts": 2 },
-      "tags": ["动画", "情绪", "艺术"],
+      "paths": [
+        "path-social",
+        "path-arts"
+      ],
+      "stages": {
+        "path-social": 3,
+        "path-arts": 2
+      },
+      "tags": [
+        "动画",
+        "情绪",
+        "艺术"
+      ],
       "order": 207,
       "why": "友谊主题的长线动画，女孩向，情绪和同伴关系戏份多。",
-      "list": ["家长社区"],
+      "list": [
+        "家长社区"
+      ],
       "desc": "六匹小马学友谊，每集处理一种人际难题。"
     },
     {
       "id": "bili-caillou",
       "name": "卡由 Caillou",
-      "aliases": ["卡由 英文版 动画 全集"],
-      "pick": ["卡由"],
+      "aliases": [
+        "卡由 英文版 动画 全集"
+      ],
+      "pick": [
+        "卡由"
+      ],
       "minPages": 3,
       "ageMin": 3,
       "ageMax": 6,
-      "paths": ["path-language", "path-social"],
-      "stages": { "path-language": 2, "path-social": 1 },
-      "tags": ["动画", "情绪"],
+      "paths": [
+        "path-language",
+        "path-social"
+      ],
+      "stages": {
+        "path-language": 2,
+        "path-social": 1
+      },
+      "tags": [
+        "动画",
+        "情绪"
+      ],
       "order": 208,
       "why": "北美家庭英语启蒙常用素材，语速慢、场景是家庭生活。",
-      "list": ["家长社区"],
+      "list": [
+        "家长社区"
+      ],
       "desc": "四岁男孩的家庭日常，练英语听力和情绪表达。"
     },
     {
       "id": "bili-wordworld",
       "name": "单词世界 WordWorld",
-      "aliases": ["单词世界 WordWorld 中文版"],
-      "pick": ["单词世界"],
+      "aliases": [
+        "单词世界 WordWorld 中文版"
+      ],
+      "pick": [
+        "单词世界"
+      ],
       "minPages": 3,
       "ageMin": 4,
       "ageMax": 8,
-      "paths": ["path-language"],
-      "stages": { "path-language": 2 },
-      "tags": ["动画"],
+      "paths": [
+        "path-language"
+      ],
+      "stages": {
+        "path-language": 2
+      },
+      "tags": [
+        "动画"
+      ],
       "order": 209,
       "why": "艾美奖英语启蒙动画，单词会拼成物体的形状，记忆点强。",
-      "list": ["国际获奖"],
+      "list": [
+        "国际获奖"
+      ],
       "desc": "字母拼一拼，单词变成实物，自然拼读入门。"
     },
     {
       "id": "bili-umizoomi",
       "name": "数学城小兄妹",
-      "aliases": ["数学城小兄妹 中文版 全集"],
-      "pick": ["数学城"],
+      "aliases": [
+        "数学城小兄妹 中文版 全集"
+      ],
+      "pick": [
+        "数学城"
+      ],
       "minPages": 3,
       "skip": "B站只有零散英文分集，没有中文整季",
       "ageMin": 3,
       "ageMax": 6,
-      "paths": ["path-math"],
-      "stages": { "path-math": 1 },
-      "tags": ["动画"],
+      "paths": [
+        "path-math"
+      ],
+      "stages": {
+        "path-math": 1
+      },
+      "tags": [
+        "动画"
+      ],
       "order": 210,
       "why": "每集用数数、图形、规律解决一个任务，适合数学启蒙起步。",
-      "list": ["家长社区"],
+      "list": [
+        "家长社区"
+      ],
       "desc": "兄妹俩用数学工具帮居民解决问题。"
     },
     {
       "id": "bili-monstermath",
       "name": "怪兽数学（怪物数学小分队）",
-      "aliases": ["怪兽数学 数学启蒙"],
-      "pick": ["怪兽数学"],
+      "aliases": [
+        "怪兽数学 数学启蒙"
+      ],
+      "pick": [
+        "怪兽数学"
+      ],
       "pin": "BV1gRWJzDER3",
       "minPages": 5,
       "ageMin": 4,
       "ageMax": 7,
-      "paths": ["path-math"],
-      "stages": { "path-math": 2 },
-      "tags": ["动画"],
+      "paths": [
+        "path-math"
+      ],
+      "stages": {
+        "path-math": 2
+      },
+      "tags": [
+        "动画"
+      ],
       "order": 211,
       "why": "数学概念拟人化，讲规律、配对和简单运算。",
-      "list": ["家长社区"],
+      "list": [
+        "家长社区"
+      ],
       "desc": "小怪物用数学解决麻烦，练规律和逻辑。"
     },
     {
       "id": "bili-datou",
       "name": "大头儿子和小头爸爸",
-      "aliases": ["大头儿子和小头爸爸 动画 全集"],
-      "pick": ["大头儿子"],
+      "aliases": [
+        "大头儿子和小头爸爸 动画 全集"
+      ],
+      "pick": [
+        "大头儿子"
+      ],
       "minPages": 5,
       "ageMin": 4,
       "ageMax": 8,
-      "paths": ["path-social", "path-humanities"],
-      "stages": { "path-social": 3, "path-humanities": 1 },
-      "tags": ["动画"],
+      "paths": [
+        "path-social",
+        "path-humanities"
+      ],
+      "stages": {
+        "path-social": 3,
+        "path-humanities": 1
+      },
+      "tags": [
+        "动画"
+      ],
       "order": 212,
       "why": "国产经典家庭动画，父子相处和家庭规则很贴近日常。",
-      "list": ["央视", "高分"],
+      "list": [
+        "央视",
+        "高分"
+      ],
       "desc": "一家三口的日常，讲亲子沟通和家庭里的规则。"
     },
     {
       "id": "bili-heimao",
       "name": "黑猫警长",
-      "aliases": ["黑猫警长 1984 动画"],
-      "pick": ["黑猫警长"],
+      "aliases": [
+        "黑猫警长 1984 动画"
+      ],
+      "pick": [
+        "黑猫警长"
+      ],
       "pin": "BV1zB4y1v7Jz",
       "minPages": 3,
       "ageMin": 5,
       "ageMax": 9,
-      "paths": ["path-social", "path-health"],
-      "stages": { "path-social": 3, "path-health": 1 },
-      "tags": ["动画", "安全"],
+      "paths": [
+        "path-social",
+        "path-health"
+      ],
+      "stages": {
+        "path-social": 3,
+        "path-health": 1
+      },
+      "tags": [
+        "动画",
+        "安全"
+      ],
       "order": 213,
       "why": "上美影经典，正邪分明，适合讲规则和自我保护。",
-      "list": ["央视", "高分"],
+      "list": [
+        "央视",
+        "高分"
+      ],
       "desc": "警长破案的故事，讲规则、勇气和自我保护。"
     },
     {
       "id": "bili-hulu",
       "name": "葫芦兄弟",
-      "aliases": ["葫芦兄弟 动画 全集"],
-      "pick": ["葫芦兄弟"],
+      "aliases": [
+        "葫芦兄弟 动画 全集"
+      ],
+      "pick": [
+        "葫芦兄弟"
+      ],
       "minPages": 3,
       "ageMin": 5,
       "ageMax": 9,
-      "paths": ["path-humanities", "path-arts"],
-      "stages": { "path-humanities": 1, "path-arts": 1 },
-      "tags": ["动画", "人文", "艺术"],
+      "paths": [
+        "path-humanities",
+        "path-arts"
+      ],
+      "stages": {
+        "path-humanities": 1,
+        "path-arts": 1
+      },
+      "tags": [
+        "动画",
+        "人文",
+        "艺术"
+      ],
       "order": 214,
       "why": "剪纸动画代表作，中国美术片入门必看。",
-      "list": ["高分", "央视"],
+      "list": [
+        "高分",
+        "央视"
+      ],
       "desc": "七兄弟各显神通，认识传统剪纸动画的造型和配色。"
     },
     {
       "id": "bili-xiyouji",
       "name": "西游记 1999 动画版",
-      "aliases": ["西游记 动画版 1999"],
-      "pick": ["西游记"],
-      "exclude": ["真人", "电视剧", "大话", "解说", "英文", "英语", "词汇"],
+      "aliases": [
+        "西游记 动画版 1999"
+      ],
+      "pick": [
+        "西游记"
+      ],
+      "exclude": [
+        "真人",
+        "电视剧",
+        "大话",
+        "解说",
+        "英文",
+        "英语",
+        "词汇"
+      ],
       "pin": "BV1Xs411Z7LT",
       "minPages": 5,
       "ageMin": 6,
       "ageMax": 10,
-      "paths": ["path-humanities", "path-arts"],
-      "stages": { "path-humanities": 2, "path-arts": 1 },
-      "tags": ["动画", "人文"],
+      "paths": [
+        "path-humanities",
+        "path-arts"
+      ],
+      "stages": {
+        "path-humanities": 2,
+        "path-arts": 1
+      },
+      "tags": [
+        "动画",
+        "人文"
+      ],
       "order": 215,
       "why": "央视版动画西游记，四大名著最友好的入门版本。",
-      "list": ["央视", "高分"],
+      "list": [
+        "央视",
+        "高分"
+      ],
       "desc": "取经故事动画版，配合原著阅读做背景铺垫。"
     },
     {
       "id": "bili-nezha",
       "name": "哪吒传奇",
-      "aliases": ["哪吒传奇 动画 全集"],
-      "pick": ["哪吒传奇"],
+      "aliases": [
+        "哪吒传奇 动画 全集"
+      ],
+      "pick": [
+        "哪吒传奇"
+      ],
       "minPages": 5,
       "skip": "B站只有主题曲和片段，正片未开放",
       "ageMin": 6,
       "ageMax": 10,
-      "paths": ["path-humanities", "path-social"],
-      "stages": { "path-humanities": 2, "path-social": 2 },
-      "tags": ["动画", "人文"],
+      "paths": [
+        "path-humanities",
+        "path-social"
+      ],
+      "stages": {
+        "path-humanities": 2,
+        "path-social": 2
+      },
+      "tags": [
+        "动画",
+        "人文"
+      ],
       "order": 216,
       "why": "央视经典神话动画，人物关系和成长线完整。",
-      "list": ["央视"],
+      "list": [
+        "央视"
+      ],
       "desc": "哪吒成长故事，讲责任、友情和是非判断。"
     },
     {
       "id": "bili-guesshowmuch",
       "name": "猜猜我有多爱你",
-      "aliases": ["猜猜我有多爱你 动画 全集"],
-      "pick": ["猜猜我有多爱你"],
+      "aliases": [
+        "猜猜我有多爱你 动画 全集"
+      ],
+      "pick": [
+        "猜猜我有多爱你"
+      ],
       "minPages": 3,
       "ageMin": 2,
       "ageMax": 5,
-      "paths": ["path-social", "path-language"],
-      "stages": { "path-social": 1, "path-language": 1 },
-      "tags": ["低幼", "情绪"],
+      "paths": [
+        "path-social",
+        "path-language"
+      ],
+      "stages": {
+        "path-social": 1,
+        "path-language": 1
+      },
+      "tags": [
+        "低幼",
+        "情绪"
+      ],
       "order": 217,
       "why": "同名绘本改编，把「爱」讲成孩子能理解的具体动作。",
-      "list": ["绘本IP", "国际获奖"],
+      "list": [
+        "绘本IP",
+        "国际获奖"
+      ],
       "desc": "小兔子和大兔子的睡前对话，练情感表达。"
     },
     {
       "id": "bili-barbapapa",
       "name": "巴巴爸爸",
-      "aliases": ["巴巴爸爸 动画 中文版"],
-      "pick": ["巴巴爸爸"],
+      "aliases": [
+        "巴巴爸爸 动画 中文版"
+      ],
+      "pick": [
+        "巴巴爸爸"
+      ],
       "minPages": 3,
       "ageMin": 3,
       "ageMax": 6,
-      "paths": ["path-social", "path-arts"],
-      "stages": { "path-social": 1, "path-arts": 1 },
-      "tags": ["动画", "艺术"],
+      "paths": [
+        "path-social",
+        "path-arts"
+      ],
+      "stages": {
+        "path-social": 1,
+        "path-arts": 1
+      },
+      "tags": [
+        "动画",
+        "艺术"
+      ],
       "order": 218,
       "why": "绘本改编的变形一家人，想象力强，画风辨识度高。",
-      "list": ["绘本IP"],
+      "list": [
+        "绘本IP"
+      ],
       "desc": "会变形的巴巴爸爸一家，讲家庭和想象力。"
     },
     {
       "id": "bili-carmela",
       "name": "不一样的卡梅拉",
-      "aliases": ["不一样的卡梅拉 动画 全集"],
-      "pick": ["卡梅拉"],
+      "aliases": [
+        "不一样的卡梅拉 动画 全集"
+      ],
+      "pick": [
+        "卡梅拉"
+      ],
       "minPages": 4,
       "skip": "B站只有音频故事和绘本讲解，动画正片缺失",
       "ageMin": 4,
       "ageMax": 8,
-      "paths": ["path-social", "path-humanities"],
-      "stages": { "path-social": 2, "path-humanities": 2 },
-      "tags": ["动画", "人文"],
+      "paths": [
+        "path-social",
+        "path-humanities"
+      ],
+      "stages": {
+        "path-social": 2,
+        "path-humanities": 2
+      },
+      "tags": [
+        "动画",
+        "人文"
+      ],
       "order": 219,
       "why": "绘本 IP 改编，鼓励独立和好奇，故事里有历史与地理彩蛋。",
-      "list": ["绘本IP"],
+      "list": [
+        "绘本IP"
+      ],
       "desc": "小鸡卡梅拉不甘平凡，讲勇气、好奇和友谊。"
     },
     {
       "id": "bili-planetearth",
       "name": "地球脉动 Planet Earth",
-      "aliases": ["行星地球 第一季 中文"],
-      "pick": ["行星地球"],
-      "exclude": ["英语", "OST", "混剪", "预告", "解说"],
+      "aliases": [
+        "行星地球 第一季 中文"
+      ],
+      "pick": [
+        "行星地球"
+      ],
+      "exclude": [
+        "英语",
+        "OST",
+        "混剪",
+        "预告",
+        "解说"
+      ],
       "pin": "BV1ts411K7Qu",
       "minPages": 3,
       "ageMin": 8,
       "ageMax": 12,
-      "paths": ["path-science"],
-      "stages": { "path-science": 4 },
-      "tags": ["科学", "纪录片"],
+      "paths": [
+        "path-science"
+      ],
+      "stages": {
+        "path-science": 4
+      },
+      "tags": [
+        "科学",
+        "纪录片"
+      ],
       "order": 220,
       "why": "BBC 自然纪录片标杆，画面和知识密度都高。",
-      "list": ["高分", "国际获奖"],
+      "list": [
+        "高分",
+        "国际获奖"
+      ],
       "desc": "全球生态系统巡礼，讲气候、栖息地和物种适应。"
     },
     {
       "id": "bili-minuscule",
       "name": "微观小世界 Minuscule",
-      "aliases": ["微观小世界 中文版 全集"],
-      "pick": ["微观小世界"],
+      "aliases": [
+        "微观小世界 中文版 全集"
+      ],
+      "pick": [
+        "微观小世界"
+      ],
       "minPages": 5,
       "ageMin": 5,
       "ageMax": 10,
-      "paths": ["path-science"],
-      "stages": { "path-science": 2 },
-      "tags": ["科学", "纪录片"],
+      "paths": [
+        "path-science"
+      ],
+      "stages": {
+        "path-science": 2
+      },
+      "tags": [
+        "科学",
+        "纪录片"
+      ],
       "order": 221,
       "why": "无对白昆虫纪录片，观察力训练神器，语言不通也能看。",
-      "list": ["国际获奖"],
+      "list": [
+        "国际获奖"
+      ],
       "desc": "实景加动画拍昆虫，没有台词，靠观察理解行为。"
     },
     {
       "id": "bili-booktravel",
       "name": "跟着书本去旅行",
-      "aliases": ["跟着书本去旅行 央视"],
-      "pick": ["跟着书本"],
+      "aliases": [
+        "跟着书本去旅行 央视"
+      ],
+      "pick": [
+        "跟着书本"
+      ],
       "minPages": 5,
       "ageMin": 6,
       "ageMax": 12,
-      "paths": ["path-humanities"],
-      "stages": { "path-humanities": 3 },
-      "tags": ["人文", "纪录片"],
+      "paths": [
+        "path-humanities"
+      ],
+      "stages": {
+        "path-humanities": 3
+      },
+      "tags": [
+        "人文",
+        "纪录片"
+      ],
       "order": 222,
       "why": "央视把课文里的地点实拍出来，语文和地理一起学。",
-      "list": ["央视", "教育部"],
+      "list": [
+        "央视",
+        "教育部"
+      ],
       "desc": "每集对应一篇课文，去实地看历史、地理和风物。"
     },
     {
       "id": "bili-aerialchina",
       "name": "航拍中国",
-      "aliases": ["航拍中国 第一季 合集"],
-      "pick": ["航拍中国"],
+      "aliases": [
+        "航拍中国 第一季 合集"
+      ],
+      "pick": [
+        "航拍中国"
+      ],
       "minPages": 3,
       "skip": "B站只有单省片段和原声带，正片未开放",
       "ageMin": 9,
       "ageMax": 12,
-      "paths": ["path-humanities"],
-      "stages": { "path-humanities": 4 },
-      "tags": ["人文", "纪录片"],
+      "paths": [
+        "path-humanities"
+      ],
+      "stages": {
+        "path-humanities": 4
+      },
+      "tags": [
+        "人文",
+        "纪录片"
+      ],
       "order": 223,
       "why": "省级地理影像，地貌、气候、人文一次看全。",
-      "list": ["央视", "高分"],
+      "list": [
+        "央视",
+        "高分"
+      ],
       "desc": "从空中看各省地貌和城市，建立地理直观印象。"
     },
     {
       "id": "bili-mendeleev",
       "name": "门捷列夫很忙",
-      "aliases": ["门捷列夫很忙 全6集"],
-      "pick": ["门捷列夫"],
+      "aliases": [
+        "门捷列夫很忙 全6集"
+      ],
+      "pick": [
+        "门捷列夫"
+      ],
       "minPages": 3,
       "skip": "B站只有分集切片，没有整季合集",
       "ageMin": 8,
       "ageMax": 12,
-      "paths": ["path-science"],
-      "stages": { "path-science": 4 },
-      "tags": ["科学", "纪录片"],
+      "paths": [
+        "path-science"
+      ],
+      "stages": {
+        "path-science": 4
+      },
+      "tags": [
+        "科学",
+        "纪录片"
+      ],
       "order": 224,
       "why": "央视化学启蒙纪录片，把元素周期表讲成人物故事。",
-      "list": ["央视"],
+      "list": [
+        "央视"
+      ],
       "desc": "元素和化学史入门，为初中化学打底。"
     },
     {
       "id": "bili-newton",
       "name": "我的牛顿教练",
-      "aliases": ["我的牛顿教练 央视"],
-      "pick": ["牛顿教练"],
+      "aliases": [
+        "我的牛顿教练 央视"
+      ],
+      "pick": [
+        "牛顿教练"
+      ],
       "minPages": 3,
       "ageMin": 8,
       "ageMax": 12,
-      "paths": ["path-science"],
-      "stages": { "path-science": 4 },
-      "tags": ["科学", "纪录片"],
+      "paths": [
+        "path-science"
+      ],
+      "stages": {
+        "path-science": 4
+      },
+      "tags": [
+        "科学",
+        "纪录片"
+      ],
       "order": 225,
       "why": "用体育动作讲力学，物理概念有画面支撑。",
-      "list": ["央视"],
+      "list": [
+        "央视"
+      ],
       "desc": "从跑步、投篮讲力与运动，物理启蒙。"
     },
     {
       "id": "bili-supersimplesongs",
       "name": "Super Simple Songs",
-      "aliases": ["Super Simple Songs 英文儿歌 合集"],
-      "pick": ["Super Simple"],
+      "aliases": [
+        "Super Simple Songs 英文儿歌 合集"
+      ],
+      "pick": [
+        "Super Simple"
+      ],
       "minPages": 5,
       "ageMin": 0,
       "ageMax": 4,
-      "paths": ["path-language", "path-arts"],
-      "stages": { "path-language": 1, "path-arts": 1 },
-      "tags": ["低幼", "艺术"],
+      "paths": [
+        "path-language",
+        "path-arts"
+      ],
+      "stages": {
+        "path-language": 1,
+        "path-arts": 1
+      },
+      "tags": [
+        "低幼",
+        "艺术"
+      ],
       "order": 226,
       "why": "英语启蒙儿歌标准素材，旋律简单、歌词重复。",
-      "list": ["家长社区"],
+      "list": [
+        "家长社区"
+      ],
       "desc": "英文儿歌合集，磨耳朵、做动作、学日常词。"
     },
     {
       "id": "bili-tinyworld",
       "name": "小小世界 Tiny World",
-      "aliases": ["小小世界 纪录片 中文"],
-      "pick": ["小小世界"],
+      "aliases": [
+        "小小世界 纪录片 中文"
+      ],
+      "pick": [
+        "小小世界"
+      ],
       "minPages": 3,
       "ageMin": 6,
       "ageMax": 12,
-      "paths": ["path-science"],
-      "stages": { "path-science": 3 },
-      "tags": ["科学", "纪录片"],
+      "paths": [
+        "path-science"
+      ],
+      "stages": {
+        "path-science": 3
+      },
+      "tags": [
+        "科学",
+        "纪录片"
+      ],
       "order": 227,
       "why": "Apple TV+ 微距自然纪录片，镜头贴近小动物，孩子容易入戏。",
-      "list": ["高分", "国际获奖"],
+      "list": [
+        "高分",
+        "国际获奖"
+      ],
       "desc": "用微距镜头看小动物的一天，讲生存和适应。"
     },
     {
       "id": "bili-animalquestion",
       "name": "如果我是一只动物",
-      "aliases": ["如果我是一只动物 纪录片"],
-      "pick": ["如果我是一只动物"],
+      "aliases": [
+        "如果我是一只动物 纪录片"
+      ],
+      "pick": [
+        "如果我是一只动物"
+      ],
       "minPages": 3,
       "ageMin": 4,
       "ageMax": 8,
-      "paths": ["path-science"],
-      "stages": { "path-science": 1 },
-      "tags": ["科学", "纪录片"],
+      "paths": [
+        "path-science"
+      ],
+      "stages": {
+        "path-science": 1
+      },
+      "tags": [
+        "科学",
+        "纪录片"
+      ],
       "order": 228,
       "why": "第一人称讲动物幼崽，视角代入感强，适合科学启蒙。",
-      "list": ["高分"],
+      "list": [
+        "高分"
+      ],
       "desc": "从小动物的视角讲出生和成长，认识动物习性。"
     },
     {
       "id": "bili-peppa",
       "name": "小猪佩奇 中文版",
-      "aliases": ["小猪佩奇 中文版 第一季 合集"],
-      "pick": ["佩奇"],
+      "aliases": [
+        "小猪佩奇 中文版 第一季 合集"
+      ],
+      "pick": [
+        "佩奇"
+      ],
       "pin": "BV1vfdrBJEpP",
       "minPages": 10,
       "ageMin": 2,
       "ageMax": 6,
-      "paths": ["path-language", "path-social"],
-      "stages": { "path-language": 1, "path-social": 1 },
-      "tags": ["低幼", "动画"],
+      "paths": [
+        "path-language",
+        "path-social"
+      ],
+      "stages": {
+        "path-language": 1,
+        "path-social": 1
+      },
+      "tags": [
+        "低幼",
+        "动画"
+      ],
       "order": 300,
       "why": "全球 180 多个国家播出的低幼动画，家庭场景和日常用语密集。",
-      "list": ["高分", "家长社区"],
+      "list": [
+        "高分",
+        "家长社区"
+      ],
       "desc": "佩奇一家的日常故事，练听力和生活用语，适合亲子共看。"
     },
     {
       "id": "bili-peppa-en",
       "name": "小猪佩奇 英语启蒙（中英对照）",
-      "aliases": ["小猪佩奇 纯英字幕 第一季"],
-      "pick": ["佩奇", "英"],
+      "aliases": [
+        "小猪佩奇 纯英字幕 第一季"
+      ],
+      "pick": [
+        "佩奇",
+        "英"
+      ],
       "pin": "BV1fM9zYEE7S",
       "minPages": 10,
       "ageMin": 3,
       "ageMax": 7,
-      "paths": ["path-language"],
-      "stages": { "path-language": 2 },
-      "tags": ["低幼", "动画"],
+      "paths": [
+        "path-language"
+      ],
+      "stages": {
+        "path-language": 2
+      },
+      "tags": [
+        "低幼",
+        "动画"
+      ],
       "order": 301,
       "why": "同一 IP 的英语版，句子短、重复多，适合磨耳朵和跟读。",
-      "list": ["家长社区"],
+      "list": [
+        "家长社区"
+      ],
       "desc": "中英对照、句子短，适合磨耳朵和跟读。"
     },
     {
       "id": "bili-bluey",
       "name": "布鲁伊 Bluey",
-      "aliases": ["布鲁伊 中文版 全集"],
-      "pick": ["布鲁伊"],
+      "aliases": [
+        "布鲁伊 中文版 全集"
+      ],
+      "pick": [
+        "布鲁伊"
+      ],
       "pin": "BV18T3G6jEVM",
       "ageMin": 3,
       "ageMax": 7,
-      "paths": ["path-social", "path-health"],
-      "stages": { "path-social": 1, "path-health": 1 },
-      "tags": ["动画", "情绪"],
+      "paths": [
+        "path-social",
+        "path-health"
+      ],
+      "stages": {
+        "path-social": 1,
+        "path-health": 1
+      },
+      "tags": [
+        "动画",
+        "情绪"
+      ],
       "order": 302,
       "why": "BAFTA 获奖动画，把亲子游戏和情绪处理拍得极好。",
-      "list": ["国际获奖", "高分"],
+      "list": [
+        "国际获奖",
+        "高分"
+      ],
       "desc": "澳洲家庭动画，讲游戏、情绪和亲子沟通。"
     },
     {
       "id": "bili-paw",
       "name": "汪汪队立大功 中文版",
-      "aliases": ["汪汪队立大功 动画"],
-      "pick": ["汪汪队"],
-      "exclude": ["故事", "剧场版", "电影", "歌曲"],
+      "aliases": [
+        "汪汪队立大功 动画"
+      ],
+      "pick": [
+        "汪汪队"
+      ],
+      "exclude": [
+        "故事",
+        "剧场版",
+        "电影",
+        "歌曲"
+      ],
       "pin": "BV11bWM6ZE1r",
       "minPages": 10,
       "ageMin": 3,
       "ageMax": 7,
-      "paths": ["path-social", "path-health"],
-      "stages": { "path-social": 2, "path-health": 1 },
-      "tags": ["动画", "安全"],
+      "paths": [
+        "path-social",
+        "path-health"
+      ],
+      "stages": {
+        "path-social": 2,
+        "path-health": 1
+      },
+      "tags": [
+        "动画",
+        "安全"
+      ],
       "order": 303,
       "why": "家长社区高频推荐，救援任务里带安全常识和团队分工。",
-      "list": ["家长社区"],
+      "list": [
+        "家长社区"
+      ],
       "desc": "救援小队合作解决麻烦，涉及安全常识和团队分工。"
     },
     {
       "id": "bili-superwings",
       "name": "超级飞侠 第一季（上）",
-      "aliases": ["超级飞侠 乐迪来帮忙 第一季"],
-      "pick": ["超级飞侠", "上"],
-      "exclude": ["歌曲", "配音"],
+      "aliases": [
+        "超级飞侠 乐迪来帮忙 第一季"
+      ],
+      "pick": [
+        "超级飞侠",
+        "上"
+      ],
+      "exclude": [
+        "歌曲",
+        "配音"
+      ],
       "pin": "BV1StWY6iETL",
       "minPages": 5,
       "ageMin": 3,
       "ageMax": 7,
-      "paths": ["path-social", "path-humanities"],
-      "stages": { "path-social": 2, "path-humanities": 1 },
-      "tags": ["动画"],
+      "paths": [
+        "path-social",
+        "path-humanities"
+      ],
+      "stages": {
+        "path-social": 2,
+        "path-humanities": 1
+      },
+      "tags": [
+        "动画"
+      ],
       "order": 304,
       "why": "国产出海动画，每集一个国家，地理和风俗自然带出。",
-      "list": ["平台自制", "家长社区"],
+      "list": [
+        "平台自制",
+        "家长社区"
+      ],
       "desc": "每集去一个国家送包裹，顺带认识地理和风俗。"
     },
     {
       "id": "bili-octonauts",
       "name": "海底小纵队 中文版",
-      "aliases": ["海底小纵队 第一季 中文"],
-      "pick": ["海底小纵队"],
-      "exclude": ["音乐剧", "儿歌", "故事", "英文"],
+      "aliases": [
+        "海底小纵队 第一季 中文"
+      ],
+      "pick": [
+        "海底小纵队"
+      ],
+      "exclude": [
+        "音乐剧",
+        "儿歌",
+        "故事",
+        "英文"
+      ],
       "pin": "BV1E3411R7s4",
       "minPages": 5,
       "ageMin": 3,
       "ageMax": 8,
-      "paths": ["path-science", "path-social"],
-      "stages": { "path-science": 1, "path-social": 1 },
-      "tags": ["动画", "科学"],
+      "paths": [
+        "path-science",
+        "path-social"
+      ],
+      "stages": {
+        "path-science": 1,
+        "path-social": 1
+      },
+      "tags": [
+        "动画",
+        "科学"
+      ],
       "order": 305,
       "why": "海洋科普动画代表，每集一种海洋生物，知识准确。",
-      "list": ["国际获奖", "家长社区"],
+      "list": [
+        "国际获奖",
+        "家长社区"
+      ],
       "desc": "海洋生物科普动画，每集认识一种动物。"
     },
     {
       "id": "bili-ricky",
       "name": "瑞奇宝宝",
-      "aliases": ["瑞奇宝宝 儿歌"],
-      "pick": ["瑞奇宝宝"],
+      "aliases": [
+        "瑞奇宝宝 儿歌"
+      ],
+      "pick": [
+        "瑞奇宝宝"
+      ],
       "pin": "BV1grgf61EuJ",
       "ageMin": 0,
       "ageMax": 3,
-      "paths": ["path-language", "path-arts", "path-social"],
-      "stages": { "path-language": 1, "path-arts": 1, "path-social": 1 },
-      "tags": ["低幼", "艺术", "情绪"],
+      "paths": [
+        "path-language",
+        "path-arts",
+        "path-social"
+      ],
+      "stages": {
+        "path-language": 1,
+        "path-arts": 1,
+        "path-social": 1
+      },
+      "tags": [
+        "低幼",
+        "艺术",
+        "情绪"
+      ],
       "order": 306,
       "why": "专为 0-3 岁设计，节奏慢、画面简单、情绪平和。",
-      "list": ["家长社区"],
+      "list": [
+        "家长社区"
+      ],
       "desc": "低幼儿歌和行为习惯，节奏慢、画面简单。"
     },
     {
       "id": "bili-babybus",
       "name": "宝宝巴士儿歌",
-      "aliases": ["宝宝巴士儿歌"],
-      "pick": ["宝宝巴士"],
+      "aliases": [
+        "宝宝巴士儿歌"
+      ],
+      "pick": [
+        "宝宝巴士"
+      ],
       "pin": "BV1pq4y1R7Q2",
       "ageMin": 0,
       "ageMax": 3,
-      "paths": ["path-language", "path-arts"],
-      "stages": { "path-language": 1, "path-arts": 1 },
-      "tags": ["低幼", "艺术"],
+      "paths": [
+        "path-language",
+        "path-arts"
+      ],
+      "stages": {
+        "path-language": 1,
+        "path-arts": 1
+      },
+      "tags": [
+        "低幼",
+        "艺术"
+      ],
       "order": 307,
       "why": "国内家长最常用的中文儿歌库之一，曲目全。",
-      "list": ["平台自制", "家长社区"],
+      "list": [
+        "平台自制",
+        "家长社区"
+      ],
       "desc": "中文儿歌合集，适合磨耳朵和跟唱。"
     },
     {
       "id": "bili-beva",
       "name": "贝瓦儿歌",
-      "aliases": ["贝瓦儿歌"],
-      "pick": ["贝瓦"],
+      "aliases": [
+        "贝瓦儿歌"
+      ],
+      "pick": [
+        "贝瓦"
+      ],
       "pin": "BV1TP4y1y71Z",
       "ageMin": 0,
       "ageMax": 3,
-      "paths": ["path-language", "path-arts"],
-      "stages": { "path-language": 1, "path-arts": 1 },
-      "tags": ["低幼", "艺术"],
+      "paths": [
+        "path-language",
+        "path-arts"
+      ],
+      "stages": {
+        "path-language": 1,
+        "path-arts": 1
+      },
+      "tags": [
+        "低幼",
+        "艺术"
+      ],
       "order": 308,
       "why": "经典中文儿歌 IP，吐字清楚、旋律简单。",
-      "list": ["平台自制", "家长社区"],
+      "list": [
+        "平台自制",
+        "家长社区"
+      ],
       "desc": "经典中文儿歌，旋律简单、吐字清楚。"
     },
     {
       "id": "bili-pinkfong",
       "name": "碰碰狐儿歌（英文）",
-      "aliases": ["碰碰狐 动物 英文儿歌"],
-      "pick": ["碰碰狐"],
-      "exclude": ["4399"],
+      "aliases": [
+        "碰碰狐 动物 英文儿歌"
+      ],
+      "pick": [
+        "碰碰狐"
+      ],
+      "exclude": [
+        "4399"
+      ],
       "pin": "BV1v2pF6nEDZ",
       "minPages": 1,
       "ageMin": 0,
       "ageMax": 3,
-      "paths": ["path-language", "path-arts"],
-      "stages": { "path-language": 1, "path-arts": 1 },
-      "tags": ["低幼", "艺术"],
+      "paths": [
+        "path-language",
+        "path-arts"
+      ],
+      "stages": {
+        "path-language": 1,
+        "path-arts": 1
+      },
+      "tags": [
+        "低幼",
+        "艺术"
+      ],
       "order": 309,
       "why": "律动儿歌全球爆款，适合边看边动。",
-      "list": ["平台自制", "家长社区"],
+      "list": [
+        "平台自制",
+        "家长社区"
+      ],
       "desc": "律动儿歌，适合边看边动。"
     },
     {
       "id": "bili-duoduo",
       "name": "儿歌多多",
-      "aliases": ["儿歌多多 动画儿歌 合集"],
-      "pick": ["儿歌多多"],
+      "aliases": [
+        "儿歌多多 动画儿歌 合集"
+      ],
+      "pick": [
+        "儿歌多多"
+      ],
       "pin": "BV18E411q7R2",
       "minPages": 5,
       "ageMin": 0,
       "ageMax": 3,
-      "paths": ["path-language", "path-arts"],
-      "stages": { "path-language": 1, "path-arts": 1 },
-      "tags": ["低幼", "艺术"],
+      "paths": [
+        "path-language",
+        "path-arts"
+      ],
+      "stages": {
+        "path-language": 1,
+        "path-arts": 1
+      },
+      "tags": [
+        "低幼",
+        "艺术"
+      ],
       "order": 310,
       "why": "曲目多、单集短，适合碎片时间磨耳朵。",
-      "list": ["平台自制", "家长社区"],
+      "list": [
+        "平台自制",
+        "家长社区"
+      ],
       "desc": "儿歌串烧，曲目多、单集短。"
     },
     {
       "id": "bili-numberblocks",
       "name": "数字积木 Numberblocks 中文",
-      "aliases": ["数字积木 第一季 中文版"],
-      "pick": ["数字积木"],
+      "aliases": [
+        "数字积木 第一季 中文版"
+      ],
+      "pick": [
+        "数字积木"
+      ],
       "pin": "BV1ELxQ65EiC",
       "minPages": 5,
       "ageMin": 3,
       "ageMax": 7,
-      "paths": ["path-math", "path-language"],
-      "stages": { "path-math": 1, "path-language": 2 },
-      "tags": ["低幼", "科学"],
+      "paths": [
+        "path-math",
+        "path-language"
+      ],
+      "stages": {
+        "path-math": 1,
+        "path-language": 2
+      },
+      "tags": [
+        "低幼",
+        "科学"
+      ],
       "order": 311,
       "why": "BBC 数学启蒙动画，数感、加减和数量关系可视化。",
-      "list": ["国际获奖", "高分"],
+      "list": [
+        "国际获奖",
+        "高分"
+      ],
       "desc": "用积木形象讲数感、加减和数量关系。"
     },
     {
       "id": "bili-alphablocks",
       "name": "字母积木 Alphablocks 中文",
-      "aliases": ["字母积木 中文版"],
-      "pick": ["字母积木"],
+      "aliases": [
+        "字母积木 中文版"
+      ],
+      "pick": [
+        "字母积木"
+      ],
       "pin": "BV1Av2oBUEGA",
       "ageMin": 3,
       "ageMax": 7,
-      "paths": ["path-language"],
-      "stages": { "path-language": 2 },
-      "tags": ["低幼"],
+      "paths": [
+        "path-language"
+      ],
+      "stages": {
+        "path-language": 2
+      },
+      "tags": [
+        "低幼"
+      ],
       "order": 312,
       "why": "自然拼读启蒙经典，字母组合成单词有直观演示。",
-      "list": ["国际获奖"],
+      "list": [
+        "国际获奖"
+      ],
       "desc": "自然拼读启蒙，字母组合成单词。"
     },
     {
       "id": "bili-bedtime",
       "name": "儿童睡前故事",
-      "aliases": ["儿童睡前故事 合集"],
-      "pick": ["睡前故事"],
+      "aliases": [
+        "儿童睡前故事 合集"
+      ],
+      "pick": [
+        "睡前故事"
+      ],
       "pin": "BV1NJ411o7Wx",
       "ageMin": 2,
       "ageMax": 6,
-      "paths": ["path-language", "path-social"],
-      "stages": { "path-language": 2, "path-social": 1 },
-      "tags": ["低幼", "情绪"],
+      "paths": [
+        "path-language",
+        "path-social"
+      ],
+      "stages": {
+        "path-language": 2,
+        "path-social": 1
+      },
+      "tags": [
+        "低幼",
+        "情绪"
+      ],
       "order": 313,
       "why": "睡前音频故事合集，语速慢、情节温和，哄睡不刺激。",
-      "list": ["家长社区"],
+      "list": [
+        "家长社区"
+      ],
       "desc": "睡前音频故事，语速慢、情节温和。"
     },
     {
       "id": "bili-safety",
       "name": "儿童安全教育动画",
-      "aliases": ["儿童安全教育 动画 合集"],
-      "pick": ["安全"],
+      "aliases": [
+        "儿童安全教育 动画 合集"
+      ],
+      "pick": [
+        "安全"
+      ],
       "pin": "BV1jz4y167dJ",
       "minPages": 5,
       "ageMin": 3,
       "ageMax": 8,
-      "paths": ["path-health", "path-social"],
-      "stages": { "path-health": 1, "path-social": 3 },
-      "tags": ["安全", "动画"],
+      "paths": [
+        "path-health",
+        "path-social"
+      ],
+      "stages": {
+        "path-health": 1,
+        "path-social": 3
+      },
+      "tags": [
+        "安全",
+        "动画"
+      ],
       "order": 314,
       "why": "居家、出行、防拐场景齐全，适合当安全课素材。",
-      "list": ["家长社区"],
+      "list": [
+        "家长社区"
+      ],
       "desc": "居家、出行、防拐等安全场景演示。"
     },
     {
       "id": "bili-draw",
       "name": "儿童简笔画教程",
-      "aliases": ["儿童简笔画 教程 合集"],
-      "pick": ["简笔画"],
+      "aliases": [
+        "儿童简笔画 教程 合集"
+      ],
+      "pick": [
+        "简笔画"
+      ],
       "pin": "BV1sc5PzuEMn",
       "minPages": 5,
       "ageMin": 3,
       "ageMax": 8,
-      "paths": ["path-arts"],
-      "stages": { "path-arts": 2 },
-      "tags": ["艺术"],
+      "paths": [
+        "path-arts"
+      ],
+      "stages": {
+        "path-arts": 2
+      },
+      "tags": [
+        "艺术"
+      ],
       "order": 315,
       "why": "分步示范、难度递增，孩子可以暂停跟着画。",
-      "list": ["家长社区"],
+      "list": [
+        "家长社区"
+      ],
       "desc": "一步步画动物和日常物品，可跟着画。"
     },
     {
       "id": "bili-hongen",
       "name": "洪恩识字",
-      "aliases": ["洪恩识字 动画 合集"],
-      "pick": ["洪恩识字"],
+      "aliases": [
+        "洪恩识字 动画 合集"
+      ],
+      "pick": [
+        "洪恩识字"
+      ],
       "pin": "BV1pbem6tEWD",
       "minPages": 3,
       "ageMin": 3,
       "ageMax": 7,
-      "paths": ["path-language"],
-      "stages": { "path-language": 2 },
-      "tags": ["低幼"],
+      "paths": [
+        "path-language"
+      ],
+      "stages": {
+        "path-language": 2
+      },
+      "tags": [
+        "低幼"
+      ],
       "order": 317,
       "why": "字形演变动画配合儿歌，识字和记忆点结合。",
-      "list": ["家长社区", "平台自制"],
+      "list": [
+        "家长社区",
+        "平台自制"
+      ],
       "desc": "字形演变动画，配合儿歌记字。"
     },
     {
       "id": "bili-primary-chinese",
       "name": "小学语文 一年级上册",
-      "aliases": ["一年级语文上册 人教版"],
-      "pick": ["一年级", "语文"],
+      "aliases": [
+        "一年级语文上册 人教版"
+      ],
+      "pick": [
+        "一年级",
+        "语文"
+      ],
       "pin": "BV1Eb411v76y",
       "ageMin": 6,
       "ageMax": 8,
-      "paths": ["path-language", "path-humanities"],
-      "stages": { "path-language": 3, "path-humanities": 1 },
-      "tags": ["人文"],
+      "paths": [
+        "path-language",
+        "path-humanities"
+      ],
+      "stages": {
+        "path-language": 3,
+        "path-humanities": 1
+      },
+      "tags": [
+        "人文"
+      ],
       "order": 318,
       "why": "教材同步课，课前预习或课后补漏。",
-      "list": ["教育部"],
+      "list": [
+        "教育部"
+      ],
       "desc": "人教版一年级语文上册同步课，课前预习或课后补。"
     },
     {
       "id": "bili-primary-math",
       "name": "小学数学 一年级上册",
-      "aliases": ["一年级数学上册 人教版"],
-      "pick": ["一年级", "数学"],
+      "aliases": [
+        "一年级数学上册 人教版"
+      ],
+      "pick": [
+        "一年级",
+        "数学"
+      ],
       "pin": "BV18Z4y1N72X",
       "ageMin": 6,
       "ageMax": 8,
-      "paths": ["path-math"],
-      "stages": { "path-math": 2 },
-      "tags": ["科学"],
+      "paths": [
+        "path-math"
+      ],
+      "stages": {
+        "path-math": 2
+      },
+      "tags": [
+        "科学"
+      ],
       "order": 319,
       "why": "教材同步课，配合校内进度。",
-      "list": ["教育部"],
+      "list": [
+        "教育部"
+      ],
       "desc": "人教版一年级数学上册同步课。"
     },
     {
       "id": "bili-primary-english",
       "name": "小学英语 三年级上册",
-      "aliases": ["三年级英语上册 人教版"],
-      "pick": ["三年级", "英语"],
+      "aliases": [
+        "三年级英语上册 人教版"
+      ],
+      "pick": [
+        "三年级",
+        "英语"
+      ],
       "pin": "BV16oM2zuErj",
       "ageMin": 8,
       "ageMax": 10,
-      "paths": ["path-language"],
-      "stages": { "path-language": 3 },
-      "tags": ["人文"],
+      "paths": [
+        "path-language"
+      ],
+      "stages": {
+        "path-language": 3
+      },
+      "tags": [
+        "人文"
+      ],
       "order": 320,
       "why": "教材同步课，跟读单词和句型。",
-      "list": ["教育部"],
+      "list": [
+        "教育部"
+      ],
       "desc": "人教版三年级英语上册，跟读单词和句型。"
     },
     {
       "id": "bili-dinosaur",
       "name": "恐龙星球 纪录片",
-      "aliases": ["恐龙星球 纪录片 中文"],
-      "pick": ["恐龙"],
+      "aliases": [
+        "恐龙星球 纪录片 中文"
+      ],
+      "pick": [
+        "恐龙"
+      ],
       "pin": "BV1714y1b7ti",
       "ageMin": 6,
       "ageMax": 10,
-      "paths": ["path-science"],
-      "stages": { "path-science": 1 },
-      "tags": ["科学", "纪录片"],
+      "paths": [
+        "path-science"
+      ],
+      "stages": {
+        "path-science": 1
+      },
+      "tags": [
+        "科学",
+        "纪录片"
+      ],
       "order": 321,
       "why": "BBC 恐龙纪录片，画面写实，建议亲子共看。",
-      "list": ["高分"],
+      "list": [
+        "高分"
+      ],
       "desc": "恐龙种类和灭绝假说，画面偏写实，建议亲子共看。"
     },
     {
       "id": "bili-blueplanet",
       "name": "蓝色星球·海洋纪录片",
-      "aliases": ["蓝色星球 第一季 全8集"],
-      "pick": ["蓝色星球", "第一季"],
-      "exclude": ["英语", "OST", "混剪", "预告", "环球"],
+      "aliases": [
+        "蓝色星球 第一季 全8集"
+      ],
+      "pick": [
+        "蓝色星球",
+        "第一季"
+      ],
+      "exclude": [
+        "英语",
+        "OST",
+        "混剪",
+        "预告",
+        "环球"
+      ],
       "pin": "BV1erBeY4ERe",
       "minPages": 1,
       "ageMin": 8,
       "ageMax": 12,
-      "paths": ["path-science"],
-      "stages": { "path-science": 4 },
-      "tags": ["科学", "纪录片"],
+      "paths": [
+        "path-science"
+      ],
+      "stages": {
+        "path-science": 4
+      },
+      "tags": [
+        "科学",
+        "纪录片"
+      ],
       "order": 322,
       "why": "BBC 海洋纪录片标杆，海洋生态和食物链讲得清楚。",
-      "list": ["高分", "国际获奖"],
+      "list": [
+        "高分",
+        "国际获奖"
+      ],
       "desc": "BBC 海洋纪录片，讲海洋生态和食物链。"
     },
     {
       "id": "bili-treasure",
       "name": "如果国宝会说话",
-      "aliases": ["如果国宝会说话"],
-      "pick": ["国宝"],
+      "aliases": [
+        "如果国宝会说话"
+      ],
+      "pick": [
+        "国宝"
+      ],
       "pin": "BV13W411B7Ps",
       "ageMin": 8,
       "ageMax": 12,
-      "paths": ["path-humanities"],
-      "stages": { "path-humanities": 4 },
-      "tags": ["人文", "纪录片"],
+      "paths": [
+        "path-humanities"
+      ],
+      "stages": {
+        "path-humanities": 4
+      },
+      "tags": [
+        "人文",
+        "纪录片"
+      ],
       "order": 323,
       "why": "每集五分钟讲一件文物，短小、门槛低，博物馆入门。",
-      "list": ["高分", "央视"],
+      "list": [
+        "高分",
+        "央视"
+      ],
       "desc": "每集五分钟讲一件文物，短小适合入门。"
     },
     {
       "id": "bili-cosmos",
       "name": "宇宙时空之旅",
-      "aliases": ["宇宙时空之旅 中文"],
-      "pick": ["宇宙"],
+      "aliases": [
+        "宇宙时空之旅 中文"
+      ],
+      "pick": [
+        "宇宙"
+      ],
       "pin": "BV1Nq4y1R7ym",
       "ageMin": 9,
       "ageMax": 12,
-      "paths": ["path-science"],
-      "stages": { "path-science": 4 },
-      "tags": ["科学", "纪录片"],
+      "paths": [
+        "path-science"
+      ],
+      "stages": {
+        "path-science": 4
+      },
+      "tags": [
+        "科学",
+        "纪录片"
+      ],
       "order": 324,
       "why": "天文科普经典，概念密度高，适合大孩子。",
-      "list": ["高分", "国际获奖"],
+      "list": [
+        "高分",
+        "国际获奖"
+      ],
       "desc": "宇宙和天文科普，概念较多，适合大孩子。"
     },
     {
       "id": "bili-crow",
       "name": "像乌鸦一样思考",
-      "aliases": ["像乌鸦一样思考 全集"],
-      "pick": ["乌鸦"],
+      "aliases": [
+        "像乌鸦一样思考 全集"
+      ],
+      "pick": [
+        "乌鸦"
+      ],
       "pin": "BV14P4y177d7",
       "minPages": 3,
       "ageMin": 6,
       "ageMax": 12,
-      "paths": ["path-science", "path-math"],
-      "stages": { "path-science": 3, "path-math": 3 },
-      "tags": ["科学"],
+      "paths": [
+        "path-science",
+        "path-math"
+      ],
+      "stages": {
+        "path-science": 3,
+        "path-math": 3
+      },
+      "tags": [
+        "科学"
+      ],
       "order": 325,
       "why": "NHK 实验短片，完整演示观察、假设、验证的思维过程。",
-      "list": ["高分"],
+      "list": [
+        "高分"
+      ],
       "desc": "日本科普实验短片，教观察、假设和验证。"
     },
     {
       "id": "bili-howitsmade",
       "name": "造物小百科",
-      "aliases": ["造物小百科 中文"],
-      "pick": ["造物"],
+      "aliases": [
+        "造物小百科 中文"
+      ],
+      "pick": [
+        "造物"
+      ],
       "pin": "BV1A44y1S7pv",
       "ageMin": 6,
       "ageMax": 12,
-      "paths": ["path-tech", "path-science"],
-      "stages": { "path-tech": 1, "path-science": 3 },
-      "tags": ["科技", "纪录片"],
+      "paths": [
+        "path-tech",
+        "path-science"
+      ],
+      "stages": {
+        "path-tech": 1,
+        "path-science": 3
+      },
+      "tags": [
+        "科技",
+        "纪录片"
+      ],
       "order": 326,
       "why": "工厂生产线实拍，解释日用品怎么造出来。",
-      "list": ["高分"],
+      "list": [
+        "高分"
+      ],
       "desc": "工厂生产线怎么把原料做成日用品。"
     },
     {
       "id": "bili-scratch",
       "name": "Scratch 少儿编程入门",
-      "aliases": ["少儿编程 scratch3.0 基础入门"],
-      "pick": ["Scratch"],
-      "exclude": ["真题", "等级考试", "下载", "安装"],
+      "aliases": [
+        "少儿编程 scratch3.0 基础入门"
+      ],
+      "pick": [
+        "Scratch"
+      ],
+      "exclude": [
+        "真题",
+        "等级考试",
+        "下载",
+        "安装"
+      ],
       "pin": "BV12J411X7tY",
       "minPages": 10,
       "ageMin": 7,
       "ageMax": 12,
-      "paths": ["path-tech"],
-      "stages": { "path-tech": 2 },
-      "tags": ["科技"],
+      "paths": [
+        "path-tech"
+      ],
+      "stages": {
+        "path-tech": 2
+      },
+      "tags": [
+        "科技"
+      ],
       "order": 327,
       "why": "拖积木做小游戏，第一次接触编程的正规路径。",
-      "list": ["家长社区"],
+      "list": [
+        "家长社区"
+      ],
       "desc": "拖积木做小游戏，第一次接触编程。"
     },
     {
       "id": "bili-heyduggee",
       "name": "嗨！道奇 Hey Duggee",
-      "aliases": ["嗨 道奇 中文版 全集"],
-      "pick": ["道奇"],
+      "aliases": [
+        "嗨 道奇 中文版 全集"
+      ],
+      "pick": [
+        "道奇"
+      ],
       "minPages": 5,
       "pin": "BV1FL4y1W7Km",
       "ageMin": 2,
       "ageMax": 5,
-      "paths": ["path-social", "path-health"],
-      "stages": { "path-social": 1, "path-health": 1 },
-      "tags": ["低幼", "情绪"],
+      "paths": [
+        "path-social",
+        "path-health"
+      ],
+      "stages": {
+        "path-social": 1,
+        "path-health": 1
+      },
+      "tags": [
+        "低幼",
+        "情绪"
+      ],
       "order": 229,
       "why": "BAFTA 获奖，每集一个小任务和一枚徽章，讲合作和情绪。",
-      "list": ["国际获奖", "高分"],
+      "list": [
+        "国际获奖",
+        "高分"
+      ],
       "desc": "松鼠俱乐部做任务领徽章，练合作和情绪表达。"
     },
     {
       "id": "bili-bing",
       "name": "小兔兵兵 Bing（英语）",
-      "aliases": ["小兔兵兵 中文版 全集"],
-      "pick": ["兵兵"],
+      "aliases": [
+        "小兔兵兵 中文版 全集"
+      ],
+      "pick": [
+        "兵兵"
+      ],
       "minPages": 5,
       "ageMin": 2,
       "ageMax": 5,
-      "paths": ["path-social", "path-language"],
-      "stages": { "path-social": 1, "path-language": 1 },
-      "tags": ["低幼", "情绪"],
+      "paths": [
+        "path-social",
+        "path-language"
+      ],
+      "stages": {
+        "path-social": 1,
+        "path-language": 1
+      },
+      "tags": [
+        "低幼",
+        "情绪"
+      ],
       "order": 230,
       "why": "专讲幼儿日常冲突和情绪，画面柔和，适合睡前看。",
-      "list": ["国际获奖", "绘本IP"],
+      "list": [
+        "国际获奖",
+        "绘本IP"
+      ],
       "desc": "小兔兵兵的日常小冲突，学表达情绪和道歉；B站现有版本为英语原声。"
     },
     {
       "id": "bili-charlie",
       "name": "查理和罗拉 Charlie and Lola",
-      "aliases": ["查理和罗拉 中文版 全集"],
-      "pick": ["查理"],
+      "aliases": [
+        "查理和罗拉 中文版 全集"
+      ],
+      "pick": [
+        "查理"
+      ],
       "minPages": 5,
       "pin": "BV1mW411K7bt",
       "ageMin": 3,
       "ageMax": 6,
-      "paths": ["path-social", "path-arts"],
-      "stages": { "path-social": 2, "path-arts": 1 },
-      "tags": ["动画", "艺术", "情绪"],
+      "paths": [
+        "path-social",
+        "path-arts"
+      ],
+      "stages": {
+        "path-social": 2,
+        "path-arts": 1
+      },
+      "tags": [
+        "动画",
+        "艺术",
+        "情绪"
+      ],
       "order": 231,
       "why": "绘本改编，拼贴画风辨识度高，讲兄妹相处和想象力。",
-      "list": ["国际获奖", "绘本IP"],
+      "list": [
+        "国际获奖",
+        "绘本IP"
+      ],
       "desc": "哥哥哄妹妹的故事，讲耐心、想象和兄妹相处。"
     },
     {
       "id": "bili-benholly",
       "name": "本和霍利的小王国",
-      "aliases": ["本和霍利的小王国 中文版 全集"],
-      "pick": ["本和霍利"],
+      "aliases": [
+        "本和霍利的小王国 中文版 全集"
+      ],
+      "pick": [
+        "本和霍利"
+      ],
       "minPages": 5,
       "pin": "BV1Ut411s7fU",
       "ageMin": 3,
       "ageMax": 6,
-      "paths": ["path-social", "path-language"],
-      "stages": { "path-social": 2, "path-language": 1 },
-      "tags": ["动画"],
+      "paths": [
+        "path-social",
+        "path-language"
+      ],
+      "stages": {
+        "path-social": 2,
+        "path-language": 1
+      },
+      "tags": [
+        "动画"
+      ],
       "order": 232,
       "why": "《小猪佩奇》团队作品，笑点密，适合练英语和同伴交往。",
-      "list": ["国际获奖", "家长社区"],
+      "list": [
+        "国际获奖",
+        "家长社区"
+      ],
       "desc": "小精灵和仙女的日常，讲朋友相处和规则。"
     },
     {
       "id": "bili-maisy",
       "name": "小鼠波波 Maisy",
-      "aliases": ["小鼠波波 中文版 全集"],
-      "pick": ["波波"],
+      "aliases": [
+        "小鼠波波 中文版 全集"
+      ],
+      "pick": [
+        "波波"
+      ],
       "minPages": 3,
       "ageMin": 1,
       "ageMax": 4,
-      "paths": ["path-language", "path-social"],
-      "stages": { "path-language": 1, "path-social": 1 },
-      "tags": ["低幼"],
+      "paths": [
+        "path-language",
+        "path-social"
+      ],
+      "stages": {
+        "path-language": 1,
+        "path-social": 1
+      },
+      "tags": [
+        "低幼"
+      ],
       "order": 233,
       "why": "低幼绘本经典，画面大、句子短，适合第一套动画。",
-      "list": ["绘本IP", "家长社区"],
+      "list": [
+        "绘本IP",
+        "家长社区"
+      ],
       "desc": "小鼠波波和朋友的日常，认识颜色、数字和生活场景。"
     },
     {
       "id": "bili-shaun",
       "name": "小羊肖恩（第4季）",
-      "aliases": ["小羊肖恩 第4季 中文"],
-      "pick": ["小羊肖恩"],
+      "aliases": [
+        "小羊肖恩 第4季 中文"
+      ],
+      "pick": [
+        "小羊肖恩"
+      ],
       "minPages": 5,
       "pin": "BV1SoHx61E2u",
       "ageMin": 4,
       "ageMax": 8,
-      "paths": ["path-arts", "path-social"],
-      "stages": { "path-arts": 2, "path-social": 2 },
-      "tags": ["动画", "艺术"],
+      "paths": [
+        "path-arts",
+        "path-social"
+      ],
+      "stages": {
+        "path-arts": 2,
+        "path-social": 2
+      },
+      "tags": [
+        "动画",
+        "艺术"
+      ],
       "order": 234,
       "why": "定格黏土动画代表作，无对白也能看懂，幽默感高级。",
-      "list": ["国际获奖", "高分"],
+      "list": [
+        "国际获奖",
+        "高分"
+      ],
       "desc": "农场羊群的默剧式喜剧，看动作和表情理解故事；B站现有第4季全集。"
     },
     {
       "id": "bili-poli",
       "name": "变形警车珀利",
-      "aliases": ["变形警车珀利 中文版 全集"],
-      "pick": ["珀利"],
+      "aliases": [
+        "变形警车珀利 中文版 全集"
+      ],
+      "pick": [
+        "珀利"
+      ],
       "minPages": 5,
       "ageMin": 3,
       "ageMax": 6,
-      "paths": ["path-health", "path-social"],
-      "stages": { "path-health": 1, "path-social": 1 },
-      "tags": ["动画", "安全"],
+      "paths": [
+        "path-health",
+        "path-social"
+      ],
+      "stages": {
+        "path-health": 1,
+        "path-social": 1
+      },
+      "tags": [
+        "动画",
+        "安全"
+      ],
       "order": 235,
       "why": "交通安全动画，每个场景都有明确的对错示范。",
-      "list": ["家长社区"],
+      "list": [
+        "家长社区"
+      ],
       "desc": "救援小队处理交通和居家险情，讲安全规则。"
     },
     {
       "id": "bili-fireman",
       "name": "消防员山姆",
-      "aliases": ["消防员山姆 中文版 全集"],
-      "pick": ["山姆"],
+      "aliases": [
+        "消防员山姆 中文版 全集"
+      ],
+      "pick": [
+        "山姆"
+      ],
       "minPages": 5,
       "skip": "B站只有零散分集和资源包，没有中文整季",
       "ageMin": 3,
       "ageMax": 6,
-      "paths": ["path-health", "path-social"],
-      "stages": { "path-health": 1, "path-social": 2 },
-      "tags": ["动画", "安全"],
+      "paths": [
+        "path-health",
+        "path-social"
+      ],
+      "stages": {
+        "path-health": 1,
+        "path-social": 2
+      },
+      "tags": [
+        "动画",
+        "安全"
+      ],
       "order": 236,
       "why": "经典安全动画，火灾、溺水、迷路场景覆盖全。",
-      "list": ["家长社区"],
+      "list": [
+        "家长社区"
+      ],
       "desc": "平安镇的救援故事，讲防火、防溺水和求助。"
     },
     {
       "id": "bili-sid",
       "name": "科学小子席德",
-      "aliases": ["科学小子席德 中文版 全集"],
-      "pick": ["席德"],
+      "aliases": [
+        "科学小子席德 中文版 全集"
+      ],
+      "pick": [
+        "席德"
+      ],
       "minPages": 5,
       "ageMin": 3,
       "ageMax": 6,
-      "paths": ["path-science"],
-      "stages": { "path-science": 1 },
-      "tags": ["动画", "科学"],
+      "paths": [
+        "path-science"
+      ],
+      "stages": {
+        "path-science": 1
+      },
+      "tags": [
+        "动画",
+        "科学"
+      ],
       "order": 237,
       "why": "每集一个科学问题，用观察和实验找答案，方法完整。",
-      "list": ["国际获奖", "家长社区"],
+      "list": [
+        "国际获奖",
+        "家长社区"
+      ],
       "desc": "席德每天问一个为什么，跟着做观察和小实验。"
     },
     {
       "id": "bili-curiousgeorge",
       "name": "好奇猴乔治（英语绘本动画）",
-      "aliases": ["好奇猴乔治 中文版 全集"],
-      "pick": ["乔治"],
+      "aliases": [
+        "好奇猴乔治 中文版 全集"
+      ],
+      "pick": [
+        "乔治"
+      ],
       "minPages": 5,
       "ageMin": 3,
       "ageMax": 6,
-      "paths": ["path-science", "path-math"],
-      "stages": { "path-science": 1, "path-math": 1 },
-      "tags": ["动画", "科学"],
+      "paths": [
+        "path-science",
+        "path-math"
+      ],
+      "stages": {
+        "path-science": 1,
+        "path-math": 1
+      },
+      "tags": [
+        "动画",
+        "科学"
+      ],
       "order": 238,
       "why": "经典绘本 IP，把科学和数学藏在日常捣蛋里。",
-      "list": ["国际获奖", "绘本IP"],
+      "list": [
+        "国际获奖",
+        "绘本IP"
+      ],
       "desc": "小猴子的城市冒险，顺带接触测量、形状和因果；B站现有版本为英语绘本动画。"
     },
     {
       "id": "bili-pegcat",
       "name": "佩格和小猫 Peg + Cat",
-      "aliases": ["佩格和小猫 中文版 全集"],
-      "pick": ["佩格"],
+      "aliases": [
+        "佩格和小猫 中文版 全集"
+      ],
+      "pick": [
+        "佩格"
+      ],
       "minPages": 5,
       "pin": "BV1sY4y137m4",
       "ageMin": 3,
       "ageMax": 6,
-      "paths": ["path-math"],
-      "stages": { "path-math": 2 },
-      "tags": ["动画"],
+      "paths": [
+        "path-math"
+      ],
+      "stages": {
+        "path-math": 2
+      },
+      "tags": [
+        "动画"
+      ],
       "order": 239,
       "why": "艾美奖数学动画，每集用数学解决一个具体麻烦。",
-      "list": ["国际获奖"],
+      "list": [
+        "国际获奖"
+      ],
       "desc": "女孩和小猫用数学闯关，练数感、图形和规律。"
     },
     {
       "id": "bili-numberjacks",
       "name": "数字小精灵 Numberjacks",
-      "aliases": ["数字小精灵 中文版 全集"],
-      "pick": ["数字小精灵"],
+      "aliases": [
+        "数字小精灵 中文版 全集"
+      ],
+      "pick": [
+        "数字小精灵"
+      ],
       "minPages": 3,
       "pin": "BV1cr421H7YH",
       "ageMin": 3,
       "ageMax": 6,
-      "paths": ["path-math"],
-      "stages": { "path-math": 1 },
-      "tags": ["低幼"],
+      "paths": [
+        "path-math"
+      ],
+      "stages": {
+        "path-math": 1
+      },
+      "tags": [
+        "低幼"
+      ],
       "order": 240,
       "why": "BBC 低幼数学动画，数字拟人化，讲数量关系。",
-      "list": ["国际获奖"],
+      "list": [
+        "国际获奖"
+      ],
       "desc": "数字小精灵解决数量难题，建立数感；B站现有版本带英语。"
     },
     {
       "id": "bili-cyberchase",
       "name": "数学小先锋 Cyberchase",
-      "aliases": ["数学小先锋 中文版 全集"],
-      "pick": ["数学小先锋"],
+      "aliases": [
+        "数学小先锋 中文版 全集"
+      ],
+      "pick": [
+        "数学小先锋"
+      ],
       "minPages": 5,
       "ageMin": 6,
       "ageMax": 9,
-      "paths": ["path-math", "path-science"],
-      "stages": { "path-math": 3, "path-science": 2 },
-      "tags": ["动画", "科学"],
+      "paths": [
+        "path-math",
+        "path-science"
+      ],
+      "stages": {
+        "path-math": 3,
+        "path-science": 2
+      },
+      "tags": [
+        "动画",
+        "科学"
+      ],
       "order": 241,
       "why": "PBS 数学动画，把方程、几何、概率放进冒险任务。",
-      "list": ["国际获奖"],
+      "list": [
+        "国际获奖"
+      ],
       "desc": "三个孩子用数学阻止反派，练中阶数学思维。"
     },
     {
       "id": "bili-mathisland",
       "name": "数学荒岛历险记",
-      "aliases": ["数学荒岛历险记 动画 全集"],
-      "pick": ["荒岛"],
+      "aliases": [
+        "数学荒岛历险记 动画 全集"
+      ],
+      "pick": [
+        "荒岛"
+      ],
       "minPages": 5,
       "ageMin": 6,
       "ageMax": 9,
-      "paths": ["path-math"],
-      "stages": { "path-math": 2 },
-      "tags": ["动画"],
+      "paths": [
+        "path-math"
+      ],
+      "stages": {
+        "path-math": 2
+      },
+      "tags": [
+        "动画"
+      ],
       "order": 242,
       "why": "国产数学动画，剧情连续，适合小学低年级当数学故事看。",
-      "list": ["高分", "家长社区"],
+      "list": [
+        "高分",
+        "家长社区"
+      ],
       "desc": "荒岛冒险里解数学题，覆盖计算、图形和逻辑。"
     },
     {
       "id": "bili-dinotrain",
       "name": "恐龙列车",
-      "aliases": ["恐龙列车 中文版 全集"],
-      "pick": ["恐龙列车"],
+      "aliases": [
+        "恐龙列车 中文版 全集"
+      ],
+      "pick": [
+        "恐龙列车"
+      ],
       "minPages": 5,
       "pin": "BV1R44y1o7pQ",
       "ageMin": 3,
       "ageMax": 6,
-      "paths": ["path-science"],
-      "stages": { "path-science": 1 },
-      "tags": ["动画", "科学"],
+      "paths": [
+        "path-science"
+      ],
+      "stages": {
+        "path-science": 1
+      },
+      "tags": [
+        "动画",
+        "科学"
+      ],
       "order": 243,
       "why": "每集认识一种恐龙，带古生物、地理和观察方法。",
-      "list": ["家长社区"],
+      "list": [
+        "家长社区"
+      ],
       "desc": "坐恐龙列车旅行，认识不同恐龙和史前环境。"
     },
     {
       "id": "bili-andydino",
       "name": "安迪的恐龙冒险",
-      "aliases": ["安迪的恐龙冒险 中文版 全集"],
-      "pick": ["安迪"],
+      "aliases": [
+        "安迪的恐龙冒险 中文版 全集"
+      ],
+      "pick": [
+        "安迪"
+      ],
       "minPages": 5,
       "ageMin": 4,
       "ageMax": 8,
-      "paths": ["path-science"],
-      "stages": { "path-science": 2 },
-      "tags": ["科学", "纪录片"],
+      "paths": [
+        "path-science"
+      ],
+      "stages": {
+        "path-science": 2
+      },
+      "tags": [
+        "科学",
+        "纪录片"
+      ],
       "order": 244,
       "why": "真人加特效回到恐龙时代，知识密度比动画高。",
-      "list": ["国际获奖", "家长社区"],
+      "list": [
+        "国际获奖",
+        "家长社区"
+      ],
       "desc": "安迪穿越到史前，观察恐龙行为和生存环境。"
     },
     {
       "id": "bili-wildkratts",
       "name": "动物兄弟 Wild Kratts",
-      "aliases": ["动物兄弟 中文版 全集"],
-      "pick": ["动物兄弟"],
+      "aliases": [
+        "动物兄弟 中文版 全集"
+      ],
+      "pick": [
+        "动物兄弟"
+      ],
       "minPages": 5,
       "ageMin": 6,
       "ageMax": 10,
-      "paths": ["path-science"],
-      "stages": { "path-science": 3 },
-      "tags": ["动画", "科学"],
+      "paths": [
+        "path-science"
+      ],
+      "stages": {
+        "path-science": 3
+      },
+      "tags": [
+        "动画",
+        "科学"
+      ],
       "order": 245,
       "why": "动物行为科普，每集一种动物的生存策略。",
-      "list": ["家长社区"],
+      "list": [
+        "家长社区"
+      ],
       "desc": "兄弟俩变身动物，观察捕食、迁徙和共生。"
     },
     {
       "id": "bili-fixies",
       "name": "螺丝钉 The Fixies",
-      "aliases": ["螺丝钉 中文版 全集"],
-      "pick": ["螺丝钉"],
+      "aliases": [
+        "螺丝钉 中文版 全集"
+      ],
+      "pick": [
+        "螺丝钉"
+      ],
       "minPages": 5,
       "skip": "B站只有大电影和短片，没有整季正片",
       "ageMin": 4,
       "ageMax": 8,
-      "paths": ["path-tech", "path-science"],
-      "stages": { "path-tech": 1, "path-science": 2 },
-      "tags": ["动画", "科技"],
+      "paths": [
+        "path-tech",
+        "path-science"
+      ],
+      "stages": {
+        "path-tech": 1,
+        "path-science": 2
+      },
+      "tags": [
+        "动画",
+        "科技"
+      ],
       "order": 246,
       "why": "家电内部的小人讲机械原理，科技启蒙的入门动画。",
-      "list": ["家长社区"],
+      "list": [
+        "家长社区"
+      ],
       "desc": "小螺丝钉住在电器里，讲齿轮、电路和维修。"
     },
     {
       "id": "bili-pincode",
       "name": "平博士密码",
-      "aliases": ["平博士密码 中文版 全集"],
-      "pick": ["平博士"],
+      "aliases": [
+        "平博士密码 中文版 全集"
+      ],
+      "pick": [
+        "平博士"
+      ],
       "minPages": 5,
       "ageMin": 6,
       "ageMax": 10,
-      "paths": ["path-science", "path-tech"],
-      "stages": { "path-science": 3, "path-tech": 1 },
-      "tags": ["动画", "科学", "科技"],
+      "paths": [
+        "path-science",
+        "path-tech"
+      ],
+      "stages": {
+        "path-science": 3,
+        "path-tech": 1
+      },
+      "tags": [
+        "动画",
+        "科学",
+        "科技"
+      ],
       "order": 247,
       "why": "俄罗斯科普动画，物理、化学、天文概念讲得通俗。",
-      "list": ["高分", "家长社区"],
+      "list": [
+        "高分",
+        "家长社区"
+      ],
       "desc": "平博士带队做实验，解释自然现象和发明原理。"
     },
     {
       "id": "bili-cells",
       "name": "工作细胞",
-      "aliases": ["工作细胞 中文版 全集"],
-      "pick": ["工作细胞"],
-      "exclude": ["BLACK", "black", "解说", "漫画"],
+      "aliases": [
+        "工作细胞 中文版 全集"
+      ],
+      "pick": [
+        "工作细胞"
+      ],
+      "exclude": [
+        "BLACK",
+        "black",
+        "解说",
+        "漫画"
+      ],
       "minPages": 5,
       "pin": "BV1cr4y117ot",
       "ageMin": 8,
       "ageMax": 12,
-      "paths": ["path-science"],
-      "stages": { "path-science": 4 },
-      "tags": ["动画", "科学"],
+      "paths": [
+        "path-science"
+      ],
+      "stages": {
+        "path-science": 4
+      },
+      "tags": [
+        "动画",
+        "科学"
+      ],
       "order": 248,
       "why": "把免疫系统拍成职场剧，生物入门记忆点极强。",
-      "list": ["高分"],
+      "list": [
+        "高分"
+      ],
       "desc": "红细胞和白细胞的身体日常，认识免疫和循环。"
     },
     {
       "id": "bili-life",
       "name": "生命脉动 Life",
-      "aliases": ["生命脉动 纪录片 中文"],
-      "pick": ["生命脉动"],
-      "exclude": ["英语", "解说"],
+      "aliases": [
+        "生命脉动 纪录片 中文"
+      ],
+      "pick": [
+        "生命脉动"
+      ],
+      "exclude": [
+        "英语",
+        "解说"
+      ],
       "minPages": 5,
       "skip": "B站只有单集切片，没有整季合集",
       "ageMin": 8,
       "ageMax": 12,
-      "paths": ["path-science"],
-      "stages": { "path-science": 4 },
-      "tags": ["科学", "纪录片"],
+      "paths": [
+        "path-science"
+      ],
+      "stages": {
+        "path-science": 4
+      },
+      "tags": [
+        "科学",
+        "纪录片"
+      ],
       "order": 249,
       "why": "BBC 生命系列，覆盖动物行为的关键策略。",
-      "list": ["高分", "国际获奖"],
+      "list": [
+        "高分",
+        "国际获奖"
+      ],
       "desc": "从捕食到繁殖，看不同物种怎么活下来。"
     },
     {
       "id": "bili-frozenplanet",
       "name": "冰冻星球",
-      "aliases": ["冰冻星球 纪录片 中文"],
-      "pick": ["冰冻星球"],
-      "exclude": ["英语", "解说"],
+      "aliases": [
+        "冰冻星球 纪录片 中文"
+      ],
+      "pick": [
+        "冰冻星球"
+      ],
+      "exclude": [
+        "英语",
+        "解说"
+      ],
       "minPages": 5,
       "ageMin": 8,
       "ageMax": 12,
-      "paths": ["path-science"],
-      "stages": { "path-science": 4 },
-      "tags": ["科学", "纪录片"],
+      "paths": [
+        "path-science"
+      ],
+      "stages": {
+        "path-science": 4
+      },
+      "tags": [
+        "科学",
+        "纪录片"
+      ],
       "order": 250,
       "why": "极地生态纪录片，讲气候和适应，画面震撼。",
-      "list": ["高分", "国际获奖"],
+      "list": [
+        "高分",
+        "国际获奖"
+      ],
       "desc": "南极北极的动物怎么过冬，讲气候和生态。"
     },
     {
       "id": "bili-blueplanet2",
       "name": "蓝色星球2",
-      "aliases": ["蓝色星球2 中文"],
-      "pick": ["蓝色星球2"],
-      "exclude": ["英语", "预告", "混剪"],
+      "aliases": [
+        "蓝色星球2 中文"
+      ],
+      "pick": [
+        "蓝色星球2"
+      ],
+      "exclude": [
+        "英语",
+        "预告",
+        "混剪"
+      ],
       "minPages": 5,
       "skip": "B站正片未开放，只有片段和预告",
       "ageMin": 8,
       "ageMax": 12,
-      "paths": ["path-science"],
-      "stages": { "path-science": 4 },
-      "tags": ["科学", "纪录片"],
+      "paths": [
+        "path-science"
+      ],
+      "stages": {
+        "path-science": 4
+      },
+      "tags": [
+        "科学",
+        "纪录片"
+      ],
       "order": 251,
       "why": "第一季的续作，镜头更深、生态链条更完整。",
-      "list": ["高分", "国际获奖"],
+      "list": [
+        "高分",
+        "国际获奖"
+      ],
       "desc": "深海和珊瑚礁生态，讲食物链和人类影响。"
     },
     {
       "id": "bili-humanplanet",
       "name": "小小人类星球",
-      "aliases": ["小小人类星球 中文"],
-      "pick": ["小小人类星球"],
+      "aliases": [
+        "小小人类星球 中文"
+      ],
+      "pick": [
+        "小小人类星球"
+      ],
       "minPages": 5,
       "pin": "BV1sguE6DEmf",
       "ageMin": 4,
       "ageMax": 8,
-      "paths": ["path-humanities", "path-science"],
-      "stages": { "path-humanities": 2, "path-science": 1 },
-      "tags": ["人文", "纪录片"],
+      "paths": [
+        "path-humanities",
+        "path-science"
+      ],
+      "stages": {
+        "path-humanities": 2,
+        "path-science": 1
+      },
+      "tags": [
+        "人文",
+        "纪录片"
+      ],
       "order": 252,
       "why": "BBC 儿童版，跟着各地小朋友看居住环境，时长短、画面友好。",
-      "list": ["国际获奖", "家长社区"],
+      "list": [
+        "国际获奖",
+        "家长社区"
+      ],
       "desc": "拜访不同国家的小朋友，看他们的家、食物和游戏。"
     },
     {
       "id": "bili-cats",
       "name": "如果历史是一群喵",
-      "aliases": ["如果历史是一群喵 动画 全集"],
-      "pick": ["一群喵"],
+      "aliases": [
+        "如果历史是一群喵 动画 全集"
+      ],
+      "pick": [
+        "一群喵"
+      ],
       "minPages": 5,
       "ageMin": 6,
       "ageMax": 12,
-      "paths": ["path-humanities"],
-      "stages": { "path-humanities": 2 },
-      "tags": ["动画", "人文"],
+      "paths": [
+        "path-humanities"
+      ],
+      "stages": {
+        "path-humanities": 2
+      },
+      "tags": [
+        "动画",
+        "人文"
+      ],
       "order": 253,
       "why": "猫演历史，时间线和人物关系清楚，中国史入门友好。",
-      "list": ["高分", "家长社区"],
+      "list": [
+        "高分",
+        "家长社区"
+      ],
       "desc": "用猫咪重演历史事件，建立朝代和时间线概念。"
     },
     {
       "id": "bili-poetry",
       "name": "中国唱诗班",
-      "aliases": ["中国唱诗班 动画 全集"],
-      "pick": ["唱诗班"],
+      "aliases": [
+        "中国唱诗班 动画 全集"
+      ],
+      "pick": [
+        "唱诗班"
+      ],
       "minPages": 3,
       "ageMin": 6,
       "ageMax": 12,
-      "paths": ["path-humanities", "path-arts"],
-      "stages": { "path-humanities": 1, "path-arts": 2 },
-      "tags": ["动画", "人文", "艺术"],
+      "paths": [
+        "path-humanities",
+        "path-arts"
+      ],
+      "stages": {
+        "path-humanities": 1,
+        "path-arts": 2
+      },
+      "tags": [
+        "动画",
+        "人文",
+        "艺术"
+      ],
       "order": 254,
       "why": "古诗配水墨动画，画面和意境都在线，美育和国学兼顾。",
-      "list": ["高分"],
+      "list": [
+        "高分"
+      ],
       "desc": "每集一首古诗，用水墨动画讲诗里的故事。"
     },
     {
       "id": "bili-artattack",
       "name": "艺术创想 Art Attack",
-      "aliases": ["艺术创想 中文版 全集"],
-      "pick": ["艺术创想"],
+      "aliases": [
+        "艺术创想 中文版 全集"
+      ],
+      "pick": [
+        "艺术创想"
+      ],
       "minPages": 5,
       "ageMin": 5,
       "ageMax": 12,
-      "paths": ["path-arts"],
-      "stages": { "path-arts": 3 },
-      "tags": ["艺术"],
+      "paths": [
+        "path-arts"
+      ],
+      "stages": {
+        "path-arts": 3
+      },
+      "tags": [
+        "艺术"
+      ],
       "order": 255,
       "why": "经典儿童手工节目，材料家里都有，能直接照着做。",
-      "list": ["家长社区"],
+      "list": [
+        "家长社区"
+      ],
       "desc": "用纸、颜料和日用品做手工，每集一个可复刻的作品。"
     },
     {
       "id": "bili-palace100",
       "name": "故宫100",
-      "aliases": ["故宫100 纪录片"],
-      "pick": ["故宫100"],
+      "aliases": [
+        "故宫100 纪录片"
+      ],
+      "pick": [
+        "故宫100"
+      ],
       "minPages": 5,
       "pin": "BV1AT421Y7xR",
       "ageMin": 8,
       "ageMax": 12,
-      "paths": ["path-humanities"],
-      "stages": { "path-humanities": 4 },
-      "tags": ["人文", "纪录片"],
+      "paths": [
+        "path-humanities"
+      ],
+      "stages": {
+        "path-humanities": 4
+      },
+      "tags": [
+        "人文",
+        "纪录片"
+      ],
       "order": 256,
       "why": "每集几分钟讲一座建筑或一件器物，适合碎片时间。",
-      "list": ["高分", "央视"],
+      "list": [
+        "高分",
+        "央视"
+      ],
       "desc": "从建筑和器物看故宫，短小、门槛低。"
     },
     {
       "id": "bili-palacerestore",
       "name": "我在故宫修文物",
-      "aliases": ["我在故宫修文物 纪录片"],
-      "pick": ["修文物"],
+      "aliases": [
+        "我在故宫修文物 纪录片"
+      ],
+      "pick": [
+        "修文物"
+      ],
       "minPages": 3,
       "skip": "B站只有片段和幕后，没有完整三集版",
       "ageMin": 9,
       "ageMax": 12,
-      "paths": ["path-humanities", "path-arts"],
-      "stages": { "path-humanities": 4, "path-arts": 3 },
-      "tags": ["人文", "纪录片"],
+      "paths": [
+        "path-humanities",
+        "path-arts"
+      ],
+      "stages": {
+        "path-humanities": 4,
+        "path-arts": 3
+      },
+      "tags": [
+        "人文",
+        "纪录片"
+      ],
       "order": 257,
       "why": "看修复师怎么工作，讲耐心、手艺和职业。",
-      "list": ["高分"],
+      "list": [
+        "高分"
+      ],
       "desc": "故宫修复师的日常，认识文物修复和工匠精神。"
     },
     {
       "id": "bili-bob",
       "name": "巴布工程师",
-      "aliases": ["巴布工程师 中文版 全集"],
-      "pick": ["巴布"],
+      "aliases": [
+        "巴布工程师 中文版 全集"
+      ],
+      "pick": [
+        "巴布"
+      ],
       "minPages": 5,
       "pin": "BV1Q23TzWEZX",
       "ageMin": 3,
       "ageMax": 6,
-      "paths": ["path-social", "path-tech"],
-      "stages": { "path-social": 2, "path-tech": 1 },
-      "tags": ["动画", "科技"],
+      "paths": [
+        "path-social",
+        "path-tech"
+      ],
+      "stages": {
+        "path-social": 2,
+        "path-tech": 1
+      },
+      "tags": [
+        "动画",
+        "科技"
+      ],
       "order": 258,
       "why": "工程车合作完成项目，讲分工、计划和「能不能做到」。",
-      "list": ["家长社区"],
+      "list": [
+        "家长社区"
+      ],
       "desc": "工程队一起盖房子修路，讲合作和工程常识。"
+    },
+    {
+      "id": "bili-teletubbies",
+      "name": "天线宝宝 Teletubbies",
+      "aliases": [
+        "天线宝宝 中文版"
+      ],
+      "pick": [
+        "天线宝宝"
+      ],
+      "ageMin": 1,
+      "ageMax": 3,
+      "paths": [
+        "path-language",
+        "path-social"
+      ],
+      "stages": {
+        "path-language": 1,
+        "path-social": 1
+      },
+      "tags": [
+        "低幼"
+      ],
+      "order": 328,
+      "why": "BBC 婴幼儿节目，节奏慢、重复多，适合 1-3 岁；建议控制单次观看时长。",
+      "list": [
+        "国际获奖",
+        "家长社区"
+      ],
+      "desc": "四个天线宝宝在山丘间的日常，练听力和生活节奏。"
+    },
+    {
+      "id": "bili-pingu",
+      "name": "企鹅家族 Pingu",
+      "aliases": [
+        "企鹅家族 中文版"
+      ],
+      "pick": [
+        "企鹅"
+      ],
+      "ageMin": 2,
+      "ageMax": 5,
+      "paths": [
+        "path-language",
+        "path-social"
+      ],
+      "stages": {
+        "path-language": 1,
+        "path-social": 1
+      },
+      "tags": [
+        "低幼",
+        "动画"
+      ],
+      "order": 329,
+      "why": "黏土定格动画，几乎没有对白，靠动作和表情讲故事。",
+      "list": [
+        "国际获奖",
+        "高分"
+      ],
+      "desc": "小企鹅 Pingu 的家庭趣事，看动作理解情绪。"
+    },
+    {
+      "id": "bili-timmy",
+      "name": "小羊提米 Timmy Time",
+      "aliases": [
+        "小羊提米 中文版"
+      ],
+      "pick": [
+        "提米"
+      ],
+      "ageMin": 2,
+      "ageMax": 5,
+      "paths": [
+        "path-social",
+        "path-language"
+      ],
+      "stages": {
+        "path-social": 1,
+        "path-language": 1
+      },
+      "tags": [
+        "低幼",
+        "情绪"
+      ],
+      "order": 330,
+      "why": "《小羊肖恩》衍生，幼儿园场景讲分享、轮流和情绪。",
+      "list": [
+        "国际获奖",
+        "家长社区"
+      ],
+      "desc": "小羊提米在幼儿园的一天，学规则和同伴相处。"
+    },
+    {
+      "id": "bili-postmanpat",
+      "name": "邮递员派特叔叔 Postman Pat",
+      "aliases": [
+        "邮递员派特叔叔 中文版"
+      ],
+      "pick": [
+        "派特"
+      ],
+      "ageMin": 3,
+      "ageMax": 6,
+      "paths": [
+        "path-social",
+        "path-language"
+      ],
+      "stages": {
+        "path-social": 2,
+        "path-language": 1
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 331,
+      "why": "英国老牌低幼动画，讲社区职业和帮助别人。",
+      "list": [
+        "家长社区"
+      ],
+      "desc": "派特叔叔送信途中帮村民解决问题。"
+    },
+    {
+      "id": "bili-sofia",
+      "name": "小公主苏菲亚 Sofia the First",
+      "aliases": [
+        "小公主苏菲亚 中文版 全集"
+      ],
+      "pick": [
+        "苏菲亚"
+      ],
+      "ageMin": 3,
+      "ageMax": 6,
+      "paths": [
+        "path-social",
+        "path-arts"
+      ],
+      "stages": {
+        "path-social": 2,
+        "path-arts": 1
+      },
+      "tags": [
+        "动画",
+        "情绪"
+      ],
+      "order": 332,
+      "why": "迪士尼公主线，讲新家庭、礼仪和同理心。",
+      "list": [
+        "家长社区",
+        "平台自制"
+      ],
+      "desc": "普通女孩成为公主后的学校和生活。"
+    },
+    {
+      "id": "bili-docmcstuffins",
+      "name": "小医师大玩偶 Doc McStuffins",
+      "aliases": [
+        "小医师大玩偶 中文版 全集"
+      ],
+      "pick": [
+        "小医师"
+      ],
+      "ageMin": 3,
+      "ageMax": 6,
+      "paths": [
+        "path-health",
+        "path-social"
+      ],
+      "stages": {
+        "path-health": 1,
+        "path-social": 1
+      },
+      "tags": [
+        "动画",
+        "情绪"
+      ],
+      "order": 333,
+      "why": "把看医生、刷牙、伤口处理讲成玩具诊所故事。",
+      "list": [
+        "家长社区",
+        "国际获奖"
+      ],
+      "desc": "小医生给玩具看病，认识身体和就医。"
+    },
+    {
+      "id": "bili-jake",
+      "name": "杰克与梦幻岛海盗 Jake and the Never Land Pirates",
+      "aliases": [
+        "杰克与梦幻岛海盗 中文版"
+      ],
+      "pick": [
+        "杰克"
+      ],
+      "ageMin": 3,
+      "ageMax": 6,
+      "paths": [
+        "path-social",
+        "path-language"
+      ],
+      "stages": {
+        "path-social": 2,
+        "path-language": 1
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 334,
+      "why": "团队合作和解决问题，每集带数数和方向小任务。",
+      "list": [
+        "家长社区"
+      ],
+      "desc": "小海盗团队合作寻宝，练数数和方向。"
+    },
+    {
+      "id": "bili-littleeinsteins",
+      "name": "小爱因斯坦 Little Einsteins",
+      "aliases": [
+        "小爱因斯坦 中文版 全集"
+      ],
+      "pick": [
+        "小爱因斯坦"
+      ],
+      "ageMin": 3,
+      "ageMax": 6,
+      "paths": [
+        "path-arts",
+        "path-science"
+      ],
+      "stages": {
+        "path-arts": 1,
+        "path-science": 1
+      },
+      "tags": [
+        "动画",
+        "艺术"
+      ],
+      "order": 335,
+      "why": "每集配一首古典乐和一幅名画，音乐与视觉启蒙。",
+      "list": [
+        "国际获奖"
+      ],
+      "desc": "四个孩子坐火箭冒险，认识古典音乐和名画。"
+    },
+    {
+      "id": "bili-superwhy",
+      "name": "超级为什么 Super Why!",
+      "aliases": [
+        "超级为什么 中文版 全集"
+      ],
+      "pick": [
+        "超级为什么"
+      ],
+      "ageMin": 3,
+      "ageMax": 6,
+      "paths": [
+        "path-language"
+      ],
+      "stages": {
+        "path-language": 1
+      },
+      "tags": [
+        "低幼",
+        "动画"
+      ],
+      "order": 336,
+      "why": "用字母、拼读和改写故事解决日常问题，自然拼读入门。",
+      "list": [
+        "家长社区",
+        "国际获奖"
+      ],
+      "desc": "童话角色改故事，练字母、拼读和阅读。"
+    },
+    {
+      "id": "bili-wordgirl",
+      "name": "单词女孩 WordGirl",
+      "aliases": [
+        "单词女孩 WordGirl 中文"
+      ],
+      "pick": [
+        "单词女孩"
+      ],
+      "ageMin": 6,
+      "ageMax": 9,
+      "paths": [
+        "path-language"
+      ],
+      "stages": {
+        "path-language": 2
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 337,
+      "why": "每集围绕几个词汇展开，适合小学低年级扩词。",
+      "list": [
+        "国际获奖"
+      ],
+      "desc": "超级英雄女孩用词汇打败反派，练词义。"
+    },
+    {
+      "id": "bili-bluesclues",
+      "name": "小蓝狗布鲁 Blue's Clues",
+      "aliases": [
+        "小蓝狗布鲁 中文版"
+      ],
+      "pick": [
+        "布鲁"
+      ],
+      "ageMin": 2,
+      "ageMax": 5,
+      "paths": [
+        "path-language",
+        "path-social"
+      ],
+      "stages": {
+        "path-language": 1,
+        "path-social": 1
+      },
+      "tags": [
+        "低幼"
+      ],
+      "order": 338,
+      "why": "互动式找线索，鼓励孩子对着屏幕回答问题。",
+      "list": [
+        "国际获奖",
+        "家长社区"
+      ],
+      "desc": "跟着小蓝狗找三条线索，练观察和表达。",
+      "skip": "B站只有零散单集，没有可用的整季合集"
+    },
+    {
+      "id": "bili-diego",
+      "name": "出发吧迪亚哥 Go, Diego, Go!",
+      "aliases": [
+        "出发吧迪亚哥 中文版"
+      ],
+      "pick": [
+        "迪亚哥"
+      ],
+      "ageMin": 3,
+      "ageMax": 6,
+      "paths": [
+        "path-science",
+        "path-social"
+      ],
+      "stages": {
+        "path-science": 1,
+        "path-social": 1
+      },
+      "tags": [
+        "动画",
+        "科学"
+      ],
+      "order": 339,
+      "why": "《朵拉》衍生，每集认识一种动物和它的栖息地。",
+      "list": [
+        "家长社区"
+      ],
+      "desc": "迪亚哥救助动物，认识动物习性和环境。",
+      "skip": "B站只有片段和梗视频，没有中文正片"
+    },
+    {
+      "id": "bili-franklin",
+      "name": "小乌龟富兰克林 Franklin",
+      "aliases": [
+        "小乌龟富兰克林 中文版"
+      ],
+      "pick": [
+        "富兰克林"
+      ],
+      "ageMin": 3,
+      "ageMax": 6,
+      "paths": [
+        "path-social",
+        "path-language"
+      ],
+      "stages": {
+        "path-social": 2,
+        "path-language": 1
+      },
+      "tags": [
+        "动画",
+        "情绪"
+      ],
+      "order": 340,
+      "why": "绘本改编，讲幼儿园阶段的胆小、承诺和友谊。",
+      "list": [
+        "绘本IP",
+        "家长社区"
+      ],
+      "desc": "小乌龟和朋友们的故事，练情绪表达。"
+    },
+    {
+      "id": "bili-littlebear",
+      "name": "天才宝贝熊 Little Bear",
+      "aliases": [
+        "天才宝贝熊 中文版"
+      ],
+      "pick": [
+        "天才宝贝熊"
+      ],
+      "ageMin": 3,
+      "ageMax": 6,
+      "paths": [
+        "path-language",
+        "path-social"
+      ],
+      "stages": {
+        "path-language": 1,
+        "path-social": 1
+      },
+      "tags": [
+        "动画",
+        "情绪"
+      ],
+      "order": 341,
+      "why": "节奏舒缓的绘本动画，适合睡前和亲子共读。",
+      "list": [
+        "绘本IP",
+        "国际获奖"
+      ],
+      "desc": "小熊和家人的日常，温和、适合睡前。"
+    },
+    {
+      "id": "bili-arthur",
+      "name": "阿瑟 Arthur",
+      "aliases": [
+        "阿瑟 中文版 全集"
+      ],
+      "pick": [
+        "阿瑟"
+      ],
+      "ageMin": 6,
+      "ageMax": 9,
+      "paths": [
+        "path-social",
+        "path-language"
+      ],
+      "stages": {
+        "path-social": 3,
+        "path-language": 2
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 342,
+      "why": "美国长寿校园动画，讲同学关系、霸凌和家庭。",
+      "list": [
+        "国际获奖",
+        "高分"
+      ],
+      "desc": "小学生阿瑟的校园和家庭故事。",
+      "pin": "BV15vUmByE3W"
+    },
+    {
+      "id": "bili-clifford",
+      "name": "大红狗克利福德 Clifford",
+      "aliases": [
+        "大红狗克利福德 中文版"
+      ],
+      "pick": [
+        "克利福德"
+      ],
+      "ageMin": 3,
+      "ageMax": 6,
+      "paths": [
+        "path-social",
+        "path-language"
+      ],
+      "stages": {
+        "path-social": 2,
+        "path-language": 1
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 343,
+      "why": "绘本改编，讲责任、友谊和城市生活。",
+      "list": [
+        "绘本IP",
+        "家长社区"
+      ],
+      "desc": "小女孩和她的巨型红狗，讲照顾与责任。",
+      "pin": "BV1bxuh6FECt"
+    },
+    {
+      "id": "bili-berenstain",
+      "name": "贝贝熊 The Berenstain Bears",
+      "aliases": [
+        "贝贝熊 中文版 全集"
+      ],
+      "pick": [
+        "贝贝熊"
+      ],
+      "ageMin": 3,
+      "ageMax": 6,
+      "paths": [
+        "path-social",
+        "path-health"
+      ],
+      "stages": {
+        "path-social": 2,
+        "path-health": 1
+      },
+      "tags": [
+        "动画",
+        "情绪"
+      ],
+      "order": 344,
+      "why": "经典绘本 IP，覆盖礼貌、诚实、看电视等家庭议题。",
+      "list": [
+        "绘本IP",
+        "家长社区"
+      ],
+      "desc": "熊家庭的日常，讲规则和品格。",
+      "skip": "B站只有音频故事，没有动画正片"
+    },
+    {
+      "id": "bili-madeline",
+      "name": "玛德琳 Madeline",
+      "aliases": [
+        "玛德琳 中文版 全集"
+      ],
+      "pick": [
+        "玛德琳"
+      ],
+      "ageMin": 4,
+      "ageMax": 7,
+      "paths": [
+        "path-language",
+        "path-arts"
+      ],
+      "stages": {
+        "path-language": 1,
+        "path-arts": 1
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 345,
+      "why": "巴黎寄宿学校的故事，押韵文本和法式画风。",
+      "list": [
+        "绘本IP",
+        "国际获奖"
+      ],
+      "desc": "小玛德琳在巴黎的冒险，节奏轻快。"
+    },
+    {
+      "id": "bili-winniepooh",
+      "name": "小熊维尼与跳跳虎",
+      "aliases": [
+        "小熊维尼与跳跳虎 中文版"
+      ],
+      "pick": [
+        "跳跳虎"
+      ],
+      "ageMin": 2,
+      "ageMax": 5,
+      "paths": [
+        "path-social",
+        "path-language"
+      ],
+      "stages": {
+        "path-social": 1,
+        "path-language": 1
+      },
+      "tags": [
+        "低幼",
+        "动画"
+      ],
+      "order": 346,
+      "why": "百亩森林的友谊故事，语速慢、冲突轻。",
+      "list": [
+        "家长社区",
+        "绘本IP"
+      ],
+      "desc": "维尼和朋友们解决小麻烦，讲友谊。",
+      "pin": "BV1RHUgYEEst"
+    },
+    {
+      "id": "bili-peterrabbit",
+      "name": "彼得兔 Peter Rabbit",
+      "aliases": [
+        "彼得兔 中文版 全集"
+      ],
+      "pick": [
+        "彼得兔"
+      ],
+      "ageMin": 3,
+      "ageMax": 6,
+      "paths": [
+        "path-language",
+        "path-science"
+      ],
+      "stages": {
+        "path-language": 1,
+        "path-science": 1
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 347,
+      "why": "经典绘本改编，田园场景和动物习性。",
+      "list": [
+        "绘本IP"
+      ],
+      "desc": "彼得兔在菜园和森林的冒险。"
+    },
+    {
+      "id": "bili-moomin",
+      "name": "姆明 Moomin",
+      "aliases": [
+        "姆明 中文版 全集"
+      ],
+      "pick": [
+        "姆明"
+      ],
+      "ageMin": 5,
+      "ageMax": 9,
+      "paths": [
+        "path-social",
+        "path-arts"
+      ],
+      "stages": {
+        "path-social": 2,
+        "path-arts": 1
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 348,
+      "why": "北欧经典，讲家庭、自由和不同性格的相处。",
+      "list": [
+        "国际获奖",
+        "绘本IP"
+      ],
+      "desc": "姆明谷一家和朋友的日常冒险。"
+    },
+    {
+      "id": "bili-sarahduck",
+      "name": "莎拉和乖乖鸭 Sarah & Duck",
+      "aliases": [
+        "莎拉和乖乖鸭 中文版"
+      ],
+      "pick": [
+        "莎拉"
+      ],
+      "ageMin": 2,
+      "ageMax": 5,
+      "paths": [
+        "path-language",
+        "path-social"
+      ],
+      "stages": {
+        "path-language": 1,
+        "path-social": 1
+      },
+      "tags": [
+        "低幼"
+      ],
+      "order": 349,
+      "why": "节奏慢、想象温和，适合低幼情绪安抚。",
+      "list": [
+        "国际获奖"
+      ],
+      "desc": "女孩和鸭子朋友的安静小冒险。"
+    },
+    {
+      "id": "bili-elmer",
+      "name": "花格子大象艾玛 Elmer",
+      "aliases": [
+        "花格子大象艾玛 中文"
+      ],
+      "pick": [
+        "艾玛"
+      ],
+      "minPages": 3,
+      "ageMin": 2,
+      "ageMax": 5,
+      "paths": [
+        "path-social",
+        "path-arts"
+      ],
+      "stages": {
+        "path-social": 1,
+        "path-arts": 1
+      },
+      "tags": [
+        "低幼"
+      ],
+      "order": 350,
+      "why": "绘本改编，讲接纳自己和不排斥差异。",
+      "list": [
+        "绘本IP"
+      ],
+      "desc": "花格子大象艾玛接纳自己的颜色。",
+      "skip": "B站只有绘本讲读，没有动画正片"
+    },
+    {
+      "id": "bili-gruffalo",
+      "name": "咕噜牛 The Gruffalo",
+      "aliases": [
+        "咕噜牛 动画 中文"
+      ],
+      "pick": [
+        "咕噜牛"
+      ],
+      "minPages": 1,
+      "ageMin": 3,
+      "ageMax": 6,
+      "paths": [
+        "path-language",
+        "path-social"
+      ],
+      "stages": {
+        "path-language": 1,
+        "path-social": 1
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 351,
+      "why": "Julia Donaldson 绘本改编短片，押韵文本和反转结局。",
+      "list": [
+        "国际获奖",
+        "绘本IP"
+      ],
+      "desc": "小老鼠用想象吓退天敌，半小时短片。"
+    },
+    {
+      "id": "bili-roombroom",
+      "name": "女巫扫帚排排坐 Room on the Broom",
+      "aliases": [
+        "女巫扫帚排排坐 中文"
+      ],
+      "pick": [
+        "扫帚"
+      ],
+      "minPages": 1,
+      "ageMin": 3,
+      "ageMax": 6,
+      "paths": [
+        "path-language",
+        "path-social"
+      ],
+      "stages": {
+        "path-language": 1,
+        "path-social": 1
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 352,
+      "why": "同作者绘本短片，讲分享和互助。",
+      "list": [
+        "国际获奖",
+        "绘本IP"
+      ],
+      "desc": "女巫和动物朋友共骑一把扫帚。"
+    },
+    {
+      "id": "bili-snailwhale",
+      "name": "小海螺和大鲸鱼 The Snail and the Whale",
+      "aliases": [
+        "小海螺和大鲸鱼 中文"
+      ],
+      "pick": [
+        "小海螺"
+      ],
+      "minPages": 1,
+      "ageMin": 3,
+      "ageMax": 6,
+      "paths": [
+        "path-science",
+        "path-social"
+      ],
+      "stages": {
+        "path-science": 1,
+        "path-social": 1
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 353,
+      "why": "绘本短片，海洋场景和互助故事。",
+      "list": [
+        "国际获奖",
+        "绘本IP"
+      ],
+      "desc": "小海螺搭鲸鱼旅行，见识海洋。",
+      "pin": "BV1ar3LenEeV"
+    },
+    {
+      "id": "bili-pippi",
+      "name": "长袜子皮皮 Pippi Longstocking",
+      "aliases": [
+        "长袜子皮皮 中文版 全集"
+      ],
+      "pick": [
+        "皮皮"
+      ],
+      "minPages": 3,
+      "ageMin": 5,
+      "ageMax": 9,
+      "paths": [
+        "path-language",
+        "path-social"
+      ],
+      "stages": {
+        "path-language": 2,
+        "path-social": 2
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 354,
+      "why": "经典儿童文学改编，讲独立、想象和友谊。",
+      "list": [
+        "国际获奖",
+        "绘本IP"
+      ],
+      "desc": "红发女孩皮皮的独立生活。",
+      "pin": "BV1Zs41187pS"
+    },
+    {
+      "id": "bili-wibblypig",
+      "name": "小猪威比 Wibbly Pig",
+      "aliases": [
+        "小猪威比 中文版"
+      ],
+      "pick": [
+        "威比"
+      ],
+      "ageMin": 2,
+      "ageMax": 5,
+      "paths": [
+        "path-language",
+        "path-social"
+      ],
+      "stages": {
+        "path-language": 1,
+        "path-social": 1
+      },
+      "tags": [
+        "低幼"
+      ],
+      "order": 355,
+      "why": "绘本改编，互动提问和日常想象。",
+      "list": [
+        "绘本IP"
+      ],
+      "desc": "小猪威比的日常想象游戏。"
+    },
+    {
+      "id": "bili-humf",
+      "name": "小毛怪 Humf",
+      "aliases": [
+        "小毛怪 中文版"
+      ],
+      "pick": [
+        "小毛怪"
+      ],
+      "ageMin": 2,
+      "ageMax": 5,
+      "paths": [
+        "path-social",
+        "path-language"
+      ],
+      "stages": {
+        "path-social": 1,
+        "path-language": 1
+      },
+      "tags": [
+        "低幼"
+      ],
+      "order": 356,
+      "why": "低幼情绪动画，讲害怕、生气和安慰。",
+      "list": [
+        "国际获奖"
+      ],
+      "desc": "小毛怪和朋友处理日常情绪。"
+    },
+    {
+      "id": "bili-pettson",
+      "name": "佩特森和芬达猫",
+      "aliases": [
+        "佩特森和芬达猫 中文版"
+      ],
+      "pick": [
+        "芬达猫"
+      ],
+      "ageMin": 4,
+      "ageMax": 7,
+      "paths": [
+        "path-social",
+        "path-science"
+      ],
+      "stages": {
+        "path-social": 2,
+        "path-science": 1
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 357,
+      "why": "瑞典绘本改编，老人和猫的发明日常。",
+      "list": [
+        "绘本IP"
+      ],
+      "desc": "老爷爷和猫一起做小发明。"
+    },
+    {
+      "id": "bili-badanamu",
+      "name": "巴塔木儿歌",
+      "aliases": [
+        "巴塔木儿歌 中文"
+      ],
+      "pick": [
+        "巴塔木"
+      ],
+      "minPages": 10,
+      "ageMin": 1,
+      "ageMax": 4,
+      "paths": [
+        "path-language",
+        "path-arts"
+      ],
+      "stages": {
+        "path-language": 1,
+        "path-arts": 1
+      },
+      "tags": [
+        "低幼"
+      ],
+      "order": 358,
+      "why": "3D 儿歌，旋律简单、画面干净。",
+      "list": [
+        "家长社区"
+      ],
+      "desc": "巴塔木伙伴的英文儿歌和律动。"
+    },
+    {
+      "id": "bili-blaze",
+      "name": "旋风战车队 Blaze",
+      "aliases": [
+        "旋风战车队 中文版 全集"
+      ],
+      "pick": [
+        "旋风战车队"
+      ],
+      "ageMin": 3,
+      "ageMax": 6,
+      "paths": [
+        "path-math",
+        "path-tech"
+      ],
+      "stages": {
+        "path-math": 1,
+        "path-tech": 1
+      },
+      "tags": [
+        "动画",
+        "科技"
+      ],
+      "order": 359,
+      "why": "每集用数学和物理解决赛车难题，STEM 入门。",
+      "list": [
+        "家长社区"
+      ],
+      "desc": "怪兽卡车用科学和数学闯关。",
+      "skip": "B站只有台配片段和同题材的其他动画，没有中文整季"
+    },
+    {
+      "id": "bili-gigantosaurus",
+      "name": "小恐龙大冒险 Gigantosaurus",
+      "aliases": [
+        "小恐龙大冒险 中文版"
+      ],
+      "pick": [
+        "小恐龙"
+      ],
+      "ageMin": 3,
+      "ageMax": 6,
+      "paths": [
+        "path-science",
+        "path-social"
+      ],
+      "stages": {
+        "path-science": 1,
+        "path-social": 1
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 360,
+      "why": "恐龙主题的友谊故事，带恐龙种类认知。",
+      "list": [
+        "家长社区"
+      ],
+      "desc": "四只小恐龙在史前世界的冒险。"
+    },
+    {
+      "id": "bili-pipandposy",
+      "name": "皮普和波西 Pip and Posy",
+      "aliases": [
+        "皮普和波西 中文版"
+      ],
+      "pick": [
+        "皮普"
+      ],
+      "ageMin": 2,
+      "ageMax": 5,
+      "paths": [
+        "path-social",
+        "path-language"
+      ],
+      "stages": {
+        "path-social": 1,
+        "path-language": 1
+      },
+      "tags": [
+        "低幼",
+        "情绪"
+      ],
+      "order": 361,
+      "why": "绘本改编，讲朋友冲突和和解。",
+      "list": [
+        "绘本IP"
+      ],
+      "desc": "小兔子和小老鼠的友谊日常。"
+    },
+    {
+      "id": "bili-smurfs",
+      "name": "蓝精灵 The Smurfs",
+      "aliases": [
+        "蓝精灵 中文版 全集"
+      ],
+      "pick": [
+        "蓝精灵"
+      ],
+      "ageMin": 4,
+      "ageMax": 8,
+      "paths": [
+        "path-social",
+        "path-arts"
+      ],
+      "stages": {
+        "path-social": 2,
+        "path-arts": 1
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 362,
+      "why": "经典合家欢动画，讲团队和个性。",
+      "list": [
+        "家长社区"
+      ],
+      "desc": "蓝精灵村庄对抗格格巫的日常。"
+    },
+    {
+      "id": "bili-tintin",
+      "name": "丁丁历险记",
+      "aliases": [
+        "丁丁历险记 中文版 全集"
+      ],
+      "pick": [
+        "丁丁"
+      ],
+      "ageMin": 6,
+      "ageMax": 10,
+      "paths": [
+        "path-humanities",
+        "path-social"
+      ],
+      "stages": {
+        "path-humanities": 1,
+        "path-social": 2
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 363,
+      "why": "环球冒险串起地理和文化，部分情节需家长解释。",
+      "list": [
+        "绘本IP",
+        "高分"
+      ],
+      "desc": "记者丁丁和米卢的环球探案。",
+      "pin": "BV1F2j2zxEvN"
+    },
+    {
+      "id": "bili-tomjerry",
+      "name": "猫和老鼠 Tom and Jerry",
+      "aliases": [
+        "猫和老鼠 中文版 全集"
+      ],
+      "pick": [
+        "猫和老鼠"
+      ],
+      "ageMin": 3,
+      "ageMax": 8,
+      "paths": [
+        "path-social",
+        "path-arts"
+      ],
+      "stages": {
+        "path-social": 1,
+        "path-arts": 1
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 364,
+      "why": "经典默剧式追逐，动作喜剧；打闹情节建议适度。",
+      "list": [
+        "高分",
+        "家长社区"
+      ],
+      "desc": "汤姆和杰瑞的追逐日常。"
+    },
+    {
+      "id": "bili-andersen",
+      "name": "安徒生童话动画",
+      "aliases": [
+        "安徒生童话 动画 中文"
+      ],
+      "pick": [
+        "安徒生"
+      ],
+      "ageMin": 3,
+      "ageMax": 8,
+      "paths": [
+        "path-language",
+        "path-social"
+      ],
+      "stages": {
+        "path-language": 1,
+        "path-social": 1
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 365,
+      "why": "经典童话改编，建议挑结局温和的篇目。",
+      "list": [
+        "绘本IP",
+        "教育部"
+      ],
+      "desc": "丑小鸭、拇指姑娘等童话动画。",
+      "pin": "BV1ks411h73Q"
+    },
+    {
+      "id": "bili-aesop",
+      "name": "伊索寓言动画",
+      "aliases": [
+        "伊索寓言 动画 中文"
+      ],
+      "pick": [
+        "伊索寓言"
+      ],
+      "ageMin": 4,
+      "ageMax": 9,
+      "paths": [
+        "path-language",
+        "path-social"
+      ],
+      "stages": {
+        "path-language": 1,
+        "path-social": 2
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 366,
+      "why": "短故事讲道理，适合亲子讨论。",
+      "list": [
+        "教育部",
+        "家长社区"
+      ],
+      "desc": "龟兔赛跑、狼来了等寓言动画。"
+    },
+    {
+      "id": "bili-shuke",
+      "name": "舒克和贝塔",
+      "aliases": [
+        "舒克和贝塔 全集"
+      ],
+      "pick": [
+        "舒克"
+      ],
+      "ageMin": 5,
+      "ageMax": 9,
+      "paths": [
+        "path-social",
+        "path-science"
+      ],
+      "stages": {
+        "path-social": 2,
+        "path-science": 1
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 367,
+      "why": "郑渊洁经典，两只小老鼠飞行员和坦克手。",
+      "list": [
+        "家长社区",
+        "高分"
+      ],
+      "desc": "舒克和贝塔的冒险，讲勇气和合作。"
+    },
+    {
+      "id": "bili-latabian",
+      "name": "邋遢大王奇遇记",
+      "aliases": [
+        "邋遢大王奇遇记 全集"
+      ],
+      "pick": [
+        "邋遢大王"
+      ],
+      "ageMin": 5,
+      "ageMax": 9,
+      "paths": [
+        "path-health",
+        "path-social"
+      ],
+      "stages": {
+        "path-health": 2,
+        "path-social": 2
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 368,
+      "why": "上海美影经典，讲卫生习惯和勇气。",
+      "list": [
+        "高分"
+      ],
+      "desc": "邋遢男孩在地下的奇遇。"
+    },
+    {
+      "id": "bili-afanti",
+      "name": "阿凡提的故事",
+      "aliases": [
+        "阿凡提的故事 全集"
+      ],
+      "pick": [
+        "阿凡提"
+      ],
+      "minPages": 5,
+      "ageMin": 6,
+      "ageMax": 9,
+      "paths": [
+        "path-humanities",
+        "path-social"
+      ],
+      "stages": {
+        "path-humanities": 1,
+        "path-social": 2
+      },
+      "tags": [
+        "动画",
+        "人文"
+      ],
+      "order": 369,
+      "why": "木偶动画，民间智慧故事。",
+      "list": [
+        "高分",
+        "央视"
+      ],
+      "desc": "阿凡提用智慧帮助穷人。"
+    },
+    {
+      "id": "bili-xuehaizi",
+      "name": "雪孩子",
+      "aliases": [
+        "雪孩子 动画"
+      ],
+      "pick": [
+        "雪孩子"
+      ],
+      "minPages": 1,
+      "ageMin": 3,
+      "ageMax": 6,
+      "paths": [
+        "path-social",
+        "path-arts"
+      ],
+      "stages": {
+        "path-social": 1,
+        "path-arts": 1
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 370,
+      "why": "上海美影短片，讲牺牲和友谊。",
+      "list": [
+        "高分"
+      ],
+      "desc": "雪孩子救小兔的故事，二十分钟。"
+    },
+    {
+      "id": "bili-jiuselu",
+      "name": "九色鹿",
+      "aliases": [
+        "九色鹿 动画"
+      ],
+      "pick": [
+        "九色鹿"
+      ],
+      "minPages": 1,
+      "ageMin": 5,
+      "ageMax": 9,
+      "paths": [
+        "path-humanities",
+        "path-social"
+      ],
+      "stages": {
+        "path-humanities": 1,
+        "path-social": 2
+      },
+      "tags": [
+        "动画",
+        "人文"
+      ],
+      "order": 371,
+      "why": "敦煌壁画改编，讲诚信和善恶。",
+      "list": [
+        "高分"
+      ],
+      "desc": "九色鹿救人反被出卖的故事。",
+      "pin": "BV1Hs411u7K9"
+    },
+    {
+      "id": "bili-sangeheshang",
+      "name": "三个和尚",
+      "aliases": [
+        "三个和尚 动画"
+      ],
+      "pick": [
+        "三个和尚"
+      ],
+      "minPages": 1,
+      "ageMin": 4,
+      "ageMax": 8,
+      "paths": [
+        "path-social",
+        "path-arts"
+      ],
+      "stages": {
+        "path-social": 2,
+        "path-arts": 1
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 372,
+      "why": "无对白经典短片，讲合作和分工。",
+      "list": [
+        "高分"
+      ],
+      "desc": "三个和尚没水喝，最后学会合作。"
+    },
+    {
+      "id": "bili-damantian",
+      "name": "大闹天宫",
+      "aliases": [
+        "大闹天宫 动画"
+      ],
+      "pick": [
+        "大闹天宫"
+      ],
+      "minPages": 1,
+      "ageMin": 6,
+      "ageMax": 10,
+      "paths": [
+        "path-humanities",
+        "path-arts"
+      ],
+      "stages": {
+        "path-humanities": 1,
+        "path-arts": 2
+      },
+      "tags": [
+        "动画",
+        "人文"
+      ],
+      "order": 373,
+      "why": "中国动画里程碑，京剧脸谱和动作设计。",
+      "list": [
+        "高分",
+        "国际获奖"
+      ],
+      "desc": "孙悟空大闹天宫，经典美术片。"
+    },
+    {
+      "id": "bili-xiaokedou",
+      "name": "小蝌蚪找妈妈",
+      "aliases": [
+        "小蝌蚪找妈妈 动画"
+      ],
+      "pick": [
+        "小蝌蚪"
+      ],
+      "minPages": 1,
+      "ageMin": 3,
+      "ageMax": 6,
+      "paths": [
+        "path-science",
+        "path-arts"
+      ],
+      "stages": {
+        "path-science": 1,
+        "path-arts": 1
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 374,
+      "why": "水墨动画短片，讲青蛙成长过程。",
+      "list": [
+        "高分"
+      ],
+      "desc": "小蝌蚪找妈妈，认识变态发育。",
+      "pin": "BV1fh7HzpEJU"
+    },
+    {
+      "id": "bili-meitou",
+      "name": "没头脑和不高兴",
+      "aliases": [
+        "没头脑和不高兴 动画"
+      ],
+      "pick": [
+        "没头脑"
+      ],
+      "minPages": 1,
+      "ageMin": 5,
+      "ageMax": 8,
+      "paths": [
+        "path-social",
+        "path-language"
+      ],
+      "stages": {
+        "path-social": 2,
+        "path-language": 1
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 375,
+      "why": "经典短片，讲粗心与任性的后果。",
+      "list": [
+        "高分"
+      ],
+      "desc": "两个孩子的性格故事，幽默。"
+    },
+    {
+      "id": "bili-shenbi",
+      "name": "神笔马良",
+      "aliases": [
+        "神笔马良 木偶动画"
+      ],
+      "pick": [
+        "神笔"
+      ],
+      "minPages": 1,
+      "ageMin": 5,
+      "ageMax": 9,
+      "paths": [
+        "path-humanities",
+        "path-social"
+      ],
+      "stages": {
+        "path-humanities": 1,
+        "path-social": 2
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 376,
+      "why": "木偶动画，讲善意和反抗贪婪。",
+      "list": [
+        "高分"
+      ],
+      "desc": "马良的神笔帮助穷人。",
+      "pin": "BV1Dc411F7zt"
+    },
+    {
+      "id": "bili-sanshiliu",
+      "name": "三十六个字",
+      "aliases": [
+        "三十六个字 动画"
+      ],
+      "pick": [
+        "三十六个字"
+      ],
+      "minPages": 1,
+      "ageMin": 5,
+      "ageMax": 9,
+      "paths": [
+        "path-language"
+      ],
+      "stages": {
+        "path-language": 2
+      },
+      "tags": [
+        "低幼"
+      ],
+      "order": 377,
+      "why": "用 36 个象形字讲一个故事，识字启蒙。",
+      "list": [
+        "高分"
+      ],
+      "desc": "象形字组成的短片，认汉字来源。"
+    },
+    {
+      "id": "bili-lanmao",
+      "name": "蓝猫淘气三千问",
+      "aliases": [
+        "蓝猫淘气三千问 全集"
+      ],
+      "pick": [
+        "蓝猫"
+      ],
+      "minPages": 20,
+      "ageMin": 5,
+      "ageMax": 9,
+      "paths": [
+        "path-science"
+      ],
+      "stages": {
+        "path-science": 2
+      },
+      "tags": [
+        "动画",
+        "科学"
+      ],
+      "order": 378,
+      "why": "国产科普动画，用问答讲自然和科技。",
+      "list": [
+        "家长社区"
+      ],
+      "desc": "蓝猫和小伙伴解答科学问题。"
+    },
+    {
+      "id": "bili-haier",
+      "name": "海尔兄弟",
+      "aliases": [
+        "海尔兄弟 全集"
+      ],
+      "pick": [
+        "海尔兄弟"
+      ],
+      "minPages": 20,
+      "ageMin": 5,
+      "ageMax": 9,
+      "paths": [
+        "path-science",
+        "path-social"
+      ],
+      "stages": {
+        "path-science": 2,
+        "path-social": 2
+      },
+      "tags": [
+        "动画",
+        "科学"
+      ],
+      "order": 379,
+      "why": "环球冒险串起地理、自然和人文。",
+      "list": [
+        "家长社区",
+        "高分"
+      ],
+      "desc": "兄弟俩环游世界，解答自然现象。"
+    },
+    {
+      "id": "bili-yixiu",
+      "name": "聪明的一休",
+      "aliases": [
+        "聪明的一休 中文版 全集"
+      ],
+      "pick": [
+        "一休"
+      ],
+      "minPages": 20,
+      "ageMin": 6,
+      "ageMax": 10,
+      "paths": [
+        "path-humanities",
+        "path-math"
+      ],
+      "stages": {
+        "path-humanities": 1,
+        "path-math": 2
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 380,
+      "why": "用逻辑和机智解决难题，日本历史背景。",
+      "list": [
+        "高分",
+        "家长社区"
+      ],
+      "desc": "小和尚一休用智慧化解难题。"
+    },
+    {
+      "id": "bili-doraemon",
+      "name": "哆啦A梦",
+      "aliases": [
+        "哆啦A梦 中文版 全集"
+      ],
+      "pick": [
+        "哆啦A梦"
+      ],
+      "minPages": 10,
+      "ageMin": 5,
+      "ageMax": 10,
+      "paths": [
+        "path-science",
+        "path-social"
+      ],
+      "stages": {
+        "path-science": 2,
+        "path-social": 2
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 381,
+      "why": "想象力与科技道具，适合亲子讨论愿望与规则。",
+      "list": [
+        "高分",
+        "家长社区"
+      ],
+      "desc": "哆啦A梦的未来道具和大雄的日常。"
+    },
+    {
+      "id": "bili-luoxiaohei",
+      "name": "罗小黑战记",
+      "aliases": [
+        "罗小黑战记 全集"
+      ],
+      "pick": [
+        "罗小黑"
+      ],
+      "minPages": 10,
+      "ageMin": 8,
+      "ageMax": 12,
+      "paths": [
+        "path-social",
+        "path-arts"
+      ],
+      "stages": {
+        "path-social": 3,
+        "path-arts": 2
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 382,
+      "why": "国产治愈系动画，动作场面克制，讲共处。",
+      "list": [
+        "高分"
+      ],
+      "desc": "小猫妖罗小黑的日常和冒险。",
+      "pin": "BV14ooxBbECP"
+    },
+    {
+      "id": "bili-jingjuma",
+      "name": "京剧猫",
+      "aliases": [
+        "京剧猫 全集"
+      ],
+      "pick": [
+        "京剧猫"
+      ],
+      "minPages": 20,
+      "ageMin": 6,
+      "ageMax": 10,
+      "paths": [
+        "path-arts",
+        "path-humanities"
+      ],
+      "stages": {
+        "path-arts": 2,
+        "path-humanities": 1
+      },
+      "tags": [
+        "动画",
+        "艺术"
+      ],
+      "order": 383,
+      "why": "把京剧行当和身段放进冒险故事。",
+      "list": [
+        "家长社区"
+      ],
+      "desc": "小猫们用京剧功夫守护家园。"
+    },
+    {
+      "id": "bili-zhonghuaxiaozi",
+      "name": "中华小子",
+      "aliases": [
+        "中华小子 全集"
+      ],
+      "pick": [
+        "中华小子"
+      ],
+      "minPages": 20,
+      "ageMin": 8,
+      "ageMax": 12,
+      "paths": [
+        "path-humanities",
+        "path-social"
+      ],
+      "stages": {
+        "path-humanities": 2,
+        "path-social": 3
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 384,
+      "why": "少林题材动画，讲责任和武德。",
+      "list": [
+        "高分"
+      ],
+      "desc": "三个少年在少林学艺除魔。",
+      "skip": "B站只有一口气看完和 reaction，没有完整 26 集"
+    },
+    {
+      "id": "bili-weiqishaonian",
+      "name": "围棋少年",
+      "aliases": [
+        "围棋少年 全集"
+      ],
+      "pick": [
+        "围棋少年"
+      ],
+      "minPages": 20,
+      "ageMin": 8,
+      "ageMax": 12,
+      "paths": [
+        "path-math",
+        "path-humanities"
+      ],
+      "stages": {
+        "path-math": 3,
+        "path-humanities": 1
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 385,
+      "why": "以围棋对局讲逻辑、心态和成长。",
+      "list": [
+        "高分"
+      ],
+      "desc": "江流儿的围棋成长之路。"
+    },
+    {
+      "id": "bili-natun",
+      "name": "那年那兔那些事",
+      "aliases": [
+        "那年那兔那些事 全集"
+      ],
+      "pick": [
+        "那兔"
+      ],
+      "minPages": 10,
+      "ageMin": 9,
+      "ageMax": 12,
+      "paths": [
+        "path-humanities"
+      ],
+      "stages": {
+        "path-humanities": 3
+      },
+      "tags": [
+        "动画",
+        "人文"
+      ],
+      "order": 386,
+      "why": "用动物形象讲近现代史，建议家长陪同解释。",
+      "list": [
+        "家长社区"
+      ],
+      "desc": "兔子们的建国和国防故事，需家长讲解。",
+      "skip": "B站只有片段合集和二次创作，没有完整分集"
+    },
+    {
+      "id": "bili-qitan",
+      "name": "中国奇谭",
+      "aliases": [
+        "中国奇谭 全集"
+      ],
+      "pick": [
+        "中国奇谭"
+      ],
+      "minPages": 8,
+      "ageMin": 9,
+      "ageMax": 12,
+      "paths": [
+        "path-arts",
+        "path-humanities"
+      ],
+      "stages": {
+        "path-arts": 3,
+        "path-humanities": 2
+      },
+      "tags": [
+        "动画",
+        "艺术"
+      ],
+      "order": 387,
+      "why": "八个短片风格各异，部分篇目偏暗，建议挑看。",
+      "list": [
+        "高分"
+      ],
+      "desc": "中式奇幻短片集，画风多样。",
+      "skip": "B站正片为付费内容，免费只有预告和解说"
+    },
+    {
+      "id": "bili-greenplanet",
+      "name": "绿色星球 The Green Planet",
+      "aliases": [
+        "绿色星球 纪录片 中文"
+      ],
+      "pick": [
+        "绿色星球"
+      ],
+      "ageMin": 8,
+      "ageMax": 12,
+      "paths": [
+        "path-science"
+      ],
+      "stages": {
+        "path-science": 4
+      },
+      "tags": [
+        "科学",
+        "纪录片"
+      ],
+      "order": 388,
+      "why": "BBC 植物纪录片，讲植物的竞争和协作。",
+      "list": [
+        "高分",
+        "国际获奖"
+      ],
+      "desc": "从雨林到沙漠，看植物怎么生存。"
+    },
+    {
+      "id": "bili-perfectplanet",
+      "name": "完美星球 A Perfect Planet",
+      "aliases": [
+        "完美星球 纪录片 中文"
+      ],
+      "pick": [
+        "完美星球"
+      ],
+      "ageMin": 8,
+      "ageMax": 12,
+      "paths": [
+        "path-science"
+      ],
+      "stages": {
+        "path-science": 4
+      },
+      "tags": [
+        "科学",
+        "纪录片"
+      ],
+      "order": 389,
+      "why": "讲火山、阳光、洋流如何塑造生命。",
+      "list": [
+        "高分",
+        "国际获奖"
+      ],
+      "desc": "地球力量与生命的相互作用。"
+    },
+    {
+      "id": "bili-sevenworlds",
+      "name": "七个世界，一个星球",
+      "aliases": [
+        "七个世界一个星球 中文"
+      ],
+      "pick": [
+        "七个世界"
+      ],
+      "ageMin": 8,
+      "ageMax": 12,
+      "paths": [
+        "path-science"
+      ],
+      "stages": {
+        "path-science": 4
+      },
+      "tags": [
+        "科学",
+        "纪录片"
+      ],
+      "order": 390,
+      "why": "按大洲讲生物多样性，地理和生态一起建立。",
+      "list": [
+        "高分",
+        "国际获奖"
+      ],
+      "desc": "七大洲的代表物种和生存策略。"
+    },
+    {
+      "id": "bili-planetearth2",
+      "name": "地球脉动2",
+      "aliases": [
+        "地球脉动2 中文"
+      ],
+      "pick": [
+        "地球脉动"
+      ],
+      "ageMin": 8,
+      "ageMax": 12,
+      "paths": [
+        "path-science"
+      ],
+      "stages": {
+        "path-science": 4
+      },
+      "tags": [
+        "科学",
+        "纪录片"
+      ],
+      "order": 391,
+      "why": "第一季续作，岛屿、山脉、城市等生境。",
+      "list": [
+        "高分",
+        "国际获奖"
+      ],
+      "desc": "不同生境里的动物故事。",
+      "skip": "B站只有单集和精彩片段，没有整季合集"
+    },
+    {
+      "id": "bili-dynasties",
+      "name": "王朝 Dynasties",
+      "aliases": [
+        "王朝 纪录片 中文"
+      ],
+      "pick": [
+        "王朝"
+      ],
+      "ageMin": 8,
+      "ageMax": 12,
+      "paths": [
+        "path-science",
+        "path-social"
+      ],
+      "stages": {
+        "path-science": 4,
+        "path-social": 3
+      },
+      "tags": [
+        "科学",
+        "纪录片"
+      ],
+      "order": 392,
+      "why": "跟拍五种濒危动物的家族权力更替。",
+      "list": [
+        "高分",
+        "国际获奖"
+      ],
+      "desc": "黑猩猩、帝企鹅等家族的生存斗争。",
+      "skip": "B站只有预告和片段，没有完整的五集正片"
+    },
+    {
+      "id": "bili-spywild",
+      "name": "荒野间谍 Spy in the Wild",
+      "aliases": [
+        "荒野间谍 纪录片 中文"
+      ],
+      "pick": [
+        "荒野间谍"
+      ],
+      "minPages": 4,
+      "ageMin": 7,
+      "ageMax": 12,
+      "paths": [
+        "path-science"
+      ],
+      "stages": {
+        "path-science": 3
+      },
+      "tags": [
+        "科学",
+        "纪录片"
+      ],
+      "order": 393,
+      "why": "用仿生摄像机近距离拍动物行为，孩子容易入迷。",
+      "list": [
+        "高分"
+      ],
+      "desc": "伪装成动物的摄像机记录真实行为。"
+    },
+    {
+      "id": "bili-hiddenkingdoms",
+      "name": "隐秘王国 Hidden Kingdoms",
+      "aliases": [
+        "隐秘王国 纪录片 中文"
+      ],
+      "pick": [
+        "隐秘王国"
+      ],
+      "minPages": 3,
+      "ageMin": 6,
+      "ageMax": 10,
+      "paths": [
+        "path-science"
+      ],
+      "stages": {
+        "path-science": 3
+      },
+      "tags": [
+        "科学",
+        "纪录片"
+      ],
+      "order": 394,
+      "why": "从小动物视角拍微观世界。",
+      "list": [
+        "高分"
+      ],
+      "desc": "小动物眼中的生存挑战。"
+    },
+    {
+      "id": "bili-africa",
+      "name": "非洲 Africa",
+      "aliases": [
+        "非洲 纪录片 中文"
+      ],
+      "pick": [
+        "非洲"
+      ],
+      "ageMin": 7,
+      "ageMax": 12,
+      "paths": [
+        "path-science"
+      ],
+      "stages": {
+        "path-science": 3
+      },
+      "tags": [
+        "科学",
+        "纪录片"
+      ],
+      "order": 395,
+      "why": "BBC 非洲系列，讲极端环境中的动物。",
+      "list": [
+        "高分"
+      ],
+      "desc": "撒哈拉、草原和雨林的动物。",
+      "pin": "BV1E4411F7r1"
+    },
+    {
+      "id": "bili-madagascar",
+      "name": "马达加斯加",
+      "aliases": [
+        "马达加斯加 纪录片 中文"
+      ],
+      "pick": [
+        "马达加斯加"
+      ],
+      "minPages": 3,
+      "ageMin": 7,
+      "ageMax": 12,
+      "paths": [
+        "path-science"
+      ],
+      "stages": {
+        "path-science": 3
+      },
+      "tags": [
+        "科学",
+        "纪录片"
+      ],
+      "order": 396,
+      "why": "孤岛进化案例，讲特有物种。",
+      "list": [
+        "高分"
+      ],
+      "desc": "马达加斯加的狐猴和变色龙。",
+      "pin": "BV1mt411g7iW"
+    },
+    {
+      "id": "bili-wildchina",
+      "name": "美丽中国 Wild China",
+      "aliases": [
+        "美丽中国 纪录片 中文"
+      ],
+      "pick": [
+        "美丽中国"
+      ],
+      "ageMin": 7,
+      "ageMax": 12,
+      "paths": [
+        "path-science",
+        "path-humanities"
+      ],
+      "stages": {
+        "path-science": 3,
+        "path-humanities": 2
+      },
+      "tags": [
+        "科学",
+        "纪录片",
+        "人文"
+      ],
+      "order": 397,
+      "why": "BBC 与央视合拍，中国自然与人文地理。",
+      "list": [
+        "高分",
+        "央视"
+      ],
+      "desc": "从青藏高原到江南水乡的自然人文。"
+    },
+    {
+      "id": "bili-bluechina",
+      "name": "蔚蓝之境",
+      "aliases": [
+        "蔚蓝之境 纪录片"
+      ],
+      "pick": [
+        "蔚蓝之境"
+      ],
+      "ageMin": 7,
+      "ageMax": 12,
+      "paths": [
+        "path-science"
+      ],
+      "stages": {
+        "path-science": 3
+      },
+      "tags": [
+        "科学",
+        "纪录片"
+      ],
+      "order": 398,
+      "why": "中国近海生态纪录片，画面和物种都熟悉。",
+      "list": [
+        "高分",
+        "央视"
+      ],
+      "desc": "中国海岸带的海洋生物。"
+    },
+    {
+      "id": "bili-thirdpole",
+      "name": "第三极",
+      "aliases": [
+        "第三极 纪录片"
+      ],
+      "pick": [
+        "第三极"
+      ],
+      "ageMin": 8,
+      "ageMax": 12,
+      "paths": [
+        "path-humanities",
+        "path-science"
+      ],
+      "stages": {
+        "path-humanities": 3,
+        "path-science": 3
+      },
+      "tags": [
+        "人文",
+        "纪录片"
+      ],
+      "order": 399,
+      "why": "青藏高原的人与自然，讲适应和信仰。",
+      "list": [
+        "高分",
+        "央视"
+      ],
+      "desc": "高原居民和野生动物的生活。"
+    },
+    {
+      "id": "bili-naturepower",
+      "name": "自然的力量",
+      "aliases": [
+        "自然的力量 纪录片"
+      ],
+      "pick": [
+        "自然的力量"
+      ],
+      "ageMin": 8,
+      "ageMax": 12,
+      "paths": [
+        "path-science"
+      ],
+      "stages": {
+        "path-science": 3
+      },
+      "tags": [
+        "科学",
+        "纪录片"
+      ],
+      "order": 400,
+      "why": "中国自然纪录片，覆盖多种地貌。",
+      "list": [
+        "央视",
+        "高分"
+      ],
+      "desc": "中国荒野中的物种和季节变化。"
+    },
+    {
+      "id": "bili-universe",
+      "name": "宇宙的奇迹 Wonders of the Universe",
+      "aliases": [
+        "宇宙的奇迹 纪录片 中文"
+      ],
+      "pick": [
+        "宇宙的奇迹"
+      ],
+      "minPages": 4,
+      "ageMin": 9,
+      "ageMax": 12,
+      "paths": [
+        "path-science"
+      ],
+      "stages": {
+        "path-science": 4
+      },
+      "tags": [
+        "科学",
+        "纪录片"
+      ],
+      "order": 401,
+      "why": "讲时间、元素和引力，适合大孩子。",
+      "list": [
+        "高分"
+      ],
+      "desc": "从宇宙尺度理解时间和物质。"
+    },
+    {
+      "id": "bili-fabric",
+      "name": "宇宙的构造 The Fabric of the Cosmos",
+      "aliases": [
+        "宇宙的构造 纪录片 中文"
+      ],
+      "pick": [
+        "宇宙的构造"
+      ],
+      "minPages": 4,
+      "ageMin": 9,
+      "ageMax": 12,
+      "paths": [
+        "path-science"
+      ],
+      "stages": {
+        "path-science": 4
+      },
+      "tags": [
+        "科学",
+        "纪录片"
+      ],
+      "order": 402,
+      "why": "空间、时间、量子，画面友好。",
+      "list": [
+        "高分"
+      ],
+      "desc": "物理学前沿概念的通俗讲解。"
+    },
+    {
+      "id": "bili-edge",
+      "name": "旅行到宇宙边缘",
+      "aliases": [
+        "旅行到宇宙边缘 中文"
+      ],
+      "pick": [
+        "旅行到宇宙边缘"
+      ],
+      "minPages": 1,
+      "ageMin": 8,
+      "ageMax": 12,
+      "paths": [
+        "path-science"
+      ],
+      "stages": {
+        "path-science": 4
+      },
+      "tags": [
+        "科学",
+        "纪录片"
+      ],
+      "order": 403,
+      "why": "一次从地球到宇宙边界的视觉旅行。",
+      "list": [
+        "高分"
+      ],
+      "desc": "九十分钟宇宙尺度漫游。"
+    },
+    {
+      "id": "bili-mathstory",
+      "name": "数学的故事 The Story of Maths",
+      "aliases": [
+        "数学的故事 纪录片 中文"
+      ],
+      "pick": [
+        "数学的故事"
+      ],
+      "minPages": 4,
+      "ageMin": 9,
+      "ageMax": 12,
+      "paths": [
+        "path-math",
+        "path-humanities"
+      ],
+      "stages": {
+        "path-math": 4,
+        "path-humanities": 2
+      },
+      "tags": [
+        "科学",
+        "纪录片"
+      ],
+      "order": 404,
+      "why": "从古埃及到现代，数学史和数学家。",
+      "list": [
+        "高分"
+      ],
+      "desc": "数学如何一步步发展出来。"
+    },
+    {
+      "id": "bili-mathmystery",
+      "name": "数学大谜思",
+      "aliases": [
+        "数学大谜思 中文"
+      ],
+      "pick": [
+        "数学大谜思"
+      ],
+      "minPages": 1,
+      "ageMin": 9,
+      "ageMax": 12,
+      "paths": [
+        "path-math"
+      ],
+      "stages": {
+        "path-math": 4
+      },
+      "tags": [
+        "科学",
+        "纪录片"
+      ],
+      "order": 405,
+      "why": "讲自然界里的数学规律。",
+      "list": [
+        "高分"
+      ],
+      "desc": "斐波那契、分形和自然模式。"
+    },
+    {
+      "id": "bili-chemistry",
+      "name": "化学史",
+      "aliases": [
+        "化学史 纪录片 中文"
+      ],
+      "pick": [
+        "化学史"
+      ],
+      "minPages": 3,
+      "ageMin": 9,
+      "ageMax": 12,
+      "paths": [
+        "path-science"
+      ],
+      "stages": {
+        "path-science": 4
+      },
+      "tags": [
+        "科学",
+        "纪录片"
+      ],
+      "order": 406,
+      "why": "元素发现和化学史，配初中化学。",
+      "list": [
+        "高分"
+      ],
+      "desc": "从炼金术到元素周期表。"
+    },
+    {
+      "id": "bili-sciencequiz",
+      "name": "你最想知道的科学",
+      "aliases": [
+        "你最想知道的科学 纪录片"
+      ],
+      "pick": [
+        "你最想知道的科学"
+      ],
+      "ageMin": 8,
+      "ageMax": 12,
+      "paths": [
+        "path-science"
+      ],
+      "stages": {
+        "path-science": 3
+      },
+      "tags": [
+        "科学",
+        "纪录片"
+      ],
+      "order": 407,
+      "why": "BBC 用实验回答日常科学问题。",
+      "list": [
+        "高分"
+      ],
+      "desc": "日常现象背后的科学解释。"
+    },
+    {
+      "id": "bili-bigscience",
+      "name": "大科学实验",
+      "aliases": [
+        "大科学实验 中文"
+      ],
+      "pick": [
+        "大科学实验"
+      ],
+      "minPages": 10,
+      "ageMin": 8,
+      "ageMax": 12,
+      "paths": [
+        "path-science"
+      ],
+      "stages": {
+        "path-science": 3
+      },
+      "tags": [
+        "科学",
+        "纪录片"
+      ],
+      "order": 408,
+      "why": "NHK 用真实实验验证假设。",
+      "list": [
+        "高分"
+      ],
+      "desc": "大规模实验验证科学原理。"
+    },
+    {
+      "id": "bili-mythbusters",
+      "name": "流言终结者",
+      "aliases": [
+        "流言终结者 中文版 全集"
+      ],
+      "pick": [
+        "流言终结者"
+      ],
+      "minPages": 10,
+      "ageMin": 9,
+      "ageMax": 12,
+      "paths": [
+        "path-science",
+        "path-tech"
+      ],
+      "stages": {
+        "path-science": 4,
+        "path-tech": 3
+      },
+      "tags": [
+        "科学",
+        "科技"
+      ],
+      "order": 409,
+      "why": "用实验验证流言，培养求证习惯。",
+      "list": [
+        "高分"
+      ],
+      "desc": "两位特效师用实验验证传言。",
+      "skip": "B站只有零散分集和讲解合集，没有完整整季"
+    },
+    {
+      "id": "bili-beakman",
+      "name": "比克曼的科学世界",
+      "aliases": [
+        "比克曼的科学世界 中文"
+      ],
+      "pick": [
+        "比克曼"
+      ],
+      "minPages": 10,
+      "ageMin": 8,
+      "ageMax": 12,
+      "paths": [
+        "path-science"
+      ],
+      "stages": {
+        "path-science": 3
+      },
+      "tags": [
+        "科学"
+      ],
+      "order": 410,
+      "why": "经典科学实验节目，幽默、可复现。",
+      "list": [
+        "家长社区"
+      ],
+      "desc": "用夸张实验讲科学原理。"
+    },
+    {
+      "id": "bili-billnye",
+      "name": "比尔教科学 Bill Nye the Science Guy",
+      "aliases": [
+        "比尔教科学 中文"
+      ],
+      "pick": [
+        "比尔教科学"
+      ],
+      "minPages": 10,
+      "ageMin": 8,
+      "ageMax": 12,
+      "paths": [
+        "path-science"
+      ],
+      "stages": {
+        "path-science": 3
+      },
+      "tags": [
+        "科学"
+      ],
+      "order": 411,
+      "why": "每集一个主题，实验和动画结合。",
+      "list": [
+        "家长社区"
+      ],
+      "desc": "比尔用实验讲物理、生物和地球。"
+    },
+    {
+      "id": "bili-microcosmos",
+      "name": "微观世界 Microcosmos",
+      "aliases": [
+        "微观世界 昆虫 纪录片"
+      ],
+      "pick": [
+        "微观世界"
+      ],
+      "minPages": 1,
+      "ageMin": 6,
+      "ageMax": 10,
+      "paths": [
+        "path-science"
+      ],
+      "stages": {
+        "path-science": 3
+      },
+      "tags": [
+        "科学",
+        "纪录片"
+      ],
+      "order": 412,
+      "why": "昆虫视角的纪录片，几乎无旁白。",
+      "list": [
+        "高分"
+      ],
+      "desc": "草叶间的昆虫生活，画面震撼。",
+      "pin": "BV1tx411J7gq"
+    },
+    {
+      "id": "bili-penguins",
+      "name": "帝企鹅日记",
+      "aliases": [
+        "帝企鹅日记 中文"
+      ],
+      "pick": [
+        "帝企鹅"
+      ],
+      "minPages": 1,
+      "ageMin": 6,
+      "ageMax": 10,
+      "paths": [
+        "path-science"
+      ],
+      "stages": {
+        "path-science": 3
+      },
+      "tags": [
+        "科学",
+        "纪录片"
+      ],
+      "order": 413,
+      "why": "企鹅繁殖季的完整记录。",
+      "list": [
+        "高分"
+      ],
+      "desc": "南极帝企鹅的迁徙和育雏。",
+      "pin": "BV1ZqHtz7Eyg"
+    },
+    {
+      "id": "bili-oceans",
+      "name": "海洋 Océans",
+      "aliases": [
+        "海洋 纪录片 中文"
+      ],
+      "pick": [
+        "海洋"
+      ],
+      "minPages": 1,
+      "ageMin": 7,
+      "ageMax": 12,
+      "paths": [
+        "path-science"
+      ],
+      "stages": {
+        "path-science": 3
+      },
+      "tags": [
+        "科学",
+        "纪录片"
+      ],
+      "order": 414,
+      "why": "海洋生态全景，画面和配乐出色。",
+      "list": [
+        "高分"
+      ],
+      "desc": "从海岸到深海的海洋生物。",
+      "pin": "BV17t41167Hc"
+    },
+    {
+      "id": "bili-deepblue",
+      "name": "深蓝 Deep Blue",
+      "aliases": [
+        "深蓝 纪录片 海洋"
+      ],
+      "pick": [
+        "深蓝"
+      ],
+      "minPages": 1,
+      "ageMin": 7,
+      "ageMax": 12,
+      "paths": [
+        "path-science"
+      ],
+      "stages": {
+        "path-science": 3
+      },
+      "tags": [
+        "科学",
+        "纪录片"
+      ],
+      "order": 415,
+      "why": "海洋纪录片，节奏舒缓。",
+      "list": [
+        "高分"
+      ],
+      "desc": "深海和极地海洋的生物。"
+    },
+    {
+      "id": "bili-migratorybirds",
+      "name": "迁徙的鸟",
+      "aliases": [
+        "迁徙的鸟 纪录片"
+      ],
+      "pick": [
+        "迁徙"
+      ],
+      "minPages": 1,
+      "ageMin": 7,
+      "ageMax": 12,
+      "paths": [
+        "path-science"
+      ],
+      "stages": {
+        "path-science": 3
+      },
+      "tags": [
+        "科学",
+        "纪录片"
+      ],
+      "order": 416,
+      "why": "候鸟迁徙，讲方向和耐力。",
+      "list": [
+        "高分"
+      ],
+      "desc": "跟随候鸟跨越大陆。",
+      "pin": "BV1EU4y1f7hw"
+    },
+    {
+      "id": "bili-earthpower",
+      "name": "地球的力量",
+      "aliases": [
+        "地球的力量 纪录片 中文"
+      ],
+      "pick": [
+        "地球的力量"
+      ],
+      "minPages": 4,
+      "ageMin": 8,
+      "ageMax": 12,
+      "paths": [
+        "path-science"
+      ],
+      "stages": {
+        "path-science": 4
+      },
+      "tags": [
+        "科学",
+        "纪录片"
+      ],
+      "order": 417,
+      "why": "火山、大气、冰、海洋如何塑造地球。",
+      "list": [
+        "高分"
+      ],
+      "desc": "五种地质力量改变地球。"
+    },
+    {
+      "id": "bili-hexi",
+      "name": "河西走廊",
+      "aliases": [
+        "河西走廊 纪录片"
+      ],
+      "pick": [
+        "河西走廊"
+      ],
+      "ageMin": 9,
+      "ageMax": 12,
+      "paths": [
+        "path-humanities"
+      ],
+      "stages": {
+        "path-humanities": 3
+      },
+      "tags": [
+        "人文",
+        "纪录片"
+      ],
+      "order": 418,
+      "why": "丝路历史，画面和配乐都很强。",
+      "list": [
+        "高分",
+        "央视"
+      ],
+      "desc": "从汉到今天的河西走廊历史。"
+    },
+    {
+      "id": "bili-dunhuang",
+      "name": "敦煌",
+      "aliases": [
+        "敦煌 纪录片"
+      ],
+      "pick": [
+        "敦煌"
+      ],
+      "ageMin": 9,
+      "ageMax": 12,
+      "paths": [
+        "path-humanities",
+        "path-arts"
+      ],
+      "stages": {
+        "path-humanities": 3,
+        "path-arts": 3
+      },
+      "tags": [
+        "人文",
+        "纪录片"
+      ],
+      "order": 419,
+      "why": "莫高窟和丝路文明，讲守护。",
+      "list": [
+        "高分",
+        "央视"
+      ],
+      "desc": "敦煌石窟的历史与保护。"
+    },
+    {
+      "id": "bili-chinahistory",
+      "name": "中国通史",
+      "aliases": [
+        "中国通史 纪录片 全集"
+      ],
+      "pick": [
+        "中国通史"
+      ],
+      "minPages": 20,
+      "ageMin": 9,
+      "ageMax": 12,
+      "paths": [
+        "path-humanities"
+      ],
+      "stages": {
+        "path-humanities": 4
+      },
+      "tags": [
+        "人文",
+        "纪录片"
+      ],
+      "order": 420,
+      "why": "百集通史，适合按朝代挑看。",
+      "list": [
+        "高分",
+        "央视"
+      ],
+      "desc": "从史前到近代的中国历史。",
+      "pin": "BV18G41177ri"
+    },
+    {
+      "id": "bili-nationaltreasure",
+      "name": "国家宝藏",
+      "aliases": [
+        "国家宝藏 第一季"
+      ],
+      "pick": [
+        "国家宝藏"
+      ],
+      "minPages": 8,
+      "ageMin": 9,
+      "ageMax": 12,
+      "paths": [
+        "path-humanities",
+        "path-arts"
+      ],
+      "stages": {
+        "path-humanities": 3,
+        "path-arts": 3
+      },
+      "tags": [
+        "人文",
+        "纪录片"
+      ],
+      "order": 421,
+      "why": "用舞台剧讲文物故事。",
+      "list": [
+        "高分",
+        "央视"
+      ],
+      "desc": "博物馆文物的前世今生。",
+      "skip": "B站只有单期上传，没有整季合集"
+    },
+    {
+      "id": "bili-classics",
+      "name": "典籍里的中国",
+      "aliases": [
+        "典籍里的中国 全集"
+      ],
+      "pick": [
+        "典籍里的中国"
+      ],
+      "minPages": 8,
+      "ageMin": 9,
+      "ageMax": 12,
+      "paths": [
+        "path-humanities"
+      ],
+      "stages": {
+        "path-humanities": 4
+      },
+      "tags": [
+        "人文"
+      ],
+      "order": 422,
+      "why": "把《尚书》《论语》等典籍演成故事。",
+      "list": [
+        "高分",
+        "央视"
+      ],
+      "desc": "经典典籍的戏剧化讲述。"
+    },
+    {
+      "id": "bili-xinanlianda",
+      "name": "西南联大",
+      "aliases": [
+        "西南联大 纪录片"
+      ],
+      "pick": [
+        "西南联大"
+      ],
+      "ageMin": 9,
+      "ageMax": 12,
+      "paths": [
+        "path-humanities"
+      ],
+      "stages": {
+        "path-humanities": 4
+      },
+      "tags": [
+        "人文",
+        "纪录片"
+      ],
+      "order": 423,
+      "why": "抗战时期的大学，讲求知和精神。",
+      "list": [
+        "高分"
+      ],
+      "desc": "西南联大的师生与时代。"
+    },
+    {
+      "id": "bili-worldheritage",
+      "name": "世界遗产之中国",
+      "aliases": [
+        "世界遗产 中国 纪录片"
+      ],
+      "pick": [
+        "世界遗产"
+      ],
+      "ageMin": 8,
+      "ageMax": 12,
+      "paths": [
+        "path-humanities",
+        "path-science"
+      ],
+      "stages": {
+        "path-humanities": 3,
+        "path-science": 2
+      },
+      "tags": [
+        "人文",
+        "纪录片"
+      ],
+      "order": 424,
+      "why": "中国世界遗产的自然与文化。",
+      "list": [
+        "央视",
+        "高分"
+      ],
+      "desc": "中国的世界遗产巡礼。"
+    },
+    {
+      "id": "bili-bitechina",
+      "name": "舌尖上的中国",
+      "aliases": [
+        "舌尖上的中国 第一季"
+      ],
+      "pick": [
+        "舌尖上的中国"
+      ],
+      "ageMin": 8,
+      "ageMax": 12,
+      "paths": [
+        "path-humanities"
+      ],
+      "stages": {
+        "path-humanities": 3
+      },
+      "tags": [
+        "人文",
+        "纪录片"
+      ],
+      "order": 425,
+      "why": "食物背后的地理和人情。",
+      "list": [
+        "高分",
+        "央视"
+      ],
+      "desc": "中国各地饮食与生活方式。"
+    },
+    {
+      "id": "bili-computerscience",
+      "name": "计算机科学速成课",
+      "aliases": [
+        "计算机科学速成课 中文"
+      ],
+      "pick": [
+        "计算机科学"
+      ],
+      "minPages": 20,
+      "ageMin": 9,
+      "ageMax": 12,
+      "paths": [
+        "path-tech",
+        "path-science"
+      ],
+      "stages": {
+        "path-tech": 4,
+        "path-science": 3
+      },
+      "tags": [
+        "科技"
+      ],
+      "order": 426,
+      "why": "每集十分钟讲计算机原理，适合大孩子。",
+      "list": [
+        "高分"
+      ],
+      "desc": "从二进制到人工智能的计算机通识。"
+    },
+    {
+      "id": "bili-bigcountry",
+      "name": "大国重器",
+      "aliases": [
+        "大国重器 纪录片"
+      ],
+      "pick": [
+        "大国重器"
+      ],
+      "ageMin": 9,
+      "ageMax": 12,
+      "paths": [
+        "path-tech",
+        "path-humanities"
+      ],
+      "stages": {
+        "path-tech": 3,
+        "path-humanities": 2
+      },
+      "tags": [
+        "科技",
+        "纪录片"
+      ],
+      "order": 427,
+      "why": "中国装备制造，讲工程和职业。",
+      "list": [
+        "央视",
+        "高分"
+      ],
+      "desc": "大型装备和制造现场。"
+    },
+    {
+      "id": "bili-superengineering",
+      "name": "超级工程",
+      "aliases": [
+        "超级工程 纪录片"
+      ],
+      "pick": [
+        "超级工程"
+      ],
+      "ageMin": 9,
+      "ageMax": 12,
+      "paths": [
+        "path-tech"
+      ],
+      "stages": {
+        "path-tech": 3
+      },
+      "tags": [
+        "科技",
+        "纪录片"
+      ],
+      "order": 428,
+      "why": "桥梁、港口、高铁怎么造。",
+      "list": [
+        "央视",
+        "高分"
+      ],
+      "desc": "中国重大工程的建造过程。"
+    },
+    {
+      "id": "bili-innovatechina",
+      "name": "创新中国",
+      "aliases": [
+        "创新中国 纪录片"
+      ],
+      "pick": [
+        "创新中国"
+      ],
+      "ageMin": 9,
+      "ageMax": 12,
+      "paths": [
+        "path-tech"
+      ],
+      "stages": {
+        "path-tech": 3
+      },
+      "tags": [
+        "科技",
+        "纪录片"
+      ],
+      "order": 429,
+      "why": "前沿科技和产业，拓展职业视野。",
+      "list": [
+        "央视"
+      ],
+      "desc": "中国科技创新的各个领域。"
+    },
+    {
+      "id": "bili-beidou",
+      "name": "北斗",
+      "aliases": [
+        "北斗 纪录片"
+      ],
+      "pick": [
+        "北斗"
+      ],
+      "minPages": 3,
+      "ageMin": 9,
+      "ageMax": 12,
+      "paths": [
+        "path-tech",
+        "path-science"
+      ],
+      "stages": {
+        "path-tech": 3,
+        "path-science": 3
+      },
+      "tags": [
+        "科技",
+        "纪录片"
+      ],
+      "order": 430,
+      "why": "卫星导航系统的建设故事。",
+      "list": [
+        "央视"
+      ],
+      "desc": "北斗系统的研发与应用。",
+      "pin": "BV12a4y157ef"
+    },
+    {
+      "id": "bili-ai",
+      "name": "你好 AI",
+      "aliases": [
+        "你好 AI 纪录片"
+      ],
+      "pick": [
+        "你好 AI"
+      ],
+      "minPages": 3,
+      "ageMin": 9,
+      "ageMax": 12,
+      "paths": [
+        "path-tech"
+      ],
+      "stages": {
+        "path-tech": 4
+      },
+      "tags": [
+        "科技",
+        "纪录片"
+      ],
+      "order": 431,
+      "why": "人工智能应用现场，适合讨论 AI。",
+      "list": [
+        "央视",
+        "高分"
+      ],
+      "desc": "AI 在医疗、交通等领域的应用。",
+      "skip": "B站只有预告和宣传片，没有六集正片"
+    },
+    {
+      "id": "bili-artpower",
+      "name": "艺术的力量",
+      "aliases": [
+        "艺术的力量 纪录片 中文"
+      ],
+      "pick": [
+        "艺术的力量"
+      ],
+      "ageMin": 9,
+      "ageMax": 12,
+      "paths": [
+        "path-arts",
+        "path-humanities"
+      ],
+      "stages": {
+        "path-arts": 4,
+        "path-humanities": 3
+      },
+      "tags": [
+        "艺术",
+        "纪录片"
+      ],
+      "order": 432,
+      "why": "八位艺术家的创作与时代。",
+      "list": [
+        "高分"
+      ],
+      "desc": "卡拉瓦乔、梵高等艺术家的故事。"
+    },
+    {
+      "id": "bili-civilisation",
+      "name": "文明 Civilisations",
+      "aliases": [
+        "文明 纪录片 中文"
+      ],
+      "pick": [
+        "文明"
+      ],
+      "ageMin": 9,
+      "ageMax": 12,
+      "paths": [
+        "path-arts",
+        "path-humanities"
+      ],
+      "stages": {
+        "path-arts": 4,
+        "path-humanities": 4
+      },
+      "tags": [
+        "艺术",
+        "纪录片",
+        "人文"
+      ],
+      "order": 433,
+      "why": "世界艺术史通览，画面精美。",
+      "list": [
+        "高分"
+      ],
+      "desc": "从远古到现代的世界艺术。"
+    },
+    {
+      "id": "bili-artstory",
+      "name": "局部",
+      "aliases": [
+        "局部 陈丹青"
+      ],
+      "pick": [
+        "局部"
+      ],
+      "minPages": 10,
+      "ageMin": 9,
+      "ageMax": 12,
+      "paths": [
+        "path-arts"
+      ],
+      "stages": {
+        "path-arts": 4
+      },
+      "tags": [
+        "艺术"
+      ],
+      "order": 434,
+      "why": "陈丹青讲绘画，观点鲜明，适合亲子讨论。",
+      "list": [
+        "高分"
+      ],
+      "desc": "陈丹青的艺术漫谈。"
+    },
+    {
+      "id": "bili-musicstory",
+      "name": "音乐的故事",
+      "aliases": [
+        "音乐的故事 纪录片 中文"
+      ],
+      "pick": [
+        "音乐的故事"
+      ],
+      "minPages": 4,
+      "ageMin": 8,
+      "ageMax": 12,
+      "paths": [
+        "path-arts"
+      ],
+      "stages": {
+        "path-arts": 3
+      },
+      "tags": [
+        "艺术",
+        "纪录片"
+      ],
+      "order": 435,
+      "why": "BBC 音乐史，配大量演奏片段。",
+      "list": [
+        "高分"
+      ],
+      "desc": "从古典到现代的音乐发展。",
+      "pin": "BV16b411e761"
+    },
+    {
+      "id": "bili-classicalmusic",
+      "name": "儿童古典音乐启蒙",
+      "aliases": [
+        "儿童古典音乐 启蒙 动画"
+      ],
+      "pick": [
+        "古典音乐"
+      ],
+      "minPages": 10,
+      "ageMin": 3,
+      "ageMax": 6,
+      "paths": [
+        "path-arts"
+      ],
+      "stages": {
+        "path-arts": 1
+      },
+      "tags": [
+        "艺术",
+        "低幼"
+      ],
+      "order": 436,
+      "why": "名曲配动画或故事，降低欣赏门槛。",
+      "list": [
+        "家长社区"
+      ],
+      "desc": "用短片认识古典音乐。"
+    },
+    {
+      "id": "bili-labrador",
+      "name": "安全警长拉布拉多",
+      "aliases": [
+        "安全警长拉布拉多 全集"
+      ],
+      "pick": [
+        "拉布拉多"
+      ],
+      "minPages": 10,
+      "ageMin": 3,
+      "ageMax": 6,
+      "paths": [
+        "path-health"
+      ],
+      "stages": {
+        "path-health": 2
+      },
+      "tags": [
+        "动画",
+        "安全"
+      ],
+      "order": 437,
+      "why": "国产安全教育动画，覆盖走失、触电、陌生人。",
+      "list": [
+        "家长社区"
+      ],
+      "desc": "安全警长处理日常危险场景。",
+      "pin": "BV1KN546REWw"
+    },
+    {
+      "id": "bili-body",
+      "name": "人体奥秘",
+      "aliases": [
+        "人体奥秘 纪录片 中文"
+      ],
+      "pick": [
+        "人体奥秘"
+      ],
+      "minPages": 4,
+      "ageMin": 8,
+      "ageMax": 12,
+      "paths": [
+        "path-health",
+        "path-science"
+      ],
+      "stages": {
+        "path-health": 3,
+        "path-science": 3
+      },
+      "tags": [
+        "科学",
+        "纪录片"
+      ],
+      "order": 438,
+      "why": "BBC 人体系列，讲器官和系统。",
+      "list": [
+        "高分"
+      ],
+      "desc": "从细胞到器官看人体运作。"
+    },
+    {
+      "id": "bili-humanjourney",
+      "name": "人体内旅行",
+      "aliases": [
+        "人体内旅行 中文"
+      ],
+      "pick": [
+        "人体内旅行"
+      ],
+      "minPages": 1,
+      "ageMin": 8,
+      "ageMax": 12,
+      "paths": [
+        "path-health",
+        "path-science"
+      ],
+      "stages": {
+        "path-health": 3,
+        "path-science": 3
+      },
+      "tags": [
+        "科学",
+        "纪录片"
+      ],
+      "order": 439,
+      "why": "用动画进入人体，讲消化和循环。",
+      "list": [
+        "高分"
+      ],
+      "desc": "一次人体内部的视觉旅行。"
+    },
+    {
+      "id": "bili-truthexercise",
+      "name": "锻炼的真相",
+      "aliases": [
+        "锻炼的真相 中文"
+      ],
+      "pick": [
+        "锻炼的真相"
+      ],
+      "minPages": 1,
+      "ageMin": 9,
+      "ageMax": 12,
+      "paths": [
+        "path-health"
+      ],
+      "stages": {
+        "path-health": 4
+      },
+      "tags": [
+        "科学",
+        "纪录片"
+      ],
+      "order": 440,
+      "why": "用实验讲运动效果，适合亲子一起看。",
+      "list": [
+        "高分"
+      ],
+      "desc": "运动如何影响身体。",
+      "pin": "BV18B4y1x7RB"
+    },
+    {
+      "id": "bili-sleep",
+      "name": "睡眠的科学",
+      "aliases": [
+        "睡眠的科学 纪录片"
+      ],
+      "pick": [
+        "睡眠"
+      ],
+      "minPages": 1,
+      "ageMin": 9,
+      "ageMax": 12,
+      "paths": [
+        "path-health"
+      ],
+      "stages": {
+        "path-health": 4
+      },
+      "tags": [
+        "科学",
+        "纪录片"
+      ],
+      "order": 441,
+      "why": "讲睡眠周期和缺觉影响。",
+      "list": [
+        "高分"
+      ],
+      "desc": "睡眠对大脑和身体的作用。"
+    },
+    {
+      "id": "bili-safetyprimary",
+      "name": "小学生安全教育",
+      "aliases": [
+        "小学生安全教育 动画 全集"
+      ],
+      "pick": [
+        "安全教育"
+      ],
+      "minPages": 10,
+      "ageMin": 6,
+      "ageMax": 9,
+      "paths": [
+        "path-health"
+      ],
+      "stages": {
+        "path-health": 2
+      },
+      "tags": [
+        "安全"
+      ],
+      "order": 442,
+      "why": "校园和居家安全场景合集。",
+      "list": [
+        "家长社区"
+      ],
+      "desc": "小学生常见安全风险和应对。"
+    },
+    {
+      "id": "bili-yoga",
+      "name": "儿童瑜伽",
+      "aliases": [
+        "儿童瑜伽 中文"
+      ],
+      "pick": [
+        "儿童瑜伽"
+      ],
+      "ageMin": 3,
+      "ageMax": 6,
+      "paths": [
+        "path-health"
+      ],
+      "stages": {
+        "path-health": 1
+      },
+      "tags": [
+        "低幼"
+      ],
+      "order": 443,
+      "why": "亲子一起做的伸展和呼吸。",
+      "list": [
+        "家长社区"
+      ],
+      "desc": "简单的儿童瑜伽动作。"
+    },
+    {
+      "id": "bili-wukong",
+      "name": "悟空识字",
+      "aliases": [
+        "悟空识字 全集"
+      ],
+      "pick": [
+        "悟空识字"
+      ],
+      "minPages": 10,
+      "ageMin": 4,
+      "ageMax": 7,
+      "paths": [
+        "path-language"
+      ],
+      "stages": {
+        "path-language": 1
+      },
+      "tags": [
+        "低幼"
+      ],
+      "order": 444,
+      "why": "识字 App 配套动画，讲字形和字源。",
+      "list": [
+        "家长社区"
+      ],
+      "desc": "悟空识字课程动画。"
+    },
+    {
+      "id": "bili-pinyin",
+      "name": "拼音动画",
+      "aliases": [
+        "拼音 动画 教学 全集"
+      ],
+      "pick": [
+        "拼音"
+      ],
+      "minPages": 10,
+      "ageMin": 4,
+      "ageMax": 7,
+      "paths": [
+        "path-language"
+      ],
+      "stages": {
+        "path-language": 1
+      },
+      "tags": [
+        "低幼"
+      ],
+      "order": 445,
+      "why": "系统讲声母韵母和拼读。",
+      "list": [
+        "教育部"
+      ],
+      "desc": "拼音启蒙课程动画。"
+    },
+    {
+      "id": "bili-chengyu",
+      "name": "成语故事动画",
+      "aliases": [
+        "成语故事 动画 全集"
+      ],
+      "pick": [
+        "成语"
+      ],
+      "minPages": 10,
+      "ageMin": 5,
+      "ageMax": 9,
+      "paths": [
+        "path-language",
+        "path-humanities"
+      ],
+      "stages": {
+        "path-language": 2,
+        "path-humanities": 1
+      },
+      "tags": [
+        "动画",
+        "人文"
+      ],
+      "order": 446,
+      "why": "用故事理解成语，避免死记。",
+      "list": [
+        "家长社区",
+        "教育部"
+      ],
+      "desc": "常见成语的来源和用法。"
+    },
+    {
+      "id": "bili-sanzijing",
+      "name": "三字经",
+      "aliases": [
+        "三字经 动画 全集"
+      ],
+      "pick": [
+        "三字经"
+      ],
+      "minPages": 5,
+      "ageMin": 4,
+      "ageMax": 8,
+      "paths": [
+        "path-humanities",
+        "path-language"
+      ],
+      "stages": {
+        "path-humanities": 1,
+        "path-language": 1
+      },
+      "tags": [
+        "人文",
+        "低幼"
+      ],
+      "order": 447,
+      "why": "国学启蒙，建议家长解释背景。",
+      "list": [
+        "教育部"
+      ],
+      "desc": "三字经诵读和讲解。"
+    },
+    {
+      "id": "bili-dizigui",
+      "name": "弟子规",
+      "aliases": [
+        "弟子规 动画 全集"
+      ],
+      "pick": [
+        "弟子规"
+      ],
+      "minPages": 5,
+      "ageMin": 5,
+      "ageMax": 9,
+      "paths": [
+        "path-humanities",
+        "path-social"
+      ],
+      "stages": {
+        "path-humanities": 1,
+        "path-social": 2
+      },
+      "tags": [
+        "人文"
+      ],
+      "order": 448,
+      "why": "传统蒙学，需家长挑选讲解。",
+      "list": [
+        "教育部"
+      ],
+      "desc": "弟子规诵读与生活场景。"
+    },
+    {
+      "id": "bili-poem300",
+      "name": "唐诗三百首",
+      "aliases": [
+        "唐诗三百首 动画"
+      ],
+      "pick": [
+        "唐诗"
+      ],
+      "minPages": 20,
+      "ageMin": 5,
+      "ageMax": 9,
+      "paths": [
+        "path-language",
+        "path-humanities"
+      ],
+      "stages": {
+        "path-language": 2,
+        "path-humanities": 1
+      },
+      "tags": [
+        "人文"
+      ],
+      "order": 449,
+      "why": "配乐诵读和画面，建立语感。",
+      "list": [
+        "教育部"
+      ],
+      "desc": "唐诗诵读与赏析。"
+    },
+    {
+      "id": "bili-rubik",
+      "name": "魔方教程",
+      "aliases": [
+        "魔方 教程 三阶"
+      ],
+      "pick": [
+        "魔方"
+      ],
+      "minPages": 10,
+      "ageMin": 7,
+      "ageMax": 12,
+      "paths": [
+        "path-math",
+        "path-tech"
+      ],
+      "stages": {
+        "path-math": 3,
+        "path-tech": 2
+      },
+      "tags": [
+        "科技"
+      ],
+      "order": 450,
+      "why": "空间思维和步骤记忆。",
+      "list": [
+        "家长社区"
+      ],
+      "desc": "三阶魔方入门还原。"
     }
   ]
 }

@@ -30,6 +30,7 @@ async function main() {
   const extra = await readJson("data/extra_sites.json");
   const curation = await readJson("data/curation.json");
   const curated = await readJson("data/curated_catalog.json");
+  const backupSites = await readJson("data/backup_sites.json");
 
   const ages = new Set(taxonomy.ages.map((item) => item.id));
   const paths = new Set(taxonomy.paths.map((item) => item.id));
@@ -89,6 +90,9 @@ async function main() {
     requireField(Boolean(item.why), item.id + " 缺少入选理由");
   }
 
+  const backupKeys = new Set((backupSites.sites || []).map((site) => site.key));
+  requireField(backupKeys.size >= 2, "backup_sites.json 至少需要 2 个备用站");
+
   const curatedIds = new Set();
   for (const item of curated.series || []) {
     requireField(curationIds.has(item.id), "解析结果不在名单里：" + (item.id || "?"));
@@ -103,6 +107,14 @@ async function main() {
     }
     for (const tag of item.tags || []) {
       requireField(topicTags.has(tag), item.id + " 的标签未被任何专题使用：" + tag);
+    }
+    for (const backup of item.backups || []) {
+      requireField(backup && /^https?:\/\//.test(backup.api || ""), item.id + " 的备用线路缺少 api");
+      requireField(backupKeys.has(backup && backup.key), item.id + " 引用了未登记的备用站 " + (backup && backup.key));
+      requireField(Boolean(backup && backup.site), item.id + " 的备用线路缺少站点名");
+      requireField(Boolean(backup && String(backup.vodId || "").length), item.id + " 的备用线路缺少 vodId");
+      requireField(Boolean(backup && String(backup.from || "").length), item.id + " 的备用线路缺少 from");
+      requireField(Array.isArray(backup && backup.episodes) && backup.episodes.length > 0, item.id + " 的备用线路没有集数");
     }
   }
   for (const item of curated.missing || []) {

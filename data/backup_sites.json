@@ -1,0 +1,23 @@
+{
+  "note": "名单条目的备用线路来源。同步时在这些 MacCMS 站按标题搜索，只保留分类匹配、名称匹配且能取到直连 m3u8 的结果，最多 3 条。第三方采集站画质和广告不可控，仅作为 B 站/央视之外的兜底。",
+  "sites": [
+    {
+      "key": "jsu",
+      "name": "极速",
+      "api": "https://jszyapi.com/api.php/provide/vod/at/json",
+      "referer": "https://jszyapi.com/"
+    },
+    {
+      "key": "bfzy",
+      "name": "暴风",
+      "api": "https://bfzyapi.com/api.php/provide/vod",
+      "referer": "https://bfzyapi.com/"
+    },
+    {
+      "key": "taopian",
+      "name": "淘片",
+      "api": "https://taopianapi.com/cjapi/mc/vod/json.html",
+      "referer": "https://taopianapi.com/"
+    }
+  ]
+}

@@ -136,8 +136,27 @@ public class Kids extends Spider {
             JSONObject vod = card(item);
             vod.put("vod_remarks", "共 " + episodes.length() + " 集");
             vod.put("vod_content", content(item));
-            vod.put("vod_play_from", bili ? "哔哩哔哩" : "央视");
-            vod.put("vod_play_url", playUrl(episodes));
+            List<String> froms = new ArrayList<>();
+            List<String> urls = new ArrayList<>();
+            froms.add(bili ? "哔哩哔哩" : "央视");
+            urls.add(playUrl(episodes));
+            JSONArray backups = item.optJSONArray("backups");
+            for (int i = 0; backups != null && i < backups.length(); i++) {
+                JSONObject backup = backups.optJSONObject(i);
+                if (backup == null) continue;
+                JSONArray names = backup.optJSONArray("episodes");
+                if (names == null || names.length() == 0) continue;
+                List<String> parts = new ArrayList<>();
+                for (int j = 0; j < names.length(); j++) {
+                    String name = clean(names.optString(j));
+                    if (name.isEmpty()) name = "第" + (j + 1) + "集";
+                    parts.add(name + "$mac:" + item.optString("id") + ":" + i + ":" + j);
+                }
+                froms.add("备用·" + clean(backup.optString("site", "线路")));
+                urls.add(join(parts, "#"));
+            }
+            vod.put("vod_play_from", join(froms, "$$$"));
+            vod.put("vod_play_url", join(urls, "$$$"));
             JSONObject result = new JSONObject();
             result.put("list", new JSONArray().put(vod));
             return result.toString();
@@ -167,6 +186,7 @@ public class Kids extends Spider {
         String pid = id == null ? "" : id.trim();
         if (pid.isEmpty()) return playerMessage("缺少节目 ID");
         if (pid.startsWith("bili:")) return biliPlayer(pid);
+        if (pid.startsWith("mac:")) return macPlayer(pid);
         try {
             JSONObject data = new JSONObject(get(PLAY_API + "?pid=" + encode(pid)));
             String url = data.optString("hls_url", "");
@@ -417,6 +437,73 @@ public class Kids extends Spider {
         }
     }
 
+    // 备用线路：播放时再取一次详情，拿到当次有效的 m3u8 地址。
+    private String macPlayer(String pid) {
+        String[] parts = pid.split(":");
+        if (parts.length < 4) return playerMessage("播放参数异常");
+        int backupIndex;
+        int episodeIndex;
+        try {
+            backupIndex = Integer.parseInt(parts[2]);
+            episodeIndex = Integer.parseInt(parts[3]);
+        } catch (Exception e) {
+            return playerMessage("播放参数异常");
+        }
+        JSONObject item = find(toList(catalog), parts[1]);
+        if (item == null) return playerMessage("未找到该系列");
+        JSONArray backups = item.optJSONArray("backups");
+        JSONObject backup = backups == null ? null : backups.optJSONObject(backupIndex);
+        if (backup == null) return playerMessage("缺少备用线路");
+        String api = backup.optString("api");
+        String referer = backup.optString("referer", REFERER);
+        String vodId = backup.optString("vodId");
+        if (api.isEmpty() || vodId.isEmpty()) return playerMessage("备用线路参数异常");
+        try {
+            String url = api + (api.contains("?") ? "&" : "?") + "ac=detail&ids=" + encode(vodId);
+            JSONObject data = new JSONObject(get(url, referer));
+            JSONArray list = data.optJSONArray("list");
+            JSONObject detail = list == null ? null : list.optJSONObject(0);
+            if (detail == null) return playerMessage("备用线路没有返回详情");
+            String[] froms = detail.optString("vod_play_from").split("\\$\\$\\$");
+            String[] groups = detail.optString("vod_play_url").split("\\$\\$\\$");
+            String from = backup.optString("from");
+            int group = -1;
+            for (int i = 0; i < froms.length; i++) {
+                if (from.equals(froms[i])) {
+                    group = i;
+                    break;
+                }
+            }
+            if (group < 0 || group >= groups.length) {
+                for (int i = 0; i < groups.length; i++) {
+                    if (groups[i].contains(".m3u8")) {
+                        group = i;
+                        break;
+                    }
+                }
+            }
+            if (group < 0 || group >= groups.length) return playerMessage("备用线路没有播放地址");
+            String[] episodes = groups[group].split("#");
+            if (episodes.length == 0) return playerMessage("备用线路没有播放地址");
+            if (episodeIndex < 0) episodeIndex = 0;
+            if (episodeIndex >= episodes.length) episodeIndex = episodes.length - 1;
+            String episode = episodes[episodeIndex];
+            int at = episode.indexOf('$');
+            String play = (at < 0 ? episode : episode.substring(at + 1)).trim();
+            if (!play.startsWith("http")) return playerMessage("备用线路地址异常");
+            JSONObject header = new JSONObject();
+            header.put("User-Agent", UA);
+            header.put("Referer", referer);
+            JSONObject result = new JSONObject();
+            result.put("parse", 0);
+            result.put("url", play);
+            result.put("header", header);
+            return result.toString();
+        } catch (Exception e) {
+            return playerMessage("备用线路解析失败：" + text(e));
+        }
+    }
+
     private String content(JSONObject item) {
         List<String> lines = new ArrayList<>();
         String desc = clean(item.optString("desc"));
@@ -436,6 +523,15 @@ public class Kids extends Spider {
         if (!paths.isEmpty()) lines.add("学习路线：" + join(paths, "、"));
         boolean bili = "bili".equals(item.optString("source"));
         lines.add(bili ? "内容来源：哔哩哔哩（B站）UP 主上传，播放时实时取流。" : "内容来源：央视网，播放时实时解析。");
+        JSONArray backups = item.optJSONArray("backups");
+        List<String> backupNames = new ArrayList<>();
+        for (int i = 0; backups != null && i < backups.length(); i++) {
+            String site = clean(backups.optJSONObject(i) == null ? "" : backups.optJSONObject(i).optString("site"));
+            if (!site.isEmpty() && !backupNames.contains(site)) backupNames.add(site);
+        }
+        if (!backupNames.isEmpty()) {
+            lines.add("备用线路：" + join(backupNames, "、") + "（第三方采集站，画质和广告不可控）");
+        }
         return join(lines, "\n");
     }
 

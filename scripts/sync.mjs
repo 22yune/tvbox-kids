@@ -6,6 +6,7 @@ import { fileURLToPath } from "node:url";
 
 import { buildJar } from "./build-jar.mjs";
 import { resolveCuration } from "./curate.mjs";
+import { resolveBackups } from "./backups.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const LIST_API = "https://api.cntv.cn/NewVideo/getVideoListByColumn";
@@ -229,6 +230,7 @@ async function main() {
   const taxonomy = await readJson("data/taxonomy.json");
   const live = await readJson("data/live.json");
   const extra = await readJson("data/extra_sites.json");
+  const backupSites = (await readJson("data/backup_sites.json")).sites || [];
   const curationInput = await readJson("data/curation.json");
   let curatedPrevious = { series: [] };
   try {
@@ -289,10 +291,17 @@ async function main() {
   } else {
     console.log("按名单解析来源：");
     const result = await resolveCuration(curationInput.series || [], curatedPrevious.series || []);
+    let resolvedSeries = result.series;
+    if (backupSites.length && process.env.KIDS_SKIP_BACKUPS !== "1") {
+      console.log("按名单解析备用线路：");
+      resolvedSeries = await resolveBackups(resolvedSeries, curatedPrevious.series || [], backupSites);
+      const withBackup = resolvedSeries.filter((item) => (item.backups || []).length).length;
+      console.log("备用线路覆盖 " + withBackup + "/" + resolvedSeries.length + " 条");
+    }
     curated = {
       updatedAt: new Date().toISOString(),
       source: "curation",
-      series: result.series,
+      series: resolvedSeries,
       missing: result.missing,
     };
     await writeFile("data/curated_catalog.json", JSON.stringify(curated, null, 2));
