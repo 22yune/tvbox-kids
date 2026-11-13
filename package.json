@@ -1,0 +1,16 @@
+{
+  "name": "kids-tvbox",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "面向 0-12 岁的 FongMi/TVBox 儿童源，按年龄、学习路线和专题组织央视少儿内容。",
+  "scripts": {
+    "sync": "node scripts/sync.mjs",
+    "sync:verify": "node scripts/sync.mjs --verify",
+    "check": "node scripts/check.mjs",
+    "build": "node scripts/sync.mjs && node scripts/check.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

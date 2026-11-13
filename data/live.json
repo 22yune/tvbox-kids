@@ -1,0 +1,45 @@
+{
+  "groups": [
+    {
+      "name": "少儿频道",
+      "channel": [
+        {
+          "name": "CCTV-14 少儿",
+          "urls": [
+            "http://74.91.26.218:82/live/cctv14hd.m3u8",
+            "http://gslbserv.itv.cmvideo.cn/1000000001000008170/1.m3u8?channel-id=ystenlive&Contentid=1000000001000008170&livemode=1&stbId=3"
+          ]
+        },
+        {
+          "name": "卡酷少儿",
+          "urls": [
+            "http://gslbserv.itv.cmvideo.cn/7851974109718180595/1.m3u8?channel-id=bestzb&Contentid=7851974109718180595&livemode=1&stbId=3"
+          ]
+        },
+        {
+          "name": "浙江少儿",
+          "urls": [
+            "https://ali-m-l.cztv.com/channels/lantian/channel008/1080p.m3u8"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "科教纪录",
+      "channel": [
+        {
+          "name": "CCTV-9 纪录",
+          "urls": ["http://74.91.26.218:82/live/cctv9hd.m3u8"]
+        },
+        {
+          "name": "CCTV-10 科教",
+          "urls": ["http://74.91.26.218:82/live/cctv10hd.m3u8"]
+        },
+        {
+          "name": "CCTV-15 音乐",
+          "urls": ["http://74.91.26.218:82/live/cctv15hd.m3u8"]
+        }
+      ]
+    }
+  ]
+}

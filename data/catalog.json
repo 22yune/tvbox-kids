@@ -1,0 +1,579 @@
+{
+  "updatedAt": "2026-11-12T07:32:24.509Z",
+  "source": "cctv",
+  "series": [
+    {
+      "id": "cctv-xxzhs",
+      "name": "小小智慧树",
+      "column": "TOPC1451559205464876",
+      "ageMin": 0,
+      "ageMax": 4,
+      "episodes": 60,
+      "order": 10,
+      "paths": [
+        "path-language",
+        "path-arts",
+        "path-health",
+        "path-social"
+      ],
+      "stages": {
+        "path-language": 1,
+        "path-arts": 1,
+        "path-health": 1,
+        "path-social": 1
+      },
+      "tags": [
+        "低幼",
+        "艺术",
+        "安全",
+        "情绪"
+      ],
+      "desc": "面向低幼宝宝的启蒙栏目，包含儿歌、律动、认知游戏和生活习惯。建议家长陪伴观看。",
+      "pic": "https://p3.img.cctvpic.com/fmspic/2026/11/12/95be3d5cf1354e31855d1c7d4d636db1-1.jpg",
+      "latest": "《小小智慧树》 20261112",
+      "latestTime": 1794449527136,
+      "latestGuid": "95be3d5cf1354e31855d1c7d4d636db1",
+      "count": 1000,
+      "stale": false,
+      "playable": true,
+      "verifyReason": "OK"
+    },
+    {
+      "id": "cctv-zhs",
+      "name": "智慧树",
+      "column": "TOPC1451447359806385",
+      "ageMin": 2,
+      "ageMax": 6,
+      "episodes": 60,
+      "order": 20,
+      "paths": [
+        "path-language",
+        "path-arts",
+        "path-health",
+        "path-social"
+      ],
+      "stages": {
+        "path-language": 1,
+        "path-arts": 1,
+        "path-health": 1,
+        "path-social": 2
+      },
+      "tags": [
+        "低幼",
+        "艺术",
+        "安全",
+        "情绪"
+      ],
+      "desc": "央视少儿经典幼儿栏目，涵盖手工、儿歌、生活习惯和情绪认知。",
+      "pic": "https://p2.img.cctvpic.com/fmspic/2026/11/11/4406601369bc48e88b1e54e6418eb87c-1.jpg",
+      "latest": "《智慧树》 20261111",
+      "latestTime": 1794396963455,
+      "latestGuid": "4406601369bc48e88b1e54e6418eb87c",
+      "count": 1000,
+      "stale": false,
+      "playable": true,
+      "verifyReason": "OK"
+    },
+    {
+      "id": "cctv-qqb",
+      "name": "七巧板",
+      "column": "TOPC1451559569040502",
+      "ageMin": 3,
+      "ageMax": 6,
+      "episodes": 60,
+      "order": 30,
+      "paths": [
+        "path-language",
+        "path-math",
+        "path-arts"
+      ],
+      "stages": {
+        "path-language": 2,
+        "path-math": 1,
+        "path-arts": 1
+      },
+      "tags": [
+        "低幼",
+        "艺术"
+      ],
+      "desc": "以游戏、歌唱和动手活动为主的幼儿节目，适合培养节奏感、形状认知和表达。",
+      "pic": "https://p2.img.cctvpic.com/fmspic/2026/11/07/88ded9391f3943ed8b308f286942c272-1.jpg",
+      "latest": "《七巧板》 20261107 快乐宝贝爱唱歌 汇聚童心 欢唱童年",
+      "latestTime": 1794018841511,
+      "latestGuid": "88ded9391f3943ed8b308f286942c272",
+      "count": 942,
+      "stale": false,
+      "playable": true,
+      "verifyReason": "OK"
+    },
+    {
+      "id": "cctv-dfc",
+      "name": "大风车",
+      "column": "TOPC1451558929123462",
+      "ageMin": 3,
+      "ageMax": 9,
+      "episodes": 60,
+      "order": 40,
+      "paths": [
+        "path-language",
+        "path-humanities",
+        "path-social"
+      ],
+      "stages": {
+        "path-language": 2,
+        "path-humanities": 1,
+        "path-social": 2
+      },
+      "tags": [
+        "动画",
+        "艺术"
+      ],
+      "desc": "央视少儿综合栏目，包含动画、游戏、儿童剧和成长话题。",
+      "pic": "https://p4.img.cctvpic.com/fmspic/2026/11/10/42db5de4951a4537b199cfa6e53213f0-1.jpg",
+      "latest": "《大风车》 20261110",
+      "latestTime": 1794275406742,
+      "latestGuid": "42db5de4951a4537b199cfa6e53213f0",
+      "count": 1000,
+      "stale": false,
+      "playable": true,
+      "verifyReason": "OK"
+    },
+    {
+      "id": "cctv-dhc",
+      "name": "动画城",
+      "column": "TOPC1451542209144770",
+      "ageMin": 3,
+      "ageMax": 9,
+      "episodes": 60,
+      "order": 50,
+      "paths": [
+        "path-language",
+        "path-social"
+      ],
+      "stages": {
+        "path-language": 3,
+        "path-social": 2
+      },
+      "tags": [
+        "动画"
+      ],
+      "desc": "央视少儿动画栏目，收录多部国产动画，适合亲子共看并讨论剧情。",
+      "pic": "https://p4.img.cctvpic.com/image/2009/donghuachengsitao/2010/08/22/donghuachengsitao_h264418000nero_aac32_20100822_1282476767104_2.jpg",
+      "latest": "动画城（四套） 2010年 第234期",
+      "latestTime": 1295433659068,
+      "latestGuid": "22b435a67e2a4ded3a34c9a1ab8fd925",
+      "count": 987,
+      "stale": false,
+      "playable": true,
+      "verifyReason": "OK"
+    },
+    {
+      "id": "cctv-dhdfy",
+      "name": "动画大放映",
+      "column": "TOPC1451559025546574",
+      "ageMin": 3,
+      "ageMax": 12,
+      "episodes": 60,
+      "order": 60,
+      "paths": [
+        "path-language",
+        "path-social"
+      ],
+      "stages": {
+        "path-language": 3,
+        "path-social": 3
+      },
+      "tags": [
+        "动画"
+      ],
+      "desc": "央视少儿动画连播栏目，按日期更新，适合作为日常动画入口。",
+      "pic": "https://p4.img.cctvpic.com/fmspic/2026/11/12/9a4cea137be24d228cc2066f9ae192cf-1.jpg",
+      "latest": "《动画大放映》 20261112 13:30",
+      "latestTime": 1794466687490,
+      "latestGuid": "9a4cea137be24d228cc2066f9ae192cf",
+      "count": 1000,
+      "stale": false,
+      "playable": true,
+      "verifyReason": "OK"
+    },
+    {
+      "id": "cctv-kldb",
+      "name": "快乐大巴",
+      "column": "TOPC1451559161446811",
+      "ageMin": 6,
+      "ageMax": 12,
+      "episodes": 60,
+      "order": 70,
+      "paths": [
+        "path-math",
+        "path-social",
+        "path-arts"
+      ],
+      "stages": {
+        "path-math": 2,
+        "path-social": 3,
+        "path-arts": 2
+      },
+      "tags": [
+        "艺术"
+      ],
+      "desc": "少儿互动综艺，通过游戏和任务锻炼表达、合作与规则意识。",
+      "pic": "https://p2.img.cctvpic.com/fmspic/2026/10/30/553bbcc9b18541a6a54378859fb5efc8-1.jpg",
+      "latest": "《快乐大巴》 20261030 我想长大个儿",
+      "latestTime": 1793356432413,
+      "latestGuid": "553bbcc9b18541a6a54378859fb5efc8",
+      "count": 1000,
+      "stale": false,
+      "playable": true,
+      "verifyReason": "OK"
+    },
+    {
+      "id": "cctv-yykd",
+      "name": "音乐快递",
+      "column": "TOPC1451559666055645",
+      "ageMin": 3,
+      "ageMax": 12,
+      "episodes": 60,
+      "order": 80,
+      "paths": [
+        "path-arts",
+        "path-language"
+      ],
+      "stages": {
+        "path-arts": 2,
+        "path-language": 3
+      },
+      "tags": [
+        "艺术"
+      ],
+      "desc": "少儿音乐节目，适合音乐启蒙、节奏训练和舞台表达。",
+      "pic": "https://p3.img.cctvpic.com/fmspic/2026/11/12/14ca77cf1d954e19868e167bc1ba277d-1.jpg",
+      "latest": "《音乐快递》 20261112 点亮梦想",
+      "latestTime": 1794448809094,
+      "latestGuid": "14ca77cf1d954e19868e167bc1ba277d",
+      "count": 865,
+      "stale": false,
+      "playable": true,
+      "verifyReason": "OK"
+    },
+    {
+      "id": "cctv-dwhhb",
+      "name": "动物好伙伴",
+      "column": "TOPC1452230499243399",
+      "ageMin": 3,
+      "ageMax": 9,
+      "episodes": 60,
+      "order": 90,
+      "paths": [
+        "path-science"
+      ],
+      "stages": {
+        "path-science": 1
+      },
+      "tags": [
+        "科学"
+      ],
+      "desc": "以动物为主角的科普节目，适合启蒙阶段的自然观察和生命教育。",
+      "pic": "https://p5.img.cctvpic.com/fmspic/2018/08/19/73cd0db2a8e445cab939a349d1ea1efc-1450.jpg",
+      "latest": "《动物好伙伴》 20180819",
+      "latestTime": 1534679116630,
+      "latestGuid": "73cd0db2a8e445cab939a349d1ea1efc",
+      "count": 110,
+      "stale": false,
+      "playable": true,
+      "verifyReason": "OK"
+    },
+    {
+      "id": "cctv-kxdwy",
+      "name": "科学动物园",
+      "column": "TOPC1571021385508957",
+      "ageMin": 6,
+      "ageMax": 12,
+      "episodes": 60,
+      "order": 100,
+      "paths": [
+        "path-science"
+      ],
+      "stages": {
+        "path-science": 2
+      },
+      "tags": [
+        "科学"
+      ],
+      "desc": "用实验和观察解释动物行为与自然现象，适合小学阶段的科学启蒙。",
+      "pic": "https://p4.img.cctvpic.com/fmspic/2026/11/10/015270c1919a41fd806a3172f124e286-1.jpg",
+      "latest": "《科学动物园》 20261110 蜥界秘闻（四）",
+      "latestTime": 1794272646821,
+      "latestGuid": "015270c1919a41fd806a3172f124e286",
+      "count": 364,
+      "stale": false,
+      "playable": true,
+      "verifyReason": "OK"
+    },
+    {
+      "id": "cctv-zmkm",
+      "name": "芝麻开门",
+      "column": "TOPC1451559725520729",
+      "ageMin": 6,
+      "ageMax": 12,
+      "episodes": 60,
+      "order": 110,
+      "paths": [
+        "path-science",
+        "path-tech"
+      ],
+      "stages": {
+        "path-science": 2,
+        "path-tech": 1
+      },
+      "tags": [
+        "科学",
+        "科技"
+      ],
+      "desc": "少儿科普与动手实验栏目，鼓励提问、观察和验证。",
+      "pic": "https://p4.img.cctvpic.com/fmspic/2022/04/06/044bd87d02804f6c9380eee5ee52ddad-36931383-0.jpg",
+      "latest": "芝麻开门 2010年 第58期",
+      "latestTime": 1649220480720,
+      "latestGuid": "044bd87d02804f6c9380eee5ee52ddad",
+      "count": 1000,
+      "stale": false,
+      "playable": true,
+      "verifyReason": "OK"
+    },
+    {
+      "id": "cctv-yxtk",
+      "name": "异想天开",
+      "column": "TOPC1451559633994614",
+      "ageMin": 6,
+      "ageMax": 12,
+      "episodes": 60,
+      "order": 120,
+      "paths": [
+        "path-science",
+        "path-tech",
+        "path-arts"
+      ],
+      "stages": {
+        "path-science": 3,
+        "path-tech": 2,
+        "path-arts": 3
+      },
+      "tags": [
+        "科学",
+        "科技"
+      ],
+      "desc": "少儿创意与发明类节目，适合培养工程思维和动手能力。",
+      "pic": "https://p2.img.cctvpic.com/fmspic/2026/11/09/3efb68f90dbd4505af1d910e03ec771a-1.jpg",
+      "latest": "《异想天开》 20261109 小小非遗传承人",
+      "latestTime": 1794186844433,
+      "latestGuid": "3efb68f90dbd4505af1d910e03ec771a",
+      "count": 851,
+      "stale": false,
+      "playable": true,
+      "verifyReason": "OK"
+    },
+    {
+      "id": "cctv-kw72b",
+      "name": "看我72变",
+      "column": "TOPC1451559131256781",
+      "ageMin": 6,
+      "ageMax": 12,
+      "episodes": 60,
+      "order": 130,
+      "paths": [
+        "path-arts",
+        "path-tech"
+      ],
+      "stages": {
+        "path-arts": 3,
+        "path-tech": 1
+      },
+      "tags": [
+        "艺术",
+        "科技"
+      ],
+      "desc": "少儿创意改造与手工节目，适合亲子一起动手实践。",
+      "pic": "https://p3.img.cctvpic.com/fmspic/2026/11/11/570b599c1ac34962b9b6eb4bb4acc55a-1.jpg",
+      "latest": "《看我72变》 20261111 创意少年",
+      "latestTime": 1794393007650,
+      "latestGuid": "570b599c1ac34962b9b6eb4bb4acc55a",
+      "count": 592,
+      "stale": false,
+      "playable": true,
+      "verifyReason": "OK"
+    },
+    {
+      "id": "cctv-dsqxs",
+      "name": "大手牵小手",
+      "column": "TOPC1451558967135492",
+      "ageMin": 3,
+      "ageMax": 9,
+      "episodes": 60,
+      "order": 140,
+      "paths": [
+        "path-social",
+        "path-health"
+      ],
+      "stages": {
+        "path-social": 2,
+        "path-health": 2
+      },
+      "tags": [
+        "安全",
+        "情绪"
+      ],
+      "desc": "亲子互动节目，围绕家庭陪伴、安全自护和情感表达。",
+      "pic": "https://p3.img.cctvpic.com/fmspic/2026/11/09/64a0e1f67c2348fab1bec971f5abe320-1.jpg",
+      "latest": "《大手牵小手》 20261109 “上海·青浦杯”第二十一届全国少年儿童故事大王选拔展示活动 幼儿组",
+      "latestTime": 1794224040929,
+      "latestGuid": "64a0e1f67c2348fab1bec971f5abe320",
+      "count": 1000,
+      "stale": false,
+      "playable": true,
+      "verifyReason": "OK"
+    },
+    {
+      "id": "cctv-szdm",
+      "name": "是真的吗",
+      "column": "TOPC1451534366388377",
+      "ageMin": 9,
+      "ageMax": 12,
+      "episodes": 60,
+      "order": 150,
+      "paths": [
+        "path-science",
+        "path-math"
+      ],
+      "stages": {
+        "path-science": 3,
+        "path-math": 3
+      },
+      "tags": [
+        "科学"
+      ],
+      "desc": "生活科学辟谣节目，适合高年级孩子练习质疑、求证和逻辑判断。",
+      "pic": "https://p1.img.cctvpic.com/fmspic/2020/07/11/8e9c099e3baa433aaea90519ee51a57e-1750.jpg",
+      "latest": "《是真的吗》 20200711",
+      "latestTime": 1594478997681,
+      "latestGuid": "8e9c099e3baa433aaea90519ee51a57e",
+      "count": 18,
+      "stale": false,
+      "playable": true,
+      "verifyReason": "OK"
+    },
+    {
+      "id": "cctv-xwddk",
+      "name": "新闻袋袋裤",
+      "column": "TOPC1451559603261584",
+      "ageMin": 6,
+      "ageMax": 12,
+      "episodes": 60,
+      "order": 160,
+      "paths": [
+        "path-humanities",
+        "path-social"
+      ],
+      "stages": {
+        "path-humanities": 1,
+        "path-social": 3
+      },
+      "tags": [
+        "人文"
+      ],
+      "desc": "用孩子的视角讲新闻，适合培养信息理解和公共表达。",
+      "pic": "https://p3.img.cctvpic.com/fmspic/2026/11/12/80aa10400ede4360ada3eb538ab9e7ce-1.jpg",
+      "latest": "《新闻袋袋裤》 20261112",
+      "latestTime": 1794444127169,
+      "latestGuid": "80aa10400ede4360ada3eb538ab9e7ce",
+      "count": 1000,
+      "stale": false,
+      "playable": true,
+      "verifyReason": "OK"
+    },
+    {
+      "id": "cctv-gsldzg",
+      "name": "故事里的中国",
+      "column": "TOPC1569729252342702",
+      "ageMin": 10,
+      "ageMax": 12,
+      "episodes": 30,
+      "order": 165,
+      "paths": [
+        "path-humanities"
+      ],
+      "stages": {
+        "path-humanities": 2
+      },
+      "tags": [
+        "人文",
+        "纪录片"
+      ],
+      "desc": "用戏剧和访谈重现中国故事，适合高年级人文启蒙，建议亲子讨论。",
+      "pic": "https://p2.img.cctvpic.com/fmspic/2020/01/25/4e63d21d0a8648b29cfd41a290dc6ded-2590.jpg",
+      "latest": "《故事里的中国》 20200125 十八洞村",
+      "latestTime": 1579965473550,
+      "latestGuid": "4e63d21d0a8648b29cfd41a290dc6ded",
+      "count": 11,
+      "stale": false,
+      "playable": true,
+      "verifyReason": "OK"
+    },
+    {
+      "id": "cctv-djldzg",
+      "name": "典籍里的中国",
+      "column": "TOPC1611740341987572",
+      "ageMin": 10,
+      "ageMax": 12,
+      "episodes": 40,
+      "order": 170,
+      "paths": [
+        "path-humanities"
+      ],
+      "stages": {
+        "path-humanities": 2
+      },
+      "tags": [
+        "人文",
+        "纪录片"
+      ],
+      "desc": "以戏剧方式讲述典籍故事，适合高年级人文启蒙，建议亲子讨论。",
+      "pic": "https://p1.img.cctvpic.com/fmspic/2026/10/04/49d5b80d6f2e4e7da8c804728b056900-1.jpg",
+      "latest": "《典籍里的中国》焕新季 20261004 《资治通鉴》",
+      "latestTime": 1791124151708,
+      "latestGuid": "49d5b80d6f2e4e7da8c804728b056900",
+      "count": 23,
+      "stale": false,
+      "playable": true,
+      "verifyReason": "OK"
+    },
+    {
+      "id": "cctv-ldz",
+      "name": "朗读者",
+      "column": "TOPC1487120479377477",
+      "ageMin": 10,
+      "ageMax": 12,
+      "episodes": 40,
+      "order": 180,
+      "paths": [
+        "path-language",
+        "path-humanities"
+      ],
+      "stages": {
+        "path-language": 4,
+        "path-humanities": 3
+      },
+      "tags": [
+        "人文"
+      ],
+      "desc": "以朗读和访谈为主的人文节目，适合高年级练习语感与表达。",
+      "pic": "https://p5.img.cctvpic.com/photoworkspace/2021/09/28/2021092814463362347.jpg",
+      "latest": "《朗读者》 20171008 特别节目：朗读亭里的故事",
+      "latestTime": 1507458472470,
+      "latestGuid": "4d6bf8f676aa44f0af8b3b915c6f6178",
+      "count": 10,
+      "stale": false,
+      "playable": true,
+      "verifyReason": "OK"
+    }
+  ]
+}

@@ -1,0 +1,127 @@
+{
+  "notice": "儿童模式：已关闭搜索，仅保留央视少儿与精选直播。补充点播源默认隐藏，启用前请家长确认内容安全。",
+  "sites": [
+    {
+      "key": "kids_age",
+      "name": "按年龄",
+      "type": 3,
+      "api": "./spider/kids.js",
+      "ext": {
+        "mode": "age"
+      },
+      "searchable": 0,
+      "quickSearch": 0,
+      "changeable": 0,
+      "style": {
+        "type": "rect",
+        "ratio": 1.78
+      }
+    },
+    {
+      "key": "kids_path",
+      "name": "按学习路线",
+      "type": 3,
+      "api": "./spider/kids.js",
+      "ext": {
+        "mode": "path"
+      },
+      "searchable": 0,
+      "quickSearch": 0,
+      "changeable": 0,
+      "style": {
+        "type": "rect",
+        "ratio": 1.78
+      }
+    },
+    {
+      "key": "kids_topic",
+      "name": "精选专题",
+      "type": 3,
+      "api": "./spider/kids.js",
+      "ext": {
+        "mode": "topic"
+      },
+      "searchable": 0,
+      "quickSearch": 0,
+      "changeable": 0,
+      "style": {
+        "type": "rect",
+        "ratio": 1.78
+      }
+    },
+    {
+      "key": "kids_extra",
+      "name": "补充点播（家长可选）",
+      "type": 1,
+      "api": "https://jszyapi.com/api.php/provide/vod/at/json",
+      "categories": [
+        "动漫",
+        "动画片",
+        "中国动漫"
+      ],
+      "searchable": 0,
+      "quickSearch": 0,
+      "changeable": 0,
+      "hide": 1,
+      "header": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "Referer": "https://jszyapi.com/"
+      }
+    }
+  ],
+  "lives": [
+    {
+      "name": "少儿直播",
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+      "groups": [
+        {
+          "name": "少儿频道",
+          "channel": [
+            {
+              "name": "CCTV-14 少儿",
+              "urls": [
+                "http://74.91.26.218:82/live/cctv14hd.m3u8",
+                "http://gslbserv.itv.cmvideo.cn/1000000001000008170/1.m3u8?channel-id=ystenlive&Contentid=1000000001000008170&livemode=1&stbId=3"
+              ]
+            },
+            {
+              "name": "卡酷少儿",
+              "urls": [
+                "http://gslbserv.itv.cmvideo.cn/7851974109718180595/1.m3u8?channel-id=bestzb&Contentid=7851974109718180595&livemode=1&stbId=3"
+              ]
+            },
+            {
+              "name": "浙江少儿",
+              "urls": [
+                "https://ali-m-l.cztv.com/channels/lantian/channel008/1080p.m3u8"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "科教纪录",
+          "channel": [
+            {
+              "name": "CCTV-9 纪录",
+              "urls": [
+                "http://74.91.26.218:82/live/cctv9hd.m3u8"
+              ]
+            },
+            {
+              "name": "CCTV-10 科教",
+              "urls": [
+                "http://74.91.26.218:82/live/cctv10hd.m3u8"
+              ]
+            },
+            {
+              "name": "CCTV-15 音乐",
+              "urls": [
+                "http://74.91.26.218:82/live/cctv15hd.m3u8"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

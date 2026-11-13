@@ -1,0 +1,28 @@
+{
+  "ages": [
+    { "id": "age-0-3", "name": "0-3岁 · 婴幼儿", "min": 0, "max": 3 },
+    { "id": "age-3-6", "name": "3-6岁 · 幼儿", "min": 3, "max": 6 },
+    { "id": "age-6-9", "name": "6-9岁 · 小学低年级", "min": 6, "max": 9 },
+    { "id": "age-9-12", "name": "9-12岁 · 小学高年级", "min": 9, "max": 12 }
+  ],
+  "paths": [
+    { "id": "path-language", "name": "语言启蒙", "hint": "儿歌磨耳朵 → 识字拼音 → 阅读表达", "order": 10 },
+    { "id": "path-math", "name": "数学思维", "hint": "数感 → 图形空间 → 逻辑规律", "order": 20 },
+    { "id": "path-science", "name": "科学探究", "hint": "动植物 → 自然现象 → 动手实验 → 宇宙地球", "order": 30 },
+    { "id": "path-humanities", "name": "人文历史", "hint": "国学启蒙 → 中国历史 → 世界文明 → 博物馆", "order": 40 },
+    { "id": "path-arts", "name": "艺术美育", "hint": "音乐律动 → 绘画手工 → 戏剧表演", "order": 50 },
+    { "id": "path-health", "name": "身心健康", "hint": "安全自护 → 情绪管理 → 运动饮食", "order": 60 },
+    { "id": "path-social", "name": "社会情感", "hint": "情绪认知 → 同伴交往 → 规则意识 → 品格", "order": 70 },
+    { "id": "path-tech", "name": "信息科技", "hint": "数字素养 → 编程思维 → AI 启蒙", "order": 80 }
+  ],
+  "topics": [
+    { "id": "topic-toddler", "name": "低幼启蒙", "tags": ["低幼"] },
+    { "id": "topic-animation", "name": "动画故事", "tags": ["动画"] },
+    { "id": "topic-science", "name": "科学探索", "tags": ["科学"] },
+    { "id": "topic-humanities", "name": "人文国学", "tags": ["人文"] },
+    { "id": "topic-arts", "name": "艺术创想", "tags": ["艺术"] },
+    { "id": "topic-safety", "name": "安全与情绪", "tags": ["安全", "情绪"] },
+    { "id": "topic-tech", "name": "动手与科技", "tags": ["科技"] },
+    { "id": "topic-doc", "name": "纪录片", "tags": ["纪录片"] }
+  ]
+}
