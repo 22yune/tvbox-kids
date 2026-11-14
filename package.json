@@ -10,7 +10,8 @@
     "check": "node scripts/check.mjs",
     "backups": "node scripts/backups.mjs",
     "jar": "node scripts/build-jar.mjs",
-    "build": "node scripts/sync.mjs && node scripts/check.mjs"
+    "build": "node scripts/sync.mjs && node scripts/check.mjs",
+    "expand": "node scripts/expand.mjs"
   },
   "engines": {
     "node": ">=20"

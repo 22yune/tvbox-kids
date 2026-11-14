@@ -291,7 +291,13 @@ async function main() {
   } else {
     console.log("按名单解析来源：");
     const result = await resolveCuration(curationInput.series || [], curatedPrevious.series || []);
-    let resolvedSeries = result.series;
+    // 重新解析出来的条目没有备用线路，沿用上一次的结果，避免 CI 把已提交的线路抹掉。
+    const previousById = new Map((curatedPrevious.series || []).map((item) => [item.id, item]));
+    let resolvedSeries = result.series.map((item) => {
+      if ((item.backups || []).length) return item;
+      const old = previousById.get(item.id);
+      return old && (old.backups || []).length ? { ...item, backups: old.backups } : item;
+    });
     if (backupSites.length && process.env.KIDS_SKIP_BACKUPS !== "1") {
       console.log("按名单解析备用线路：");
       resolvedSeries = await resolveBackups(resolvedSeries, curatedPrevious.series || [], backupSites);
@@ -310,7 +316,15 @@ async function main() {
     }
   }
 
-  const merged = { series: (catalog.series || []).concat(curated.series || []) };
+  // 自动扩充的采集站条目单独存放，避免把手工名单搅乱。
+  let open = { series: [] };
+  try {
+    open = await readJson("data/open_catalog.json");
+  } catch (error) {
+    open = { series: [] };
+  }
+
+  const merged = { series: (catalog.series || []).concat(curated.series || []).concat(open.series || []) };
   await writeFile("spider-src/com/github/catvod/spider/Catalog.java", buildCatalogSource(taxonomy, merged));
   const jar = buildJar();
   const config = buildConfig(live, jar, extra);
@@ -323,6 +337,7 @@ async function main() {
   const curatedStale = curatedSeries.filter((item) => item.stale).length;
   console.log(
     "Synced " + series.length + " series + 名单 " + curatedSeries.length +
+    " + 采集站 " + (open.series || []).length +
     (curated.missing && curated.missing.length ? "（缺源 " + curated.missing.length + "）" : "") +
     (stale ? "，stale " + stale : "") +
     (curatedStale ? "，名单 stale " + curatedStale : "") +

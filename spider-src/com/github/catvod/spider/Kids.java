@@ -124,37 +124,50 @@ public class Kids extends Spider {
         if (item == null) return message("未找到该系列");
 
         boolean bili = "bili".equals(item.optString("source"));
-        JSONArray episodes;
-        try {
-            episodes = bili ? biliEpisodes(item) : episodes(item);
-        } catch (Exception e) {
-            return message((bili ? "哔哩哔哩" : "央视") + "接口请求失败：" + text(e));
+        boolean mac = "mac".equals(item.optString("source"));
+        JSONArray episodes = null;
+        if (!mac) {
+            try {
+                episodes = bili ? biliEpisodes(item) : episodes(item);
+            } catch (Exception e) {
+                return message((bili ? "哔哩哔哩" : "央视") + "接口请求失败：" + text(e));
+            }
+            if (episodes.length() == 0) return message("该系列暂时没有可播放的内容");
         }
-        if (episodes.length() == 0) return message("该系列暂时没有可播放的内容");
 
         try {
             JSONObject vod = card(item);
-            vod.put("vod_remarks", "共 " + episodes.length() + " 集");
             vod.put("vod_content", content(item));
             List<String> froms = new ArrayList<>();
             List<String> urls = new ArrayList<>();
-            froms.add(bili ? "哔哩哔哩" : "央视");
-            urls.add(playUrl(episodes));
+            int total = episodes == null ? 0 : episodes.length();
+            if (!mac) {
+                froms.add(bili ? "哔哩哔哩" : "央视");
+                urls.add(playUrl(episodes));
+            }
             JSONArray backups = item.optJSONArray("backups");
             for (int i = 0; backups != null && i < backups.length(); i++) {
                 JSONObject backup = backups.optJSONObject(i);
                 if (backup == null) continue;
-                JSONArray names = backup.optJSONArray("episodes");
-                if (names == null || names.length() == 0) continue;
+                // 采集站条目不预存集名，详情时现取，避免几千条目的集名把 jar 撑大。
+                List<String> names = backupNames(backup);
+                if (names.isEmpty()) {
+                    int count = backup.optInt("episodes", 0);
+                    for (int j = 0; j < count; j++) names.add("第" + (j + 1) + "集");
+                }
+                if (names.isEmpty()) continue;
                 List<String> parts = new ArrayList<>();
-                for (int j = 0; j < names.length(); j++) {
-                    String name = clean(names.optString(j));
+                for (int j = 0; j < names.size(); j++) {
+                    String name = clean(names.get(j));
                     if (name.isEmpty()) name = "第" + (j + 1) + "集";
                     parts.add(name + "$mac:" + item.optString("id") + ":" + i + ":" + j);
                 }
-                froms.add("备用·" + clean(backup.optString("site", "线路")));
+                total = Math.max(total, names.size());
+                froms.add((mac ? "" : "备用·") + clean(backup.optString("site", "线路")));
                 urls.add(join(parts, "#"));
             }
+            if (froms.isEmpty()) return message("该系列暂时没有可播放的内容");
+            vod.put("vod_remarks", "共 " + total + " 集");
             vod.put("vod_play_from", join(froms, "$$$"));
             vod.put("vod_play_url", join(urls, "$$$"));
             JSONObject result = new JSONObject();
@@ -459,11 +472,7 @@ public class Kids extends Spider {
         String vodId = backup.optString("vodId");
         if (api.isEmpty() || vodId.isEmpty()) return playerMessage("备用线路参数异常");
         try {
-            String url = api + (api.contains("?") ? "&" : "?") + "ac=detail&ids=" + encode(vodId);
-            JSONObject data = new JSONObject(get(url, referer));
-            JSONArray list = data.optJSONArray("list");
-            JSONObject detail = list == null ? null : list.optJSONObject(0);
-            if (detail == null) return playerMessage("备用线路没有返回详情");
+            JSONObject detail = macDetail(backup);
             String[] froms = detail.optString("vod_play_from").split("\\$\\$\\$");
             String[] groups = detail.optString("vod_play_url").split("\\$\\$\\$");
             String from = backup.optString("from");
@@ -504,6 +513,60 @@ public class Kids extends Spider {
         }
     }
 
+    private JSONObject macDetail(JSONObject backup) throws Exception {
+        String api = backup.optString("api");
+        String vodId = backup.optString("vodId");
+        String referer = backup.optString("referer", REFERER);
+        String url = api + (api.contains("?") ? "&" : "?") + "ac=detail&ids=" + encode(vodId);
+        JSONArray list = new JSONObject(get(url, referer)).optJSONArray("list");
+        JSONObject detail = list == null ? null : list.optJSONObject(0);
+        if (detail == null) throw new IllegalStateException("没有返回详情");
+        return detail;
+    }
+
+    // 采集站条目只存 vodId，详情时按需取集名；失败就用集数占位，播放时还会再取一次。
+    private List<String> backupNames(JSONObject backup) {
+        List<String> names = new ArrayList<>();
+        JSONArray cached = backup.optJSONArray("episodes");
+        if (cached != null && cached.length() > 0) {
+            for (int i = 0; i < cached.length(); i++) names.add(cached.optString(i));
+            return names;
+        }
+        JSONObject detail;
+        try {
+            detail = macDetail(backup);
+        } catch (Exception e) {
+            return names;
+        }
+        String[] froms = detail.optString("vod_play_from").split("\\$\\$\\$");
+        String[] groups = detail.optString("vod_play_url").split("\\$\\$\\$");
+        String from = backup.optString("from");
+        int group = -1;
+        for (int i = 0; i < froms.length; i++) {
+            if (from.equals(froms[i])) {
+                group = i;
+                break;
+            }
+        }
+        if (group < 0 || group >= groups.length) {
+            for (int i = 0; i < groups.length; i++) {
+                if (groups[i].contains(".m3u8")) {
+                    group = i;
+                    break;
+                }
+            }
+        }
+        if (group < 0 || group >= groups.length) return names;
+        for (String part : groups[group].split("#")) {
+            String text = part.trim();
+            if (text.isEmpty()) continue;
+            int at = text.indexOf('$');
+            String name = at < 0 ? "" : text.substring(0, at).trim();
+            names.add(name.isEmpty() ? "第" + (names.size() + 1) + "集" : name);
+        }
+        return names;
+    }
+
     private String content(JSONObject item) {
         List<String> lines = new ArrayList<>();
         String desc = clean(item.optString("desc"));
@@ -522,7 +585,12 @@ public class Kids extends Spider {
         }
         if (!paths.isEmpty()) lines.add("学习路线：" + join(paths, "、"));
         boolean bili = "bili".equals(item.optString("source"));
-        lines.add(bili ? "内容来源：哔哩哔哩（B站）UP 主上传，播放时实时取流。" : "内容来源：央视网，播放时实时解析。");
+        boolean mac = "mac".equals(item.optString("source"));
+        if (mac) {
+            lines.add("内容来源：第三方采集站，播放时实时取流。");
+        } else {
+            lines.add(bili ? "内容来源：哔哩哔哩（B站）UP 主上传，播放时实时取流。" : "内容来源：央视网，播放时实时解析。");
+        }
         JSONArray backups = item.optJSONArray("backups");
         List<String> backupNames = new ArrayList<>();
         for (int i = 0; backups != null && i < backups.length(); i++) {

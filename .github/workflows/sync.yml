@@ -41,6 +41,8 @@ jobs:
           KIDS_BASE_URL: ${{ vars.KIDS_BASE_URL }}
           KIDS_JAR_URL: ${{ vars.KIDS_JAR_URL }}
           KIDS_USE_RAW: ${{ vars.KIDS_USE_RAW }}
+          # 备用线路由本地脚本解析后提交，CI 只沿用结果，避免每次同步扫几十个采集站。
+          KIDS_SKIP_BACKUPS: "1"
         run: node scripts/sync.mjs --verify
 
       - name: Check generated files

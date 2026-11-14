@@ -121,6 +121,45 @@ async function main() {
     requireField(curationIds.has(item.id), "缺失记录不在名单里：" + (item.id || "?"));
   }
 
+  let open = { series: [] };
+  try {
+    open = await readJson("data/open_catalog.json");
+  } catch (error) {
+    open = { series: [] };
+  }
+  const openIds = new Set();
+  for (const item of open.series || []) {
+    requireField(Boolean(item.id) && /^mac-[0-9a-z]+$/.test(item.id), (item.id || "?") + " 的采集站 id 格式不正确");
+    requireField(!openIds.has(item.id), "采集站 id 重复：" + item.id);
+    requireField(!curationIds.has(item.id) && !cctvIds.has(item.id), "采集站 id 与已有条目重复：" + item.id);
+    openIds.add(item.id);
+    requireField(item.source === "mac", item.id + " 的 source 必须是 mac");
+    requireField(Boolean(item.name), item.id + " 缺少名称");
+    requireField(Number.isFinite(item.ageMin) && Number.isFinite(item.ageMax) && item.ageMin < item.ageMax, item.id + " 的年龄段不合法");
+    requireField(item.ageMin >= 0 && item.ageMax <= 12, item.id + " 的年龄段越界");
+    requireField(Array.isArray(item.paths) && item.paths.length > 0, item.id + " 未绑定学习路线");
+    for (const pathId of item.paths || []) {
+      requireField(paths.has(pathId), item.id + " 引用了未知路线 " + pathId);
+    }
+    for (const tag of item.tags || []) {
+      requireField(topicTags.has(tag), item.id + " 的标签未被任何专题使用：" + tag);
+    }
+    requireField(Array.isArray(item.list) && item.list.length > 0, item.id + " 缺少来源标签");
+    for (const name of item.list || []) {
+      requireField(knownLists.has(name), item.id + " 使用了未知名单来源 " + name);
+    }
+    requireField(Number.isFinite(item.episodes) && item.episodes > 0, item.id + " 缺少集数");
+    requireField(Array.isArray(item.backups) && item.backups.length > 0 && item.backups.length <= 6, item.id + " 的播放源必须是 1-6 个");
+    for (const backup of item.backups || []) {
+      requireField(/^https?:\/\//.test(backup.api || ""), item.id + " 的播放源缺少 api");
+      requireField(backupKeys.has(backup.key), item.id + " 引用了未登记的采集站 " + backup.key);
+      requireField(Boolean(backup.site), item.id + " 的播放源缺少站点名");
+      requireField(Boolean(String(backup.vodId || "").length), item.id + " 的播放源缺少 vodId");
+      requireField(Boolean(String(backup.from || "").length), item.id + " 的播放源缺少 from");
+      requireField(Number.isFinite(backup.episodes) && backup.episodes > 0, item.id + " 的播放源缺少集数");
+    }
+  }
+
   requireField(catalogSource.includes("final class Catalog"), "Catalog.java 结构异常");
   requireField(catalogSource.includes("class Catalog") && !catalogSource.includes("__CATALOG__"), "Catalog.java 仍是模板");
   requireField(kidsSource.includes("extends Spider"), "Kids.java 必须继承 com.github.catvod.crawler.Spider");
@@ -168,7 +207,7 @@ async function main() {
     }
   }
 
-  const allSeries = catalog.series.concat(curated.series || []);
+  const allSeries = catalog.series.concat(curated.series || []).concat(open.series || []);
   const ageCounts = taxonomy.ages.map((age) => {
     const count = allSeries.filter((item) => item.ageMin < age.max && item.ageMax > age.min).length;
     return age.name + " " + count;
@@ -182,7 +221,7 @@ async function main() {
     console.warn("缺源条目：" + curated.missing.map((item) => item.name).join("、"));
   }
   console.log("名单来源：" + listCounts.join(" / "));
-  console.log("系列：" + catalog.series.length + "（央视）+ " + (curated.series || []).length + "（名单）");
+  console.log("系列：" + catalog.series.length + "（央视）+ " + (curated.series || []).length + "（名单）+ " + (open.series || []).length + "（采集站）");
   console.log("年龄：" + ageCounts.join(" / "));
   console.log("路线：" + pathCounts.join(" / "));
   console.log("站点：" + config.sites.length + "，直播频道：" + live.groups.reduce((sum, g) => sum + g.channel.length, 0));
