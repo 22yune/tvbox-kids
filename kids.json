@@ -1,5 +1,5 @@
 {
-  "spider": "https://gh-proxy.com/https://raw.githubusercontent.com/22yune/tvbox-kids/refs/heads/main/spider/kids.jar;md5;e25bd23c5577ea3c4561f12ef5e96906",
+  "spider": "https://gh-proxy.com/https://raw.githubusercontent.com/22yune/tvbox-kids/refs/heads/main/spider/kids.jar;md5;2c737b52a505249ee5fb9cf6bd5702af",
   "notice": "儿童模式：已关闭搜索，仅保留央视少儿与精选直播。补充点播来自第三方采集站，内容不可控，不需要时在站点管理里关闭。",
   "sites": [
     {

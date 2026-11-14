@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-14T10:57:44.950Z",
+  "updatedAt": "2026-11-14T12:07:13.507Z",
   "source": "cctv",
   "series": [
     {
@@ -35,8 +35,8 @@
       "latestGuid": "8b1886cee5e04766b6159dd8b29c5945",
       "count": 1000,
       "stale": false,
-      "playable": true,
-      "verifyReason": "OK"
+      "playable": false,
+      "verifyReason": "fetch failed"
     },
     {
       "id": "cctv-zhs",
@@ -103,8 +103,8 @@
       "latestGuid": "05b8276f8d934129aa9e57e51b21f2fc",
       "count": 943,
       "stale": false,
-      "playable": false,
-      "verifyReason": "fetch failed"
+      "playable": true,
+      "verifyReason": "OK"
     },
     {
       "id": "cctv-dfc",
@@ -193,8 +193,8 @@
       "latestGuid": "4b436c515cb540dd9264d07196dd3d79",
       "count": 1000,
       "stale": false,
-      "playable": true,
-      "verifyReason": "OK"
+      "playable": false,
+      "verifyReason": "fetch failed"
     },
     {
       "id": "cctv-kldb",
@@ -224,8 +224,8 @@
       "latestGuid": "553bbcc9b18541a6a54378859fb5efc8",
       "count": 1000,
       "stale": false,
-      "playable": true,
-      "verifyReason": "OK"
+      "playable": false,
+      "verifyReason": "fetch failed"
     },
     {
       "id": "cctv-yykd",
@@ -253,8 +253,8 @@
       "latestGuid": "14ca77cf1d954e19868e167bc1ba277d",
       "count": 865,
       "stale": false,
-      "playable": true,
-      "verifyReason": "OK"
+      "playable": false,
+      "verifyReason": "fetch failed"
     },
     {
       "id": "cctv-dwhhb",
@@ -307,8 +307,8 @@
       "latestGuid": "015270c1919a41fd806a3172f124e286",
       "count": 364,
       "stale": false,
-      "playable": true,
-      "verifyReason": "OK"
+      "playable": false,
+      "verifyReason": "fetch failed"
     },
     {
       "id": "cctv-zmkm",
@@ -337,8 +337,8 @@
       "latestGuid": "044bd87d02804f6c9380eee5ee52ddad",
       "count": 1000,
       "stale": false,
-      "playable": true,
-      "verifyReason": "OK"
+      "playable": false,
+      "verifyReason": "fetch failed"
     },
     {
       "id": "cctv-yxtk",
@@ -399,8 +399,8 @@
       "latestGuid": "570b599c1ac34962b9b6eb4bb4acc55a",
       "count": 592,
       "stale": false,
-      "playable": false,
-      "verifyReason": "fetch failed"
+      "playable": true,
+      "verifyReason": "OK"
     },
     {
       "id": "cctv-dsqxs",
@@ -487,8 +487,8 @@
       "latestGuid": "91311c8749624550841897a5d6ad2fa0",
       "count": 1000,
       "stale": false,
-      "playable": true,
-      "verifyReason": "OK"
+      "playable": false,
+      "verifyReason": "fetch failed"
     },
     {
       "id": "cctv-gsldzg",
