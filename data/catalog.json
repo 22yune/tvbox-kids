@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-14T07:36:54.912Z",
+  "updatedAt": "2026-11-14T09:07:21.786Z",
   "source": "cctv",
   "series": [
     {
@@ -135,8 +135,8 @@
       "latestGuid": "42db5de4951a4537b199cfa6e53213f0",
       "count": 1000,
       "stale": false,
-      "playable": false,
-      "verifyReason": "fetch failed"
+      "playable": true,
+      "verifyReason": "OK"
     },
     {
       "id": "cctv-dhc",
@@ -187,10 +187,10 @@
         "动画"
       ],
       "desc": "央视少儿动画连播栏目，按日期更新，适合作为日常动画入口。",
-      "pic": "https://p2.img.cctvpic.com/fmspic/2026/11/14/e22005a7cebd4d009544cf574e5fcaeb-1.jpg",
-      "latest": "《动画大放映》 20261114 08:45 1/2",
-      "latestTime": 1794640572232,
-      "latestGuid": "e22005a7cebd4d009544cf574e5fcaeb",
+      "pic": "https://p2.img.cctvpic.com/fmspic/2026/11/14/b36120beb95f46ed994fa1af9d2b3827-1.jpg",
+      "latest": "《动画大放映》 20261114 08:45 2/2",
+      "latestTime": 1794642613990,
+      "latestGuid": "b36120beb95f46ed994fa1af9d2b3827",
       "count": 1000,
       "stale": false,
       "playable": false,
@@ -337,8 +337,8 @@
       "latestGuid": "044bd87d02804f6c9380eee5ee52ddad",
       "count": 1000,
       "stale": false,
-      "playable": false,
-      "verifyReason": "fetch failed"
+      "playable": true,
+      "verifyReason": "OK"
     },
     {
       "id": "cctv-yxtk",
@@ -399,8 +399,8 @@
       "latestGuid": "570b599c1ac34962b9b6eb4bb4acc55a",
       "count": 592,
       "stale": false,
-      "playable": false,
-      "verifyReason": "fetch failed"
+      "playable": true,
+      "verifyReason": "OK"
     },
     {
       "id": "cctv-dsqxs",
@@ -458,8 +458,8 @@
       "latestGuid": "8e9c099e3baa433aaea90519ee51a57e",
       "count": 18,
       "stale": false,
-      "playable": false,
-      "verifyReason": "fetch failed"
+      "playable": true,
+      "verifyReason": "OK"
     },
     {
       "id": "cctv-xwddk",
@@ -487,8 +487,8 @@
       "latestGuid": "91311c8749624550841897a5d6ad2fa0",
       "count": 1000,
       "stale": false,
-      "playable": false,
-      "verifyReason": "fetch failed"
+      "playable": true,
+      "verifyReason": "OK"
     },
     {
       "id": "cctv-gsldzg",
@@ -543,8 +543,8 @@
       "latestGuid": "49d5b80d6f2e4e7da8c804728b056900",
       "count": 23,
       "stale": false,
-      "playable": true,
-      "verifyReason": "OK"
+      "playable": false,
+      "verifyReason": "fetch failed"
     },
     {
       "id": "cctv-ldz",
@@ -572,8 +572,8 @@
       "latestGuid": "4d6bf8f676aa44f0af8b3b915c6f6178",
       "count": 10,
       "stale": false,
-      "playable": true,
-      "verifyReason": "OK"
+      "playable": false,
+      "verifyReason": "fetch failed"
     }
   ]
 }

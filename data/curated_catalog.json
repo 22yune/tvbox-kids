@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-14T07:37:42.649Z",
+  "updatedAt": "2026-11-14T09:08:11.730Z",
   "source": "curation",
   "series": [
     {
@@ -5712,13 +5712,13 @@
       "id": "bili-littlebear",
       "name": "天才宝贝熊 Little Bear",
       "source": "bili",
-      "bvid": "BV1g64z6YEUo",
-      "biliTitle": "天才宝贝熊 Little Bear  英文字幕 1080p高清 第一季",
-      "pic": "https://i2.hdslb.com/bfs/archive/2827264258a28a92dd248c15a7cf83260024e8f2.jpg",
-      "episodes": 13,
-      "latest": "13集",
-      "latestTime": 1793973741,
-      "count": 13,
+      "bvid": "BV1Cp3v6eEJr",
+      "biliTitle": "【天才宝贝熊Little Bear】高清无字幕 S01E06",
+      "pic": "https://i1.hdslb.com/bfs/archive/8ecb2494efbf21e4da9566aa84c8a09fa829eaf7.jpg",
+      "episodes": 1,
+      "latest": "1集",
+      "latestTime": 1785231946,
+      "count": 1,
       "stale": false,
       "ageMin": 3,
       "ageMax": 6,
