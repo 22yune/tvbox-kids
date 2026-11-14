@@ -1,24 +1,143 @@
 {
   "note": "备用线路来源：第三方 MacCMS 采集站。顺序即优先级，同名资源优先取前面的站；每个条目最多接 3 条。",
   "sites": [
-    { "key": "jsu", "name": "极速", "api": "https://jszyapi.com/api.php/provide/vod/at/json", "referer": "https://jszyapi.com/" },
-    { "key": "bfzy", "name": "暴风", "api": "https://bfzyapi.com/api.php/provide/vod", "referer": "https://bfzyapi.com/" },
-    { "key": "guangsu", "name": "光速", "api": "https://api.guangsuapi.com/api.php/provide/vod/", "referer": "https://api.guangsuapi.com/" },
-    { "key": "lziapi", "name": "量子", "api": "http://cj.lziapi.com/api.php/provide/vod/", "referer": "http://cj.lziapi.com/" },
-    { "key": "mdzy", "name": "魔都", "api": "https://www.mdzyapi.com/api.php/provide/vod/", "referer": "https://www.mdzyapi.com/" },
-    { "key": "ffzy", "name": "非凡", "api": "http://ffzy5.tv/api.php/provide/vod/", "referer": "http://ffzy5.tv/" },
-    { "key": "taopian", "name": "淘片", "api": "https://taopianapi.com/cjapi/mc/vod/json.html", "referer": "https://taopianapi.com/" },
-    { "key": "dytt", "name": "电影天堂", "api": "http://caiji.dyttzyapi.com/api.php/provide/vod/", "referer": "http://caiji.dyttzyapi.com/" },
-    { "key": "uku", "name": "优酷", "api": "https://api.ukuapi88.com/api.php/provide/vod/", "referer": "https://api.ukuapi88.com/" },
-    { "key": "hhzy", "name": "豪华", "api": "https://hhzyapi.com/api.php/provide/vod/", "referer": "https://hhzyapi.com/" },
-    { "key": "huya", "name": "虎牙", "api": "https://www.huyaapi.com/api.php/provide/vod/", "referer": "https://www.huyaapi.com/" },
-    { "key": "apibd", "name": "百度", "api": "https://api.apibdzy.com/api.php/provide/vod/", "referer": "https://api.apibdzy.com/" },
-    { "key": "xinlang", "name": "新浪", "api": "https://api.xinlangapi.com/xinlangapi.php/provide/vod", "referer": "https://api.xinlangapi.com/" },
-    { "key": "subo", "name": "速播", "api": "https://subocaiji.com/api.php/provide/vod/", "referer": "https://subocaiji.com/" },
-    { "key": "jyzy", "name": "金鹰", "api": "https://jyzyapi.com/provide/vod/from/jinyingm3u8/at/json", "referer": "https://jyzyapi.com/" },
-    { "key": "maoyan", "name": "猫眼", "api": "https://api.maoyanapi.top/api.php/provide/vod", "referer": "https://api.maoyanapi.top/" },
-    { "key": "wujin", "name": "无尽", "api": "https://api.wujinapi.com/api.php/provide/vod/", "referer": "https://api.wujinapi.com/" },
-    { "key": "ddapi", "name": "DD", "api": "https://api.ddapi.cc/api.php/provide/vod/", "referer": "https://api.ddapi.cc/" },
-    { "key": "p2100", "name": "2100", "api": "https://p2100.net/api.php/provide/vod/", "referer": "https://p2100.net/" }
+    {
+      "key": "jsu",
+      "name": "极速",
+      "api": "https://jszyapi.com/api.php/provide/vod/at/json",
+      "referer": "https://jszyapi.com/"
+    },
+    {
+      "key": "bfzy",
+      "name": "暴风",
+      "api": "https://bfzyapi.com/api.php/provide/vod",
+      "referer": "https://bfzyapi.com/"
+    },
+    {
+      "key": "guangsu",
+      "name": "光速",
+      "api": "https://api.guangsuapi.com/api.php/provide/vod/",
+      "referer": "https://api.guangsuapi.com/"
+    },
+    {
+      "key": "lziapi",
+      "name": "量子",
+      "api": "http://cj.lziapi.com/api.php/provide/vod/",
+      "referer": "http://cj.lziapi.com/"
+    },
+    {
+      "key": "mdzy",
+      "name": "魔都",
+      "api": "https://www.mdzyapi.com/api.php/provide/vod/",
+      "referer": "https://www.mdzyapi.com/"
+    },
+    {
+      "key": "ffzy",
+      "name": "非凡",
+      "api": "http://ffzy5.tv/api.php/provide/vod/",
+      "referer": "http://ffzy5.tv/"
+    },
+    {
+      "key": "taopian",
+      "name": "淘片",
+      "api": "https://taopianapi.com/cjapi/mc/vod/json.html",
+      "referer": "https://taopianapi.com/"
+    },
+    {
+      "key": "dytt",
+      "name": "电影天堂",
+      "api": "http://caiji.dyttzyapi.com/api.php/provide/vod/",
+      "referer": "http://caiji.dyttzyapi.com/"
+    },
+    {
+      "key": "uku",
+      "name": "优酷",
+      "api": "https://api.ukuapi88.com/api.php/provide/vod/",
+      "referer": "https://api.ukuapi88.com/"
+    },
+    {
+      "key": "hhzy",
+      "name": "豪华",
+      "api": "https://hhzyapi.com/api.php/provide/vod/",
+      "referer": "https://hhzyapi.com/"
+    },
+    {
+      "key": "huya",
+      "name": "虎牙",
+      "api": "https://www.huyaapi.com/api.php/provide/vod/",
+      "referer": "https://www.huyaapi.com/"
+    },
+    {
+      "key": "apibd",
+      "name": "百度",
+      "api": "https://api.apibdzy.com/api.php/provide/vod/",
+      "referer": "https://api.apibdzy.com/"
+    },
+    {
+      "key": "xinlang",
+      "name": "新浪",
+      "api": "https://api.xinlangapi.com/xinlangapi.php/provide/vod",
+      "referer": "https://api.xinlangapi.com/"
+    },
+    {
+      "key": "subo",
+      "name": "速播",
+      "api": "https://subocaiji.com/api.php/provide/vod/",
+      "referer": "https://subocaiji.com/"
+    },
+    {
+      "key": "jyzy",
+      "name": "金鹰",
+      "api": "https://jyzyapi.com/provide/vod/from/jinyingm3u8/at/json",
+      "referer": "https://jyzyapi.com/"
+    },
+    {
+      "key": "maoyan",
+      "name": "猫眼",
+      "api": "https://api.maoyanapi.top/api.php/provide/vod",
+      "referer": "https://api.maoyanapi.top/"
+    },
+    {
+      "key": "wujin",
+      "name": "无尽",
+      "api": "https://api.wujinapi.com/api.php/provide/vod/",
+      "referer": "https://api.wujinapi.com/"
+    },
+    {
+      "key": "ddapi",
+      "name": "DD",
+      "api": "https://api.ddapi.cc/api.php/provide/vod/",
+      "referer": "https://api.ddapi.cc/"
+    },
+    {
+      "key": "p2100",
+      "name": "2100",
+      "api": "https://p2100.net/api.php/provide/vod/",
+      "referer": "https://p2100.net/"
+    },
+    {
+      "key": "ffzyapi",
+      "name": "非凡二",
+      "api": "https://api.ffzyapi.com/api.php/provide/vod",
+      "referer": "https://api.ffzyapi.com/"
+    },
+    {
+      "key": "ffzycj",
+      "name": "非凡三",
+      "api": "http://cj.ffzyapi.com/api.php/provide/vod",
+      "referer": "http://cj.ffzyapi.com/"
+    },
+    {
+      "key": "bfby",
+      "name": "暴风二",
+      "api": "http://by.bfzyapi.com/api.php/provide/vod",
+      "referer": "http://by.bfzyapi.com/"
+    },
+    {
+      "key": "sanliu",
+      "name": "三六",
+      "api": "https://360zy.com/api.php/provide/vod",
+      "referer": "https://360zy.com/"
+    }
   ]
 }
