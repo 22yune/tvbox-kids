@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-14T00:22:26.063Z",
+  "updatedAt": "2026-11-14T04:00:59.655Z",
   "source": "cctv",
   "series": [
     {
@@ -97,11 +97,11 @@
         "艺术"
       ],
       "desc": "以游戏、歌唱和动手活动为主的幼儿节目，适合培养节奏感、形状认知和表达。",
-      "pic": "https://p2.img.cctvpic.com/fmspic/2026/11/07/88ded9391f3943ed8b308f286942c272-1.jpg",
-      "latest": "《七巧板》 20261107 快乐宝贝爱唱歌 汇聚童心 欢唱童年",
-      "latestTime": 1794018841511,
-      "latestGuid": "88ded9391f3943ed8b308f286942c272",
-      "count": 942,
+      "pic": "https://p4.img.cctvpic.com/fmspic/2026/11/14/05b8276f8d934129aa9e57e51b21f2fc-1.jpg",
+      "latest": "《七巧板》 20261114 快乐宝贝爱唱歌 汇聚童心 欢唱童年",
+      "latestTime": 1794621251699,
+      "latestGuid": "05b8276f8d934129aa9e57e51b21f2fc",
+      "count": 943,
       "stale": false,
       "playable": true,
       "verifyReason": "OK"
@@ -187,10 +187,10 @@
         "动画"
       ],
       "desc": "央视少儿动画连播栏目，按日期更新，适合作为日常动画入口。",
-      "pic": "https://p2.img.cctvpic.com/fmspic/2026/11/13/342ab00c855b4bae84756ab4efe77e5c-1.jpg",
-      "latest": "《动画大放映》 20261113 18:35 1/2",
-      "latestTime": 1794580570224,
-      "latestGuid": "342ab00c855b4bae84756ab4efe77e5c",
+      "pic": "https://p3.img.cctvpic.com/fmspic/2026/11/14/34bc3528abbc4d469fdeb9910baf3af4-1.jpg",
+      "latest": "《动画大放映》 20261114 06:00",
+      "latestTime": 1794617530537,
+      "latestGuid": "34bc3528abbc4d469fdeb9910baf3af4",
       "count": 1000,
       "stale": false,
       "playable": true,
