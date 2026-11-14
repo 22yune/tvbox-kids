@@ -138,6 +138,18 @@
       "name": "三六",
       "api": "https://360zy.com/api.php/provide/vod",
       "referer": "https://360zy.com/"
+    },
+    {
+      "key": "suoni",
+      "name": "索尼",
+      "api": "https://suoniapi.com/api.php/provide/vod",
+      "referer": "https://suoniapi.com/"
+    },
+    {
+      "key": "wujin2",
+      "name": "无尽二",
+      "api": "https://api.wujinapi.net/api.php/provide/vod",
+      "referer": "https://api.wujinapi.net/"
     }
   ]
 }
