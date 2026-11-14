@@ -324,7 +324,16 @@ async function main() {
     open = { series: [] };
   }
 
-  const merged = { series: (catalog.series || []).concat(curated.series || []).concat(open.series || []) };
+  // 英语/语文专题的 B 站条目光靠关键词采集，同样单独存放。
+  let topic = { english: [], chinese: [] };
+  try {
+    topic = await readJson("data/topic_catalog.json");
+  } catch (error) {
+    topic = { english: [], chinese: [] };
+  }
+  const topicSeries = (topic.english || []).concat(topic.chinese || []);
+
+  const merged = { series: (catalog.series || []).concat(curated.series || []).concat(open.series || []).concat(topicSeries) };
   await writeFile("spider-src/com/github/catvod/spider/Catalog.java", buildCatalogSource(taxonomy, merged));
   const jar = buildJar();
   const config = buildConfig(live, jar, extra);
@@ -338,6 +347,7 @@ async function main() {
   console.log(
     "Synced " + series.length + " series + 名单 " + curatedSeries.length +
     " + 采集站 " + (open.series || []).length +
+    " + 专题 " + topicSeries.length +
     (curated.missing && curated.missing.length ? "（缺源 " + curated.missing.length + "）" : "") +
     (stale ? "，stale " + stale : "") +
     (curatedStale ? "，名单 stale " + curatedStale : "") +

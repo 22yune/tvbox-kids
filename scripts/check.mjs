@@ -31,6 +31,19 @@ async function main() {
   const curation = await readJson("data/curation.json");
   const curated = await readJson("data/curated_catalog.json");
   const backupSites = await readJson("data/backup_sites.json");
+  let open = { series: [] };
+  try {
+    open = await readJson("data/open_catalog.json");
+  } catch (error) {
+    open = { series: [] };
+  }
+  let topicCatalog = { english: [], chinese: [] };
+  try {
+    topicCatalog = await readJson("data/topic_catalog.json");
+  } catch (error) {
+    topicCatalog = { english: [], chinese: [] };
+  }
+  const coverage = catalog.series.concat(curated.series || []).concat(open.series || []).concat(topicCatalog.english || []).concat(topicCatalog.chinese || []);
 
   const ages = new Set(taxonomy.ages.map((item) => item.id));
   const paths = new Set(taxonomy.paths.map((item) => item.id));
@@ -56,14 +69,15 @@ async function main() {
   }
 
   for (const age of ages) {
-    const covered = catalog.series.some((item) => item.ageMin < taxonomy.ages.find((x) => x.id === age).max && item.ageMax > taxonomy.ages.find((x) => x.id === age).min);
+    const covered = coverage.some((item) => item.ageMin < taxonomy.ages.find((x) => x.id === age).max && item.ageMax > taxonomy.ages.find((x) => x.id === age).min);
     requireField(covered, "年龄段没有内容：" + age);
   }
   for (const pathId of paths) {
-    requireField(catalog.series.some((item) => (item.paths || []).includes(pathId)), "学习路线没有内容：" + pathId);
+    requireField(coverage.some((item) => (item.paths || []).includes(pathId)), "学习路线没有内容：" + pathId);
   }
   for (const topicId of topics) {
-    requireField(catalog.series.some((item) => (item.tags || []).some((tag) => taxonomy.topics.find((x) => x.id === topicId).tags.includes(tag))), "专题没有内容：" + topicId);
+    const topicTagsOf = taxonomy.topics.find((x) => x.id === topicId).tags;
+    requireField(coverage.some((item) => (item.tags || []).some((tag) => topicTagsOf.includes(tag))), "专题没有内容：" + topicId);
   }
 
   const knownLists = new Set(curation.lists || []);
@@ -121,12 +135,6 @@ async function main() {
     requireField(curationIds.has(item.id), "缺失记录不在名单里：" + (item.id || "?"));
   }
 
-  let open = { series: [] };
-  try {
-    open = await readJson("data/open_catalog.json");
-  } catch (error) {
-    open = { series: [] };
-  }
   const openIds = new Set();
   for (const item of open.series || []) {
     requireField(Boolean(item.id) && /^mac-[0-9a-z]+$/.test(item.id), (item.id || "?") + " 的采集站 id 格式不正确");
@@ -160,9 +168,39 @@ async function main() {
     }
   }
 
+  const TOPIC_KEYS = { english: { prefix: "en", tag: "英语", list: "专题·英语学习" }, chinese: { prefix: "cn", tag: "语文", list: "专题·语文素养" } };
+  const topicIds = new Set();
+  for (const [key, meta] of Object.entries(TOPIC_KEYS)) {
+    const list = topicCatalog[key] || [];
+    requireField(list.length >= 100, "专题「" + meta.tag + "」条目过少：" + list.length);
+    for (const item of list) {
+      requireField(Boolean(item.id) && new RegExp("^" + meta.prefix + "-[0-9a-z]+$").test(item.id), (item.id || "?") + " 的专题 id 格式不正确");
+      requireField(!topicIds.has(item.id), "专题 id 重复：" + item.id);
+      requireField(!openIds.has(item.id) && !curationIds.has(item.id) && !cctvIds.has(item.id), "专题 id 与已有条目重复：" + item.id);
+      topicIds.add(item.id);
+      requireField(item.source === "bili", item.id + " 的 source 必须是 bili");
+      requireField(/^BV[0-9A-Za-z]+$/.test(item.bvid || ""), item.id + " 的 bvid 格式不正确");
+      requireField(Boolean(item.name), item.id + " 缺少名称");
+      requireField(Number.isFinite(item.ageMin) && Number.isFinite(item.ageMax) && item.ageMin < item.ageMax, item.id + " 的年龄段不合法");
+      requireField(item.ageMin >= 0 && item.ageMax <= 12, item.id + " 的年龄段越界");
+      requireField(Array.isArray(item.paths) && item.paths.length > 0, item.id + " 未绑定学习路线");
+      for (const pathId of item.paths || []) {
+        requireField(paths.has(pathId), item.id + " 引用了未知路线 " + pathId);
+      }
+      const tag = (item.tags || [])[0] || "";
+      requireField(new RegExp("^" + meta.tag + "L[1-4]$").test(tag), item.id + " 的分级标签不正确：" + (tag || "空"));
+      for (const name of item.tags || []) {
+        requireField(topicTags.has(name), item.id + " 的标签未被任何专题使用：" + name);
+      }
+      requireField(Array.isArray(item.list) && item.list.length === 1 && item.list[0] === meta.list, item.id + " 的专题来源应固定为 " + meta.list);
+      requireField(Number.isFinite(item.episodes) && item.episodes > 0, item.id + " 缺少集数");
+      requireField(Boolean(item.latest), item.id + " 缺少更新标记");
+      requireField(Number.isFinite(item.order), item.id + " 缺少排序值");
+    }
+  }
+
   requireField(catalogSource.includes("final class Catalog"), "Catalog.java 结构异常");
-  requireField(catalogSource.includes("class Catalog") && !catalogSource.includes("__CATALOG__"), "Catalog.java 仍是模板");
-  requireField(kidsSource.includes("extends Spider"), "Kids.java 必须继承 com.github.catvod.crawler.Spider");
+  requireField(catalogSource.includes("class Catalog") && !catalogSource.includes("__CATALOG__"), "Catalog.java 仍是模板");  requireField(kidsSource.includes("extends Spider"), "Kids.java 必须继承 com.github.catvod.crawler.Spider");
   requireField(kidsSource.includes("vod_play_url"), "Kids.java 缺少播放列表");
 
   requireField(typeof config.spider === "string" && /^https?:\/\/.+\.jar;md5;[0-9a-f]{32}$/.test(config.spider), "kids.json 的 spider 必须是 <jar 地址>;md5;<32 位 md5>");
@@ -207,7 +245,7 @@ async function main() {
     }
   }
 
-  const allSeries = catalog.series.concat(curated.series || []).concat(open.series || []);
+  const allSeries = catalog.series.concat(curated.series || []).concat(open.series || []).concat(topicCatalog.english || []).concat(topicCatalog.chinese || []);
   const ageCounts = taxonomy.ages.map((age) => {
     const count = allSeries.filter((item) => item.ageMin < age.max && item.ageMax > age.min).length;
     return age.name + " " + count;
@@ -222,6 +260,7 @@ async function main() {
   }
   console.log("名单来源：" + listCounts.join(" / "));
   console.log("系列：" + catalog.series.length + "（央视）+ " + (curated.series || []).length + "（名单）+ " + (open.series || []).length + "（采集站）");
+  console.log("专题：英语 " + (topicCatalog.english || []).length + "，语文 " + (topicCatalog.chinese || []).length);
   console.log("年龄：" + ageCounts.join(" / "));
   console.log("路线：" + pathCounts.join(" / "));
   console.log("站点：" + config.sites.length + "，直播频道：" + live.groups.reduce((sum, g) => sum + g.channel.length, 0));

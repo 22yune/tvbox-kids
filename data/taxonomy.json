@@ -16,6 +16,8 @@
     { "id": "path-tech", "name": "信息科技", "hint": "数字素养 → 编程思维 → AI 启蒙", "order": 80 }
   ],
   "topics": [
+    { "id": "topic-english", "name": "英语学习", "tags": ["英语L1", "英语L2", "英语L3", "英语L4"] },
+    { "id": "topic-chinese", "name": "语文素养", "tags": ["语文L1", "语文L2", "语文L3", "语文L4"] },
     { "id": "topic-toddler", "name": "低幼启蒙", "tags": ["低幼"] },
     { "id": "topic-animation", "name": "动画故事", "tags": ["动画"] },
     { "id": "topic-science", "name": "科学探索", "tags": ["科学"] },

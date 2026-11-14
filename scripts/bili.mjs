@@ -3,6 +3,7 @@
 // 搜索接口需要 buvid3 + b_nut Cookie（本地生成即可），view/playurl 匿名可用。
 const UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36";
 const SEARCH_API = "https://api.bilibili.com/x/web-interface/search/type";
+const SEARCH_ALL_API = "https://api.bilibili.com/x/web-interface/search/all/v2";
 const VIEW_API = "https://api.bilibili.com/x/web-interface/view";
 const PLAY_API = "https://api.bilibili.com/x/player/playurl";
 const REFERER = "https://www.bilibili.com/";
@@ -58,10 +59,19 @@ export function strip(value) {
   return String(value || "").replace(/<[^>]+>/g, "").replace(/&quot;/g, "\"");
 }
 
-export async function search(keyword, jar) {
-  const url = SEARCH_API + "?search_type=video&keyword=" + encodeURIComponent(keyword) + "&page=1&page_size=20";
+export async function search(keyword, jar, page = 1) {
+  const url = SEARCH_API + "?search_type=video&keyword=" + encodeURIComponent(keyword) + "&page=" + page + "&page_size=20";
   const data = await request(url, SEARCH_REFERER, jar);
   return (data.data && data.data.result) || [];
+}
+
+// search/type 被限流时改用聚合搜索接口，返回结构里的 video 分组同样带 bvid/时长/播放量。
+export async function searchVideos(keyword, jar, page = 1) {
+  const url = SEARCH_ALL_API + "?keyword=" + encodeURIComponent(keyword) + "&page=" + page;
+  const data = await request(url, SEARCH_REFERER, jar);
+  const groups = (data.data && data.data.result) || [];
+  const group = groups.find((item) => item.result_type === "video");
+  return (group && group.data) || [];
 }
 
 export async function viewOf(bvid) {

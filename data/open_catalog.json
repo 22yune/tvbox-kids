@@ -108685,7 +108685,1792 @@
           "episodes": 3
         }
       ]
+    },
+    {
+      "id": "mac-e445100141",
+      "name": "泽塔奥特曼 中配版",
+      "source": "mac",
+      "pic": "https://img.ukuapi88.com/upload/vod/20220424-6/0b2d515acb9aafb5e38d47b6a7229890.jpg",
+      "type": "动漫",
+      "year": "2020",
+      "episodes": 2,
+      "ageMin": 6,
+      "ageMax": 12,
+      "paths": [
+        "path-social"
+      ],
+      "stages": {
+        "path-social": 2
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 901800,
+      "why": "采集站收录 2 集，可作补充资源。",
+      "list": [
+        "采集站"
+      ],
+      "desc": "2020 年，动漫，来自 优酷。",
+      "backups": [
+        {
+          "key": "uku",
+          "site": "优酷",
+          "api": "https://api.ukuapi88.com/api.php/provide/vod/",
+          "referer": "https://api.ukuapi88.com/",
+          "vodId": "34427",
+          "from": "ukm3u8",
+          "episodes": 2
+        }
+      ]
+    },
+    {
+      "id": "mac-941766826c",
+      "name": "梦比优斯奥特曼外传 暗黑铠甲国语版",
+      "source": "mac",
+      "pic": "https://www.mdzypic.com/upload/vod/20230920-1/f4a322182ee9b5319156ec7872cff135.jpg",
+      "type": "日韩动漫",
+      "year": "2008",
+      "episodes": 2,
+      "ageMin": 6,
+      "ageMax": 12,
+      "paths": [
+        "path-social"
+      ],
+      "stages": {
+        "path-social": 2
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 901801,
+      "why": "采集站收录 2 集，可作补充资源。",
+      "list": [
+        "采集站"
+      ],
+      "desc": "2008 年，日韩动漫，来自 魔都。",
+      "backups": [
+        {
+          "key": "mdzy",
+          "site": "魔都",
+          "api": "https://www.mdzyapi.com/api.php/provide/vod/",
+          "referer": "https://www.mdzyapi.com/",
+          "vodId": "5295",
+          "from": "modum3u8",
+          "episodes": 2
+        }
+      ]
+    },
+    {
+      "id": "mac-b816a412b6",
+      "name": "罗布奥特曼剧场版：决定了！羁绊的水晶",
+      "source": "mac",
+      "pic": "https://www.mdzypic.com/upload/vod/20230730-1/8693b4685de9d0f863553d88b99cbfdd.jpg",
+      "type": "动漫电影",
+      "year": "2019",
+      "episodes": 2,
+      "ageMin": 6,
+      "ageMax": 12,
+      "paths": [
+        "path-social"
+      ],
+      "stages": {
+        "path-social": 2
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 901802,
+      "why": "采集站收录 2 集，可作补充资源。",
+      "list": [
+        "采集站"
+      ],
+      "desc": "2019 年，动漫电影，来自 魔都。",
+      "backups": [
+        {
+          "key": "mdzy",
+          "site": "魔都",
+          "api": "https://www.mdzyapi.com/api.php/provide/vod/",
+          "referer": "https://www.mdzyapi.com/",
+          "vodId": "1636",
+          "from": "modum3u8",
+          "episodes": 2
+        }
+      ]
+    },
+    {
+      "id": "mac-22c6bb863a",
+      "name": "数码宝贝大冒险：我们的战争游戏！",
+      "source": "mac",
+      "pic": "https://p.lztutu.com/upload/vod/20230729-1/f2f51a32b599339e9569172aa8be5eed.jpg",
+      "type": "日韩动漫",
+      "year": "2000",
+      "episodes": 2,
+      "ageMin": 3,
+      "ageMax": 9,
+      "paths": [
+        "path-language",
+        "path-social"
+      ],
+      "stages": {
+        "path-language": 1,
+        "path-social": 1
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 901803,
+      "why": "采集站收录 2 集，可作补充资源。",
+      "list": [
+        "采集站"
+      ],
+      "desc": "2000 年，日韩动漫，来自 量子。",
+      "backups": [
+        {
+          "key": "lziapi",
+          "site": "量子",
+          "api": "http://cj.lziapi.com/api.php/provide/vod/",
+          "referer": "http://cj.lziapi.com/",
+          "vodId": "67755",
+          "from": "lzm3u8",
+          "episodes": 2
+        }
+      ]
+    },
+    {
+      "id": "mac-f43086fc7c",
+      "name": "小熊维尼:长鼻怪万圣节",
+      "source": "mac",
+      "pic": "https://taopianimage.xyz:43333/1755552.jpg",
+      "type": "电影/动画片",
+      "year": "2005",
+      "episodes": 1,
+      "ageMin": 3,
+      "ageMax": 9,
+      "paths": [
+        "path-language",
+        "path-social"
+      ],
+      "stages": {
+        "path-language": 1,
+        "path-social": 1
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 901804,
+      "why": "采集站收录 1 集，可作补充资源。",
+      "list": [
+        "采集站"
+      ],
+      "desc": "2005 年，电影/动画片，来自 淘片。",
+      "backups": [
+        {
+          "key": "taopian",
+          "site": "淘片",
+          "api": "https://taopianapi.com/cjapi/mc/vod/json.html",
+          "referer": "https://taopianapi.com/",
+          "vodId": "46144",
+          "from": "tpm3u8",
+          "episodes": 1
+        }
+      ]
+    },
+    {
+      "id": "mac-7521385237",
+      "name": "小熊维尼：春天的百亩森林",
+      "source": "mac",
+      "pic": "https://taopianimage.xyz:43333/1946064.jpg",
+      "type": "电影/动画片",
+      "year": "2004",
+      "episodes": 1,
+      "ageMin": 3,
+      "ageMax": 9,
+      "paths": [
+        "path-language",
+        "path-social"
+      ],
+      "stages": {
+        "path-language": 1,
+        "path-social": 1
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 901805,
+      "why": "采集站收录 1 集，可作补充资源。",
+      "list": [
+        "采集站"
+      ],
+      "desc": "2004 年，电影/动画片，来自 淘片。",
+      "backups": [
+        {
+          "key": "taopian",
+          "site": "淘片",
+          "api": "https://taopianapi.com/cjapi/mc/vod/json.html",
+          "referer": "https://taopianapi.com/",
+          "vodId": "44222",
+          "from": "tpm3u8",
+          "episodes": 1
+        }
+      ]
+    },
+    {
+      "id": "mac-a51b712301",
+      "name": "小熊维尼之长鼻怪大冒险 2005",
+      "source": "mac",
+      "pic": "https://taopianimage.xyz:43333/303cdc879aa3.jpg",
+      "type": "电影/动画片",
+      "year": "2005",
+      "episodes": 1,
+      "ageMin": 3,
+      "ageMax": 9,
+      "paths": [
+        "path-language",
+        "path-social"
+      ],
+      "stages": {
+        "path-language": 1,
+        "path-social": 1
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 901806,
+      "why": "采集站收录 1 集，可作补充资源。",
+      "list": [
+        "采集站"
+      ],
+      "desc": "2005 年，电影/动画片，来自 淘片。",
+      "backups": [
+        {
+          "key": "taopian",
+          "site": "淘片",
+          "api": "https://taopianapi.com/cjapi/mc/vod/json.html",
+          "referer": "https://taopianapi.com/",
+          "vodId": "68169",
+          "from": "tpm3u8",
+          "episodes": 1
+        }
+      ]
+    },
+    {
+      "id": "mac-f395d78153",
+      "name": "小熊维尼：新年新希望",
+      "source": "mac",
+      "pic": "https://taopianimage.xyz:43333/poster_bcec5137-da66-4cc7-a710-1bf4df18019a.jpeg",
+      "type": "电影/动画片",
+      "year": "2002",
+      "episodes": 1,
+      "ageMin": 3,
+      "ageMax": 9,
+      "paths": [
+        "path-language",
+        "path-social"
+      ],
+      "stages": {
+        "path-language": 1,
+        "path-social": 1
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 901807,
+      "why": "采集站收录 1 集，可作补充资源。",
+      "list": [
+        "采集站"
+      ],
+      "desc": "2002 年，电影/动画片，来自 淘片。",
+      "backups": [
+        {
+          "key": "taopian",
+          "site": "淘片",
+          "api": "https://taopianapi.com/cjapi/mc/vod/json.html",
+          "referer": "https://taopianapi.com/",
+          "vodId": "69815",
+          "from": "tpm3u8",
+          "episodes": 1
+        }
+      ]
+    },
+    {
+      "id": "mac-0a21cbd55e",
+      "name": "卡由：巨人罗西",
+      "source": "mac",
+      "pic": "https://taopianimage.xyz:43333/a7b27246f57ev.jpeg",
+      "type": "电影/动画片",
+      "year": "2022",
+      "episodes": 1,
+      "ageMin": 3,
+      "ageMax": 9,
+      "paths": [
+        "path-language",
+        "path-social"
+      ],
+      "stages": {
+        "path-language": 1,
+        "path-social": 1
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 901808,
+      "why": "采集站收录 1 集，可作补充资源。",
+      "list": [
+        "采集站"
+      ],
+      "desc": "2022 年，电影/动画片，来自 淘片。",
+      "backups": [
+        {
+          "key": "taopian",
+          "site": "淘片",
+          "api": "https://taopianapi.com/cjapi/mc/vod/json.html",
+          "referer": "https://taopianapi.com/",
+          "vodId": "1494294",
+          "from": "tpm3u8",
+          "episodes": 1
+        }
+      ]
+    },
+    {
+      "id": "mac-cf3838d55a",
+      "name": "碰碰狐音乐电影：奇幻城嘉年华",
+      "source": "mac",
+      "pic": "https://p.lztutu.com/upload/vod/20231029-1/728cf9be97cce91ad75e5825f5170695.jpg",
+      "type": "欧美动漫",
+      "year": "2022",
+      "episodes": 1,
+      "ageMin": 3,
+      "ageMax": 12,
+      "paths": [
+        "path-arts"
+      ],
+      "stages": {
+        "path-arts": 1
+      },
+      "tags": [
+        "艺术"
+      ],
+      "order": 901809,
+      "why": "采集站收录 1 集，可作补充资源。",
+      "list": [
+        "采集站"
+      ],
+      "desc": "2022 年，欧美动漫，来自 量子。",
+      "backups": [
+        {
+          "key": "lziapi",
+          "site": "量子",
+          "api": "http://cj.lziapi.com/api.php/provide/vod/",
+          "referer": "http://cj.lziapi.com/",
+          "vodId": "74597",
+          "from": "lzm3u8",
+          "episodes": 1
+        }
+      ]
+    },
+    {
+      "id": "mac-690b2f1cd4",
+      "name": "摩尔庄园",
+      "source": "mac",
+      "pic": "https://www.mdzypic.com/upload/vod/20240829-1/1c53e8036390179077817248cd53f87e.jpg",
+      "type": "动漫电影",
+      "year": "2011",
+      "episodes": 1,
+      "ageMin": 3,
+      "ageMax": 9,
+      "paths": [
+        "path-language",
+        "path-social"
+      ],
+      "stages": {
+        "path-language": 1,
+        "path-social": 1
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 901810,
+      "why": "采集站收录 1 集，可作补充资源。",
+      "list": [
+        "采集站"
+      ],
+      "desc": "2011 年，动漫电影，来自 魔都。",
+      "backups": [
+        {
+          "key": "mdzy",
+          "site": "魔都",
+          "api": "https://www.mdzyapi.com/api.php/provide/vod/",
+          "referer": "https://www.mdzyapi.com/",
+          "vodId": "28240",
+          "from": "modum3u8",
+          "episodes": 1
+        }
+      ]
+    },
+    {
+      "id": "mac-a35c1f6ed1",
+      "name": "摩尔庄园冰世纪",
+      "source": "mac",
+      "pic": "https://pic.youkupic.com/upload/vod/20240409-1/41743b3b87e1e7bdc0eaee228a3945a0.jpg",
+      "type": "动画片",
+      "year": "2011",
+      "episodes": 1,
+      "ageMin": 3,
+      "ageMax": 9,
+      "paths": [
+        "path-language",
+        "path-social"
+      ],
+      "stages": {
+        "path-language": 1,
+        "path-social": 1
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 901811,
+      "why": "采集站收录 1 集，可作补充资源。",
+      "list": [
+        "采集站"
+      ],
+      "desc": "2011 年，动画片，来自 无尽。",
+      "backups": [
+        {
+          "key": "wujin",
+          "site": "无尽",
+          "api": "https://api.wujinapi.com/api.php/provide/vod/",
+          "referer": "https://api.wujinapi.com/",
+          "vodId": "65645",
+          "from": "wjm3u8",
+          "episodes": 1
+        }
+      ]
+    },
+    {
+      "id": "mac-2668ba7cf0",
+      "name": "铠甲勇士捕王",
+      "source": "mac",
+      "pic": "https://img.ukuapi88.com/upload/vod/20220424-4/5121055cb41fd332ae0c604ede99f3e8.jpg",
+      "type": "动漫",
+      "year": "2016",
+      "episodes": 1,
+      "ageMin": 3,
+      "ageMax": 9,
+      "paths": [
+        "path-language",
+        "path-social"
+      ],
+      "stages": {
+        "path-language": 1,
+        "path-social": 1
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 901812,
+      "why": "采集站收录 1 集，可作补充资源。",
+      "list": [
+        "采集站"
+      ],
+      "desc": "2016 年，动漫，来自 优酷。",
+      "backups": [
+        {
+          "key": "uku",
+          "site": "优酷",
+          "api": "https://api.ukuapi88.com/api.php/provide/vod/",
+          "referer": "https://api.ukuapi88.com/",
+          "vodId": "32001",
+          "from": "ukm3u8",
+          "episodes": 1
+        }
+      ]
+    },
+    {
+      "id": "mac-f5c067758a",
+      "name": "叶罗丽月灵",
+      "source": "mac",
+      "pic": "http://www.maoyanimg.top/upload/vod/20250818-1/88cb6d2e02c059b7d8f43ac6075e42a0.jpg",
+      "type": "国产动漫",
+      "year": "2025",
+      "episodes": 1,
+      "ageMin": 3,
+      "ageMax": 9,
+      "paths": [
+        "path-language",
+        "path-social"
+      ],
+      "stages": {
+        "path-language": 1,
+        "path-social": 1
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 901813,
+      "why": "采集站收录 1 集，可作补充资源。",
+      "list": [
+        "采集站"
+      ],
+      "desc": "2025 年，国产动漫，来自 猫眼。",
+      "backups": [
+        {
+          "key": "maoyan",
+          "site": "猫眼",
+          "api": "https://api.maoyanapi.top/api.php/provide/vod",
+          "referer": "https://api.maoyanapi.top/",
+          "vodId": "146659",
+          "from": "mym3u8",
+          "episodes": 1
+        }
+      ]
+    },
+    {
+      "id": "mac-6fa334d25c",
+      "name": "樱桃小丸子：我喜欢的歌",
+      "source": "mac",
+      "pic": "https://taopianimage.xyz:43333/7c95a8c02e65v.jpeg",
+      "type": "电影/动画片",
+      "year": "1992",
+      "episodes": 1,
+      "ageMin": 3,
+      "ageMax": 9,
+      "paths": [
+        "path-language",
+        "path-social"
+      ],
+      "stages": {
+        "path-language": 1,
+        "path-social": 1
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 901814,
+      "why": "采集站收录 1 集，可作补充资源。",
+      "list": [
+        "采集站"
+      ],
+      "desc": "1992 年，电影/动画片，来自 淘片。",
+      "backups": [
+        {
+          "key": "taopian",
+          "site": "淘片",
+          "api": "https://taopianapi.com/cjapi/mc/vod/json.html",
+          "referer": "https://taopianapi.com/",
+          "vodId": "1435790",
+          "from": "tpm3u8",
+          "episodes": 1
+        }
+      ]
+    },
+    {
+      "id": "mac-b06bb70580",
+      "name": "面包超人 细菌人与绘本的森林妖精",
+      "source": "mac",
+      "pic": "https://p.lztutu.com/upload/vod/20251010-1/c187cf929ba0288a9014bcc3e81ab31a.jpg",
+      "type": "日韩动漫",
+      "year": "2024",
+      "episodes": 1,
+      "ageMin": 3,
+      "ageMax": 9,
+      "paths": [
+        "path-language",
+        "path-social"
+      ],
+      "stages": {
+        "path-language": 1,
+        "path-social": 1
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 901815,
+      "why": "采集站收录 1 集，可作补充资源。",
+      "list": [
+        "采集站"
+      ],
+      "desc": "2024 年，日韩动漫，来自 量子。",
+      "backups": [
+        {
+          "key": "lziapi",
+          "site": "量子",
+          "api": "http://cj.lziapi.com/api.php/provide/vod/",
+          "referer": "http://cj.lziapi.com/",
+          "vodId": "112933",
+          "from": "lzm3u8",
+          "episodes": 1
+        }
+      ]
+    },
+    {
+      "id": "mac-bd73437a50",
+      "name": "宠物小精灵：酋雷姆VS圣剑士凯尔迪奥",
+      "source": "mac",
+      "pic": "https://img.ukuapi88.com/upload/vod/20220424-2/4c55a634fedbf32b1a724e022cd947db.jpg",
+      "type": "动漫",
+      "year": "2012",
+      "episodes": 1,
+      "ageMin": 3,
+      "ageMax": 9,
+      "paths": [
+        "path-language",
+        "path-social"
+      ],
+      "stages": {
+        "path-language": 1,
+        "path-social": 1
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 901816,
+      "why": "采集站收录 1 集，可作补充资源。",
+      "list": [
+        "采集站"
+      ],
+      "desc": "2012 年，动漫，来自 优酷。",
+      "backups": [
+        {
+          "key": "uku",
+          "site": "优酷",
+          "api": "https://api.ukuapi88.com/api.php/provide/vod/",
+          "referer": "https://api.ukuapi88.com/",
+          "vodId": "30878",
+          "from": "ukm3u8",
+          "episodes": 1
+        }
+      ]
+    },
+    {
+      "id": "mac-cbaa578f64",
+      "name": "宠物小精灵剧场版 - 路基亚爆诞(美版)",
+      "source": "mac",
+      "pic": "https://img.ukuapi88.com/upload/vod/20220424-2/2a6f068d14d284ee847f02c66c5489f1.jpg",
+      "type": "动漫",
+      "year": "2000",
+      "episodes": 1,
+      "ageMin": 3,
+      "ageMax": 9,
+      "paths": [
+        "path-language",
+        "path-social"
+      ],
+      "stages": {
+        "path-language": 1,
+        "path-social": 1
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 901817,
+      "why": "采集站收录 1 集，可作补充资源。",
+      "list": [
+        "采集站"
+      ],
+      "desc": "2000 年，动漫，来自 优酷。",
+      "backups": [
+        {
+          "key": "uku",
+          "site": "优酷",
+          "api": "https://api.ukuapi88.com/api.php/provide/vod/",
+          "referer": "https://api.ukuapi88.com/",
+          "vodId": "30882",
+          "from": "ukm3u8",
+          "episodes": 1
+        }
+      ]
+    },
+    {
+      "id": "mac-7fb260d729",
+      "name": "宝可梦 我们的故事",
+      "source": "mac",
+      "pic": "https://img.ukuapi88.com/upload/vod/20220424-2/c1d2329557ff8724452898e974046234.jpg",
+      "type": "动漫",
+      "year": "",
+      "episodes": 1,
+      "ageMin": 3,
+      "ageMax": 9,
+      "paths": [
+        "path-language",
+        "path-social"
+      ],
+      "stages": {
+        "path-language": 1,
+        "path-social": 1
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 901818,
+      "why": "采集站收录 1 集，可作补充资源。",
+      "list": [
+        "采集站"
+      ],
+      "desc": "动漫，来自 优酷。",
+      "backups": [
+        {
+          "key": "uku",
+          "site": "优酷",
+          "api": "https://api.ukuapi88.com/api.php/provide/vod/",
+          "referer": "https://api.ukuapi88.com/",
+          "vodId": "30601",
+          "from": "ukm3u8",
+          "episodes": 1
+        }
+      ]
+    },
+    {
+      "id": "mac-2ac1699437",
+      "name": "奥特曼超级胜利格斗",
+      "source": "mac",
+      "pic": "https://img.ukuapi88.com/upload/vod/20220424-2/04817279c088cae3e700f402c67bb67c.jpg",
+      "type": "动漫",
+      "year": "2015",
+      "episodes": 1,
+      "ageMin": 6,
+      "ageMax": 12,
+      "paths": [
+        "path-social"
+      ],
+      "stages": {
+        "path-social": 2
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 901819,
+      "why": "采集站收录 1 集，可作补充资源。",
+      "list": [
+        "采集站"
+      ],
+      "desc": "2015 年，动漫，来自 优酷。",
+      "backups": [
+        {
+          "key": "uku",
+          "site": "优酷",
+          "api": "https://api.ukuapi88.com/api.php/provide/vod/",
+          "referer": "https://api.ukuapi88.com/",
+          "vodId": "30507",
+          "from": "ukm3u8",
+          "episodes": 1
+        }
+      ]
+    },
+    {
+      "id": "mac-1dff2d6a27",
+      "name": "数码宝贝大电影七：古代数码宝贝复活",
+      "source": "mac",
+      "pic": "https://taopianimage.xyz:43333/49e39533eefa.jpg",
+      "type": "电影/动画片",
+      "year": "2002",
+      "episodes": 1,
+      "ageMin": 3,
+      "ageMax": 9,
+      "paths": [
+        "path-language",
+        "path-social"
+      ],
+      "stages": {
+        "path-language": 1,
+        "path-social": 1
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 901820,
+      "why": "采集站收录 1 集，可作补充资源。",
+      "list": [
+        "采集站"
+      ],
+      "desc": "2002 年，电影/动画片，来自 淘片。",
+      "backups": [
+        {
+          "key": "taopian",
+          "site": "淘片",
+          "api": "https://taopianapi.com/cjapi/mc/vod/json.html",
+          "referer": "https://taopianapi.com/",
+          "vodId": "77532",
+          "from": "tpm3u8",
+          "episodes": 1
+        }
+      ]
+    },
+    {
+      "id": "mac-ed5d27d0c9",
+      "name": "特利迦奥特曼-泽塔篇-日语版",
+      "source": "mac",
+      "pic": "https://www.imgzy360.com:7788/upload/vod/20240925-1/bbc924c415c17d223e52a4d5ab2cd012.jpg",
+      "type": "日韩动漫",
+      "year": "2021",
+      "episodes": 1,
+      "ageMin": 6,
+      "ageMax": 12,
+      "paths": [
+        "path-social"
+      ],
+      "stages": {
+        "path-social": 2
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 901821,
+      "why": "采集站收录 1 集，可作补充资源。",
+      "list": [
+        "采集站"
+      ],
+      "desc": "2021 年，日韩动漫，来自 三六。",
+      "backups": [
+        {
+          "key": "sanliu",
+          "site": "三六",
+          "api": "https://360zy.com/api.php/provide/vod",
+          "referer": "https://360zy.com/",
+          "vodId": "64753",
+          "from": "360zy",
+          "episodes": 1
+        }
+      ]
+    },
+    {
+      "id": "mac-3b222ccd45",
+      "name": "布莱泽奥特曼大电影",
+      "source": "mac",
+      "pic": "https://www.imgzy360.com:7788/upload/vod/20241011-1/993538d611be6ba39b22c0a730619d37.jpg",
+      "type": "日韩动漫",
+      "year": "2024",
+      "episodes": 1,
+      "ageMin": 6,
+      "ageMax": 12,
+      "paths": [
+        "path-social"
+      ],
+      "stages": {
+        "path-social": 2
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 901822,
+      "why": "采集站收录 1 集，可作补充资源。",
+      "list": [
+        "采集站"
+      ],
+      "desc": "2024 年，日韩动漫，来自 三六。",
+      "backups": [
+        {
+          "key": "sanliu",
+          "site": "三六",
+          "api": "https://360zy.com/api.php/provide/vod",
+          "referer": "https://360zy.com/",
+          "vodId": "65461",
+          "from": "360zy",
+          "episodes": 1
+        }
+      ]
+    },
+    {
+      "id": "mac-fa62d56449",
+      "name": "宝可梦：超梦的逆袭 进化 劇場版",
+      "source": "mac",
+      "pic": "https://taopianimage.xyz:43333/03bb3c348c4fv.jpeg",
+      "type": "电影/动画片",
+      "year": "2019",
+      "episodes": 1,
+      "ageMin": 3,
+      "ageMax": 9,
+      "paths": [
+        "path-language",
+        "path-social"
+      ],
+      "stages": {
+        "path-language": 1,
+        "path-social": 1
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 901823,
+      "why": "采集站收录 1 集，可作补充资源。",
+      "list": [
+        "采集站"
+      ],
+      "desc": "2019 年，电影/动画片，来自 淘片。",
+      "backups": [
+        {
+          "key": "taopian",
+          "site": "淘片",
+          "api": "https://taopianapi.com/cjapi/mc/vod/json.html",
+          "referer": "https://taopianapi.com/",
+          "vodId": "1402677",
+          "from": "tpm3u8",
+          "episodes": 1
+        }
+      ]
+    },
+    {
+      "id": "mac-71ca13102b",
+      "name": "布莱泽奥特曼剧场版：大怪兽首都激战",
+      "source": "mac",
+      "pic": "https://www.mdzypic.com/upload/vod/20240405-1/944964ff73d230c6992976753f704b4a.jpg",
+      "type": "动漫电影",
+      "year": "2024",
+      "episodes": 1,
+      "ageMin": 6,
+      "ageMax": 12,
+      "paths": [
+        "path-social"
+      ],
+      "stages": {
+        "path-social": 2
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 901824,
+      "why": "采集站收录 1 集，可作补充资源。",
+      "list": [
+        "采集站"
+      ],
+      "desc": "2024 年，动漫电影，来自 魔都。",
+      "backups": [
+        {
+          "key": "mdzy",
+          "site": "魔都",
+          "api": "https://www.mdzyapi.com/api.php/provide/vod/",
+          "referer": "https://www.mdzyapi.com/",
+          "vodId": "7918",
+          "from": "modum3u8",
+          "episodes": 1
+        }
+      ]
+    },
+    {
+      "id": "mac-27efdf879d",
+      "name": "假面骑士极狐~邪魔徒·觉醒",
+      "source": "mac",
+      "pic": "http://www.maoyanimg.top/upload/vod/20251006-1/747f6c6bda0eb4561c85e6ae5e8d4496.jpg",
+      "type": "动画片",
+      "year": "2024",
+      "episodes": 1,
+      "ageMin": 6,
+      "ageMax": 12,
+      "paths": [
+        "path-social"
+      ],
+      "stages": {
+        "path-social": 2
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 901825,
+      "why": "采集站收录 1 集，可作补充资源。",
+      "list": [
+        "采集站"
+      ],
+      "desc": "2024 年，动画片，来自 猫眼。",
+      "backups": [
+        {
+          "key": "maoyan",
+          "site": "猫眼",
+          "api": "https://api.maoyanapi.top/api.php/provide/vod",
+          "referer": "https://api.maoyanapi.top/",
+          "vodId": "150427",
+          "from": "mym3u8",
+          "episodes": 1
+        }
+      ]
+    },
+    {
+      "id": "mac-2c9fdcd15e",
+      "name": "假面骑士极狐：4位王者与黑狐",
+      "source": "mac",
+      "pic": "http://www.maoyanimg.top/upload/vod/20251006-1/ba03a2b2385c39c7afa1b865d9c34f45.jpg",
+      "type": "动画片",
+      "year": "2023",
+      "episodes": 1,
+      "ageMin": 6,
+      "ageMax": 12,
+      "paths": [
+        "path-social"
+      ],
+      "stages": {
+        "path-social": 2
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 901826,
+      "why": "采集站收录 1 集，可作补充资源。",
+      "list": [
+        "采集站"
+      ],
+      "desc": "2023 年，动画片，来自 猫眼。",
+      "backups": [
+        {
+          "key": "maoyan",
+          "site": "猫眼",
+          "api": "https://api.maoyanapi.top/api.php/provide/vod",
+          "referer": "https://api.maoyanapi.top/",
+          "vodId": "150425",
+          "from": "mym3u8",
+          "episodes": 1
+        }
+      ]
+    },
+    {
+      "id": "mac-cbc247a105",
+      "name": "假面骑士极狐外传~假面骑士谛睨",
+      "source": "mac",
+      "pic": "http://www.maoyanimg.top/upload/vod/20251006-1/740e264e3fe6daae0232480833d177ce.jpg",
+      "type": "动画片",
+      "year": "2024",
+      "episodes": 1,
+      "ageMin": 6,
+      "ageMax": 12,
+      "paths": [
+        "path-social"
+      ],
+      "stages": {
+        "path-social": 2
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 901827,
+      "why": "采集站收录 1 集，可作补充资源。",
+      "list": [
+        "采集站"
+      ],
+      "desc": "2024 年，动画片，来自 猫眼。",
+      "backups": [
+        {
+          "key": "maoyan",
+          "site": "猫眼",
+          "api": "https://api.maoyanapi.top/api.php/provide/vod",
+          "referer": "https://api.maoyanapi.top/",
+          "vodId": "150421",
+          "from": "mym3u8",
+          "episodes": 1
+        }
+      ]
+    },
+    {
+      "id": "mac-0857f7fe75",
+      "name": "假面骑士~超越世代全片（中配）",
+      "source": "mac",
+      "pic": "http://www.maoyanimg.top/upload/vod/20250818-1/c2246eb9c5d5888e363397166be2a285.jpg",
+      "type": "日韩动漫",
+      "year": "2025",
+      "episodes": 1,
+      "ageMin": 6,
+      "ageMax": 12,
+      "paths": [
+        "path-social"
+      ],
+      "stages": {
+        "path-social": 2
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 901828,
+      "why": "采集站收录 1 集，可作补充资源。",
+      "list": [
+        "采集站"
+      ],
+      "desc": "2025 年，日韩动漫，来自 猫眼。",
+      "backups": [
+        {
+          "key": "maoyan",
+          "site": "猫眼",
+          "api": "https://api.maoyanapi.top/api.php/provide/vod",
+          "referer": "https://api.maoyanapi.top/",
+          "vodId": "147520",
+          "from": "mym3u8",
+          "episodes": 1
+        }
+      ]
+    },
+    {
+      "id": "mac-8fea771a5a",
+      "name": "假面骑士~令和第一世代（中配）",
+      "source": "mac",
+      "pic": "https://www.imgzy360.com:7788/upload/vod/20250519-1/d98215d68271bd81c0c9c3ee78bd0c31.jpg",
+      "type": "日韩动漫",
+      "year": "2019",
+      "episodes": 1,
+      "ageMin": 6,
+      "ageMax": 12,
+      "paths": [
+        "path-social"
+      ],
+      "stages": {
+        "path-social": 2
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 901829,
+      "why": "采集站收录 1 集，可作补充资源。",
+      "list": [
+        "采集站"
+      ],
+      "desc": "2019 年，日韩动漫，来自 三六。",
+      "backups": [
+        {
+          "key": "sanliu",
+          "site": "三六",
+          "api": "https://360zy.com/api.php/provide/vod",
+          "referer": "https://360zy.com/",
+          "vodId": "73870",
+          "from": "360zy",
+          "episodes": 1
+        }
+      ]
+    },
+    {
+      "id": "mac-2e34821c88",
+      "name": "假面骑士~超越世代",
+      "source": "mac",
+      "pic": "https://www.imgzy360.com:7788/upload/vod/20250518-1/93ddcb863d085de2a9e1a9a03f9e3d37.jpg",
+      "type": "日韩动漫",
+      "year": "2021",
+      "episodes": 1,
+      "ageMin": 6,
+      "ageMax": 12,
+      "paths": [
+        "path-social"
+      ],
+      "stages": {
+        "path-social": 2
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 901830,
+      "why": "采集站收录 1 集，可作补充资源。",
+      "list": [
+        "采集站"
+      ],
+      "desc": "2021 年，日韩动漫，来自 三六。",
+      "backups": [
+        {
+          "key": "sanliu",
+          "site": "三六",
+          "api": "https://360zy.com/api.php/provide/vod",
+          "referer": "https://360zy.com/",
+          "vodId": "73847",
+          "from": "360zy",
+          "episodes": 1
+        }
+      ]
+    },
+    {
+      "id": "mac-9e085c600c",
+      "name": "假面骑士利维斯外传：亲爱的母亲前篇",
+      "source": "mac",
+      "pic": "https://www.imgzy360.com:7788/upload/vod/20250518-1/62c63e2ccd20a50b46b415249427f30e.jpg",
+      "type": "日韩动漫",
+      "year": "2022",
+      "episodes": 1,
+      "ageMin": 6,
+      "ageMax": 12,
+      "paths": [
+        "path-social"
+      ],
+      "stages": {
+        "path-social": 2
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 901831,
+      "why": "采集站收录 1 集，可作补充资源。",
+      "list": [
+        "采集站"
+      ],
+      "desc": "2022 年，日韩动漫，来自 三六。",
+      "backups": [
+        {
+          "key": "sanliu",
+          "site": "三六",
+          "api": "https://360zy.com/api.php/provide/vod",
+          "referer": "https://360zy.com/",
+          "vodId": "73845",
+          "from": "360zy",
+          "episodes": 1
+        }
+      ]
+    },
+    {
+      "id": "mac-7d5b55114a",
+      "name": "假面骑士时王：盖茨王权",
+      "source": "mac",
+      "pic": "https://img.ukuapi88.com/upload/vod/20220424-3/bbb7392bbf8492136170c20f4c757e67.jpg",
+      "type": "动漫",
+      "year": "2020",
+      "episodes": 1,
+      "ageMin": 6,
+      "ageMax": 12,
+      "paths": [
+        "path-social"
+      ],
+      "stages": {
+        "path-social": 2
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 901832,
+      "why": "采集站收录 1 集，可作补充资源。",
+      "list": [
+        "采集站"
+      ],
+      "desc": "2020 年，动漫，来自 优酷。",
+      "backups": [
+        {
+          "key": "uku",
+          "site": "优酷",
+          "api": "https://api.ukuapi88.com/api.php/provide/vod/",
+          "referer": "https://api.ukuapi88.com/",
+          "vodId": "31817",
+          "from": "ukm3u8",
+          "episodes": 1
+        }
+      ]
+    },
+    {
+      "id": "mac-2c5094674b",
+      "name": "光之美少女全明星豪华篇3",
+      "source": "mac",
+      "pic": "https://www.mdzypic.com/upload/vod/20240830-20/a7fa0d50291d86f830885bf2a611a12e.jpg",
+      "type": "动漫电影",
+      "year": "2011",
+      "episodes": 1,
+      "ageMin": 3,
+      "ageMax": 9,
+      "paths": [
+        "path-language",
+        "path-social"
+      ],
+      "stages": {
+        "path-language": 1,
+        "path-social": 1
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 901833,
+      "why": "采集站收录 1 集，可作补充资源。",
+      "list": [
+        "采集站"
+      ],
+      "desc": "2011 年，动漫电影，来自 魔都。",
+      "backups": [
+        {
+          "key": "mdzy",
+          "site": "魔都",
+          "api": "https://www.mdzyapi.com/api.php/provide/vod/",
+          "referer": "https://www.mdzyapi.com/",
+          "vodId": "29309",
+          "from": "modum3u8",
+          "episodes": 1
+        }
+      ]
+    },
+    {
+      "id": "mac-cfd120fc02",
+      "name": "魔卡少女樱OVA：知世的活跃影像日记",
+      "source": "mac",
+      "pic": "https://p.lztutu.com/upload/vod/20220619-1/47b890db8c0b6de9ea001764cae25953.jpg",
+      "type": "日韩动漫",
+      "year": "2000",
+      "episodes": 1,
+      "ageMin": 3,
+      "ageMax": 9,
+      "paths": [
+        "path-language",
+        "path-social"
+      ],
+      "stages": {
+        "path-language": 1,
+        "path-social": 1
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 901834,
+      "why": "采集站收录 1 集，可作补充资源。",
+      "list": [
+        "采集站"
+      ],
+      "desc": "2000 年，日韩动漫，来自 量子。",
+      "backups": [
+        {
+          "key": "lziapi",
+          "site": "量子",
+          "api": "http://cj.lziapi.com/api.php/provide/vod/",
+          "referer": "http://cj.lziapi.com/",
+          "vodId": "23543",
+          "from": "lzm3u8",
+          "episodes": 1
+        }
+      ]
+    },
+    {
+      "id": "mac-a48c68e06a",
+      "name": "魔卡少女樱 剧场版 香港篇",
+      "source": "mac",
+      "pic": "https://www.mdzypic.com/upload/vod/20230729-1/fab6bbcc49c0ed5ef06ca57c6d8aff79.jpg",
+      "type": "动漫电影",
+      "year": "1999",
+      "episodes": 1,
+      "ageMin": 3,
+      "ageMax": 9,
+      "paths": [
+        "path-language",
+        "path-social"
+      ],
+      "stages": {
+        "path-language": 1,
+        "path-social": 1
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 901835,
+      "why": "采集站收录 1 集，可作补充资源。",
+      "list": [
+        "采集站"
+      ],
+      "desc": "1999 年，动漫电影，来自 魔都。",
+      "backups": [
+        {
+          "key": "mdzy",
+          "site": "魔都",
+          "api": "https://www.mdzyapi.com/api.php/provide/vod/",
+          "referer": "https://www.mdzyapi.com/",
+          "vodId": "1500",
+          "from": "modum3u8",
+          "episodes": 1
+        }
+      ]
+    },
+    {
+      "id": "mac-a01cc399b9",
+      "name": "魔卡少女樱 香港之旅",
+      "source": "mac",
+      "pic": "https://img.ukuapi88.com/upload/vod/20220424-4/58631417815d59ddcc715268eb437a79.jpg",
+      "type": "动漫",
+      "year": "1999",
+      "episodes": 1,
+      "ageMin": 3,
+      "ageMax": 9,
+      "paths": [
+        "path-language",
+        "path-social"
+      ],
+      "stages": {
+        "path-language": 1,
+        "path-social": 1
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 901836,
+      "why": "采集站收录 1 集，可作补充资源。",
+      "list": [
+        "采集站"
+      ],
+      "desc": "1999 年，动漫，来自 优酷。",
+      "backups": [
+        {
+          "key": "uku",
+          "site": "优酷",
+          "api": "https://api.ukuapi88.com/api.php/provide/vod/",
+          "referer": "https://api.ukuapi88.com/",
+          "vodId": "32580",
+          "from": "ukm3u8",
+          "episodes": 1
+        }
+      ]
+    },
+    {
+      "id": "mac-13d667aa1b",
+      "name": "魔卡少女樱 知世的影像活跃日记",
+      "source": "mac",
+      "pic": "https://img.ukuapi88.com/upload/vod/20220424-4/6ef1bf911376adfc7bf30c919e59112a.jpg",
+      "type": "动漫",
+      "year": "2000",
+      "episodes": 1,
+      "ageMin": 3,
+      "ageMax": 9,
+      "paths": [
+        "path-language",
+        "path-social"
+      ],
+      "stages": {
+        "path-language": 1,
+        "path-social": 1
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 901837,
+      "why": "采集站收录 1 集，可作补充资源。",
+      "list": [
+        "采集站"
+      ],
+      "desc": "2000 年，动漫，来自 优酷。",
+      "backups": [
+        {
+          "key": "uku",
+          "site": "优酷",
+          "api": "https://api.ukuapi88.com/api.php/provide/vod/",
+          "referer": "https://api.ukuapi88.com/",
+          "vodId": "32582",
+          "from": "ukm3u8",
+          "episodes": 1
+        }
+      ]
+    },
+    {
+      "id": "mac-0fa977dc51",
+      "name": "美少女战士剧场版：花朵的约定",
+      "source": "mac",
+      "pic": "https://p.lztutu.com/upload/vod/20220822-1/47406e60e88781861d0d6a4a3bd5ce98.jpg",
+      "type": "日韩动漫",
+      "year": "1993",
+      "episodes": 1,
+      "ageMin": 6,
+      "ageMax": 12,
+      "paths": [
+        "path-social"
+      ],
+      "stages": {
+        "path-social": 2
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 901838,
+      "why": "采集站收录 1 集，可作补充资源。",
+      "list": [
+        "采集站"
+      ],
+      "desc": "1993 年，日韩动漫，来自 量子。",
+      "backups": [
+        {
+          "key": "lziapi",
+          "site": "量子",
+          "api": "http://cj.lziapi.com/api.php/provide/vod/",
+          "referer": "http://cj.lziapi.com/",
+          "vodId": "31449",
+          "from": "lzm3u8",
+          "episodes": 1
+        }
+      ]
+    },
+    {
+      "id": "mac-1ab2e32ecf",
+      "name": "美少女战士特别篇：亚美的初恋",
+      "source": "mac",
+      "pic": "https://p.lztutu.com/upload/vod/20220822-1/6dda13f7ad9c73264d53c553f3a4795b.jpg",
+      "type": "日韩动漫",
+      "year": "1995",
+      "episodes": 1,
+      "ageMin": 6,
+      "ageMax": 12,
+      "paths": [
+        "path-social"
+      ],
+      "stages": {
+        "path-social": 2
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 901839,
+      "why": "采集站收录 1 集，可作补充资源。",
+      "list": [
+        "采集站"
+      ],
+      "desc": "1995 年，日韩动漫，来自 量子。",
+      "backups": [
+        {
+          "key": "lziapi",
+          "site": "量子",
+          "api": "http://cj.lziapi.com/api.php/provide/vod/",
+          "referer": "http://cj.lziapi.com/",
+          "vodId": "31451",
+          "from": "lzm3u8",
+          "episodes": 1
+        }
+      ]
+    },
+    {
+      "id": "mac-7b311a746d",
+      "name": "美少女战士剧场版：竹姬的恋人",
+      "source": "mac",
+      "pic": "https://p.lztutu.com/upload/vod/20220822-1/5a3bbc0eababe6b564ab986b891d4a49.jpg",
+      "type": "日韩动漫",
+      "year": "1994",
+      "episodes": 1,
+      "ageMin": 6,
+      "ageMax": 12,
+      "paths": [
+        "path-social"
+      ],
+      "stages": {
+        "path-social": 2
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 901840,
+      "why": "采集站收录 1 集，可作补充资源。",
+      "list": [
+        "采集站"
+      ],
+      "desc": "1994 年，日韩动漫，来自 量子。",
+      "backups": [
+        {
+          "key": "lziapi",
+          "site": "量子",
+          "api": "http://cj.lziapi.com/api.php/provide/vod/",
+          "referer": "http://cj.lziapi.com/",
+          "vodId": "31452",
+          "from": "lzm3u8",
+          "episodes": 1
+        }
+      ]
+    },
+    {
+      "id": "mac-776423f651",
+      "name": "美少女战士Cosmos 前篇+后篇",
+      "source": "mac",
+      "pic": "https://p.lztutu.com/upload/vod/20231228-1/37b1f222829602c85b2620c3f0c119ea.jpg",
+      "type": "日韩动漫",
+      "year": "2023",
+      "episodes": 1,
+      "ageMin": 6,
+      "ageMax": 12,
+      "paths": [
+        "path-social"
+      ],
+      "stages": {
+        "path-social": 2
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 901841,
+      "why": "采集站收录 1 集，可作补充资源。",
+      "list": [
+        "采集站"
+      ],
+      "desc": "2023 年，日韩动漫，来自 量子。",
+      "backups": [
+        {
+          "key": "lziapi",
+          "site": "量子",
+          "api": "http://cj.lziapi.com/api.php/provide/vod/",
+          "referer": "http://cj.lziapi.com/",
+          "vodId": "79490",
+          "from": "lzm3u8",
+          "episodes": 1
+        }
+      ]
+    },
+    {
+      "id": "mac-71d49504cc",
+      "name": "美少女战士S剧场版：竹姬的恋人",
+      "source": "mac",
+      "pic": "https://taopianimage.xyz:43333/b66131147268v.jpeg",
+      "type": "电影/动画片",
+      "year": "1994",
+      "episodes": 1,
+      "ageMin": 6,
+      "ageMax": 12,
+      "paths": [
+        "path-social"
+      ],
+      "stages": {
+        "path-social": 2
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 901842,
+      "why": "采集站收录 1 集，可作补充资源。",
+      "list": [
+        "采集站"
+      ],
+      "desc": "1994 年，电影/动画片，来自 淘片。",
+      "backups": [
+        {
+          "key": "taopian",
+          "site": "淘片",
+          "api": "https://taopianapi.com/cjapi/mc/vod/json.html",
+          "referer": "https://taopianapi.com/",
+          "vodId": "1404277",
+          "from": "tpm3u8",
+          "episodes": 1
+        }
+      ]
+    },
+    {
+      "id": "mac-f31a4b2fb3",
+      "name": "灌篮高手大电影超清版",
+      "source": "mac",
+      "pic": "https://www.imgzy360.com:7788/upload/vod/20250209-1/38e14b46e03a8573c3f5d41ef2a73565.jpg",
+      "type": "日韩动漫",
+      "year": "2025",
+      "episodes": 1,
+      "ageMin": 6,
+      "ageMax": 12,
+      "paths": [
+        "path-social"
+      ],
+      "stages": {
+        "path-social": 2
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 901843,
+      "why": "采集站收录 1 集，可作补充资源。",
+      "list": [
+        "采集站"
+      ],
+      "desc": "2025 年，日韩动漫，来自 三六。",
+      "backups": [
+        {
+          "key": "sanliu",
+          "site": "三六",
+          "api": "https://360zy.com/api.php/provide/vod",
+          "referer": "https://360zy.com/",
+          "vodId": "71732",
+          "from": "360zy",
+          "episodes": 1
+        }
+      ]
+    },
+    {
+      "id": "mac-c341e1f728",
+      "name": "棒球英豪2：再见的礼物",
+      "source": "mac",
+      "pic": "https://www.mdzypic.com/upload/vod/20230804-1/693288d3a77df11cbb210fd19cdde0b8.jpg",
+      "type": "动漫电影",
+      "year": "1986",
+      "episodes": 1,
+      "ageMin": 6,
+      "ageMax": 12,
+      "paths": [
+        "path-social"
+      ],
+      "stages": {
+        "path-social": 2
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 901844,
+      "why": "采集站收录 1 集，可作补充资源。",
+      "list": [
+        "采集站"
+      ],
+      "desc": "1986 年，动漫电影，来自 魔都。",
+      "backups": [
+        {
+          "key": "mdzy",
+          "site": "魔都",
+          "api": "https://www.mdzyapi.com/api.php/provide/vod/",
+          "referer": "https://www.mdzyapi.com/",
+          "vodId": "1729",
+          "from": "modum3u8",
+          "episodes": 1
+        }
+      ]
+    },
+    {
+      "id": "mac-60f92e2553",
+      "name": "棒球英豪 在你离开之后",
+      "source": "mac",
+      "pic": "https://www.mdzypic.com/upload/vod/20230804-1/4fc643e29f4a964823a9880bd5cb8a12.jpg",
+      "type": "动漫电影",
+      "year": "1987",
+      "episodes": 1,
+      "ageMin": 6,
+      "ageMax": 12,
+      "paths": [
+        "path-social"
+      ],
+      "stages": {
+        "path-social": 2
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 901845,
+      "why": "采集站收录 1 集，可作补充资源。",
+      "list": [
+        "采集站"
+      ],
+      "desc": "1987 年，动漫电影，来自 魔都。",
+      "backups": [
+        {
+          "key": "mdzy",
+          "site": "魔都",
+          "api": "https://www.mdzyapi.com/api.php/provide/vod/",
+          "referer": "https://www.mdzyapi.com/",
+          "vodId": "1730",
+          "from": "modum3u8",
+          "episodes": 1
+        }
+      ]
+    },
+    {
+      "id": "mac-d978878521",
+      "name": "光之美少女全明星新舞台版2：心之朋友",
+      "source": "mac",
+      "pic": "https://taopianimage.xyz:43333/df089e79e0e1v.jpeg",
+      "type": "电影/动画片",
+      "year": "2013",
+      "episodes": 1,
+      "ageMin": 3,
+      "ageMax": 9,
+      "paths": [
+        "path-language",
+        "path-social"
+      ],
+      "stages": {
+        "path-language": 1,
+        "path-social": 1
+      },
+      "tags": [
+        "动画"
+      ],
+      "order": 901847,
+      "why": "采集站收录 1 集，可作补充资源。",
+      "list": [
+        "采集站"
+      ],
+      "desc": "2013 年，电影/动画片，来自 淘片。",
+      "backups": [
+        {
+          "key": "taopian",
+          "site": "淘片",
+          "api": "https://taopianapi.com/cjapi/mc/vod/json.html",
+          "referer": "https://taopianapi.com/",
+          "vodId": "1406839",
+          "from": "tpm3u8",
+          "episodes": 1
+        }
+      ]
     }
   ],
-  "updatedAt": "2026-11-14T07:35:32.992Z"
+  "updatedAt": "2026-11-14T08:08:39.848Z"
 }

@@ -244,6 +244,12 @@ function canon(name) {
 
 function baseName(value) {
   return String(value || "")
+    .replace(/&amp;amp;/g, "&")
+    .replace(/&amp;/g, "&")
+    .replace(/&quot;/g, "\"")
+    .replace(/&#39;|&apos;/g, "'")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
     .replace(/[\u200b-\u200f\u202a-\u202e\ufeff]/g, "")
     .replace(/\s*[-_]\s*(国语|粤语|台配|中字|HD|BD|4K|1080P|720P|完整版|全集|中文版|普通话版).*$/i, "")
     .replace(/\s+(国语|粤语|台配|中字|HD|BD|4K|1080P|720P|完整版|全集|中文|普通话)(版)?$/i, "")
