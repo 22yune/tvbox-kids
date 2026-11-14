@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-14T04:09:14.198Z",
+  "updatedAt": "2026-11-14T04:17:15.895Z",
   "source": "cctv",
   "series": [
     {
@@ -35,8 +35,8 @@
       "latestGuid": "8b1886cee5e04766b6159dd8b29c5945",
       "count": 1000,
       "stale": false,
-      "playable": false,
-      "verifyReason": "fetch failed"
+      "playable": true,
+      "verifyReason": "OK"
     },
     {
       "id": "cctv-zhs",
@@ -71,8 +71,8 @@
       "latestGuid": "099ba410664f4a69a07a3aea18606120",
       "count": 1000,
       "stale": false,
-      "playable": false,
-      "verifyReason": "fetch failed"
+      "playable": true,
+      "verifyReason": "OK"
     },
     {
       "id": "cctv-qqb",
@@ -103,8 +103,8 @@
       "latestGuid": "05b8276f8d934129aa9e57e51b21f2fc",
       "count": 943,
       "stale": false,
-      "playable": false,
-      "verifyReason": "fetch failed"
+      "playable": true,
+      "verifyReason": "OK"
     },
     {
       "id": "cctv-dfc",
@@ -135,8 +135,8 @@
       "latestGuid": "42db5de4951a4537b199cfa6e53213f0",
       "count": 1000,
       "stale": false,
-      "playable": false,
-      "verifyReason": "fetch failed"
+      "playable": true,
+      "verifyReason": "OK"
     },
     {
       "id": "cctv-dhc",
