@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-14T04:17:15.895Z",
+  "updatedAt": "2026-11-14T04:21:26.884Z",
   "source": "cctv",
   "series": [
     {
@@ -103,8 +103,8 @@
       "latestGuid": "05b8276f8d934129aa9e57e51b21f2fc",
       "count": 943,
       "stale": false,
-      "playable": true,
-      "verifyReason": "OK"
+      "playable": false,
+      "verifyReason": "fetch failed"
     },
     {
       "id": "cctv-dfc",
