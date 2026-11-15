@@ -7,6 +7,7 @@ import { fileURLToPath } from "node:url";
 import { buildJar } from "./build-jar.mjs";
 import { resolveCuration } from "./curate.mjs";
 import { resolveBackups } from "./backups.mjs";
+import { organize } from "./group.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const LIST_API = "https://api.cntv.cn/NewVideo/getVideoListByColumn";
@@ -106,9 +107,10 @@ function chunks(text, size = 4000) {
   return parts;
 }
 
-function buildCatalogSource(taxonomy, catalog) {
+function buildCatalogSource(taxonomy, catalog, groups) {
   const series = chunks(JSON.stringify(catalog.series));
-  const groups = chunks(JSON.stringify(taxonomy));
+  const groupsText = chunks(JSON.stringify(groups));
+  const groupsJson = chunks(JSON.stringify(taxonomy));
   const lines = [
     "package com.github.catvod.spider;",
     "",
@@ -119,8 +121,12 @@ function buildCatalogSource(taxonomy, catalog) {
     series.map((part) => "            " + JSON.stringify(part)).join(",\n"),
     "    );",
     "",
+    "    static final String IP = join(",
+    groupsText.map((part) => "            " + JSON.stringify(part)).join(",\n"),
+    "    );",
+    "",
     "    static final String TAXONOMY = join(",
-    groups.map((part) => "            " + JSON.stringify(part)).join(",\n"),
+    groupsJson.map((part) => "            " + JSON.stringify(part)).join(",\n"),
     "    );",
     "",
     "    private Catalog() {",
@@ -192,29 +198,19 @@ function site(key, name, mode) {
   };
 }
 
-function extraSite(item) {
-  return {
-    key: item.key,
-    name: item.name,
-    type: 1,
-    api: item.api,
-    categories: item.categories,
-    searchable: 0,
-    quickSearch: 0,
-    changeable: 0,
-    header: { "User-Agent": UA, "Referer": item.referer || new URL(item.api).origin + "/" },
-  };
-}
-
-function buildConfig(live, jar, extra) {
+// 顶层只放「查找方式」：同一份内容可以在多种方式里重复出现，
+// 但每种方式的分类逻辑不同（年龄/路线/内容类型/专题/名称/来源）。
+function buildConfig(live, jar) {
   return {
     spider: jarUrl() + ";md5;" + jar.md5,
-    notice: "儿童模式：已关闭搜索，仅保留央视少儿与精选直播。补充点播来自第三方采集站，内容不可控，不需要时在站点管理里关闭。",
+    notice: "儿童模式：已关闭搜索。内容来自央视、哔哩哔哩和第三方采集站；采集站画质和广告不可控，建议家长陪同。",
     sites: [
       site("kids_age", "按年龄", "age"),
       site("kids_path", "按学习路线", "path"),
-      site("kids_topic", "精选专题", "topic"),
-      ...extra.sites.map(extraSite),
+      site("kids_content", "按内容类型", "content"),
+      site("kids_topic", "按专题", "topic"),
+      site("kids_alpha", "按名称", "alpha"),
+      site("kids_source", "按来源", "source"),
     ],
     lives: [
       {
@@ -229,7 +225,6 @@ function buildConfig(live, jar, extra) {
 async function main() {
   const taxonomy = await readJson("data/taxonomy.json");
   const live = await readJson("data/live.json");
-  const extra = await readJson("data/extra_sites.json");
   const backupSites = (await readJson("data/backup_sites.json")).sites || [];
   const curationInput = await readJson("data/curation.json");
   let curatedPrevious = { series: [] };
@@ -334,9 +329,11 @@ async function main() {
   const topicSeries = (topic.english || []).concat(topic.chinese || []);
 
   const merged = { series: (catalog.series || []).concat(curated.series || []).concat(open.series || []).concat(topicSeries) };
-  await writeFile("spider-src/com/github/catvod/spider/Catalog.java", buildCatalogSource(taxonomy, merged));
+  // 同一 IP 的多季/多语言版本合并成一张卡片，季信息写进 Catalog.IP。
+  const organized = organize(merged.series, taxonomy);
+  await writeFile("spider-src/com/github/catvod/spider/Catalog.java", buildCatalogSource(taxonomy, merged, organized.groups));
   const jar = buildJar();
-  const config = buildConfig(live, jar, extra);
+  const config = buildConfig(live, jar);
   await writeFile("kids.json", JSON.stringify(config, null, 2));
 
   const series = catalog.series || [];
@@ -348,6 +345,7 @@ async function main() {
     "Synced " + series.length + " series + 名单 " + curatedSeries.length +
     " + 采集站 " + (open.series || []).length +
     " + 专题 " + topicSeries.length +
+    "，IP " + organized.groups.length + " 组 / " + organized.units + " 张卡片" +
     (curated.missing && curated.missing.length ? "（缺源 " + curated.missing.length + "）" : "") +
     (stale ? "，stale " + stale : "") +
     (curatedStale ? "，名单 stale " + curatedStale : "") +

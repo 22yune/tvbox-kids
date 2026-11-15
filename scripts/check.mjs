@@ -4,8 +4,11 @@ import { createHash } from "node:crypto";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
+import { organize, topicMatches } from "./group.mjs";
+
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const errors = [];
+const MODES = ["age", "path", "content", "topic", "alpha", "source"];
 
 async function read(relative) {
   return fs.readFile(path.join(ROOT, relative), "utf8");
@@ -27,7 +30,6 @@ async function main() {
   const catalogSource = await read("spider-src/com/github/catvod/spider/Catalog.java");
   const kidsSource = await read("spider-src/com/github/catvod/spider/Kids.java");
   const live = await readJson("data/live.json");
-  const extra = await readJson("data/extra_sites.json");
   const curation = await readJson("data/curation.json");
   const curated = await readJson("data/curated_catalog.json");
   const backupSites = await readJson("data/backup_sites.json");
@@ -43,15 +45,47 @@ async function main() {
   } catch (error) {
     topicCatalog = { english: [], chinese: [] };
   }
-  const coverage = catalog.series.concat(curated.series || []).concat(open.series || []).concat(topicCatalog.english || []).concat(topicCatalog.chinese || []);
 
   const ages = new Set(taxonomy.ages.map((item) => item.id));
   const paths = new Set(taxonomy.paths.map((item) => item.id));
-  const topics = new Set(taxonomy.topics.map((item) => item.id));
-  const topicTags = new Set(taxonomy.topics.flatMap((item) => item.tags));
+  const contents = new Set(taxonomy.contents.map((item) => item.id));
+  const sources = new Set(taxonomy.sources.map((item) => item.id));
+  const tagSet = new Set(taxonomy.tags || []);
+
+  const coverage = catalog.series.concat(curated.series || []).concat(open.series || []).concat(topicCatalog.english || []).concat(topicCatalog.chinese || []);
 
   requireField(series.length >= 10, "series.json 条目过少");
   requireField(catalog.series.length === series.length, "catalog 与 series 数量不一致");
+
+  requireField(taxonomy.ages.length >= 2, "taxonomy 缺少年龄段");
+  requireField(taxonomy.paths.length >= 4, "taxonomy 缺少学习路线");
+  requireField(contents.size >= 6, "taxonomy 缺少内容分类");
+  requireField(sources.size >= 3, "taxonomy 缺少来源分类");
+  requireField(Array.isArray(taxonomy.alphabet) && taxonomy.alphabet.length >= 27, "taxonomy 的字序表不完整");
+  requireField(tagSet.size >= 5, "taxonomy 缺少标签白名单");
+  requireField(Array.isArray(taxonomy.topicGroups) && taxonomy.topicGroups.length >= 3, "taxonomy 缺少专题分组");
+
+  const topicIds = new Set();
+  const topicGroups = new Set();
+  let topicCount = 0;
+  for (const group of taxonomy.topicGroups || []) {
+    requireField(Boolean(group.id) && /^tg-[a-z]+$/.test(group.id || ""), "专题分组 id 格式不正确：" + (group.id || "?"));
+    requireField(!topicGroups.has(group.id), "专题分组 id 重复：" + group.id);
+    topicGroups.add(group.id);
+    requireField(Boolean(group.name), group.id + " 缺少名称");
+    requireField(Array.isArray(group.topics) && group.topics.length > 0, group.id + " 没有专题");
+    for (const topic of group.topics || []) {
+      requireField(Boolean(topic.id) && /^tp-[a-z0-9-]+$/.test(topic.id || ""), group.id + " 下的专题 id 格式不正确：" + (topic.id || "?"));
+      requireField(!topicIds.has(topic.id), "专题 id 重复：" + topic.id);
+      topicIds.add(topic.id);
+      topicCount += 1;
+      requireField(Boolean(topic.name), topic.id + " 缺少名称");
+      requireField(Array.isArray(topic.names) && topic.names.length > 0, topic.id + " 缺少关键词");
+      for (const tag of topic.tags || []) {
+        requireField(tagSet.has(tag), topic.id + " 使用了未登记的标签 " + tag);
+      }
+    }
+  }
 
   for (const item of catalog.series) {
     requireField(item.id && item.name && item.column, item.id + " 缺少基础字段");
@@ -64,20 +98,17 @@ async function main() {
       requireField(paths.has(pathId), item.id + " 引用了未知路线 " + pathId);
     }
     for (const tag of item.tags || []) {
-      requireField(topicTags.has(tag), item.id + " 的标签未被任何专题使用：" + tag);
+      requireField(tagSet.has(tag), item.id + " 的标签未登记：" + tag);
     }
   }
 
   for (const age of ages) {
-    const covered = coverage.some((item) => item.ageMin < taxonomy.ages.find((x) => x.id === age).max && item.ageMax > taxonomy.ages.find((x) => x.id === age).min);
+    const band = taxonomy.ages.find((x) => x.id === age);
+    const covered = coverage.some((item) => item.ageMin < band.max && item.ageMax > band.min);
     requireField(covered, "年龄段没有内容：" + age);
   }
   for (const pathId of paths) {
     requireField(coverage.some((item) => (item.paths || []).includes(pathId)), "学习路线没有内容：" + pathId);
-  }
-  for (const topicId of topics) {
-    const topicTagsOf = taxonomy.topics.find((x) => x.id === topicId).tags;
-    requireField(coverage.some((item) => (item.tags || []).some((tag) => topicTagsOf.includes(tag))), "专题没有内容：" + topicId);
   }
 
   const knownLists = new Set(curation.lists || []);
@@ -95,7 +126,7 @@ async function main() {
       requireField(paths.has(pathId), item.id + " 引用了未知路线 " + pathId);
     }
     for (const tag of item.tags || []) {
-      requireField(topicTags.has(tag), item.id + " 的标签未被任何专题使用：" + tag);
+      requireField(tagSet.has(tag), item.id + " 的标签未登记：" + tag);
     }
     requireField(Array.isArray(item.list) && item.list.length > 0, item.id + " 缺少名单来源");
     for (const name of item.list || []) {
@@ -120,7 +151,7 @@ async function main() {
       requireField(paths.has(pathId), item.id + " 引用了未知路线 " + pathId);
     }
     for (const tag of item.tags || []) {
-      requireField(topicTags.has(tag), item.id + " 的标签未被任何专题使用：" + tag);
+      requireField(tagSet.has(tag), item.id + " 的标签未登记：" + tag);
     }
     for (const backup of item.backups || []) {
       requireField(backup && /^https?:\/\//.test(backup.api || ""), item.id + " 的备用线路缺少 api");
@@ -150,7 +181,7 @@ async function main() {
       requireField(paths.has(pathId), item.id + " 引用了未知路线 " + pathId);
     }
     for (const tag of item.tags || []) {
-      requireField(topicTags.has(tag), item.id + " 的标签未被任何专题使用：" + tag);
+      requireField(tagSet.has(tag), item.id + " 的标签未登记：" + tag);
     }
     requireField(Array.isArray(item.list) && item.list.length > 0, item.id + " 缺少来源标签");
     for (const name of item.list || []) {
@@ -169,15 +200,15 @@ async function main() {
   }
 
   const TOPIC_KEYS = { english: { prefix: "en", tag: "英语", list: "专题·英语学习" }, chinese: { prefix: "cn", tag: "语文", list: "专题·语文素养" } };
-  const topicIds = new Set();
+  const topicItemIds = new Set();
   for (const [key, meta] of Object.entries(TOPIC_KEYS)) {
     const list = topicCatalog[key] || [];
     requireField(list.length >= 100, "专题「" + meta.tag + "」条目过少：" + list.length);
     for (const item of list) {
       requireField(Boolean(item.id) && new RegExp("^" + meta.prefix + "-[0-9a-z]+$").test(item.id), (item.id || "?") + " 的专题 id 格式不正确");
-      requireField(!topicIds.has(item.id), "专题 id 重复：" + item.id);
+      requireField(!topicItemIds.has(item.id), "专题 id 重复：" + item.id);
       requireField(!openIds.has(item.id) && !curationIds.has(item.id) && !cctvIds.has(item.id), "专题 id 与已有条目重复：" + item.id);
-      topicIds.add(item.id);
+      topicItemIds.add(item.id);
       requireField(item.source === "bili", item.id + " 的 source 必须是 bili");
       requireField(/^BV[0-9A-Za-z]+$/.test(item.bvid || ""), item.id + " 的 bvid 格式不正确");
       requireField(Boolean(item.name), item.id + " 缺少名称");
@@ -190,7 +221,7 @@ async function main() {
       const tag = (item.tags || [])[0] || "";
       requireField(new RegExp("^" + meta.tag + "L[1-4]$").test(tag), item.id + " 的分级标签不正确：" + (tag || "空"));
       for (const name of item.tags || []) {
-        requireField(topicTags.has(name), item.id + " 的标签未被任何专题使用：" + name);
+        requireField(tagSet.has(name), item.id + " 的标签未登记：" + name);
       }
       requireField(Array.isArray(item.list) && item.list.length === 1 && item.list[0] === meta.list, item.id + " 的专题来源应固定为 " + meta.list);
       requireField(Number.isFinite(item.episodes) && item.episodes > 0, item.id + " 缺少集数");
@@ -199,35 +230,80 @@ async function main() {
     }
   }
 
+  // 列表卡片的聚合结果：同一 IP 的多季只出现一张卡，专题和筛选都基于它做匹配。
+  const organized = organize(coverage, taxonomy);
+  const units = organized.groups.concat(coverage.filter((item) => !item.hid));
+  const seriesIds = new Set(coverage.map((item) => item.id));
+  const groupKeys = new Set();
+  let groupedItems = 0;
+  for (const group of organized.groups) {
+    requireField(/^ip-[0-9a-f]{10}$/.test(group.key || ""), "IP key 格式不正确：" + (group.key || "?"));
+    requireField(!groupKeys.has(group.key), "IP key 重复：" + group.key);
+    groupKeys.add(group.key);
+    requireField(Boolean(group.name), group.key + " 缺少名称");
+    requireField(Array.isArray(group.ages) && group.ages.length === 2 && group.ages[0] < group.ages[1], group.name + " 的年龄段不合法");
+    requireField(Array.isArray(group.seasons) && group.seasons.length >= 2, group.name + " 的季数少于 2");
+    requireField(Array.isArray(group.paths) && group.paths.length > 0, group.name + " 未绑定学习路线");
+    requireField(Array.isArray(group.ct) && group.ct.length > 0, group.name + " 缺少内容分类");
+    requireField(Number.isFinite(group.episodes) && group.episodes > 0, group.name + " 缺少集数");
+    requireField(Number.isFinite(group.py), group.name + " 缺少字序");
+    for (const type of group.ct || []) {
+      requireField(contents.has(type), group.name + " 引用了未知内容分类 " + type);
+    }
+    for (const source of group.srcs || []) {
+      requireField(sources.has(source), group.name + " 引用了未知来源 " + source);
+    }
+    const seen = new Set();
+    for (const season of group.seasons || []) {
+      requireField(seriesIds.has(season.id), group.name + " 的季引用了不存在的条目：" + season.id);
+      requireField(!seen.has(season.id), group.name + " 的季重复：" + season.id);
+      seen.add(season.id);
+    }
+    groupedItems += group.seasons.length;
+  }
+  requireField(organized.groups.length > 0, "没有生成任何 IP 分组");
+  requireField(units.length === organized.units, "IP 合并后的卡片数不一致");
+  requireField(units.every((unit) => Number.isFinite(unit.py)), "存在没有字序的卡片");
+
+  for (const group of taxonomy.topicGroups || []) {
+    for (const topic of group.topics || []) {
+      const count = units.filter((unit) => topicMatches(unit, topic)).length;
+      requireField(count > 0, "专题没有内容：" + topic.name);
+    }
+  }
+
   requireField(catalogSource.includes("final class Catalog"), "Catalog.java 结构异常");
-  requireField(catalogSource.includes("class Catalog") && !catalogSource.includes("__CATALOG__"), "Catalog.java 仍是模板");  requireField(kidsSource.includes("extends Spider"), "Kids.java 必须继承 com.github.catvod.crawler.Spider");
+  requireField(catalogSource.includes("class Catalog") && !catalogSource.includes("__CATALOG__"), "Catalog.java 仍是模板");
+  requireField(catalogSource.includes("static final String IP"), "Catalog.java 缺少 IP 常量");
+  requireField(kidsSource.includes("extends Spider"), "Kids.java 必须继承 com.github.catvod.crawler.Spider");
   requireField(kidsSource.includes("vod_play_url"), "Kids.java 缺少播放列表");
+  requireField(kidsSource.includes("groupDetail") && kidsSource.includes("topicFolders"), "Kids.java 缺少 IP 详情或专题文件夹");
 
   requireField(typeof config.spider === "string" && /^https?:\/\/.+\.jar;md5;[0-9a-f]{32}$/.test(config.spider), "kids.json 的 spider 必须是 <jar 地址>;md5;<32 位 md5>");
-  requireField(Array.isArray(config.sites) && config.sites.length >= 3, "kids.json 站点数量不足");
+  requireField(Array.isArray(config.sites) && config.sites.length === MODES.length, "kids.json 应只保留 " + MODES.length + " 个查找站点");
   const seenKeys = new Set();
+  const seenModes = new Set();
   for (const site of config.sites || []) {
     requireField(site.key && site.name && site.api, "站点缺少 key/name/api");
     requireField(!seenKeys.has(site.key), "站点 key 重复：" + site.key);
     seenKeys.add(site.key);
-    if (site.type === 3) {
-      requireField(site.api === "csp_Kids", site.key + " 的 api 必须是 csp_Kids");
-      requireField(typeof site.ext === "string", site.key + " 的 ext 必须是字符串，FongMi 用 Gson 反序列化为 String");
+    requireField(site.type === 3, site.key + " 必须是 jar 爬虫站点（type 3）");
+    requireField(site.api === "csp_Kids", site.key + " 的 api 必须是 csp_Kids");
+    requireField(site.searchable === 0 && site.quickSearch === 0, site.key + " 必须关闭搜索");
+    requireField(typeof site.ext === "string", site.key + " 的 ext 必须是字符串，FongMi 用 Gson 反序列化为 String");
+    let ext = null;
+    try {
+      ext = JSON.parse(site.ext);
+    } catch (error) {
+      ext = null;
     }
-    if (site.type === 1) {
-      requireField(/^https?:\/\//.test(site.api), site.key + " 的 api 必须是绝对地址");
-      requireField(Array.isArray(site.categories) && site.categories.length > 0, site.key + " 缺少分类白名单");
-      requireField(site.searchable === 0 && site.quickSearch === 0, site.key + " 必须关闭搜索");
+    requireField(ext && MODES.includes(ext.mode), site.key + " 的 ext.mode 不正确");
+    if (ext && MODES.includes(ext.mode)) {
+      requireField(!seenModes.has(ext.mode), "查找方式重复：" + ext.mode);
+      seenModes.add(ext.mode);
     }
   }
-  requireField(
-    (config.sites || []).filter((site) => site.type === 1).length === (extra.sites || []).length,
-    "data/extra_sites.json 与 kids.json 的补充站点数量不一致"
-  );
-  for (const item of extra.sites || []) {
-    requireField(item.key && item.name && item.api, "extra_sites.json 条目缺少 key/name/api");
-    requireField(Array.isArray(item.categories) && item.categories.length > 0, (item.key || item.name) + " 缺少分类白名单");
-  }
+  requireField(seenModes.size === MODES.length, "六种查找方式没有全部配置");
 
   try {
     const jar = await fs.readFile(path.join(ROOT, "spider/kids.jar"));
@@ -236,6 +312,7 @@ async function main() {
   } catch (error) {
     errors.push("缺少 spider/kids.jar，请先执行 node scripts/sync.mjs");
   }
+
   requireField(Array.isArray(config.lives) && config.lives.length > 0, "kids.json 缺少直播配置");
   requireField((live.groups || []).length > 0, "live.json 缺少分组");
   for (const group of live.groups || []) {
@@ -245,12 +322,11 @@ async function main() {
     }
   }
 
-  const allSeries = catalog.series.concat(curated.series || []).concat(open.series || []).concat(topicCatalog.english || []).concat(topicCatalog.chinese || []);
   const ageCounts = taxonomy.ages.map((age) => {
-    const count = allSeries.filter((item) => item.ageMin < age.max && item.ageMax > age.min).length;
+    const count = units.filter((item) => item.ageMin < age.max && item.ageMax > age.min).length;
     return age.name + " " + count;
   });
-  const pathCounts = taxonomy.paths.map((item) => item.name + " " + allSeries.filter((s) => (s.paths || []).includes(item.id)).length);
+  const pathCounts = taxonomy.paths.map((item) => item.name + " " + units.filter((s) => (s.paths || []).includes(item.id)).length);
   const listCounts = (curation.lists || []).map((name) => name + " " + (curation.series || []).filter((s) => (s.list || []).includes(name)).length);
 
   console.log("名单：" + (curation.series || []).length + "，已找到源：" + (curated.series || []).length +
@@ -259,8 +335,10 @@ async function main() {
     console.warn("缺源条目：" + curated.missing.map((item) => item.name).join("、"));
   }
   console.log("名单来源：" + listCounts.join(" / "));
-  console.log("系列：" + catalog.series.length + "（央视）+ " + (curated.series || []).length + "（名单）+ " + (open.series || []).length + "（采集站）");
-  console.log("专题：英语 " + (topicCatalog.english || []).length + "，语文 " + (topicCatalog.chinese || []).length);
+  console.log("系列：" + catalog.series.length + "（央视）+ " + (curated.series || []).length + "（名单）+ " + (open.series || []).length + "（采集站）+ " +
+    ((topicCatalog.english || []).length + (topicCatalog.chinese || []).length) + "（专题）");
+  console.log("卡片：" + units.length + " 张，IP " + organized.groups.length + " 组（合并 " + groupedItems + " 条）");
+  console.log("专题：" + taxonomy.topicGroups.length + " 组 / " + topicCount + " 个");
   console.log("年龄：" + ageCounts.join(" / "));
   console.log("路线：" + pathCounts.join(" / "));
   console.log("站点：" + config.sites.length + "，直播频道：" + live.groups.reduce((sum, g) => sum + g.channel.length, 0));

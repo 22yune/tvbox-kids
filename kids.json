@@ -1,6 +1,6 @@
 {
-  "spider": "https://gh-proxy.com/https://raw.githubusercontent.com/22yune/tvbox-kids/refs/heads/main/spider/kids.jar;md5;a2a39de413dbdeaddfd469256e0a68de",
-  "notice": "儿童模式：已关闭搜索，仅保留央视少儿与精选直播。补充点播来自第三方采集站，内容不可控，不需要时在站点管理里关闭。",
+  "spider": "https://gh-proxy.com/https://raw.githubusercontent.com/22yune/tvbox-kids/refs/heads/main/spider/kids.jar;md5;573716a82023c4bf09fbc9848d302ecb",
+  "notice": "儿童模式：已关闭搜索。内容来自央视、哔哩哔哩和第三方采集站；采集站画质和广告不可控，建议家长陪同。",
   "sites": [
     {
       "key": "kids_age",
@@ -31,8 +31,22 @@
       }
     },
     {
+      "key": "kids_content",
+      "name": "按内容类型",
+      "type": 3,
+      "api": "csp_Kids",
+      "ext": "{\"mode\":\"content\"}",
+      "searchable": 0,
+      "quickSearch": 0,
+      "changeable": 0,
+      "style": {
+        "type": "rect",
+        "ratio": 1.78
+      }
+    },
+    {
       "key": "kids_topic",
-      "name": "精选专题",
+      "name": "按专题",
       "type": 3,
       "api": "csp_Kids",
       "ext": "{\"mode\":\"topic\"}",
@@ -45,109 +59,31 @@
       }
     },
     {
-      "key": "kids_extra",
-      "name": "补充点播（家长可选）",
-      "type": 1,
-      "api": "https://jszyapi.com/api.php/provide/vod/at/json",
-      "categories": [
-        "动画片",
-        "中国动漫"
-      ],
+      "key": "kids_alpha",
+      "name": "按名称",
+      "type": 3,
+      "api": "csp_Kids",
+      "ext": "{\"mode\":\"alpha\"}",
       "searchable": 0,
       "quickSearch": 0,
       "changeable": 0,
-      "header": {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-        "Referer": "https://jszyapi.com/"
+      "style": {
+        "type": "rect",
+        "ratio": 1.78
       }
     },
     {
-      "key": "kids_extra_sony",
-      "name": "补充儿歌·索尼",
-      "type": 1,
-      "api": "https://suoniapi.com/api.php/provide/vod",
-      "categories": [
-        "儿童儿歌",
-        "有声动漫",
-        "国产动漫",
-        "动画片"
-      ],
+      "key": "kids_source",
+      "name": "按来源",
+      "type": 3,
+      "api": "csp_Kids",
+      "ext": "{\"mode\":\"source\"}",
       "searchable": 0,
       "quickSearch": 0,
       "changeable": 0,
-      "header": {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-        "Referer": "https://suoniapi.com/"
-      }
-    },
-    {
-      "key": "kids_extra_wujin",
-      "name": "补充儿歌·无尽",
-      "type": 1,
-      "api": "https://api.wujinapi.net/api.php/provide/vod",
-      "categories": [
-        "儿童儿歌",
-        "有声动漫",
-        "国产动漫",
-        "动画片"
-      ],
-      "searchable": 0,
-      "quickSearch": 0,
-      "changeable": 0,
-      "header": {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-        "Referer": "https://api.wujinapi.net/"
-      }
-    },
-    {
-      "key": "kids_extra_bfzy",
-      "name": "补充动画·暴风",
-      "type": 1,
-      "api": "https://bfzyapi.com/api.php/provide/vod",
-      "categories": [
-        "国产动漫",
-        "动画片",
-        "动漫片"
-      ],
-      "searchable": 0,
-      "quickSearch": 0,
-      "changeable": 0,
-      "header": {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-        "Referer": "https://bfzyapi.com/"
-      }
-    },
-    {
-      "key": "kids_extra_taopian",
-      "name": "补充动画·淘片",
-      "type": 1,
-      "api": "https://taopianapi.com/cjapi/mc/vod/json.html",
-      "categories": [
-        "动漫/国产动漫",
-        "电影/动画片"
-      ],
-      "searchable": 0,
-      "quickSearch": 0,
-      "changeable": 0,
-      "header": {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-        "Referer": "https://taopianapi.com/"
-      }
-    },
-    {
-      "key": "kids_extra_cxkj",
-      "name": "补充动画·创享",
-      "type": 1,
-      "api": "https://ys.cxkjg.cn/api/provide/vod/",
-      "categories": [
-        "动漫"
-      ],
-      "searchable": 0,
-      "quickSearch": 0,
-      "changeable": 0,
-      "header": {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-        "Referer": "https://ys.cxkjg.cn/"
+      "style": {
+        "type": "rect",
+        "ratio": 1.78
       }
     }
   ],

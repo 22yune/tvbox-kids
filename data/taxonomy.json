@@ -15,16 +15,118 @@
     { "id": "path-social", "name": "社会情感", "hint": "情绪认知 → 同伴交往 → 规则意识 → 品格", "order": 70 },
     { "id": "path-tech", "name": "信息科技", "hint": "数字素养 → 编程思维 → AI 启蒙", "order": 80 }
   ],
-  "topics": [
-    { "id": "topic-english", "name": "英语学习", "tags": ["英语L1", "英语L2", "英语L3", "英语L4"] },
-    { "id": "topic-chinese", "name": "语文素养", "tags": ["语文L1", "语文L2", "语文L3", "语文L4"] },
-    { "id": "topic-toddler", "name": "低幼启蒙", "tags": ["低幼"] },
-    { "id": "topic-animation", "name": "动画故事", "tags": ["动画"] },
-    { "id": "topic-science", "name": "科学探索", "tags": ["科学"] },
-    { "id": "topic-humanities", "name": "人文国学", "tags": ["人文"] },
-    { "id": "topic-arts", "name": "艺术创想", "tags": ["艺术"] },
-    { "id": "topic-safety", "name": "安全与情绪", "tags": ["安全", "情绪"] },
-    { "id": "topic-tech", "name": "动手与科技", "tags": ["科技"] },
-    { "id": "topic-doc", "name": "纪录片", "tags": ["纪录片"] }
+  "contents": [
+    { "id": "ct-domestic", "name": "国产动画" },
+    { "id": "ct-overseas", "name": "欧美动画" },
+    { "id": "ct-japan", "name": "日韩动画" },
+    { "id": "ct-animation", "name": "综合动画" },
+    { "id": "ct-movie", "name": "动画电影" },
+    { "id": "ct-toddler", "name": "儿歌低幼" },
+    { "id": "ct-english", "name": "英语启蒙" },
+    { "id": "ct-chinese", "name": "语文国学" },
+    { "id": "ct-science", "name": "科学探索" },
+    { "id": "ct-doc", "name": "纪录片" },
+    { "id": "ct-art", "name": "艺术美育" },
+    { "id": "ct-safety", "name": "安全情绪" },
+    { "id": "ct-tech", "name": "科技动手" }
+  ],
+  "sources": [
+    { "id": "src-cctv", "name": "央视精选" },
+    { "id": "src-bili", "name": "哔哩哔哩" },
+    { "id": "src-mac", "name": "采集站" }
+  ],
+  "alphabet": ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "#"],
+  "tags": [
+    "动画", "低幼", "科学", "人文", "艺术", "安全", "情绪", "科技", "纪录片",
+    "英语L1", "英语L2", "英语L3", "英语L4",
+    "语文L1", "语文L2", "语文L3", "语文L4"
+  ],
+  "topicGroups": [
+    {
+      "id": "tg-ip",
+      "name": "热门 IP",
+      "topics": [
+        { "id": "tp-ultraman", "name": "奥特曼", "names": ["奥特曼", "奥特英雄"] },
+        { "id": "tp-pokemon", "name": "宝可梦", "names": ["宝可梦", "神奇宝贝", "宠物小精灵", "精灵宝可梦", "Pokemon", "POKEMON"] },
+        { "id": "tp-peppa", "name": "小猪佩奇", "names": ["小猪佩奇", "佩奇", "Peppa", "peppa"] },
+        { "id": "tp-goat", "name": "喜羊羊", "names": ["喜羊羊"] },
+        { "id": "tp-boonie", "name": "熊出没", "names": ["熊出没"] },
+        { "id": "tp-superwings", "name": "超级飞侠", "names": ["超级飞侠"] },
+        { "id": "tp-pawpatrol", "name": "汪汪队", "names": ["汪汪队"] },
+        { "id": "tp-octonauts", "name": "海底小纵队", "names": ["海底小纵队"] },
+        { "id": "tp-spongebob", "name": "海绵宝宝", "names": ["海绵宝宝"] },
+        { "id": "tp-doraemon", "name": "哆啦A梦", "names": ["哆啦A梦", "哆啦a梦", "机器猫"] },
+        { "id": "tp-belehu", "name": "贝乐虎", "names": ["贝乐虎"] },
+        { "id": "tp-batamu", "name": "巴塔木", "names": ["巴塔木"] },
+        { "id": "tp-babybus", "name": "宝宝巴士", "names": ["宝宝巴士"] },
+        { "id": "tp-qiaohu", "name": "巧虎", "names": ["巧虎"] },
+        { "id": "tp-disney", "name": "迪士尼", "names": ["迪士尼", "Disney", "米奇妙妙屋", "冰雪奇缘", "玩具总动员", "海底总动员", "赛车总动员", "小美人鱼", "阿拉丁"] },
+        { "id": "tp-lego", "name": "乐高与积木", "names": ["乐高", "LEGO", "Lego", "积木"] }
+      ]
+    },
+    {
+      "id": "tg-nature",
+      "name": "自然与科学",
+      "topics": [
+        { "id": "tp-space", "name": "宇宙太空", "names": ["宇宙", "太空", "星球", "航天", "火箭", "行星", "银河", "太阳系"] },
+        { "id": "tp-dinosaur", "name": "恐龙", "names": ["恐龙"] },
+        { "id": "tp-animal", "name": "动物世界", "names": ["动物", "动物园", "野生动物"] },
+        { "id": "tp-ocean", "name": "海洋探索", "names": ["海洋", "海底", "鲨鱼", "鲸"] },
+        { "id": "tp-plant", "name": "植物与森林", "names": ["植物", "森林", "蔬菜", "水果", "花园"] },
+        { "id": "tp-geo", "name": "天气与地理", "names": ["天气", "地理", "地球", "火山", "地震", "自然现象"] },
+        { "id": "tp-bug", "name": "昆虫与鸟类", "names": ["昆虫", "蚂蚁", "蜜蜂", "蝴蝶", "小鸟", "鸟类", "企鹅"] },
+        { "id": "tp-body", "name": "人体与健康", "names": ["人体", "身体", "牙齿", "眼睛", "细菌", "健康", "营养"] },
+        { "id": "tp-doc", "name": "纪录片", "names": ["纪录片", "记录片", "自然纪录"], "tags": ["纪录片"] }
+      ]
+    },
+    {
+      "id": "tg-humanities",
+      "name": "人文国学",
+      "topics": [
+        { "id": "tp-poem", "name": "古诗文", "names": ["古诗", "唐诗", "宋词", "诗词", "诗经"] },
+        { "id": "tp-idiom", "name": "成语故事", "names": ["成语"] },
+        { "id": "tp-myth", "name": "神话传说", "names": ["神话", "传说", "西游记", "封神", "山海经", "哪吒", "嫦娥"] },
+        { "id": "tp-history", "name": "中国历史", "names": ["历史", "三国", "上下五千年", "朝代", "故宫", "博物馆"] },
+        { "id": "tp-festival", "name": "节日节气", "names": ["节日", "春节", "中秋", "端午", "元宵", "节气"] },
+        { "id": "tp-hanzi", "name": "识字与写字", "names": ["识字", "汉字", "写字", "偏旁", "笔画"] },
+        { "id": "tp-storybook", "name": "名著与绘本", "names": ["名著", "绘本", "童话", "寓言", "一千零一夜", "安徒生", "格林"] }
+      ]
+    },
+    {
+      "id": "tg-language",
+      "name": "语言启蒙",
+      "topics": [
+        { "id": "tp-en-song", "name": "英语儿歌", "names": ["儿歌", "童谣", "磨耳朵"], "tags": ["英语L1"] },
+        { "id": "tp-en-phonics", "name": "自然拼读", "names": ["拼读", "Phonics", "phonics", "字母"], "tags": ["英语L2"] },
+        { "id": "tp-en-reading", "name": "英语分级阅读", "names": ["分级", "RAZ", "牛津树", "绘本"], "tags": ["英语L3"] },
+        { "id": "tp-en-listening", "name": "英语听力口语", "names": ["听力", "口语"], "tags": ["英语L4"] },
+        { "id": "tp-pinyin", "name": "拼音启蒙", "names": ["拼音", "声母", "韵母"] },
+        { "id": "tp-cn-basic", "name": "语文启蒙", "names": ["语文", "阅读", "表达"], "tags": ["语文L1", "语文L2"] }
+      ]
+    },
+    {
+      "id": "tg-stem",
+      "name": "数理与动手",
+      "topics": [
+        { "id": "tp-math", "name": "数学思维", "names": ["数学", "数字", "数数", "加减", "几何", "思维"] },
+        { "id": "tp-experiment", "name": "科学实验", "names": ["实验", "STEAM", "steam", "手工", "科学小"] },
+        { "id": "tp-vehicle", "name": "汽车与工程车", "names": ["汽车", "工程车", "挖掘机", "挖机", "卡车", "消防车", "火车", "赛车"] },
+        { "id": "tp-code", "name": "编程与机器人", "names": ["编程", "机器人", "人工智能", "AI", "积木", "机械"] },
+        { "id": "tp-logic", "name": "逻辑与益智", "names": ["逻辑", "推理", "迷宫", "拼图", "益智"] }
+      ]
+    },
+    {
+      "id": "tg-life",
+      "name": "生活与成长",
+      "topics": [
+        { "id": "tp-cn-song", "name": "中文儿歌", "names": ["儿歌", "童谣"], "tags": ["低幼"] },
+        { "id": "tp-dance", "name": "律动舞蹈", "names": ["舞蹈", "律动", "体操", "瑜伽"] },
+        { "id": "tp-music", "name": "音乐与乐器", "names": ["音乐", "钢琴", "小提琴", "乐器", "歌曲", "唱"] },
+        { "id": "tp-bedtime", "name": "睡前故事", "names": ["睡前", "晚安", "故事"] },
+        { "id": "tp-emotion", "name": "情绪管理", "names": ["情绪", "生气", "害怕", "分享", "友谊"], "tags": ["情绪"] },
+        { "id": "tp-safety", "name": "安全教育", "names": ["安全", "消防", "交通", "防拐"], "tags": ["安全"] },
+        { "id": "tp-art", "name": "绘画手工", "names": ["绘画", "手工", "美术", "画画", "折纸", "黏土", "艺术"], "tags": ["艺术"] }
+      ]
+    }
   ]
 }
