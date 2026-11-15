@@ -256,24 +256,37 @@ public class Kids extends Spider {
     }
 
     // 每种查找方式暴露的筛选条不同：年龄站点不再重复年龄，专题站点靠内容类型和年龄分流。
+    // FongMi 的筛选每个 key 只能单选，多个 key 之间是 AND，所以这里按「年龄/学科/语言/形式/来源」拆成多行。
     private JSONArray filtersFor() {
         JSONArray result = new JSONArray();
         if ("path".equals(mode)) {
             result.put(filter("age", "年龄段", ageValues()));
-            result.put(filter("ct", "内容类型", contentValues()));
-        } else if ("content".equals(mode) || "search".equals(mode)) {
-            result.put(filter("age", "年龄段", ageValues()));
-            result.put(filter("src", "来源", sourceValues()));
+            result.put(filter("lang", "语言", languageValues()));
+            result.put(filter("form", "形式", formValues()));
         } else if ("alpha".equals(mode)) {
             result.put(filter("ct", "内容类型", contentValues()));
-        } else if ("source".equals(mode)) {
+            result.put(filter("lang", "语言", languageValues()));
+            result.put(filter("form", "形式", formValues()));
+        } else if ("content".equals(mode) || "search".equals(mode)) {
             result.put(filter("age", "年龄段", ageValues()));
-            result.put(filter("ct", "内容类型", contentValues()));
+            result.put(filter("lang", "语言", languageValues()));
+            result.put(filter("form", "形式", formValues()));
+            result.put(filter("src", "来源", sourceValues()));
         } else if ("topic".equals(mode)) {
             result.put(filter("age", "年龄段", ageValues()));
-            result.put(filter("ct", "内容类型", contentValues()));
+            result.put(filter("sub", "学科", subjectValues()));
+            result.put(filter("lang", "语言", languageValues()));
+            result.put(filter("form", "形式", formValues()));
+        } else if ("source".equals(mode)) {
+            result.put(filter("age", "年龄段", ageValues()));
+            result.put(filter("sub", "学科", subjectValues()));
+            result.put(filter("lang", "语言", languageValues()));
+            result.put(filter("form", "形式", formValues()));
         } else {
             result.put(filter("ct", "内容类型", contentValues()));
+            result.put(filter("sub", "学科", subjectValues()));
+            result.put(filter("lang", "语言", languageValues()));
+            result.put(filter("form", "形式", formValues()));
             result.put(filter("src", "来源", sourceValues()));
         }
         return result;
@@ -305,6 +318,18 @@ public class Kids extends Spider {
 
     private JSONArray contentValues() {
         return values(taxonomy.optJSONArray("contents"));
+    }
+
+    private JSONArray languageValues() {
+        return values(taxonomy.optJSONArray("languages"));
+    }
+
+    private JSONArray formValues() {
+        return values(taxonomy.optJSONArray("forms"));
+    }
+
+    private JSONArray subjectValues() {
+        return values(taxonomy.optJSONArray("subjects"));
     }
 
     private JSONArray sourceValues() {
@@ -448,6 +473,9 @@ public class Kids extends Spider {
         String age = value(extend, "age");
         String ct = value(extend, "ct");
         String src = value(extend, "src");
+        String sub = value(extend, "sub");
+        String lang = value(extend, "lang");
+        String form = value(extend, "form");
         JSONObject band = age.isEmpty() ? null : find(taxonomy.optJSONArray("ages"), age);
         int min = band == null ? 0 : band.optInt("min", 0);
         int max = band == null ? 18 : band.optInt("max", 18);
@@ -455,6 +483,9 @@ public class Kids extends Spider {
             if (band != null && !(unitAgeMin(unit) < max && unitAgeMax(unit) > min)) continue;
             if (!ct.isEmpty() && !contains(unit.optJSONArray("ct"), ct)) continue;
             if (!src.isEmpty() && !contains(srcs(unit), src)) continue;
+            if (!sub.isEmpty() && !contains(unit.optJSONArray("paths"), sub)) continue;
+            if (!lang.isEmpty() && !contains(unit.optJSONArray("lng"), lang)) continue;
+            if (!form.isEmpty() && !contains(unit.optJSONArray("fms"), form)) continue;
             result.add(unit);
         }
         return result;
@@ -484,9 +515,15 @@ public class Kids extends Spider {
         });
     }
 
+    // 子类没有自己的阶段时沿用主类的阶段，路线站点才能把子类一起排进梯子。
     private int stage(JSONObject unit, String tid) {
         JSONObject stages = unit.optJSONObject("stages");
-        int value = stages == null ? 0 : stages.optInt(tid == null ? "" : tid, 0);
+        if (stages == null || tid == null) return 99;
+        int value = stages.optInt(tid, 0);
+        if (value <= 0) {
+            int at = tid.lastIndexOf('-');
+            if (at > 0) value = stages.optInt(tid.substring(0, at), 0);
+        }
         return value > 0 ? value : 99;
     }
 
@@ -1048,10 +1085,14 @@ public class Kids extends Spider {
         if (!why.isEmpty()) lines.add("入选理由：" + why);
         lines.add("适龄：" + ageLabel(item));
 
-        List<String> paths = namesOf(taxonomy.optJSONArray("paths"), item.optJSONArray("paths"));
+        List<String> paths = namesOf(taxonomy.optJSONArray("paths"), mainPaths(item.optJSONArray("paths")));
         if (!paths.isEmpty()) lines.add("学习路线：" + join(paths, "、"));
         List<String> ct = namesOf(taxonomy.optJSONArray("contents"), item.optJSONArray("ct"));
         if (!ct.isEmpty()) lines.add("内容类型：" + join(ct, "、"));
+        List<String> lng = namesOf(taxonomy.optJSONArray("languages"), item.optJSONArray("lng"));
+        if (!lng.isEmpty()) lines.add("语言：" + join(lng, "、"));
+        List<String> fms = namesOf(taxonomy.optJSONArray("forms"), item.optJSONArray("fms"));
+        if (!fms.isEmpty()) lines.add("观看形式：" + join(fms, "、"));
         boolean bili = "bili".equals(item.optString("source"));
         boolean mac = "mac".equals(item.optString("source"));
         if (mac) {
@@ -1070,10 +1111,14 @@ public class Kids extends Spider {
         int count = seasons == null ? 0 : seasons.length();
         lines.add("共 " + count + " 季 · " + group.optInt("episodes", 0) + " 集");
         lines.add("适龄：" + groupAgeLabel(group));
-        List<String> paths = namesOf(taxonomy.optJSONArray("paths"), group.optJSONArray("paths"));
+        List<String> paths = namesOf(taxonomy.optJSONArray("paths"), mainPaths(group.optJSONArray("paths")));
         if (!paths.isEmpty()) lines.add("学习路线：" + join(paths, "、"));
         List<String> ct = namesOf(taxonomy.optJSONArray("contents"), group.optJSONArray("ct"));
         if (!ct.isEmpty()) lines.add("内容类型：" + join(ct, "、"));
+        List<String> lng = namesOf(taxonomy.optJSONArray("languages"), group.optJSONArray("lng"));
+        if (!lng.isEmpty()) lines.add("语言：" + join(lng, "、"));
+        List<String> fms = namesOf(taxonomy.optJSONArray("forms"), group.optJSONArray("fms"));
+        if (!fms.isEmpty()) lines.add("观看形式：" + join(fms, "、"));
         List<String> srcs = namesOf(taxonomy.optJSONArray("sources"), group.optJSONArray("srcs"));
         if (!srcs.isEmpty()) lines.add("内容来源：" + join(srcs, "、"));
         List<String> labels = new ArrayList<>();
@@ -1234,8 +1279,18 @@ public class Kids extends Spider {
         return (c >= '0' && c <= '9') || (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z');
     }
 
-    private List<String> namesOf(JSONArray source, JSONArray ids) {
-        List<String> result = new ArrayList<>();
+    // 详情页只列主路线，子类只用于路线站点的分类和筛选。
+    private JSONArray mainPaths(JSONArray ids) {
+        JSONArray result = new JSONArray();
+        if (ids == null) return result;
+        for (int i = 0; i < ids.length(); i++) {
+            String id = ids.optString(i);
+            if (id.indexOf('-') == id.lastIndexOf('-')) result.put(id);
+        }
+        return result;
+    }
+
+    private List<String> namesOf(JSONArray source, JSONArray ids) {        List<String> result = new ArrayList<>();
         if (source == null || ids == null) return result;
         for (int i = 0; i < ids.length(); i++) {
             JSONObject item = find(source, ids.optString(i));

@@ -7,13 +7,56 @@
   ],
   "paths": [
     { "id": "path-language", "name": "语言启蒙", "hint": "儿歌磨耳朵 → 识字拼音 → 阅读表达", "order": 10 },
+    { "id": "path-language-en", "parent": "path-language", "name": "语言启蒙-英语", "hint": "儿歌 → 自然拼读 → 分级阅读 → 听说", "order": 11 },
+    { "id": "path-language-song", "parent": "path-language", "name": "语言启蒙-儿歌", "hint": "中文童谣与磨耳朵", "order": 12 },
+    { "id": "path-language-zh", "parent": "path-language", "name": "语言启蒙-语文", "hint": "识字 → 拼音 → 古诗成语 → 表达", "order": 13 },
     { "id": "path-math", "name": "数学思维", "hint": "数感 → 图形空间 → 逻辑规律", "order": 20 },
+    { "id": "path-math-number", "parent": "path-math", "name": "数学思维-数感计算", "hint": "数数、比较、加减", "order": 21 },
+    { "id": "path-math-shape", "parent": "path-math", "name": "数学思维-图形空间", "hint": "形状、方位、拼搭", "order": 22 },
+    { "id": "path-math-logic", "parent": "path-math", "name": "数学思维-逻辑规律", "hint": "分类、推理、找规律", "order": 23 },
     { "id": "path-science", "name": "科学探究", "hint": "动植物 → 自然现象 → 动手实验 → 宇宙地球", "order": 30 },
+    { "id": "path-science-nature", "parent": "path-science", "name": "科学探究-动植物", "hint": "动物、植物、昆虫与生态", "order": 31 },
+    { "id": "path-science-earth", "parent": "path-science", "name": "科学探究-地球宇宙", "hint": "天气地理、海洋、太空", "order": 32 },
+    { "id": "path-science-lab", "parent": "path-science", "name": "科学探究-动手实验", "hint": "小实验、STEAM、科学制作", "order": 33 },
     { "id": "path-humanities", "name": "人文历史", "hint": "国学启蒙 → 中国历史 → 世界文明 → 博物馆", "order": 40 },
+    { "id": "path-humanities-guoxue", "parent": "path-humanities", "name": "人文历史-国学启蒙", "hint": "古诗、成语、神话与节日", "order": 41 },
+    { "id": "path-humanities-history", "parent": "path-humanities", "name": "人文历史-历史文明", "hint": "中国史、世界史、博物馆", "order": 42 },
+    { "id": "path-humanities-culture", "parent": "path-humanities", "name": "人文历史-人文通识", "hint": "地理、社会与综合人文", "order": 43 },
     { "id": "path-arts", "name": "艺术美育", "hint": "音乐律动 → 绘画手工 → 戏剧表演", "order": 50 },
+    { "id": "path-arts-music", "parent": "path-arts", "name": "艺术美育-音乐律动", "hint": "儿歌、乐器、舞蹈律动", "order": 51 },
+    { "id": "path-arts-craft", "parent": "path-arts", "name": "艺术美育-绘画手工", "hint": "画画、折纸、黏土与手工", "order": 52 },
+    { "id": "path-arts-drama", "parent": "path-arts", "name": "艺术美育-戏剧表演", "hint": "表演、戏剧与艺术鉴赏", "order": 53 },
     { "id": "path-health", "name": "身心健康", "hint": "安全自护 → 情绪管理 → 运动饮食", "order": 60 },
+    { "id": "path-health-safety", "parent": "path-health", "name": "身心健康-安全自护", "hint": "消防、交通、防拐与用电", "order": 61 },
+    { "id": "path-health-emotion", "parent": "path-health", "name": "身心健康-情绪管理", "hint": "认识情绪、面对害怕与生气", "order": 62 },
+    { "id": "path-health-sport", "parent": "path-health", "name": "身心健康-运动饮食", "hint": "运动、营养与生活习惯", "order": 63 },
     { "id": "path-social", "name": "社会情感", "hint": "情绪认知 → 同伴交往 → 规则意识 → 品格", "order": 70 },
-    { "id": "path-tech", "name": "信息科技", "hint": "数字素养 → 编程思维 → AI 启蒙", "order": 80 }
+    { "id": "path-social-emotion", "parent": "path-social", "name": "社会情感-情绪交往", "hint": "情绪认知、分享与友谊", "order": 71 },
+    { "id": "path-social-rules", "parent": "path-social", "name": "社会情感-规则品格", "hint": "规则、合作、礼貌与责任", "order": 72 },
+    { "id": "path-tech", "name": "信息科技", "hint": "数字素养 → 编程思维 → AI 启蒙", "order": 80 },
+    { "id": "path-tech-code", "parent": "path-tech", "name": "信息科技-编程机器人", "hint": "编程、机器人、机械搭建", "order": 81 },
+    { "id": "path-tech-ai", "parent": "path-tech", "name": "信息科技-数字AI", "hint": "数字素养、人工智能与科技", "order": 82 }
+  ],
+  "languages": [
+    { "id": "lang-zh", "name": "中文" },
+    { "id": "lang-en", "name": "英文" },
+    { "id": "lang-bi", "name": "中英双语" }
+  ],
+  "forms": [
+    { "id": "fm-animation", "name": "动画" },
+    { "id": "fm-song", "name": "儿歌" },
+    { "id": "fm-doc", "name": "纪录片" },
+    { "id": "fm-course", "name": "课程" }
+  ],
+  "subjects": [
+    { "id": "path-language", "name": "语言" },
+    { "id": "path-math", "name": "数学" },
+    { "id": "path-science", "name": "科学" },
+    { "id": "path-humanities", "name": "人文历史" },
+    { "id": "path-arts", "name": "艺术" },
+    { "id": "path-health", "name": "身心健康" },
+    { "id": "path-social", "name": "社会情感" },
+    { "id": "path-tech", "name": "信息科技" }
   ],
   "contents": [
     { "id": "ct-domestic", "name": "国产动画" },
@@ -96,6 +139,8 @@
       "id": "tg-language",
       "name": "语言启蒙",
       "topics": [
+        { "id": "tp-en-all", "name": "英语学习", "names": ["英语", "英文", "English", "phonics"], "tags": ["英语L1", "英语L2", "英语L3", "英语L4"] },
+        { "id": "tp-cn-all", "name": "语文素养", "names": ["语文", "国学", "识字", "拼音", "古诗", "成语"], "tags": ["语文L1", "语文L2", "语文L3", "语文L4"] },
         { "id": "tp-en-song", "name": "英语儿歌", "names": ["儿歌", "童谣", "磨耳朵"], "tags": ["英语L1"] },
         { "id": "tp-en-phonics", "name": "自然拼读", "names": ["拼读", "Phonics", "phonics", "字母"], "tags": ["英语L2"] },
         { "id": "tp-en-reading", "name": "英语分级阅读", "names": ["分级", "RAZ", "牛津树", "绘本"], "tags": ["英语L3"] },

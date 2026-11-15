@@ -23,6 +23,109 @@ const SEASON_CN = /第\s*([0-9]{1,3}|[一二三四五六七八九十百零〇两
 const SEASON_EN = /(?:\bSeason\b|\bseason\b|\bSEASON\b)\s*([0-9]{1,2})/;
 const SEASON_S = /(?:^|[^A-Za-z0-9])S\s?([0-9]{1,2})(?![0-9])/;
 
+// 学习路线的主类下面再挂子类，路径站点会多出「主类-子类」这样的入口。
+// 子类由标题、标签和内容分类自动判定，命不中就落到 fallback，保证每条内容都有归属。
+const PATH_CHILDREN = {
+  "path-language": {
+    fallback: "path-language-zh",
+    rules: [
+      { id: "path-language-en", test: (c) => c.tags.some((tag) => /^英语L[1-4]$/.test(tag)) || /英语|英文|English|Phonics|phonics|自然拼读|音标|口语|字母表?/.test(c.text) },
+      { id: "path-language-song", test: (c) => /儿歌|童谣|磨耳朵|歌曲|律动/.test(c.text) },
+    ],
+  },
+  "path-math": {
+    fallback: "path-math-number",
+    rules: [
+      { id: "path-math-shape", test: (c) => /图形|几何|空间|形状|拼图|方位/.test(c.text) },
+      { id: "path-math-logic", test: (c) => /逻辑|推理|规律|迷宫|思维|分类|比较/.test(c.text) },
+    ],
+  },
+  "path-science": {
+    fallback: "path-science-nature",
+    rules: [
+      { id: "path-science-earth", test: (c) => /宇宙|太空|星球|行星|地球|火山|天气|地理|海洋|自然现象/.test(c.text) },
+      { id: "path-science-lab", test: (c) => /实验|动手|STEAM|steam|科学小|制作|为什么/.test(c.text) },
+    ],
+  },
+  "path-humanities": {
+    fallback: "path-humanities-culture",
+    rules: [
+      { id: "path-humanities-guoxue", test: (c) => /古诗|唐诗|宋词|诗经|论语|弟子规|三字经|成语|国学|汉字|识字|神话|传说|节日|节气/.test(c.text) },
+      { id: "path-humanities-history", test: (c) => /历史|朝代|三国|故宫|博物馆|文明|上下五千年|中国史|世界史/.test(c.text) },
+    ],
+  },
+  "path-arts": {
+    fallback: "path-arts-music",
+    rules: [
+      { id: "path-arts-craft", test: (c) => /绘画|手工|美术|画画|折纸|黏土|涂色|艺术/.test(c.text) },
+      { id: "path-arts-drama", test: (c) => /戏剧|表演|舞台|木偶|话剧/.test(c.text) },
+    ],
+  },
+  "path-health": {
+    fallback: "path-health-sport",
+    rules: [
+      { id: "path-health-safety", test: (c) => /安全|消防|交通|防拐|溺水|用电/.test(c.text) },
+      { id: "path-health-emotion", test: (c) => /情绪|生气|害怕|心理|分享|友谊/.test(c.text) },
+    ],
+  },
+  "path-social": {
+    fallback: "path-social-emotion",
+    rules: [
+      { id: "path-social-rules", test: (c) => /规则|品格|合作|礼貌|习惯|责任|交往/.test(c.text) },
+    ],
+  },
+  "path-tech": {
+    fallback: "path-tech-ai",
+    rules: [
+      { id: "path-tech-code", test: (c) => /编程|机器人|代码|程序|Scratch|scratch|机械|积木/.test(c.text) },
+    ],
+  },
+};
+
+function facetText(item) {
+  return [item.name, item.biliTitle, item.desc, item.type].filter(Boolean).join(" ");
+}
+
+function languagesOf(item) {
+  const text = facetText(item);
+  const tags = item.tags || [];
+  const out = [];
+  const bilingual = /中英|双语|中英文|中英对照|英文对照/.test(text);
+  if (bilingual) out.push("lang-bi");
+  if (tags.some((tag) => /^英语L[1-4]$/.test(tag)) || /英语|英文|English|Phonics|phonics/.test(text)) out.push("lang-en");
+  if (tags.some((tag) => /^语文L[1-4]$/.test(tag)) || /语文|国学|识字|拼音|古诗|成语|中文|汉语/.test(text)) out.push("lang-zh");
+  if (out.length === 0) out.push("lang-zh");
+  return out;
+}
+
+function formsOf(item) {
+  const text = facetText(item);
+  const tags = item.tags || [];
+  const ct = item.ct || [];
+  const out = [];
+  const add = (id) => {
+    if (!out.includes(id)) out.push(id);
+  };
+  if (tags.includes("动画") || ct.some((id) => ["ct-animation", "ct-domestic", "ct-overseas", "ct-japan", "ct-movie"].includes(id))) add("fm-animation");
+  if (tags.includes("低幼") || ct.includes("ct-toddler") || /儿歌|童谣|磨耳朵|歌曲|律动/.test(text)) add("fm-song");
+  if (tags.includes("纪录片") || ct.includes("ct-doc") || /纪录片|记录片|纪实/.test(text)) add("fm-doc");
+  if (tags.some((tag) => /^英语L[1-4]$|^语文L[1-4]$/.test(tag)) || /课程|课堂|教学|公开课|网课|精讲|讲解|老师/.test(text)) add("fm-course");
+  return out;
+}
+
+function withPathChildren(item) {
+  const paths = item.paths || [];
+  const text = facetText(item);
+  const tags = item.tags || [];
+  const out = paths.slice();
+  for (const [parent, config] of Object.entries(PATH_CHILDREN)) {
+    if (!paths.includes(parent)) continue;
+    const hit = config.rules.find((rule) => rule.test({ text, tags, ct: item.ct })) || { id: config.fallback };
+    if (!out.includes(hit.id)) out.push(hit.id);
+  }
+  return out;
+}
+
 function cnNumber(text) {
   if (/^[0-9]+$/.test(text)) return Number(text);
   let total = 0;
@@ -190,6 +293,9 @@ export function organize(series, taxonomy) {
     const info = parseName(item.name);
     item.init = initialOf(info.display || item.name);
     item.ct = contentTypes(item);
+    item.lng = languagesOf(item);
+    item.fms = formsOf(item);
+    item.paths = withPathChildren(item);
     item.hid = 0;
     if (!info.base) continue;
     if (!buckets.has(info.base)) buckets.set(info.base, []);
@@ -226,6 +332,8 @@ export function organize(series, taxonomy) {
     const tags = [];
     const paths = [];
     const ct = [];
+    const lng = [];
+    const fms = [];
     const srcs = [];
     const stages = {};
     const aliases = [];
@@ -248,6 +356,8 @@ export function organize(series, taxonomy) {
       for (const tag of item.tags || []) if (!tags.includes(tag)) tags.push(tag);
       for (const path of item.paths || []) if (!paths.includes(path)) paths.push(path);
       for (const type of item.ct || []) if (!ct.includes(type)) ct.push(type);
+      for (const id of item.lng || []) if (!lng.includes(id)) lng.push(id);
+      for (const id of item.fms || []) if (!fms.includes(id)) fms.push(id);
       const source = sourceOf(item);
       if (!srcs.includes(source)) srcs.push(source);
       for (const [path, stage] of Object.entries(item.stages || {})) {
@@ -276,6 +386,8 @@ export function organize(series, taxonomy) {
       paths,
       tags,
       ct,
+      lng,
+      fms,
       srcs,
       stages,
       order: order === Number.MAX_SAFE_INTEGER ? 1000000 : order,
