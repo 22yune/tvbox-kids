@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-15T05:35:16.066Z",
+  "updatedAt": "2026-11-15T05:41:34.753Z",
   "source": "cctv",
   "series": [
     {
@@ -71,8 +71,8 @@
       "latestGuid": "099ba410664f4a69a07a3aea18606120",
       "count": 1000,
       "stale": false,
-      "playable": false,
-      "verifyReason": "fetch failed"
+      "playable": true,
+      "verifyReason": "OK"
     },
     {
       "id": "cctv-qqb",
@@ -103,8 +103,8 @@
       "latestGuid": "05b8276f8d934129aa9e57e51b21f2fc",
       "count": 943,
       "stale": false,
-      "playable": true,
-      "verifyReason": "OK"
+      "playable": false,
+      "verifyReason": "fetch failed"
     },
     {
       "id": "cctv-dfc",
@@ -307,8 +307,8 @@
       "latestGuid": "015270c1919a41fd806a3172f124e286",
       "count": 364,
       "stale": false,
-      "playable": false,
-      "verifyReason": "fetch failed"
+      "playable": true,
+      "verifyReason": "OK"
     },
     {
       "id": "cctv-zmkm",
@@ -369,8 +369,8 @@
       "latestGuid": "3efb68f90dbd4505af1d910e03ec771a",
       "count": 851,
       "stale": false,
-      "playable": false,
-      "verifyReason": "fetch failed"
+      "playable": true,
+      "verifyReason": "OK"
     },
     {
       "id": "cctv-kw72b",
@@ -429,8 +429,8 @@
       "latestGuid": "64a0e1f67c2348fab1bec971f5abe320",
       "count": 1000,
       "stale": false,
-      "playable": false,
-      "verifyReason": "fetch failed"
+      "playable": true,
+      "verifyReason": "OK"
     },
     {
       "id": "cctv-szdm",
