@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-15T02:48:40.229Z",
+  "updatedAt": "2026-11-15T05:35:16.066Z",
   "source": "cctv",
   "series": [
     {
@@ -71,8 +71,8 @@
       "latestGuid": "099ba410664f4a69a07a3aea18606120",
       "count": 1000,
       "stale": false,
-      "playable": true,
-      "verifyReason": "OK"
+      "playable": false,
+      "verifyReason": "fetch failed"
     },
     {
       "id": "cctv-qqb",
@@ -187,10 +187,10 @@
         "动画"
       ],
       "desc": "央视少儿动画连播栏目，按日期更新，适合作为日常动画入口。",
-      "pic": "https://p3.img.cctvpic.com/fmspic/2026/11/15/0dd1354a0eee415f821bc4d22892635f-1.jpg",
-      "latest": "《动画大放映》 20261115 06:00",
-      "latestTime": 1794704052310,
-      "latestGuid": "0dd1354a0eee415f821bc4d22892635f",
+      "pic": "https://p1.img.cctvpic.com/fmspic/2026/11/15/02f59a947b104556a8f0a219136e0917-1.jpg",
+      "latest": "《动画大放映》 20261115 08:45",
+      "latestTime": 1794715451520,
+      "latestGuid": "02f59a947b104556a8f0a219136e0917",
       "count": 1000,
       "stale": false,
       "playable": true,
@@ -307,8 +307,8 @@
       "latestGuid": "015270c1919a41fd806a3172f124e286",
       "count": 364,
       "stale": false,
-      "playable": true,
-      "verifyReason": "OK"
+      "playable": false,
+      "verifyReason": "fetch failed"
     },
     {
       "id": "cctv-zmkm",
@@ -369,8 +369,8 @@
       "latestGuid": "3efb68f90dbd4505af1d910e03ec771a",
       "count": 851,
       "stale": false,
-      "playable": true,
-      "verifyReason": "OK"
+      "playable": false,
+      "verifyReason": "fetch failed"
     },
     {
       "id": "cctv-kw72b",
@@ -429,8 +429,8 @@
       "latestGuid": "64a0e1f67c2348fab1bec971f5abe320",
       "count": 1000,
       "stale": false,
-      "playable": true,
-      "verifyReason": "OK"
+      "playable": false,
+      "verifyReason": "fetch failed"
     },
     {
       "id": "cctv-szdm",
