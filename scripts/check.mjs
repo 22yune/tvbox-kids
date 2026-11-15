@@ -8,7 +8,7 @@ import { organize, topicMatches } from "./group.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const errors = [];
-const MODES = ["age", "path", "content", "topic", "alpha", "source"];
+const MODES = ["search", "age", "path", "content", "topic", "alpha", "source"];
 
 async function read(relative) {
   return fs.readFile(path.join(ROOT, relative), "utf8");
@@ -278,6 +278,7 @@ async function main() {
   requireField(kidsSource.includes("extends Spider"), "Kids.java 必须继承 com.github.catvod.crawler.Spider");
   requireField(kidsSource.includes("vod_play_url"), "Kids.java 缺少播放列表");
   requireField(kidsSource.includes("groupDetail") && kidsSource.includes("topicFolders"), "Kids.java 缺少 IP 详情或专题文件夹");
+  requireField(kidsSource.includes("BILI_SEARCH_API") && kidsSource.includes("searchContent"), "Kids.java 缺少搜索实现");
 
   requireField(typeof config.spider === "string" && /^https?:\/\/.+\.jar;md5;[0-9a-f]{32}$/.test(config.spider), "kids.json 的 spider 必须是 <jar 地址>;md5;<32 位 md5>");
   requireField(Array.isArray(config.sites) && config.sites.length === MODES.length, "kids.json 应只保留 " + MODES.length + " 个查找站点");
@@ -289,7 +290,6 @@ async function main() {
     seenKeys.add(site.key);
     requireField(site.type === 3, site.key + " 必须是 jar 爬虫站点（type 3）");
     requireField(site.api === "csp_Kids", site.key + " 的 api 必须是 csp_Kids");
-    requireField(site.searchable === 0 && site.quickSearch === 0, site.key + " 必须关闭搜索");
     requireField(typeof site.ext === "string", site.key + " 的 ext 必须是字符串，FongMi 用 Gson 反序列化为 String");
     let ext = null;
     try {
@@ -298,12 +298,15 @@ async function main() {
       ext = null;
     }
     requireField(ext && MODES.includes(ext.mode), site.key + " 的 ext.mode 不正确");
+    // 只有「搜索」入口开搜索，其余入口打开会让同一条内容在搜索结果里重复出现。
+    const searchable = ext && ext.mode === "search" ? 1 : 0;
+    requireField(site.searchable === searchable && site.quickSearch === searchable, site.key + " 的搜索开关不正确");
     if (ext && MODES.includes(ext.mode)) {
       requireField(!seenModes.has(ext.mode), "查找方式重复：" + ext.mode);
       seenModes.add(ext.mode);
     }
   }
-  requireField(seenModes.size === MODES.length, "六种查找方式没有全部配置");
+  requireField(seenModes.size === MODES.length, "查找方式没有全部配置");
 
   try {
     const jar = await fs.readFile(path.join(ROOT, "spider/kids.jar"));

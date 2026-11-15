@@ -17,8 +17,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Set;
+import java.util.UUID;
+import java.util.regex.Pattern;
 import java.util.zip.GZIPInputStream;
 
 public class Kids extends Spider {
@@ -27,14 +31,24 @@ public class Kids extends Spider {
     private static final String PLAY_API = "https://vdn.apps.cntv.cn/api/getHttpVideoInfo.do";
     private static final String BILI_VIEW_API = "https://api.bilibili.com/x/web-interface/view";
     private static final String BILI_PLAY_API = "https://api.bilibili.com/x/player/playurl";
+    private static final String BILI_SEARCH_API = "https://api.bilibili.com/x/web-interface/search/all/v2";
     private static final String UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36";
     private static final String REFERER = "https://tv.cctv.com/";
     private static final String BILI_REFERER = "https://www.bilibili.com/";
+    private static final String SEARCH_REFERER = "https://search.bilibili.com/";
     private static final int PAGE_SIZE = 24;
+    private static final int SEARCH_LIMIT = 200;
+    private static final int MIN_SECONDS = 60;
+    // 搜索命中的直播回放、切片、解说这类视频对儿童没有价值，直接在结果里剔掉。
+    private static final Pattern BILI_BLOCK = Pattern.compile(
+            "直播回放|直播预告|预告片|花絮|解说|切片|盘点|混剪|鬼畜|广告|手游|开箱|测评|吐槽|reaction",
+            Pattern.CASE_INSENSITIVE);
 
     private final JSONArray catalog;
     private final JSONArray ips;
     private final JSONObject taxonomy;
+    private final Set<String> knownBvids = new HashSet<>();
+    private final List<String> knownNames = new ArrayList<>();
     private String mode = "age";
 
     public Kids() {
@@ -50,6 +64,18 @@ public class Kids extends Spider {
         catalog = items;
         ips = groups;
         taxonomy = groups2;
+        for (JSONObject item : toList(items)) {
+            String bvid = item.optString("bvid");
+            if (!bvid.isEmpty()) knownBvids.add(bvid);
+        }
+        for (JSONObject unit : units()) {
+            addKnown(unit.optString("name"));
+            if (!isGroup(unit)) continue;
+            for (JSONObject season : toList(unit.optJSONArray("seasons"))) {
+                JSONObject item = find(toList(items), season.optString("id"));
+                if (item != null) addKnown(item.optString("name"));
+            }
+        }
     }
 
     @Override
@@ -115,26 +141,34 @@ public class Kids extends Spider {
     public String detailContent(List<String> ids) {
         String raw = ids == null || ids.isEmpty() ? "" : ids.get(0);
         String id = raw == null ? "" : raw.trim();
+        if (id.startsWith("bv/")) return biliVideoDetail(id.substring(3));
         if (id.startsWith("ip/")) return groupDetail(id.substring(3));
         if (id.startsWith("series/")) return seriesDetail(id.substring(7));
         if (find(toList(catalog), id) != null) return seriesDetail(id);
         return groupDetail(id);
     }
 
+    // 搜索范围：本地目录（含央视、B 站、采集站）+ 哔哩哔哩实时搜索。
+    // 实时结果里已经在本地目录的按 bvid 和标题排掉，避免同一部片子出现两遍。
     @Override
     public String searchContent(String key, boolean quick, String pg) {
-        try {
-            String query = clean(key).toLowerCase(Locale.ROOT);
-            List<JSONObject> cards = new ArrayList<>();
-            if (!query.isEmpty()) {
-                for (JSONObject unit : units()) {
-                    if (matches(unit, query)) cards.add(card(unit, ""));
-                }
-            }
-            return page(cards, pg);
-        } catch (Exception e) {
-            return page(new ArrayList<JSONObject>(), "1");
+        List<JSONObject> cards = new ArrayList<>();
+        String query = clean(key);
+        String lowerQuery = lower(query);
+        if (query.isEmpty()) return page(cards, pg);
+        for (JSONObject unit : units()) {
+            if (matches(unit, lowerQuery)) cards.add(card(unit, ""));
         }
+        if (!quick) {
+            for (JSONObject video : biliSearch(query)) {
+                if (cards.size() >= SEARCH_LIMIT) break;
+                String bvid = video.optString("bvid");
+                String title = strip(video.optString("title"));
+                if (bvid.isEmpty() || title.isEmpty() || covered(bvid, title)) continue;
+                cards.add(biliCard(video, bvid, title));
+            }
+        }
+        return page(cards, pg);
     }
 
     @Override
@@ -166,12 +200,13 @@ public class Kids extends Spider {
 
     private boolean isMode(String value) {
         return "age".equals(value) || "path".equals(value) || "content".equals(value)
-                || "topic".equals(value) || "alpha".equals(value) || "source".equals(value);
+                || "topic".equals(value) || "alpha".equals(value) || "source".equals(value)
+                || "search".equals(value);
     }
 
     private String bucket() {
         if ("path".equals(mode)) return "paths";
-        if ("content".equals(mode)) return "contents";
+        if ("content".equals(mode) || "search".equals(mode)) return "contents";
         if ("topic".equals(mode)) return "topicGroups";
         if ("alpha".equals(mode)) return "alphabet";
         if ("source".equals(mode)) return "sources";
@@ -226,7 +261,7 @@ public class Kids extends Spider {
         if ("path".equals(mode)) {
             result.put(filter("age", "年龄段", ageValues()));
             result.put(filter("ct", "内容类型", contentValues()));
-        } else if ("content".equals(mode)) {
+        } else if ("content".equals(mode) || "search".equals(mode)) {
             result.put(filter("age", "年龄段", ageValues()));
             result.put(filter("src", "来源", sourceValues()));
         } else if ("alpha".equals(mode)) {
@@ -386,7 +421,7 @@ public class Kids extends Spider {
             }
             return result;
         }
-        if ("content".equals(mode)) {
+        if ("content".equals(mode) || "search".equals(mode)) {
             for (JSONObject unit : all) {
                 if (contains(unit.optJSONArray("ct"), tid)) result.add(unit);
             }
@@ -709,22 +744,157 @@ public class Kids extends Spider {
     private JSONArray biliEpisodes(JSONObject item) throws Exception {
         String bvid = item.optString("bvid");
         if (bvid.isEmpty()) throw new IllegalStateException("缺少 bvid");
+        return biliPages(biliView(bvid), bvid);
+    }
+
+    private JSONObject biliView(String bvid) throws Exception {
         JSONObject data = new JSONObject(get(BILI_VIEW_API + "?bvid=" + encode(bvid), BILI_REFERER));
+        int code = data.optInt("code", 0);
+        if (code != 0) throw new IllegalStateException("接口返回 " + code + "：" + data.optString("message", "未知错误"));
         JSONObject view = data.optJSONObject("data");
-        JSONArray pages = view == null ? null : view.optJSONArray("pages");
+        if (view == null) throw new IllegalStateException("没有返回视频信息");
+        return view;
+    }
+
+    private JSONArray biliPages(JSONObject view, String bvid) {
         JSONArray result = new JSONArray();
-        for (JSONObject page : toList(pages)) {
+        for (JSONObject page : toList(view.optJSONArray("pages"))) {
             if (result.length() >= 100) break;
             String cid = page.optString("cid");
             if (cid.isEmpty()) continue;
             String name = clean(page.optString("part"));
             if (name.isEmpty()) name = "第" + (result.length() + 1) + "集";
             JSONObject episode = new JSONObject();
-            episode.put("name", name);
-            episode.put("id", "bili:" + bvid + ":" + cid);
+            try {
+                episode.put("name", name);
+                episode.put("id", "bili:" + bvid + ":" + cid);
+            } catch (Exception ignored) {
+            }
             result.put(episode);
         }
         return result;
+    }
+
+    // 搜索结果里的视频没有进目录，详情页现取一次分 P，播放仍走 bili: 前缀。
+    private String biliVideoDetail(String bvid) {
+        if (bvid.isEmpty()) return message("缺少视频 ID");
+        JSONObject view;
+        try {
+            view = biliView(bvid);
+        } catch (Exception e) {
+            return message("哔哩哔哩接口请求失败：" + text(e));
+        }
+        JSONArray episodes = biliPages(view, bvid);
+        if (episodes.length() == 0) return message("该视频暂时没有可播放的内容");
+        try {
+            JSONObject vod = new JSONObject();
+            vod.put("vod_id", "bv/" + bvid);
+            vod.put("vod_name", clean(strip(view.optString("title"))));
+            vod.put("vod_pic", https(view.optString("pic")));
+            vod.put("vod_remarks", "共 " + episodes.length() + " 集");
+            vod.put("vod_content", biliContent(view));
+            vod.put("vod_play_from", "哔哩哔哩");
+            vod.put("vod_play_url", playUrl(episodes));
+            JSONObject result = new JSONObject();
+            result.put("list", new JSONArray().put(vod));
+            return result.toString();
+        } catch (Exception e) {
+            return message(text(e));
+        }
+    }
+
+    private String biliContent(JSONObject view) {
+        List<String> lines = new ArrayList<>();
+        JSONObject owner = view.optJSONObject("owner");
+        if (owner != null) {
+            String name = clean(owner.optString("name"));
+            if (!name.isEmpty()) lines.add("UP 主：" + name);
+        }
+        String desc = clean(strip(view.optString("desc")));
+        if (!desc.isEmpty()) lines.add(cut(desc, 300));
+        lines.add("内容来源：哔哩哔哩（B站）UP 主上传，播放时实时取流，匿名最高 720p。");
+        return join(lines, "\n");
+    }
+
+    // 聚合搜索接口一次返回全部分组，取其中的 video 分组；搜索接口另有 -412 限流，这里不走。
+    private List<JSONObject> biliSearch(String keyword) {
+        List<JSONObject> result = new ArrayList<>();
+        try {
+            String url = BILI_SEARCH_API + "?keyword=" + encode(keyword) + "&page=1";
+            JSONObject data = new JSONObject(get(url, SEARCH_REFERER, cookies()));
+            JSONObject payload = data.optJSONObject("data");
+            JSONArray groups = payload == null ? null : payload.optJSONArray("result");
+            JSONArray videos = null;
+            for (JSONObject group : toList(groups)) {
+                if ("video".equals(group.optString("result_type"))) {
+                    videos = group.optJSONArray("data");
+                    break;
+                }
+            }
+            for (JSONObject video : toList(videos)) {
+                if (result.size() >= SEARCH_LIMIT) break;
+                String title = strip(video.optString("title"));
+                if (title.isEmpty() || blocked(title)) continue;
+                if (seconds(video.optString("duration")) < MIN_SECONDS) continue;
+                result.add(video);
+            }
+        } catch (Exception ignored) {
+            // 搜索失败不影响本地目录的结果。
+        }
+        return result;
+    }
+
+    private boolean blocked(String title) {
+        return BILI_BLOCK.matcher(title).find();
+    }
+
+    private boolean covered(String bvid, String title) {
+        if (knownBvids.contains(bvid)) return true;
+        String lowerTitle = lower(title);
+        for (String name : knownNames) {
+            if (lowerTitle.contains(name)) return true;
+        }
+        return false;
+    }
+
+    private void addKnown(String name) {
+        String value = lower(clean(name));
+        if (value.isEmpty()) return;
+        int cjk = 0;
+        int ascii = 0;
+        for (int i = 0; i < value.length(); i++) {
+            char c = value.charAt(i);
+            if (c >= 128) cjk++;
+            else if (isAlnum(c)) ascii++;
+        }
+        if (cjk >= 2 || ascii >= 4) knownNames.add(value);
+    }
+
+    private JSONObject biliCard(JSONObject video, String bvid, String title) {
+        JSONObject card = new JSONObject();
+        try {
+            card.put("vod_id", "bv/" + bvid);
+            card.put("vod_name", clean(title));
+            card.put("vod_pic", https(video.optString("pic")));
+            String duration = clean(video.optString("duration"));
+            card.put("vod_remarks", duration.isEmpty() ? "哔哩哔哩" : "哔哩哔哩 · " + duration);
+            card.put("style", style());
+        } catch (Exception ignored) {
+        }
+        return card;
+    }
+
+    private int seconds(String duration) {
+        if (duration == null) return 0;
+        int total = 0;
+        for (String part : duration.trim().split(":")) {
+            try {
+                total = total * 60 + Integer.parseInt(part.trim());
+            } catch (Exception e) {
+                return 0;
+            }
+        }
+        return total;
     }
 
     private String biliPlayer(String pid) {
@@ -1171,10 +1341,14 @@ public class Kids extends Spider {
     }
 
     private String get(String url) throws Exception {
-        return get(url, REFERER);
+        return get(url, REFERER, null);
     }
 
     private String get(String url, String referer) throws Exception {
+        return get(url, referer, null);
+    }
+
+    private String get(String url, String referer, String cookie) throws Exception {
         HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
         try {
             connection.setConnectTimeout(15000);
@@ -1183,6 +1357,7 @@ public class Kids extends Spider {
             connection.setRequestProperty("Referer", referer);
             connection.setRequestProperty("Accept", "application/json, text/plain, */*");
             connection.setRequestProperty("Accept-Encoding", "gzip");
+            if (cookie != null && !cookie.isEmpty()) connection.setRequestProperty("Cookie", cookie);
             int code = connection.getResponseCode();
             if (code < 200 || code >= 300) throw new IllegalStateException("HTTP " + code);
             InputStream input = connection.getInputStream();
@@ -1195,6 +1370,30 @@ public class Kids extends Spider {
         } finally {
             connection.disconnect();
         }
+    }
+
+    // 搜索接口只认 buvid3 + b_nut，本地生成即可，不需要登录态。
+    private String cookies() {
+        return "buvid3=" + UUID.randomUUID().toString().toUpperCase(Locale.ROOT)
+                + "infoc; b_nut=" + (System.currentTimeMillis() / 1000L);
+    }
+
+    private String strip(String value) {
+        if (value == null) return "";
+        return value.replaceAll("<[^>]+>", "")
+                .replace("&quot;", "\"")
+                .replace("&#39;", "'")
+                .replace("&lt;", "<")
+                .replace("&gt;", ">")
+                .replace("&amp;", "&");
+    }
+
+    private String https(String url) {
+        if (url == null) return "";
+        String value = url.trim();
+        if (value.startsWith("//")) return "https:" + value;
+        if (value.startsWith("http://")) return "https://" + value.substring(7);
+        return value;
     }
 
     private String read(InputStream input) throws Exception {

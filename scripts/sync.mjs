@@ -184,15 +184,17 @@ function jarUrl() {
 
 // ext 在 FongMi 里是 String 字段（Gson 直接反序列化），写成对象会导致
 // Site.objectFrom 抛异常并返回空站点，表现为点播栏目全空，因此必须是字符串。
+// 只有「搜索」入口开启搜索：其余入口若也打开，同一条内容会在搜索结果里重复出现。
 function site(key, name, mode) {
+  const searchable = mode === "search" ? 1 : 0;
   return {
     key,
     name,
     type: 3,
     api: "csp_Kids",
     ext: JSON.stringify({ mode }),
-    searchable: 0,
-    quickSearch: 0,
+    searchable,
+    quickSearch: searchable,
     changeable: 0,
     style: { type: "rect", ratio: 1.78 },
   };
@@ -203,8 +205,9 @@ function site(key, name, mode) {
 function buildConfig(live, jar) {
   return {
     spider: jarUrl() + ";md5;" + jar.md5,
-    notice: "儿童模式：已关闭搜索。内容来自央视、哔哩哔哩和第三方采集站；采集站画质和广告不可控，建议家长陪同。",
+    notice: "儿童模式：搜索仅在「搜索」入口开启，范围是本地目录和哔哩哔哩实时搜索结果；采集站画质和广告不可控，建议家长陪同。",
     sites: [
+      site("kids_search", "搜索", "search"),
       site("kids_age", "按年龄", "age"),
       site("kids_path", "按学习路线", "path"),
       site("kids_content", "按内容类型", "content"),
