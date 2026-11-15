@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-14T23:02:41.322Z",
+  "updatedAt": "2026-11-15T02:48:40.229Z",
   "source": "cctv",
   "series": [
     {
@@ -187,10 +187,10 @@
         "动画"
       ],
       "desc": "央视少儿动画连播栏目，按日期更新，适合作为日常动画入口。",
-      "pic": "https://p3.img.cctvpic.com/fmspic/2026/11/14/ce0c5adcdd444458ae52b38203cded33-1.jpg",
-      "latest": "《动画大放映》 20261114 17:55",
-      "latestTime": 1794659290150,
-      "latestGuid": "ce0c5adcdd444458ae52b38203cded33",
+      "pic": "https://p3.img.cctvpic.com/fmspic/2026/11/15/0dd1354a0eee415f821bc4d22892635f-1.jpg",
+      "latest": "《动画大放映》 20261115 06:00",
+      "latestTime": 1794704052310,
+      "latestGuid": "0dd1354a0eee415f821bc4d22892635f",
       "count": 1000,
       "stale": false,
       "playable": true,
