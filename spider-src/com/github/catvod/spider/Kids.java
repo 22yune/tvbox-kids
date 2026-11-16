@@ -508,7 +508,7 @@ public class Kids extends Spider {
             card.put("vod_id", author.optString("k"));
             card.put("vod_name", author.optString("n"));
             card.put("vod_pic", https(author.optString("i")));
-            card.put("vod_remarks", count + " 部 · " + playsLabel(author.optLong("v", 0)));
+            card.put("vod_remarks", authorRemark(count, author.optLong("v", 0)));
             card.put("vod_tag", "folder");
             card.put("style", style());
         } catch (Exception ignored) {
@@ -516,12 +516,18 @@ public class Kids extends Spider {
         return card;
     }
 
+    private String authorRemark(int count, long plays) {
+        String label = playsLabel(plays);
+        return label.isEmpty() ? count + " 部" : count + " 部 · " + label;
+    }
+
     private String playsLabel(long plays) {
         if (plays >= 100000000L) {
             return String.format(Locale.ROOT, "%.1f亿播放", plays / 100000000.0);
         }
         if (plays >= 10000L) return (plays / 10000L) + "万播放";
-        return plays + "播放";
+        if (plays > 0) return plays + "播放";
+        return "";
     }
 
     private JSONObject findAuthor(String key) {

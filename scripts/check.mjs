@@ -307,7 +307,8 @@ async function main() {
     authorKeys.add(author.k);
     requireField(Boolean(author.n), author.k + " 缺少作者名");
     requireField(Array.isArray(author.t) && author.t.length > 0, author.n + " 没有作品");
-    requireField(Number.isFinite(author.v) && author.v > 0, author.n + " 缺少总播放量");
+    // 名单条目可能只有 UP 主名、没有播放量，此时按 0 处理。
+    requireField(Number.isFinite(author.v) && author.v >= 0, author.n + " 的总播放量不合法");
     requireField(Array.isArray(author.a) && author.a.length === 2 && author.a[0] < author.a[1], author.n + " 的年龄段不合法");
     requireField(Array.isArray(author.c) && author.c.length > 0, author.n + " 缺少内容分类");
     requireField(Array.isArray(author.l) && author.l.length > 0, author.n + " 缺少语言");
