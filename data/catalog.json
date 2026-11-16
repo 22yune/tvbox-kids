@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-15T23:25:05.078Z",
+  "updatedAt": "2026-11-16T09:51:08.326Z",
   "source": "cctv",
   "series": [
     {
@@ -29,14 +29,14 @@
         "情绪"
       ],
       "desc": "面向低幼宝宝的启蒙栏目，包含儿歌、律动、认知游戏和生活习惯。建议家长陪伴观看。",
-      "pic": "https://p3.img.cctvpic.com/fmspic/2026/11/13/8b1886cee5e04766b6159dd8b29c5945-1.jpg",
-      "latest": "《小小智慧树》 20261113",
-      "latestTime": 1794535807265,
-      "latestGuid": "8b1886cee5e04766b6159dd8b29c5945",
+      "pic": "https://p3.img.cctvpic.com/fmspic/2026/11/16/d77e45e8fe5c46aa8cb128886652945d-1.jpg",
+      "latest": "《小小智慧树》 20261116",
+      "latestTime": 1794798615737,
+      "latestGuid": "d77e45e8fe5c46aa8cb128886652945d",
       "count": 1000,
       "stale": false,
-      "playable": true,
-      "verifyReason": "OK"
+      "playable": false,
+      "verifyReason": "fetch failed"
     },
     {
       "id": "cctv-zhs",
@@ -103,8 +103,8 @@
       "latestGuid": "05b8276f8d934129aa9e57e51b21f2fc",
       "count": 943,
       "stale": false,
-      "playable": true,
-      "verifyReason": "OK"
+      "playable": false,
+      "verifyReason": "fetch failed"
     },
     {
       "id": "cctv-dfc",
@@ -187,10 +187,10 @@
         "动画"
       ],
       "desc": "央视少儿动画连播栏目，按日期更新，适合作为日常动画入口。",
-      "pic": "https://p3.img.cctvpic.com/fmspic/2026/11/15/7a1ef689792e48a38dbb7162bbff6378-1.jpg",
-      "latest": "《动画大放映》 20261115 17:55",
-      "latestTime": 1794743408834,
-      "latestGuid": "7a1ef689792e48a38dbb7162bbff6378",
+      "pic": "https://p1.img.cctvpic.com/fmspic/2026/11/16/bb7d902368cc4f71b2c8be5ec52cca08-1.jpg",
+      "latest": "《动画大放映》 20261116 14:05",
+      "latestTime": 1794819133871,
+      "latestGuid": "bb7d902368cc4f71b2c8be5ec52cca08",
       "count": 1000,
       "stale": false,
       "playable": true,
@@ -363,11 +363,11 @@
         "科技"
       ],
       "desc": "少儿创意与发明类节目，适合培养工程思维和动手能力。",
-      "pic": "https://p2.img.cctvpic.com/fmspic/2026/11/09/3efb68f90dbd4505af1d910e03ec771a-1.jpg",
-      "latest": "《异想天开》 20261109 小小非遗传承人",
-      "latestTime": 1794186844433,
-      "latestGuid": "3efb68f90dbd4505af1d910e03ec771a",
-      "count": 851,
+      "pic": "https://p4.img.cctvpic.com/fmspic/2026/11/16/ccccdd42c9e34712810496f03b205db7-1.jpg",
+      "latest": "《异想天开》 20261116 小小非遗传承人",
+      "latestTime": 1794796934922,
+      "latestGuid": "ccccdd42c9e34712810496f03b205db7",
+      "count": 852,
       "stale": false,
       "playable": true,
       "verifyReason": "OK"
@@ -481,10 +481,10 @@
         "人文"
       ],
       "desc": "用孩子的视角讲新闻，适合培养信息理解和公共表达。",
-      "pic": "https://p5.img.cctvpic.com/fmspic/2026/11/13/91311c8749624550841897a5d6ad2fa0-1.jpg",
-      "latest": "《新闻袋袋裤》 20261113",
-      "latestTime": 1794531608784,
-      "latestGuid": "91311c8749624550841897a5d6ad2fa0",
+      "pic": "https://p4.img.cctvpic.com/fmspic/2026/11/16/93b8cd93fae94d91bcfaf75e522034b8-1.jpg",
+      "latest": "《新闻袋袋裤》 20261116",
+      "latestTime": 1794791534299,
+      "latestGuid": "93b8cd93fae94d91bcfaf75e522034b8",
       "count": 1000,
       "stale": false,
       "playable": true,
