@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-16T09:51:08.326Z",
+  "updatedAt": "2026-11-16T14:57:12.663Z",
   "source": "cctv",
   "series": [
     {
@@ -35,8 +35,8 @@
       "latestGuid": "d77e45e8fe5c46aa8cb128886652945d",
       "count": 1000,
       "stale": false,
-      "playable": false,
-      "verifyReason": "fetch failed"
+      "playable": true,
+      "verifyReason": "OK"
     },
     {
       "id": "cctv-zhs",
@@ -65,10 +65,10 @@
         "情绪"
       ],
       "desc": "央视少儿经典幼儿栏目，涵盖手工、儿歌、生活习惯和情绪认知。",
-      "pic": "https://p3.img.cctvpic.com/fmspic/2026/11/13/099ba410664f4a69a07a3aea18606120-1.jpg",
-      "latest": "《智慧树》 20261113",
-      "latestTime": 1794572650900,
-      "latestGuid": "099ba410664f4a69a07a3aea18606120",
+      "pic": "https://p4.img.cctvpic.com/fmspic/2026/11/16/30f8a867b81e41de943e257a0ece37dd-1.jpg",
+      "latest": "《智慧树》 20261116",
+      "latestTime": 1794831854639,
+      "latestGuid": "30f8a867b81e41de943e257a0ece37dd",
       "count": 1000,
       "stale": false,
       "playable": true,
@@ -103,8 +103,8 @@
       "latestGuid": "05b8276f8d934129aa9e57e51b21f2fc",
       "count": 943,
       "stale": false,
-      "playable": false,
-      "verifyReason": "fetch failed"
+      "playable": true,
+      "verifyReason": "OK"
     },
     {
       "id": "cctv-dfc",
@@ -423,10 +423,10 @@
         "情绪"
       ],
       "desc": "亲子互动节目，围绕家庭陪伴、安全自护和情感表达。",
-      "pic": "https://p3.img.cctvpic.com/fmspic/2026/11/09/64a0e1f67c2348fab1bec971f5abe320-1.jpg",
-      "latest": "《大手牵小手》 20261109 “上海·青浦杯”第二十一届全国少年儿童故事大王选拔展示活动 幼儿组",
-      "latestTime": 1794224040929,
-      "latestGuid": "64a0e1f67c2348fab1bec971f5abe320",
+      "pic": "https://p3.img.cctvpic.com/fmspic/2026/11/16/3609bd351c3f44deb62ecd4ae4f58f68-1.jpg",
+      "latest": "《大手牵小手》 20261116 “上海·青浦杯”第二十一届全国少年儿童故事大王选拔展示活动 揭晓仪式",
+      "latestTime": 1794826694652,
+      "latestGuid": "3609bd351c3f44deb62ecd4ae4f58f68",
       "count": 1000,
       "stale": false,
       "playable": true,
