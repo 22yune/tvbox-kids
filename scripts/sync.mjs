@@ -8,6 +8,7 @@ import { buildJar } from "./build-jar.mjs";
 import { resolveCuration } from "./curate.mjs";
 import { resolveBackups } from "./backups.mjs";
 import { organize } from "./group.mjs";
+import { authorsOf, readFaces } from "./authors.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const LIST_API = "https://api.cntv.cn/NewVideo/getVideoListByColumn";
@@ -107,9 +108,10 @@ function chunks(text, size = 4000) {
   return parts;
 }
 
-function buildCatalogSource(taxonomy, catalog, groups) {
+function buildCatalogSource(taxonomy, catalog, groups, authors) {
   const series = chunks(JSON.stringify(catalog.series));
   const groupsText = chunks(JSON.stringify(groups));
+  const authorsText = chunks(JSON.stringify(authors));
   const groupsJson = chunks(JSON.stringify(taxonomy));
   const lines = [
     "package com.github.catvod.spider;",
@@ -123,6 +125,10 @@ function buildCatalogSource(taxonomy, catalog, groups) {
     "",
     "    static final String IP = join(",
     groupsText.map((part) => "            " + JSON.stringify(part)).join(",\n"),
+    "    );",
+    "",
+    "    static final String AUTHORS = join(",
+    authorsText.map((part) => "            " + JSON.stringify(part)).join(",\n"),
     "    );",
     "",
     "    static final String TAXONOMY = join(",
@@ -205,7 +211,7 @@ function site(key, name, mode) {
 function buildConfig(live, jar) {
   return {
     spider: jarUrl() + ";md5;" + jar.md5,
-    notice: "儿童模式：搜索仅在「搜索」入口开启，范围是本地目录和哔哩哔哩实时搜索结果；采集站画质和广告不可控，建议家长陪同。",
+    notice: "儿童模式：搜索仅在「搜索」入口开启，范围是本地目录和哔哩哔哩实时搜索结果；B站学习资源按内容/作者索引，作者页展示本地目录里收录的作品；采集站画质和广告不可控，建议家长陪同。",
     sites: [
       site("kids_search", "搜索", "search"),
       site("kids_age", "按年龄", "age"),
@@ -214,6 +220,8 @@ function buildConfig(live, jar) {
       site("kids_topic", "按专题", "topic"),
       site("kids_alpha", "按名称", "alpha"),
       site("kids_source", "按来源", "source"),
+      site("kids_bili", "B站学习-按内容", "bili"),
+      site("kids_author", "B站学习-按作者", "author"),
     ],
     lives: [
       {
@@ -334,7 +342,9 @@ async function main() {
   const merged = { series: (catalog.series || []).concat(curated.series || []).concat(open.series || []).concat(topicSeries) };
   // 同一 IP 的多季/多语言版本合并成一张卡片，季信息写进 Catalog.IP。
   const organized = organize(merged.series, taxonomy);
-  await writeFile("spider-src/com/github/catvod/spider/Catalog.java", buildCatalogSource(taxonomy, merged, organized.groups));
+  // 作者视角同样基于本地目录聚合：专题采集写下的 UP 主 + 播放量，头像来自一次性缓存。
+  const authors = authorsOf(merged.series, readFaces());
+  await writeFile("spider-src/com/github/catvod/spider/Catalog.java", buildCatalogSource(taxonomy, merged, organized.groups, authors));
   const jar = buildJar();
   const config = buildConfig(live, jar);
   await writeFile("kids.json", JSON.stringify(config, null, 2));
@@ -349,6 +359,7 @@ async function main() {
     " + 采集站 " + (open.series || []).length +
     " + 专题 " + topicSeries.length +
     "，IP " + organized.groups.length + " 组 / " + organized.units + " 张卡片" +
+    "，作者 " + authors.length + " 位" +
     (curated.missing && curated.missing.length ? "（缺源 " + curated.missing.length + "）" : "") +
     (stale ? "，stale " + stale : "") +
     (curatedStale ? "，名单 stale " + curatedStale : "") +

@@ -46,6 +46,7 @@ public class Kids extends Spider {
 
     private final JSONArray catalog;
     private final JSONArray ips;
+    private final JSONArray authors;
     private final JSONObject taxonomy;
     private final Set<String> knownBvids = new HashSet<>();
     private final List<String> knownNames = new ArrayList<>();
@@ -54,15 +55,18 @@ public class Kids extends Spider {
     public Kids() {
         JSONArray items = new JSONArray();
         JSONArray groups = new JSONArray();
+        JSONArray people = new JSONArray();
         JSONObject groups2 = new JSONObject();
         try {
             items = new JSONArray(Catalog.SERIES);
             groups = new JSONArray(Catalog.IP);
+            people = new JSONArray(Catalog.AUTHORS);
             groups2 = new JSONObject(Catalog.TAXONOMY);
         } catch (Exception ignored) {
         }
         catalog = items;
         ips = groups;
+        authors = people;
         taxonomy = groups2;
         for (JSONObject item : toList(items)) {
             String bvid = item.optString("bvid");
@@ -118,8 +122,10 @@ public class Kids extends Spider {
     public String categoryContent(String tid, String pg, boolean filter, HashMap<String, String> extend) {
         try {
             if ("topic".equals(mode) && isTopicGroup(tid)) return topicFolders(tid, extend);
+            if ("author".equals(mode) && tid != null && !tid.startsWith("au-")) return authorFolders(tid, extend, pg);
             List<JSONObject> items = select(tid, extend);
-            sort(items, tid);
+            // 作者作品按播放量排好了，不再按字序重排。
+            if (!"author".equals(mode)) sort(items, tid);
             List<JSONObject> cards = new ArrayList<>();
             for (JSONObject item : items) cards.add(card(item, tid));
             return page(cards, pg);
@@ -201,7 +207,7 @@ public class Kids extends Spider {
     private boolean isMode(String value) {
         return "age".equals(value) || "path".equals(value) || "content".equals(value)
                 || "topic".equals(value) || "alpha".equals(value) || "source".equals(value)
-                || "search".equals(value);
+                || "search".equals(value) || "bili".equals(value) || "author".equals(value);
     }
 
     private String bucket() {
@@ -214,6 +220,8 @@ public class Kids extends Spider {
     }
 
     private JSONArray classes() {
+        if ("bili".equals(mode)) return biliClasses();
+        if ("author".equals(mode)) return authorClasses();
         JSONArray result = new JSONArray();
         JSONArray source = taxonomy.optJSONArray(bucket());
         if (source == null) return result;
@@ -229,16 +237,51 @@ public class Kids extends Spider {
                 name = id;
             }
             if (id.isEmpty()) continue;
-            try {
-                JSONObject entry = new JSONObject();
-                entry.put("type_id", id);
-                entry.put("type_name", name);
-                if ("topic".equals(mode)) entry.put("type_flag", "1");
-                result.put(entry);
-            } catch (Exception ignored) {
-            }
+            result.put(type(id, name, "topic".equals(mode)));
         }
         return result;
+    }
+
+    // B 站内容站点的分类就是内容类型，只展示有内容的分类，避免点进去是空列表。
+    private JSONArray biliClasses() {
+        JSONArray result = new JSONArray();
+        result.put(type("all", "全部内容", false));
+        for (JSONObject item : toList(taxonomy.optJSONArray("contents"))) {
+            String id = item.optString("id");
+            if (id.isEmpty() || !hasBiliContent(id)) continue;
+            result.put(type(id, item.optString("name"), false));
+        }
+        return result;
+    }
+
+    // 作者站点按语言分栏：同一个账号可能同时出现在英文和双语栏里。
+    private JSONArray authorClasses() {
+        JSONArray result = new JSONArray();
+        result.put(type("all", "全部作者", true));
+        for (JSONObject item : toList(taxonomy.optJSONArray("languages"))) {
+            String id = item.optString("id");
+            if (id.isEmpty() || !hasAuthorLanguage(id)) continue;
+            result.put(type(id, authorClassLabel(id), true));
+        }
+        return result;
+    }
+
+    private String authorClassLabel(String id) {
+        if ("lang-en".equals(id)) return "英语UP主";
+        if ("lang-bi".equals(id)) return "双语UP主";
+        if ("lang-zh".equals(id)) return "语文UP主";
+        return "UP主";
+    }
+
+    private JSONObject type(String id, String name, boolean listStyle) {
+        JSONObject entry = new JSONObject();
+        try {
+            entry.put("type_id", id);
+            entry.put("type_name", name);
+            if (listStyle) entry.put("type_flag", "1");
+        } catch (Exception ignored) {
+        }
+        return entry;
     }
 
     private JSONObject filters() {
@@ -282,6 +325,14 @@ public class Kids extends Spider {
             result.put(filter("sub", "学科", subjectValues()));
             result.put(filter("lang", "语言", languageValues()));
             result.put(filter("form", "形式", formValues()));
+        } else if ("bili".equals(mode)) {
+            result.put(filter("age", "年龄段", ageValues()));
+            result.put(filter("sub", "学科", subjectValues()));
+            result.put(filter("lang", "语言", languageValues()));
+            result.put(filter("form", "形式", formValues()));
+        } else if ("author".equals(mode)) {
+            result.put(filter("age", "年龄段", ageValues()));
+            result.put(filter("sub", "学科", subjectValues()));
         } else {
             result.put(filter("ct", "内容类型", contentValues()));
             result.put(filter("sub", "学科", subjectValues()));
@@ -421,10 +472,113 @@ public class Kids extends Spider {
         return result.toString();
     }
 
+    // 作者列表：每位 UP 主一张文件夹卡片，点进去就是该账号在目录里的作品。
+    private String authorFolders(String tid, HashMap<String, String> extend, String pg) {
+        List<JSONObject> cards = new ArrayList<>();
+        for (JSONObject author : filteredAuthors(extend)) {
+            if (!"all".equals(tid) && !contains(author.optJSONArray("l"), tid)) continue;
+            cards.add(authorCard(author));
+        }
+        return page(cards, pg);
+    }
+
+    private List<JSONObject> filteredAuthors(HashMap<String, String> extend) {
+        List<JSONObject> result = new ArrayList<>();
+        String age = value(extend, "age");
+        String sub = value(extend, "sub");
+        JSONObject band = age.isEmpty() ? null : find(taxonomy.optJSONArray("ages"), age);
+        int min = band == null ? 0 : band.optInt("min", 0);
+        int max = band == null ? 18 : band.optInt("max", 18);
+        for (JSONObject author : toList(authors)) {
+            JSONArray ages = author.optJSONArray("a");
+            int minAge = ages == null || ages.length() < 2 ? 0 : ages.optInt(0, 0);
+            int maxAge = ages == null || ages.length() < 2 ? 12 : ages.optInt(1, 12);
+            if (band != null && !(minAge < max && maxAge > min)) continue;
+            if (!sub.isEmpty() && !contains(author.optJSONArray("p"), sub)) continue;
+            result.add(author);
+        }
+        return result;
+    }
+
+    private JSONObject authorCard(JSONObject author) {
+        JSONObject card = new JSONObject();
+        try {
+            JSONArray items = author.optJSONArray("t");
+            int count = items == null ? 0 : items.length();
+            card.put("vod_id", author.optString("k"));
+            card.put("vod_name", author.optString("n"));
+            card.put("vod_pic", https(author.optString("i")));
+            card.put("vod_remarks", count + " 部 · " + playsLabel(author.optLong("v", 0)));
+            card.put("vod_tag", "folder");
+            card.put("style", style());
+        } catch (Exception ignored) {
+        }
+        return card;
+    }
+
+    private String playsLabel(long plays) {
+        if (plays >= 100000000L) {
+            return String.format(Locale.ROOT, "%.1f亿播放", plays / 100000000.0);
+        }
+        if (plays >= 10000L) return (plays / 10000L) + "万播放";
+        return plays + "播放";
+    }
+
+    private JSONObject findAuthor(String key) {
+        for (JSONObject author : toList(authors)) {
+            if (key != null && key.equals(author.optString("k"))) return author;
+        }
+        return null;
+    }
+
+    private boolean hasBiliContent(String id) {
+        for (JSONObject unit : units()) {
+            if (biliUnit(unit) && contains(unit.optJSONArray("ct"), id)) return true;
+        }
+        return false;
+    }
+
+    private boolean hasAuthorLanguage(String id) {
+        for (JSONObject author : toList(authors)) {
+            if (contains(author.optJSONArray("l"), id)) return true;
+        }
+        return false;
+    }
+
+    // B站内容站点只收纯 B 站条目；混了央视或采集站线路的合集留给其他站点。
+    private boolean biliUnit(JSONObject unit) {
+        JSONArray list = srcs(unit);
+        if (list.length() == 0) return false;
+        for (int i = 0; i < list.length(); i++) {
+            if (!"src-bili".equals(list.optString(i))) return false;
+        }
+        return true;
+    }
+
     private List<JSONObject> select(String tid, HashMap<String, String> extend) {
         List<JSONObject> result = new ArrayList<>();
-        List<JSONObject> all = filtered(units(), extend);
         if (tid == null) return result;
+        if ("author".equals(mode)) {
+            JSONObject author = findAuthor(tid);
+            if (author == null) return result;
+            List<JSONObject> items = toList(catalog);
+            List<JSONObject> pool = new ArrayList<>();
+            JSONArray ids = author.optJSONArray("t");
+            for (int i = 0; ids != null && i < ids.length(); i++) {
+                JSONObject item = find(items, ids.optString(i));
+                if (item != null) pool.add(item);
+            }
+            return filtered(pool, extend);
+        }
+        List<JSONObject> all = filtered(units(), extend);
+        if ("bili".equals(mode)) {
+            for (JSONObject unit : all) {
+                if (!biliUnit(unit)) continue;
+                if (!"all".equals(tid) && !contains(unit.optJSONArray("ct"), tid)) continue;
+                result.add(unit);
+            }
+            return result;
+        }
         if ("topic".equals(mode) && tid.startsWith("tp-")) {
             JSONObject topic = findTopic(tid);
             if (topic == null) return result;
@@ -540,6 +694,9 @@ public class Kids extends Spider {
                 int stage = stage(unit, tid);
                 card.put("vod_remarks", (stage < 99 ? "第" + stage + "阶段 · " : "") + ageLabel(unit));
             } else if ("topic".equals(mode)) {
+                String latest = clean(unit.optString("latest"));
+                card.put("vod_remarks", latest.isEmpty() ? ageLabel(unit) : cut(latest, 12));
+            } else if ("bili".equals(mode) || "author".equals(mode)) {
                 String latest = clean(unit.optString("latest"));
                 card.put("vod_remarks", latest.isEmpty() ? ageLabel(unit) : cut(latest, 12));
             } else {
@@ -1290,7 +1447,8 @@ public class Kids extends Spider {
         return result;
     }
 
-    private List<String> namesOf(JSONArray source, JSONArray ids) {        List<String> result = new ArrayList<>();
+    private List<String> namesOf(JSONArray source, JSONArray ids) {
+        List<String> result = new ArrayList<>();
         if (source == null || ids == null) return result;
         for (int i = 0; i < ids.length(); i++) {
             JSONObject item = find(source, ids.optString(i));

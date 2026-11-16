@@ -5,10 +5,11 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { organize, topicMatches } from "./group.mjs";
+import { authorsOf, readFaces } from "./authors.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const errors = [];
-const MODES = ["search", "age", "path", "content", "topic", "alpha", "source"];
+const MODES = ["search", "age", "path", "content", "topic", "alpha", "source", "bili", "author"];
 
 async function read(relative) {
   return fs.readFile(path.join(ROOT, relative), "utf8");
@@ -294,6 +295,46 @@ async function main() {
     for (const id of unit.fms || []) requireField(forms.has(id), (unit.name || "?") + " 引用了未知观看形式 " + id);
   }
 
+  // B 站内容/作者两个站点都从本地目录索引，作者只收有多个作品或播放量够高的账号。
+  const authors = authorsOf(coverage, readFaces());
+  requireField(authors.length >= 100, "B站作者过少：" + authors.length);
+  const coverageById = new Map(coverage.map((item) => [item.id, item]));
+  const authorKeys = new Set();
+  let authorItems = 0;
+  for (const author of authors) {
+    requireField(/^au-[0-9a-f]{10}$/.test(author.k || ""), "作者 key 格式不正确：" + (author.k || "?"));
+    requireField(!authorKeys.has(author.k), "作者 key 重复：" + author.k);
+    authorKeys.add(author.k);
+    requireField(Boolean(author.n), author.k + " 缺少作者名");
+    requireField(Array.isArray(author.t) && author.t.length > 0, author.n + " 没有作品");
+    requireField(Number.isFinite(author.v) && author.v > 0, author.n + " 缺少总播放量");
+    requireField(Array.isArray(author.a) && author.a.length === 2 && author.a[0] < author.a[1], author.n + " 的年龄段不合法");
+    requireField(Array.isArray(author.c) && author.c.length > 0, author.n + " 缺少内容分类");
+    requireField(Array.isArray(author.l) && author.l.length > 0, author.n + " 缺少语言");
+    for (const id of author.t) requireField(coverageById.has(id), author.n + " 的作品不存在：" + id);
+    for (const id of author.c) requireField(contents.has(id), author.n + " 引用了未知内容分类 " + id);
+    for (const id of author.l) requireField(languages.has(id), author.n + " 引用了未知语言 " + id);
+    for (const id of author.p) requireField(paths.has(id), author.n + " 引用了未知路线 " + id);
+    for (const id of author.f) requireField(forms.has(id), author.n + " 引用了未知观看形式 " + id);
+    authorItems += author.t.length;
+  }
+  requireField(authorItems >= 500, "作者名下的作品过少：" + authorItems);
+  const authorLanguages = new Set();
+  for (const author of authors) for (const id of author.l || []) authorLanguages.add(id);
+  requireField(authorLanguages.size >= 2, "作者站点缺少语言分栏");
+
+  const srcsOf = (unit) => unit.g
+    ? unit.srcs || []
+    : [unit.source === "bili" ? "src-bili" : unit.source === "mac" ? "src-mac" : "src-cctv"];
+  const biliUnits = units.filter((unit) => {
+    const list = srcsOf(unit);
+    return list.length > 0 && list.every((id) => id === "src-bili");
+  });
+  requireField(biliUnits.length >= 500, "B站内容过少：" + biliUnits.length);
+  for (const unit of biliUnits) {
+    requireField(Array.isArray(unit.ct) && unit.ct.length > 0, (unit.name || "?") + " 缺少内容分类，B站内容站点无法收录");
+  }
+
   for (const id of ["tp-en-all", "tp-cn-all"]) {
     const topic = topicsById.get(id);
     requireField(Boolean(topic), "缺少专题：" + id);
@@ -312,9 +353,12 @@ async function main() {
   requireField(catalogSource.includes("final class Catalog"), "Catalog.java 结构异常");
   requireField(catalogSource.includes("class Catalog") && !catalogSource.includes("__CATALOG__"), "Catalog.java 仍是模板");
   requireField(catalogSource.includes("static final String IP"), "Catalog.java 缺少 IP 常量");
+  requireField(catalogSource.includes("static final String AUTHORS"), "Catalog.java 缺少作者常量");
   requireField(kidsSource.includes("extends Spider"), "Kids.java 必须继承 com.github.catvod.crawler.Spider");
   requireField(kidsSource.includes("vod_play_url"), "Kids.java 缺少播放列表");
   requireField(kidsSource.includes("groupDetail") && kidsSource.includes("topicFolders"), "Kids.java 缺少 IP 详情或专题文件夹");
+  requireField(kidsSource.includes("authorFolders") && kidsSource.includes("findAuthor"), "Kids.java 缺少作者站点实现");
+  requireField(kidsSource.includes("biliUnit") && kidsSource.includes("isMode"), "Kids.java 缺少 B站内容站点实现");
   requireField(kidsSource.includes("BILI_SEARCH_API") && kidsSource.includes("searchContent"), "Kids.java 缺少搜索实现");
   requireField(kidsSource.includes("languageValues") && kidsSource.includes("subjectValues") && kidsSource.includes("formValues"), "Kids.java 缺少多维筛选");
 
@@ -379,6 +423,7 @@ async function main() {
   console.log("系列：" + catalog.series.length + "（央视）+ " + (curated.series || []).length + "（名单）+ " + (open.series || []).length + "（采集站）+ " +
     ((topicCatalog.english || []).length + (topicCatalog.chinese || []).length) + "（专题）");
   console.log("卡片：" + units.length + " 张，IP " + organized.groups.length + " 组（合并 " + groupedItems + " 条）");
+  console.log("B站：内容 " + biliUnits.length + " 张，作者 " + authors.length + " 位 / " + authorItems + " 部");
   console.log("专题：" + taxonomy.topicGroups.length + " 组 / " + topicCount + " 个");
   console.log("年龄：" + ageCounts.join(" / "));
   console.log("路线：" + pathCounts.join(" / "));

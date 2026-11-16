@@ -79,12 +79,18 @@ export async function viewOf(bvid) {
     const data = await request(VIEW_API + "?bvid=" + encodeURIComponent(bvid), REFERER, cookies());
     const view = data.data;
     if (!view || !Array.isArray(view.pages) || view.pages.length === 0) return null;
+    const owner = view.owner || {};
     return {
       bvid,
       title: strip(view.title),
       pic: String(view.pic || "").replace(/^http:/, "https:"),
       pubdate: Number(view.pubdate) || 0,
       pages: view.pages,
+      owner: {
+        name: strip(owner.name),
+        mid: String(owner.mid || ""),
+        face: String(owner.face || "").replace(/^http:/, "https:"),
+      },
     };
   } catch (error) {
     return null;
@@ -158,6 +164,7 @@ export function resolved(entry, view) {
     source: "bili",
     bvid: view.bvid,
     biliTitle: view.title,
+    author: (view.owner && view.owner.name) || "",
     pic: view.pic,
     episodes,
     latest: episodes + "集",
