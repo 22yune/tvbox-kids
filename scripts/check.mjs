@@ -284,6 +284,8 @@ async function main() {
   requireField(organized.groups.length > 0, "没有生成任何 IP 分组");
   requireField(units.length === organized.units, "IP 合并后的卡片数不一致");
   requireField(units.every((unit) => Number.isFinite(unit.py)), "存在没有字序的卡片");
+  requireField(units.every((unit) => /^[A-Z#]$/.test(unit.init || "")), "存在首字母缺失的卡片");
+  requireField(units.every((unit) => /^[A-Z#]$/.test(unit.init2 || "")), "存在第二字母缺失的卡片");
 
   for (const pathId of paths) {
     requireField(units.some((unit) => (unit.paths || []).includes(pathId)), "学习路线没有内容：" + pathId);
@@ -306,6 +308,8 @@ async function main() {
     requireField(!authorKeys.has(author.k), "作者 key 重复：" + author.k);
     authorKeys.add(author.k);
     requireField(Boolean(author.n), author.k + " 缺少作者名");
+    requireField(/^[A-Z#]$/.test(author.i1 || ""), author.n + " 缺少首字母");
+    requireField(/^[A-Z#]$/.test(author.i2 || ""), author.n + " 缺少第二字母");
     requireField(Array.isArray(author.t) && author.t.length > 0, author.n + " 没有作品");
     // 名单条目可能只有 UP 主名、没有播放量，此时按 0 处理。
     requireField(Number.isFinite(author.v) && author.v >= 0, author.n + " 的总播放量不合法");
@@ -362,6 +366,7 @@ async function main() {
   requireField(kidsSource.includes("biliUnit") && kidsSource.includes("isMode"), "Kids.java 缺少 B站内容站点实现");
   requireField(kidsSource.includes("BILI_SEARCH_API") && kidsSource.includes("searchContent"), "Kids.java 缺少搜索实现");
   requireField(kidsSource.includes("languageValues") && kidsSource.includes("subjectValues") && kidsSource.includes("formValues"), "Kids.java 缺少多维筛选");
+  requireField(kidsSource.includes("letterValues") && kidsSource.includes("init2"), "Kids.java 缺少首字母/第二字母筛选");
 
   requireField(typeof config.spider === "string" && /^https?:\/\/.+\.jar;md5;[0-9a-f]{32}$/.test(config.spider), "kids.json 的 spider 必须是 <jar 地址>;md5;<32 位 md5>");
   requireField(Array.isArray(config.sites) && config.sites.length === MODES.length, "kids.json 应只保留 " + MODES.length + " 个查找站点");

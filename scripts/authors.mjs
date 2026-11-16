@@ -8,6 +8,7 @@ import { createHash } from "node:crypto";
 import { fileURLToPath } from "node:url";
 
 import { sleep, viewOf } from "./bili.mjs";
+import { initialOf, secondInitialOf } from "./group.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const FACES_FILE = path.join(ROOT, "data/author_faces.json");
@@ -31,6 +32,8 @@ export function authorKey(name) {
 }
 
 function playsOf(item) {
+  const direct = Number(item.plays) || 0;
+  if (direct > 0) return direct;
   const match = PLAYS.exec(item.desc || "");
   return match ? Number(match[1]) : 0;
 }
@@ -60,6 +63,8 @@ export function authorsOf(series, faces = {}) {
     const author = {
       k: authorKey(bucket.name),
       n: bucket.name.slice(0, 40),
+      i1: initialOf(bucket.name),
+      i2: secondInitialOf(bucket.name),
       i: "",
       a: [99, 0],
       c: [],

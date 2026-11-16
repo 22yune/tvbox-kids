@@ -352,37 +352,6 @@
       "desc": "四岁男孩的家庭日常，练英语听力和情绪表达。"
     },
     {
-      "id": "bili-wordworld",
-      "name": "单词世界 WordWorld",
-      "source": "bili",
-      "bvid": "BV1XS4y1Z7Jc",
-      "biliTitle": "【英语启蒙】word world.单词世界",
-      "author": "轩宝学英语",
-      "pic": "https://i0.hdslb.com/bfs/archive/b4ec45c69e73d633fd6b26f134273bb751fa6716.jpg",
-      "episodes": 70,
-      "latest": "70集",
-      "latestTime": 1641812932,
-      "count": 70,
-      "stale": false,
-      "ageMin": 4,
-      "ageMax": 8,
-      "paths": [
-        "path-language"
-      ],
-      "stages": {
-        "path-language": 2
-      },
-      "tags": [
-        "动画"
-      ],
-      "order": 209,
-      "why": "艾美奖英语启蒙动画，单词会拼成物体的形状，记忆点强。",
-      "list": [
-        "国际获奖"
-      ],
-      "desc": "字母拼一拼，单词变成实物，自然拼读入门。"
-    },
-    {
       "id": "bili-monstermath",
       "name": "怪兽数学（怪物数学小分队）",
       "source": "bili",
@@ -11493,6 +11462,427 @@
         "家长社区"
       ],
       "desc": "三阶魔方入门还原。"
+    },
+    {
+      "id": "bili-wordworld",
+      "name": "单词世界 WordWorld",
+      "source": "bili",
+      "bvid": "BV1sV411U7M4",
+      "biliTitle": "英语拼读动画--Word World单词世界 第一季",
+      "author": "圈圈圆圆教英语",
+      "pic": "https://i2.hdslb.com/bfs/archive/c6b2ca8058aeccd30885884466ffc2f7f7831d4b.png",
+      "episodes": 52,
+      "latest": "52集",
+      "latestTime": 1598003073,
+      "plays": 291853,
+      "count": 52,
+      "stale": false,
+      "ageMin": 4,
+      "ageMax": 8,
+      "paths": [
+        "path-language",
+        "path-language-en"
+      ],
+      "stages": {
+        "path-language": 2
+      },
+      "tags": [
+        "动画",
+        "英语L2"
+      ],
+      "order": 209,
+      "why": "艾美奖英语启蒙动画，单词会拼成物体的形状，记忆点强。",
+      "list": [
+        "国际获奖"
+      ],
+      "desc": "字母拼一拼，单词变成实物，自然拼读入门。"
+    },
+    {
+      "id": "bili-berenstain",
+      "name": "贝贝熊 The Berenstain Bears",
+      "source": "bili",
+      "bvid": "BV1wiY1zwEwp",
+      "biliTitle": "动画片之小熊一族{全80集}",
+      "author": "战羡入我心",
+      "pic": "https://i0.hdslb.com/bfs/archive/fb3c817e4240051e32cb37a69f106946ad0c0ceb.jpg",
+      "episodes": 80,
+      "latest": "80集",
+      "latestTime": 1755438950,
+      "plays": 129885,
+      "count": 80,
+      "stale": false,
+      "ageMin": 3,
+      "ageMax": 6,
+      "paths": [
+        "path-social",
+        "path-health",
+        "path-social-rules",
+        "path-social-emotion"
+      ],
+      "stages": {
+        "path-social": 2,
+        "path-health": 1
+      },
+      "tags": [
+        "动画",
+        "情绪"
+      ],
+      "order": 344,
+      "why": "经典绘本 IP，覆盖礼貌、诚实、看电视等家庭议题。",
+      "list": [
+        "绘本IP",
+        "家长社区"
+      ],
+      "desc": "80 集中文版，每集一个品格主题。"
+    },
+    {
+      "id": "bili-wowenglish",
+      "name": "Wow English 真人英语启蒙",
+      "source": "bili",
+      "bvid": "BV1hjWb6tEws",
+      "biliTitle": "全658集完整9季全，第1季~第9季【Wow English】 火爆油管的真人趣味英语启蒙动画！史蒂夫和他的乌鸦朋友。适合零基础小朋友学习英语！",
+      "author": "大师音频壹",
+      "pic": "https://i0.hdslb.com/bfs/archive/94ac7f4ce75e2f8b0331af9444d3a569787ec49f.jpg",
+      "episodes": 40,
+      "latest": "40集",
+      "latestTime": 1794216544,
+      "plays": 66902,
+      "count": 40,
+      "stale": false,
+      "ageMin": 2,
+      "ageMax": 7,
+      "paths": [
+        "path-language",
+        "path-language-en"
+      ],
+      "tags": [
+        "英语L1",
+        "低幼"
+      ],
+      "order": 610,
+      "why": "真人 Steve 和乌鸦朋友的情景教学，台词重复、语速慢，零基础启蒙的经典素材。",
+      "list": [
+        "B站精选"
+      ],
+      "desc": "9 季合集，单集短，适合每天看几集磨耳朵。"
+    },
+    {
+      "id": "bili-aqi-numberblocks1",
+      "name": "数字积木 中英双语 第1季",
+      "source": "bili",
+      "bvid": "BV1jC4B6rEQg",
+      "biliTitle": "每一句先中文+后英文的《数字积木》第1季全 母语沉浸式英语启蒙 【1080p可投屏】先理解后输入 才是有效的磨耳朵",
+      "author": "阿琦儿童英语磨耳朵",
+      "pic": "https://i2.hdslb.com/bfs/archive/d4ba5ea6508c190a0020b5ce5a1fd5fd51590c27.jpg",
+      "episodes": 15,
+      "latest": "15集",
+      "latestTime": 1793980039,
+      "plays": 45717,
+      "count": 15,
+      "stale": false,
+      "ageMin": 3,
+      "ageMax": 7,
+      "paths": [
+        "path-math",
+        "path-language-en",
+        "path-math-number"
+      ],
+      "tags": [
+        "英语L2",
+        "科学"
+      ],
+      "order": 611,
+      "why": "每句先中文后英文，先理解再输入，数感启蒙和英语一起做。",
+      "list": [
+        "B站精选"
+      ],
+      "desc": "阿琦儿童英语磨耳朵的双语版数字积木。"
+    },
+    {
+      "id": "bili-aqi-numberblocks2",
+      "name": "数字积木 中英双语 第2季",
+      "source": "bili",
+      "bvid": "BV1vd4h6nEJu",
+      "biliTitle": "每一句先中文+后英文的《数字积木》第2季全 母语沉浸式英语启蒙 【1080p可投屏】先理解后输入 才是有效的磨耳朵",
+      "author": "阿琦儿童英语磨耳朵",
+      "pic": "https://i2.hdslb.com/bfs/archive/d4ba5ea6508c190a0020b5ce5a1fd5fd51590c27.jpg",
+      "episodes": 15,
+      "latest": "15集",
+      "latestTime": 1793887420,
+      "plays": 11705,
+      "count": 15,
+      "stale": false,
+      "ageMin": 3,
+      "ageMax": 7,
+      "paths": [
+        "path-math",
+        "path-language-en",
+        "path-math-number"
+      ],
+      "tags": [
+        "英语L2",
+        "科学"
+      ],
+      "order": 612,
+      "why": "延续第 1 季的中英对照，认识 11-20 和加减。",
+      "list": [
+        "B站精选"
+      ],
+      "desc": "阿琦儿童英语磨耳朵的双语版数字积木第二季。"
+    },
+    {
+      "id": "bili-aqi-bluey",
+      "name": "布鲁伊 中英双语 第1季",
+      "source": "bili",
+      "bvid": "BV1zdWD6gEoW",
+      "biliTitle": "每一句先中文+后英文的《布鲁伊》第1季全 | 母语沉浸式英语启蒙 【高清可投屏】先理解后输入 才是有效的磨耳朵",
+      "author": "阿琦儿童英语磨耳朵",
+      "pic": "https://i1.hdslb.com/bfs/archive/bfadb4b1d00e458db43d0042d65c30783c47c6a8.jpg",
+      "episodes": 48,
+      "latest": "48集",
+      "latestTime": 1794457436,
+      "plays": 1381,
+      "count": 48,
+      "stale": false,
+      "ageMin": 3,
+      "ageMax": 8,
+      "paths": [
+        "path-language-en",
+        "path-social",
+        "path-social-emotion"
+      ],
+      "tags": [
+        "英语L2",
+        "情绪"
+      ],
+      "order": 613,
+      "why": "一家人玩游戏的情境最贴近日常社交，中英对照适合亲子共看。",
+      "list": [
+        "B站精选"
+      ],
+      "desc": "阿琦儿童英语磨耳朵的双语版布鲁伊。"
+    },
+    {
+      "id": "bili-aqi-peppa4",
+      "name": "小猪佩奇 中英双语 第4季",
+      "source": "bili",
+      "bvid": "BV13W4g6QEqg",
+      "biliTitle": "每一句先中文+后英文的真双语《小猪佩奇》 第四季全【可投屏】 | 学英语磨耳朵新工具 听得懂 才能坐得住 才遵循可理解输入",
+      "author": "阿琦儿童英语磨耳朵",
+      "pic": "https://i0.hdslb.com/bfs/archive/6ab10d661dd7d6f444c12e90caabe916b9683089.jpg",
+      "episodes": 21,
+      "latest": "21集",
+      "latestTime": 1793696958,
+      "plays": 31067,
+      "count": 21,
+      "stale": false,
+      "ageMin": 2,
+      "ageMax": 6,
+      "paths": [
+        "path-language-en",
+        "path-social"
+      ],
+      "tags": [
+        "英语L1",
+        "情绪"
+      ],
+      "order": 614,
+      "why": "生活场景密集，句子短，双语版能先把故事听懂再看英文。",
+      "list": [
+        "B站精选"
+      ],
+      "desc": "阿琦儿童英语磨耳朵的双语版小猪佩奇第四季。"
+    },
+    {
+      "id": "bili-daniel-tiger",
+      "name": "小老虎丹尼尔",
+      "source": "bili",
+      "bvid": "BV185411E7Fs",
+      "biliTitle": "【小老虎丹尼尔】 中文版育儿动画",
+      "author": "幼儿学习资源分享",
+      "pic": "https://i2.hdslb.com/bfs/archive/137b797ac29b1b23a5cbf1fc56e3b4387df23ad4.png",
+      "episodes": 60,
+      "latest": "60集",
+      "latestTime": 1613720725,
+      "plays": 188044,
+      "count": 60,
+      "stale": false,
+      "ageMin": 2,
+      "ageMax": 6,
+      "paths": [
+        "path-social",
+        "path-social-emotion",
+        "path-health-emotion"
+      ],
+      "tags": [
+        "情绪",
+        "动画"
+      ],
+      "order": 615,
+      "why": "专门讲情绪和社交的学前动画：生气、害怕、分享、轮流都有具体做法。",
+      "list": [
+        "B站精选"
+      ],
+      "desc": "每集用一首短歌教孩子处理一种情绪。"
+    },
+    {
+      "id": "bili-doyouknow",
+      "name": "Do You Know 你知道吗",
+      "source": "bili",
+      "bvid": "BV1Y1421y72F",
+      "biliTitle": "全5季！BBC儿童英语科普神片《Do you know》全5季视频+配套音频！高清英字，培养思考习惯，非常好的启蒙科普片",
+      "author": "海上小甜橙",
+      "pic": "https://i0.hdslb.com/bfs/archive/a189f769a9a12d88843e80d9b43759e973c9369d.png",
+      "episodes": 98,
+      "latest": "98集",
+      "latestTime": 1717492834,
+      "plays": 738741,
+      "count": 98,
+      "stale": false,
+      "ageMin": 4,
+      "ageMax": 10,
+      "paths": [
+        "path-science",
+        "path-science-lab",
+        "path-language-en"
+      ],
+      "tags": [
+        "科学",
+        "英语L3"
+      ],
+      "order": 616,
+      "why": "BBC 儿童科普，日常物品怎么造、怎么运转，画面直观、英文简单。",
+      "list": [
+        "B站精选"
+      ],
+      "desc": "全 5 季，适合对机械和生活原理好奇的孩子。"
+    },
+    {
+      "id": "bili-dk-kids",
+      "name": "DK儿童百科动画",
+      "source": "bili",
+      "bvid": "BV1QiCvBoEtX",
+      "biliTitle": "【DK儿童百科动画】48集全 | 儿童自然科学启蒙从这里开始！",
+      "author": "柚子优学社",
+      "pic": "https://i1.hdslb.com/bfs/archive/bd6da70753e010b7c4d49e2f71427082231501b2.jpg",
+      "episodes": 48,
+      "latest": "48集",
+      "latestTime": 1763367903,
+      "plays": 986281,
+      "count": 48,
+      "stale": false,
+      "ageMin": 4,
+      "ageMax": 10,
+      "paths": [
+        "path-science",
+        "path-science-nature"
+      ],
+      "tags": [
+        "科学",
+        "动画"
+      ],
+      "order": 617,
+      "why": "DK 百科改编的短动画，地球、动物、人体、宇宙都有，知识密度高。",
+      "list": [
+        "B站精选"
+      ],
+      "desc": "48 集自然科学启蒙动画。"
+    },
+    {
+      "id": "bili-design-ah",
+      "name": "啊！设计",
+      "source": "bili",
+      "bvid": "BV1hwKfzmEr4",
+      "biliTitle": "啊！设计（60集1080超清）",
+      "author": "杰克船长爸爸爱学习",
+      "pic": "https://i1.hdslb.com/bfs/archive/b85e71599e0c0470360455b17d087b58fdfacc25.jpg",
+      "episodes": 60,
+      "latest": "60集",
+      "latestTime": 1750953879,
+      "plays": 531037,
+      "count": 60,
+      "stale": false,
+      "ageMin": 5,
+      "ageMax": 12,
+      "paths": [
+        "path-arts",
+        "path-arts-craft",
+        "path-science"
+      ],
+      "tags": [
+        "艺术",
+        "科学"
+      ],
+      "order": 618,
+      "why": "NHK 设计启蒙节目，从日常物品看设计与结构，培养观察力。",
+      "list": [
+        "B站精选"
+      ],
+      "desc": "60 集短片，每集一个观察角度。"
+    },
+    {
+      "id": "bili-pythagoras",
+      "name": "毕达哥拉斯装置",
+      "source": "bili",
+      "bvid": "BV1vm4y1E7KZ",
+      "biliTitle": "创造力爆棚的儿童节目《毕达哥拉斯装置》",
+      "author": "诺诺妈宝藏库",
+      "pic": "https://i0.hdslb.com/bfs/archive/1abc1d4fa3769a2278bf750b90831d8e7fc5c8ba.jpg",
+      "episodes": 11,
+      "latest": "11集",
+      "latestTime": 1689126760,
+      "plays": 216134,
+      "count": 11,
+      "stale": false,
+      "ageMin": 6,
+      "ageMax": 12,
+      "paths": [
+        "path-science",
+        "path-science-lab",
+        "path-tech"
+      ],
+      "tags": [
+        "科技",
+        "科学"
+      ],
+      "order": 619,
+      "why": "NHK 的装置与思维节目，用连锁机关讲原理，动手和逻辑一起练。",
+      "list": [
+        "B站精选"
+      ],
+      "desc": "每集几分钟，看完可以自己搭装置。"
+    },
+    {
+      "id": "bili-sesame",
+      "name": "芝麻街 Sesame Street",
+      "source": "bili",
+      "bvid": "BV1ar4y1n7kL",
+      "biliTitle": "【39集全】 • 《芝麻街》Sesame Street 看动画学英语（上）",
+      "author": "王卷卷Moy",
+      "pic": "https://i1.hdslb.com/bfs/archive/d40f4c047bbe3921bf8e6762f924e61bb5c0aec3.jpg",
+      "episodes": 20,
+      "latest": "20集",
+      "latestTime": 1649480100,
+      "plays": 213681,
+      "count": 20,
+      "stale": false,
+      "ageMin": 3,
+      "ageMax": 8,
+      "paths": [
+        "path-language-en",
+        "path-social",
+        "path-social-rules"
+      ],
+      "tags": [
+        "英语L2",
+        "情绪"
+      ],
+      "order": 620,
+      "why": "把字母、数字和社交规则放进布偶剧，是英语启蒙和认识社会的入门。",
+      "list": [
+        "B站精选"
+      ],
+      "desc": "选编合集，适合 3-8 岁。"
     }
   ],
   "missing": [
@@ -11565,11 +11955,6 @@
       "id": "bili-diego",
       "name": "出发吧迪亚哥 Go, Diego, Go!",
       "reason": "B站只有片段和梗视频，没有中文正片"
-    },
-    {
-      "id": "bili-berenstain",
-      "name": "贝贝熊 The Berenstain Bears",
-      "reason": "B站只有音频故事，没有动画正片"
     },
     {
       "id": "bili-elmer",

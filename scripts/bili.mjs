@@ -85,6 +85,7 @@ export async function viewOf(bvid) {
       title: strip(view.title),
       pic: String(view.pic || "").replace(/^http:/, "https:"),
       pubdate: Number(view.pubdate) || 0,
+      plays: Number(view.stat && view.stat.view) || 0,
       pages: view.pages,
       owner: {
         name: strip(owner.name),
@@ -169,6 +170,7 @@ export function resolved(entry, view) {
     episodes,
     latest: episodes + "集",
     latestTime: view.pubdate,
+    plays: view.plays || 0,
     count: episodes,
     stale: false,
     ageMin: entry.ageMin,

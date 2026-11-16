@@ -151,17 +151,28 @@ export function keyOf(text) {
     .replace(/[^0-9a-z\u3400-\u9fff\u3040-\u30ff]+/g, "");
 }
 
-function initialOf(name) {
-  const first = String(name || "").trim().charAt(0);
-  if (!first) return "#";
-  if (/[0-9]/.test(first)) return "#";
-  if (/[a-zA-Z]/.test(first)) return first.toUpperCase();
-  if (!/[\u3400-\u9fff\u3040-\u30ff]/.test(first)) return "#";
+function charInitial(ch) {
+  if (!ch) return "#";
+  if (/[0-9]/.test(ch)) return "#";
+  if (/[a-zA-Z]/.test(ch)) return ch.toUpperCase();
+  if (!/[\u3400-\u9fff\u3040-\u30ff]/.test(ch)) return "#";
   for (const [letter, bound] of INITIALS) {
-    if (COLLATOR.compare(first, bound) <= 0) return letter;
+    if (COLLATOR.compare(ch, bound) <= 0) return letter;
   }
   return "#";
 }
+
+function initialOf(name) {
+  return charInitial(String(name || "").trim().charAt(0));
+}
+
+// 第二个字的字母，配合首字母做两级定位；英文名直接取第二个字母。
+function secondInitialOf(name) {
+  const chars = String(name || "").match(/[0-9A-Za-z\u3400-\u9fff\u3040-\u30ff]/g) || [];
+  return charInitial(chars[1]);
+}
+
+export { initialOf, secondInitialOf };
 
 // 从名称里拆出季号、上下部、语言版本和年份；返回用于聚类的 key 和展示名。
 export function parseName(raw) {
@@ -291,7 +302,9 @@ export function organize(series, taxonomy) {
   const buckets = new Map();
   for (const item of series) {
     const info = parseName(item.name);
-    item.init = initialOf(info.display || item.name);
+    // 字母索引按卡片上实际显示的名字来，避免显示「【…】」却落在别的字母下。
+    item.init = initialOf(item.name);
+    item.init2 = secondInitialOf(item.name);
     item.ct = contentTypes(item);
     item.lng = languagesOf(item);
     item.fms = formsOf(item);
@@ -382,6 +395,7 @@ export function organize(series, taxonomy) {
       pic,
       alias: [groupName].concat(aliases).join(" ").slice(0, 400),
       init: initialOf(groupName),
+      init2: secondInitialOf(groupName),
       ages: [ageMin === 99 ? 0 : ageMin, ageMax || 12],
       paths,
       tags,

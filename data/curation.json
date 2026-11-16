@@ -8,7 +8,8 @@
     "绘本IP",
     "央视",
     "平台自制",
-    "采集站"
+    "采集站",
+    "B站精选"
   ],
   "series": [
     {
@@ -302,29 +303,33 @@
       "id": "bili-wordworld",
       "name": "单词世界 WordWorld",
       "aliases": [
-        "单词世界 WordWorld 中文版"
+        "Word World 单词世界 第一季",
+        "单词世界 动画"
       ],
       "pick": [
         "单词世界"
       ],
-      "minPages": 3,
+      "minPages": 5,
       "ageMin": 4,
       "ageMax": 8,
       "paths": [
-        "path-language"
+        "path-language",
+        "path-language-en"
       ],
       "stages": {
         "path-language": 2
       },
       "tags": [
-        "动画"
+        "动画",
+        "英语L2"
       ],
       "order": 209,
       "why": "艾美奖英语启蒙动画，单词会拼成物体的形状，记忆点强。",
       "list": [
         "国际获奖"
       ],
-      "desc": "字母拼一拼，单词变成实物，自然拼读入门。"
+      "desc": "字母拼一拼，单词变成实物，自然拼读入门。",
+      "pin": "BV1sV411U7M4"
     },
     {
       "id": "bili-umizoomi",
@@ -3240,7 +3245,9 @@
       "id": "bili-berenstain",
       "name": "贝贝熊 The Berenstain Bears",
       "aliases": [
-        "贝贝熊 中文版 全集"
+        "贝贝熊 全集",
+        "小熊一族 80集",
+        "贝贝熊 动画"
       ],
       "pick": [
         "贝贝熊"
@@ -3249,7 +3256,9 @@
       "ageMax": 6,
       "paths": [
         "path-social",
-        "path-health"
+        "path-health",
+        "path-social-rules",
+        "path-social-emotion"
       ],
       "stages": {
         "path-social": 2,
@@ -3265,8 +3274,9 @@
         "绘本IP",
         "家长社区"
       ],
-      "desc": "熊家庭的日常，讲规则和品格。",
-      "skip": "B站只有音频故事，没有动画正片"
+      "desc": "80 集中文版，每集一个品格主题。",
+      "pin": "BV1wiY1zwEwp",
+      "minPages": 5
     },
     {
       "id": "bili-madeline",
@@ -6446,6 +6456,332 @@
         "家长社区"
       ],
       "desc": "三阶魔方入门还原。"
+    },
+    {
+      "id": "bili-wowenglish",
+      "name": "Wow English 真人英语启蒙",
+      "aliases": [
+        "Wow English 全集",
+        "Wow English 第1季"
+      ],
+      "pick": [
+        "Wow English"
+      ],
+      "minPages": 5,
+      "pin": "BV1hjWb6tEws",
+      "ageMin": 2,
+      "ageMax": 7,
+      "paths": [
+        "path-language",
+        "path-language-en"
+      ],
+      "tags": [
+        "英语L1",
+        "低幼"
+      ],
+      "order": 610,
+      "why": "真人 Steve 和乌鸦朋友的情景教学，台词重复、语速慢，零基础启蒙的经典素材。",
+      "list": [
+        "B站精选"
+      ],
+      "desc": "9 季合集，单集短，适合每天看几集磨耳朵。"
+    },
+    {
+      "id": "bili-aqi-numberblocks1",
+      "name": "数字积木 中英双语 第1季",
+      "aliases": [
+        "阿琦 数字积木",
+        "数字积木 双语"
+      ],
+      "pick": [
+        "数字积木"
+      ],
+      "minPages": 5,
+      "pin": "BV1jC4B6rEQg",
+      "ageMin": 3,
+      "ageMax": 7,
+      "paths": [
+        "path-math",
+        "path-language-en",
+        "path-math-number"
+      ],
+      "tags": [
+        "英语L2",
+        "科学"
+      ],
+      "order": 611,
+      "why": "每句先中文后英文，先理解再输入，数感启蒙和英语一起做。",
+      "list": [
+        "B站精选"
+      ],
+      "desc": "阿琦儿童英语磨耳朵的双语版数字积木。"
+    },
+    {
+      "id": "bili-aqi-numberblocks2",
+      "name": "数字积木 中英双语 第2季",
+      "aliases": [
+        "阿琦 数字积木 第二季"
+      ],
+      "pick": [
+        "数字积木"
+      ],
+      "minPages": 5,
+      "pin": "BV1vd4h6nEJu",
+      "ageMin": 3,
+      "ageMax": 7,
+      "paths": [
+        "path-math",
+        "path-language-en",
+        "path-math-number"
+      ],
+      "tags": [
+        "英语L2",
+        "科学"
+      ],
+      "order": 612,
+      "why": "延续第 1 季的中英对照，认识 11-20 和加减。",
+      "list": [
+        "B站精选"
+      ],
+      "desc": "阿琦儿童英语磨耳朵的双语版数字积木第二季。"
+    },
+    {
+      "id": "bili-aqi-bluey",
+      "name": "布鲁伊 中英双语 第1季",
+      "aliases": [
+        "阿琦 布鲁伊",
+        "布鲁伊 双语 全集"
+      ],
+      "pick": [
+        "布鲁伊"
+      ],
+      "minPages": 5,
+      "pin": "BV1zdWD6gEoW",
+      "ageMin": 3,
+      "ageMax": 8,
+      "paths": [
+        "path-language-en",
+        "path-social",
+        "path-social-emotion"
+      ],
+      "tags": [
+        "英语L2",
+        "情绪"
+      ],
+      "order": 613,
+      "why": "一家人玩游戏的情境最贴近日常社交，中英对照适合亲子共看。",
+      "list": [
+        "B站精选"
+      ],
+      "desc": "阿琦儿童英语磨耳朵的双语版布鲁伊。"
+    },
+    {
+      "id": "bili-aqi-peppa4",
+      "name": "小猪佩奇 中英双语 第4季",
+      "aliases": [
+        "阿琦 小猪佩奇",
+        "小猪佩奇 双语 第四季"
+      ],
+      "pick": [
+        "小猪佩奇"
+      ],
+      "minPages": 5,
+      "pin": "BV13W4g6QEqg",
+      "ageMin": 2,
+      "ageMax": 6,
+      "paths": [
+        "path-language-en",
+        "path-social"
+      ],
+      "tags": [
+        "英语L1",
+        "情绪"
+      ],
+      "order": 614,
+      "why": "生活场景密集，句子短，双语版能先把故事听懂再看英文。",
+      "list": [
+        "B站精选"
+      ],
+      "desc": "阿琦儿童英语磨耳朵的双语版小猪佩奇第四季。"
+    },
+    {
+      "id": "bili-daniel-tiger",
+      "name": "小老虎丹尼尔",
+      "aliases": [
+        "小老虎丹尼尔 中文版",
+        "Daniel Tiger 中文"
+      ],
+      "pick": [
+        "小老虎丹尼尔"
+      ],
+      "minPages": 5,
+      "pin": "BV185411E7Fs",
+      "ageMin": 2,
+      "ageMax": 6,
+      "paths": [
+        "path-social",
+        "path-social-emotion",
+        "path-health-emotion"
+      ],
+      "tags": [
+        "情绪",
+        "动画"
+      ],
+      "order": 615,
+      "why": "专门讲情绪和社交的学前动画：生气、害怕、分享、轮流都有具体做法。",
+      "list": [
+        "B站精选"
+      ],
+      "desc": "每集用一首短歌教孩子处理一种情绪。"
+    },
+    {
+      "id": "bili-doyouknow",
+      "name": "Do You Know 你知道吗",
+      "aliases": [
+        "Do You Know 科普",
+        "你知道吗 科普"
+      ],
+      "pick": [
+        "Do You Know"
+      ],
+      "minPages": 5,
+      "pin": "BV1Y1421y72F",
+      "ageMin": 4,
+      "ageMax": 10,
+      "paths": [
+        "path-science",
+        "path-science-lab",
+        "path-language-en"
+      ],
+      "tags": [
+        "科学",
+        "英语L3"
+      ],
+      "order": 616,
+      "why": "BBC 儿童科普，日常物品怎么造、怎么运转，画面直观、英文简单。",
+      "list": [
+        "B站精选"
+      ],
+      "desc": "全 5 季，适合对机械和生活原理好奇的孩子。"
+    },
+    {
+      "id": "bili-dk-kids",
+      "name": "DK儿童百科动画",
+      "aliases": [
+        "DK儿童百科 48集",
+        "DK百科动画"
+      ],
+      "pick": [
+        "DK儿童百科"
+      ],
+      "minPages": 5,
+      "pin": "BV1QiCvBoEtX",
+      "ageMin": 4,
+      "ageMax": 10,
+      "paths": [
+        "path-science",
+        "path-science-nature"
+      ],
+      "tags": [
+        "科学",
+        "动画"
+      ],
+      "order": 617,
+      "why": "DK 百科改编的短动画，地球、动物、人体、宇宙都有，知识密度高。",
+      "list": [
+        "B站精选"
+      ],
+      "desc": "48 集自然科学启蒙动画。"
+    },
+    {
+      "id": "bili-design-ah",
+      "name": "啊！设计",
+      "aliases": [
+        "啊设计 NHK",
+        "啊！设计 60集"
+      ],
+      "pick": [
+        "啊！设计"
+      ],
+      "minPages": 5,
+      "pin": "BV1hwKfzmEr4",
+      "ageMin": 5,
+      "ageMax": 12,
+      "paths": [
+        "path-arts",
+        "path-arts-craft",
+        "path-science"
+      ],
+      "tags": [
+        "艺术",
+        "科学"
+      ],
+      "order": 618,
+      "why": "NHK 设计启蒙节目，从日常物品看设计与结构，培养观察力。",
+      "list": [
+        "B站精选"
+      ],
+      "desc": "60 集短片，每集一个观察角度。"
+    },
+    {
+      "id": "bili-pythagoras",
+      "name": "毕达哥拉斯装置",
+      "aliases": [
+        "毕达哥拉斯装置 中文",
+        "PythagoraSwitch"
+      ],
+      "pick": [
+        "毕达哥拉斯装置"
+      ],
+      "minPages": 5,
+      "pin": "BV1vm4y1E7KZ",
+      "ageMin": 6,
+      "ageMax": 12,
+      "paths": [
+        "path-science",
+        "path-science-lab",
+        "path-tech"
+      ],
+      "tags": [
+        "科技",
+        "科学"
+      ],
+      "order": 619,
+      "why": "NHK 的装置与思维节目，用连锁机关讲原理，动手和逻辑一起练。",
+      "list": [
+        "B站精选"
+      ],
+      "desc": "每集几分钟，看完可以自己搭装置。"
+    },
+    {
+      "id": "bili-sesame",
+      "name": "芝麻街 Sesame Street",
+      "aliases": [
+        "芝麻街 英语",
+        "芝麻街 动画"
+      ],
+      "pick": [
+        "芝麻街"
+      ],
+      "minPages": 5,
+      "pin": "BV1ar4y1n7kL",
+      "ageMin": 3,
+      "ageMax": 8,
+      "paths": [
+        "path-language-en",
+        "path-social",
+        "path-social-rules"
+      ],
+      "tags": [
+        "英语L2",
+        "情绪"
+      ],
+      "order": 620,
+      "why": "把字母、数字和社交规则放进布偶剧，是英语启蒙和认识社会的入门。",
+      "list": [
+        "B站精选"
+      ],
+      "desc": "选编合集，适合 3-8 岁。"
     }
   ]
 }

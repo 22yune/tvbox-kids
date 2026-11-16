@@ -124,8 +124,7 @@ public class Kids extends Spider {
             if ("topic".equals(mode) && isTopicGroup(tid)) return topicFolders(tid, extend);
             if ("author".equals(mode) && tid != null && !tid.startsWith("au-")) return authorFolders(tid, extend, pg);
             List<JSONObject> items = select(tid, extend);
-            // 作者作品按播放量排好了，不再按字序重排。
-            if (!"author".equals(mode)) sort(items, tid);
+            sort(items, tid);
             List<JSONObject> cards = new ArrayList<>();
             for (JSONObject item : items) cards.add(card(item, tid));
             return page(cards, pg);
@@ -299,14 +298,17 @@ public class Kids extends Spider {
     }
 
     // 每种查找方式暴露的筛选条不同：年龄站点不再重复年龄，专题站点靠内容类型和年龄分流。
-    // FongMi 的筛选每个 key 只能单选，多个 key 之间是 AND，所以这里按「年龄/学科/语言/形式/来源」拆成多行。
+    // FongMi 的筛选每个 key 只能单选，多个 key 之间是 AND，所以这里按「年龄/学科/语言/形式/来源/首字母」拆成多行。
+    // 字母站点本身按首字母分类，只再加一列第二字母，避免两列首字母互相打架。
     private JSONArray filtersFor() {
         JSONArray result = new JSONArray();
         if ("path".equals(mode)) {
             result.put(filter("age", "年龄段", ageValues()));
             result.put(filter("lang", "语言", languageValues()));
             result.put(filter("form", "形式", formValues()));
+            letters(result);
         } else if ("alpha".equals(mode)) {
+            result.put(filter("py2", "第二字母", letterValues()));
             result.put(filter("ct", "内容类型", contentValues()));
             result.put(filter("lang", "语言", languageValues()));
             result.put(filter("form", "形式", formValues()));
@@ -315,31 +317,53 @@ public class Kids extends Spider {
             result.put(filter("lang", "语言", languageValues()));
             result.put(filter("form", "形式", formValues()));
             result.put(filter("src", "来源", sourceValues()));
+            letters(result);
         } else if ("topic".equals(mode)) {
             result.put(filter("age", "年龄段", ageValues()));
             result.put(filter("sub", "学科", subjectValues()));
             result.put(filter("lang", "语言", languageValues()));
             result.put(filter("form", "形式", formValues()));
+            letters(result);
         } else if ("source".equals(mode)) {
             result.put(filter("age", "年龄段", ageValues()));
             result.put(filter("sub", "学科", subjectValues()));
             result.put(filter("lang", "语言", languageValues()));
             result.put(filter("form", "形式", formValues()));
+            letters(result);
         } else if ("bili".equals(mode)) {
             result.put(filter("age", "年龄段", ageValues()));
             result.put(filter("sub", "学科", subjectValues()));
             result.put(filter("lang", "语言", languageValues()));
             result.put(filter("form", "形式", formValues()));
+            letters(result);
         } else if ("author".equals(mode)) {
             result.put(filter("age", "年龄段", ageValues()));
             result.put(filter("sub", "学科", subjectValues()));
+            letters(result);
         } else {
             result.put(filter("ct", "内容类型", contentValues()));
             result.put(filter("sub", "学科", subjectValues()));
             result.put(filter("lang", "语言", languageValues()));
             result.put(filter("form", "形式", formValues()));
             result.put(filter("src", "来源", sourceValues()));
+            letters(result);
         }
+        return result;
+    }
+
+    private void letters(JSONArray result) {
+        JSONArray values = letterValues();
+        result.put(filter("py", "首字母", values));
+        result.put(filter("py2", "第二字母", values));
+    }
+
+    private JSONArray letterValues() {
+        JSONArray result = new JSONArray();
+        result.put(value("全部", ""));
+        for (char c = 'A'; c <= 'Z'; c += 1) {
+            result.put(value(String.valueOf(c), String.valueOf(c)));
+        }
+        result.put(value("#", "#"));
         return result;
     }
 
@@ -486,6 +510,8 @@ public class Kids extends Spider {
         List<JSONObject> result = new ArrayList<>();
         String age = value(extend, "age");
         String sub = value(extend, "sub");
+        String py = value(extend, "py");
+        String py2 = value(extend, "py2");
         JSONObject band = age.isEmpty() ? null : find(taxonomy.optJSONArray("ages"), age);
         int min = band == null ? 0 : band.optInt("min", 0);
         int max = band == null ? 18 : band.optInt("max", 18);
@@ -495,7 +521,22 @@ public class Kids extends Spider {
             int maxAge = ages == null || ages.length() < 2 ? 12 : ages.optInt(1, 12);
             if (band != null && !(minAge < max && maxAge > min)) continue;
             if (!sub.isEmpty() && !contains(author.optJSONArray("p"), sub)) continue;
+            if (!py.isEmpty() && !py.equalsIgnoreCase(author.optString("i1", "#"))) continue;
+            if (!py2.isEmpty() && !py2.equalsIgnoreCase(author.optString("i2", "#"))) continue;
             result.add(author);
+        }
+        // 默认按总播放量；用了字母筛选就按字序排，方便定位。
+        if (!py.isEmpty() || !py2.isEmpty()) {
+            Collections.sort(result, new Comparator<JSONObject>() {
+                @Override
+                public int compare(JSONObject a, JSONObject b) {
+                    int order = a.optString("i1", "#").compareTo(b.optString("i1", "#"));
+                    if (order != 0) return order;
+                    order = a.optString("i2", "#").compareTo(b.optString("i2", "#"));
+                    if (order != 0) return order;
+                    return Long.compare(b.optLong("v", 0), a.optLong("v", 0));
+                }
+            });
         }
         return result;
     }
@@ -636,6 +677,8 @@ public class Kids extends Spider {
         String sub = value(extend, "sub");
         String lang = value(extend, "lang");
         String form = value(extend, "form");
+        String py = value(extend, "py");
+        String py2 = value(extend, "py2");
         JSONObject band = age.isEmpty() ? null : find(taxonomy.optJSONArray("ages"), age);
         int min = band == null ? 0 : band.optInt("min", 0);
         int max = band == null ? 18 : band.optInt("max", 18);
@@ -646,6 +689,8 @@ public class Kids extends Spider {
             if (!sub.isEmpty() && !contains(unit.optJSONArray("paths"), sub)) continue;
             if (!lang.isEmpty() && !contains(unit.optJSONArray("lng"), lang)) continue;
             if (!form.isEmpty() && !contains(unit.optJSONArray("fms"), form)) continue;
+            if (!py.isEmpty() && !py.equalsIgnoreCase(unit.optString("init", "#"))) continue;
+            if (!py2.isEmpty() && !py2.equalsIgnoreCase(unit.optString("init2", "#"))) continue;
             result.add(unit);
         }
         return result;
@@ -659,14 +704,19 @@ public class Kids extends Spider {
 
     private void sort(List<JSONObject> items, final String tid) {
         final boolean byPath = "path".equals(mode);
-        final boolean byAlpha = "alpha".equals(mode);
+        final boolean byOrder = "topic".equals(mode);
         Collections.sort(items, new Comparator<JSONObject>() {
             @Override
             public int compare(JSONObject a, JSONObject b) {
-                if (byAlpha) return Integer.compare(unitPy(a), unitPy(b));
-                int result = byPath
-                        ? Integer.compare(stage(a, tid), stage(b, tid))
-                        : Integer.compare(unitOrder(a), unitOrder(b));
+                int result;
+                if (byPath) {
+                    result = Integer.compare(stage(a, tid), stage(b, tid));
+                } else if (byOrder) {
+                    result = Integer.compare(unitOrder(a), unitOrder(b));
+                } else {
+                    // 其余入口统一按字序，方便用首字母/第二字母定位。
+                    return Integer.compare(unitPy(a), unitPy(b));
+                }
                 if (result != 0) return result;
                 result = Integer.compare(unitAgeMin(a), unitAgeMin(b));
                 if (result != 0) return result;
