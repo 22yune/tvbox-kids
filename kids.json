@@ -1,5 +1,5 @@
 {
-  "spider": "https://gh-proxy.com/https://raw.githubusercontent.com/22yune/tvbox-kids/refs/heads/main/spider/kids.jar;md5;1da5055593fa3587eeecc5094ecbc321",
+  "spider": "https://gh-proxy.com/https://raw.githubusercontent.com/22yune/tvbox-kids/refs/heads/main/spider/kids.jar;md5;bfc4e5f3fcb4df68a2caef854fd96caf",
   "notice": "儿童模式：搜索仅在「搜索」入口开启，范围是本地目录和哔哩哔哩实时搜索结果；B站学习资源按内容/作者索引，作者页展示本地目录里收录的作品；采集站画质和广告不可控，建议家长陪同。",
   "sites": [
     {
