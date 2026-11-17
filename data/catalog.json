@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-17T02:30:51.104Z",
+  "updatedAt": "2026-11-17T10:07:19.856Z",
   "source": "cctv",
   "series": [
     {
@@ -29,14 +29,14 @@
         "情绪"
       ],
       "desc": "面向低幼宝宝的启蒙栏目，包含儿歌、律动、认知游戏和生活习惯。建议家长陪伴观看。",
-      "pic": "https://p3.img.cctvpic.com/fmspic/2026/11/16/d77e45e8fe5c46aa8cb128886652945d-1.jpg",
-      "latest": "《小小智慧树》 20261116",
-      "latestTime": 1794798615737,
-      "latestGuid": "d77e45e8fe5c46aa8cb128886652945d",
+      "pic": "https://p1.img.cctvpic.com/fmspic/2026/11/17/38decc5cb1c2451f8abec726cfc11733-1.jpg",
+      "latest": "《小小智慧树》 20261117",
+      "latestTime": 1794899293793,
+      "latestGuid": "38decc5cb1c2451f8abec726cfc11733",
       "count": 1000,
       "stale": false,
-      "playable": true,
-      "verifyReason": "OK"
+      "playable": false,
+      "verifyReason": "fetch failed"
     },
     {
       "id": "cctv-zhs",
@@ -71,8 +71,8 @@
       "latestGuid": "30f8a867b81e41de943e257a0ece37dd",
       "count": 1000,
       "stale": false,
-      "playable": true,
-      "verifyReason": "OK"
+      "playable": false,
+      "verifyReason": "fetch failed"
     },
     {
       "id": "cctv-qqb",
@@ -103,8 +103,8 @@
       "latestGuid": "05b8276f8d934129aa9e57e51b21f2fc",
       "count": 943,
       "stale": false,
-      "playable": true,
-      "verifyReason": "OK"
+      "playable": false,
+      "verifyReason": "fetch failed"
     },
     {
       "id": "cctv-dfc",
@@ -129,10 +129,10 @@
         "艺术"
       ],
       "desc": "央视少儿综合栏目，包含动画、游戏、儿童剧和成长话题。",
-      "pic": "https://p4.img.cctvpic.com/fmspic/2026/11/10/42db5de4951a4537b199cfa6e53213f0-1.jpg",
-      "latest": "《大风车》 20261110",
-      "latestTime": 1794275406742,
-      "latestGuid": "42db5de4951a4537b199cfa6e53213f0",
+      "pic": "https://p3.img.cctvpic.com/fmspic/2026/11/17/bc954f39325343e392978c24c4d6f067-1.jpg",
+      "latest": "《大风车》 20261117 童心里的中国",
+      "latestTime": 1794897374841,
+      "latestGuid": "bc954f39325343e392978c24c4d6f067",
       "count": 1000,
       "stale": false,
       "playable": true,
@@ -164,8 +164,8 @@
       "latestGuid": "22b435a67e2a4ded3a34c9a1ab8fd925",
       "count": 987,
       "stale": false,
-      "playable": true,
-      "verifyReason": "OK"
+      "playable": false,
+      "verifyReason": "fetch failed"
     },
     {
       "id": "cctv-dhdfy",
@@ -187,14 +187,14 @@
         "动画"
       ],
       "desc": "央视少儿动画连播栏目，按日期更新，适合作为日常动画入口。",
-      "pic": "https://p1.img.cctvpic.com/fmspic/2026/11/17/6893fdd482ad438c92dbaaa1ce8dbd7f-1.jpg",
-      "latest": "《动画大放映》 20261117 06:35",
-      "latestTime": 1794880096135,
-      "latestGuid": "6893fdd482ad438c92dbaaa1ce8dbd7f",
+      "pic": "https://p4.img.cctvpic.com/fmspic/2026/11/17/47a279fba2a64840a85b4077606463da-1.jpg",
+      "latest": "《动画大放映》 20261117 14:05",
+      "latestTime": 1794905895536,
+      "latestGuid": "47a279fba2a64840a85b4077606463da",
       "count": 1000,
       "stale": false,
-      "playable": true,
-      "verifyReason": "OK"
+      "playable": false,
+      "verifyReason": "fetch failed"
     },
     {
       "id": "cctv-kldb",
@@ -224,8 +224,8 @@
       "latestGuid": "553bbcc9b18541a6a54378859fb5efc8",
       "count": 1000,
       "stale": false,
-      "playable": true,
-      "verifyReason": "OK"
+      "playable": false,
+      "verifyReason": "fetch failed"
     },
     {
       "id": "cctv-yykd",
@@ -253,8 +253,8 @@
       "latestGuid": "14ca77cf1d954e19868e167bc1ba277d",
       "count": 865,
       "stale": false,
-      "playable": true,
-      "verifyReason": "OK"
+      "playable": false,
+      "verifyReason": "fetch failed"
     },
     {
       "id": "cctv-dwhhb",
@@ -307,8 +307,8 @@
       "latestGuid": "2574a24b894e49098aa42db549cd9f89",
       "count": 365,
       "stale": false,
-      "playable": true,
-      "verifyReason": "OK"
+      "playable": false,
+      "verifyReason": "fetch failed"
     },
     {
       "id": "cctv-zmkm",
