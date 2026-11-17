@@ -339,7 +339,16 @@ async function main() {
   }
   const topicSeries = (topic.english || []).concat(topic.chinese || []);
 
-  const merged = { series: (catalog.series || []).concat(curated.series || []).concat(open.series || []).concat(topicSeries) };
+  // 科普/自然与社会情感专题由 browse.mjs 单独采集，条目按内容分类打标。
+  let browse = { science: [], social: [] };
+  try {
+    browse = await readJson("data/browse_catalog.json");
+  } catch (error) {
+    browse = { science: [], social: [] };
+  }
+  const browseSeries = (browse.science || []).concat(browse.social || []);
+
+  const merged = { series: (catalog.series || []).concat(curated.series || []).concat(open.series || []).concat(topicSeries).concat(browseSeries) };
   // 同一 IP 的多季/多语言版本合并成一张卡片，季信息写进 Catalog.IP。
   const organized = organize(merged.series, taxonomy);
   // 作者视角同样基于本地目录聚合：专题采集写下的 UP 主 + 播放量，头像来自一次性缓存。
@@ -358,6 +367,7 @@ async function main() {
     "Synced " + series.length + " series + 名单 " + curatedSeries.length +
     " + 采集站 " + (open.series || []).length +
     " + 专题 " + topicSeries.length +
+    " + 科普/社会 " + browseSeries.length +
     "，IP " + organized.groups.length + " 组 / " + organized.units + " 张卡片" +
     "，作者 " + authors.length + " 位" +
     (curated.missing && curated.missing.length ? "（缺源 " + curated.missing.length + "）" : "") +

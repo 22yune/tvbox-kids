@@ -84,8 +84,8 @@ B 站之外，`data/backup_sites.json` 配了 23 个第三方 MacCMS 采集站�
 除了 B 站名单，`data/open_catalog.json` 还会收录纯采集站条目：按儿童向 IP 白名单（900+ 个系列名）在各站搜索，同名/同季合并，每条最多挂 6 个播放源。选条目时优先挑有 3 个源的，3 个之后不再特意补源；候选池不足时才接受 1-2 个源，避免为了凑数硬塞。
 
 - `npm run expand -- --batch 100 --target 2000`：抓一批，默认每批 100 条；`--target` 指整个目录（央视 + 名单 + 采集站）的总条数
-- 当前原始目录 5071 条：19 条央视系列 + 184 条名单 + 2846 条采集站 + 2022 条专题；采集站里 1774 条至少 3 个源
-- 多季合并后实际展示 4484 张卡片：227 个 IP 分组把 814 条同名前缀条目并成了一张卡
+- 当前原始目录 5304 条：19 条央视系列 + 196 条名单 + 2846 条采集站 + 2022 条专题 + 221 条科普/社会情感；采集站里 1774 条至少 3 个源
+- 多季合并后实际展示 4711 张卡片：230 个 IP 分组把 823 条同名前缀条目并成了一张卡
 - 采集站条目按儿童向筛选：日本动画只保留宝可梦、奥特曼、假面骑士、光之美少女等儿童 IP；玄幻爽文、恋爱后宫、恐怖暴力、动态漫画一律排除
 - 条目的分类、黑名单、年龄段/学习路线映射都在 `scripts/expand.mjs` 顶部
 - 这些条目 `source` 为 `mac`，详情页集名在打开时实时从采集站取，jar 里只存集数
@@ -99,6 +99,15 @@ B 站之外，`data/backup_sites.json` 配了 23 个第三方 MacCMS 采集站�
 - 分级规则：L1（0-4 岁）儿歌磨耳朵 → L2（3-6 岁）自然拼读/分级阅读/识字拼音 → L3（6-9 岁）动画、科普、古诗文启蒙 → L4（9-12 岁）科普纪录片、章节书、文言文与名著
 - 过滤掉直播回放、解说、速看、考研/高考、音标语法课、电影配音、民间怪谈、书法讲座等噪音；单 P 且时长过短却标「全集/第 N 季」的按片段丢弃
 - 结果只保留 `bvid`、封面、集数和分级标签，jar 不存集名；详情页打开时再请求 B 站分 P 列表
+
+### 科普 / 自然与社会情感专题
+
+`data/browse_catalog.json` 存放两个按内容分类整理的专题：`science`（112 条科普、自然、宇宙、人体、实验）和 `social`（110 条情绪、社交、规则、安全、职业启蒙），全部是 B 站 UP 主上传的合集。
+
+- `node scripts/browse.mjs --section science --target 110`：按关键词搜索并逐条校验可播放后写入；`--section social` 只跑社会情感；搜索候选缓存在 `data/.browse-candidates.*.json`，中断后重跑不会重新搜索
+- 条目直接给内容分类打标：科普打 `科学` 标签进「科学探索」，社会情感打 `情绪` / `安全` 标签进「安全情绪」，所以只在「B站学习-按内容」的这两个分类里出现，不混进英语/语文专题
+- 取材门槛：标题必须同时包含明确知识主题（动物、植物、宇宙、实验、情绪、社交、安全等）和儿童指向（儿童、幼儿、宝宝、亲子、启蒙等）；纪录片、讲座、公开课、育儿访谈、成人向纪录片、工程车哄娃动画、卡牌开箱等一律剔除
+- 搜索缓存与已收条目会按 bvid 和标题去重，同一视频不会同时出现在两个分类里；UP 主和播放量同样写进 `desc`，和专题条目一起参与作者页聚合
 
 ### B站学习资源（按内容 / 按作者）
 
@@ -201,8 +210,9 @@ FongMi 配置地址填 `http://<电脑局域网 IP>:8000/kids.json`。本地没�
 | 路径 | 说明 |
 |---|---|
 | `spider-src/com/github/catvod/spider/Kids.java` | 爬虫逻辑：八种查找方式、搜索（本地目录 + B站实时）、IP 卡片、季 × 线路详情、专题文件夹、B站内容/作者索引、筛选条 |
-| `spider-src/com/github/catvod/spider/Catalog.java` | 由 `data/catalog.json` + `data/curated_catalog.json` + `data/open_catalog.json` + `data/topic_catalog.json` + `data/taxonomy.json` 自动生成（`SERIES` / `IP` / `AUTHORS` / `TAXONOMY` 四个常量），勿手改 |
+| `spider-src/com/github/catvod/spider/Catalog.java` | 由 `data/catalog.json` + `data/curated_catalog.json` + `data/open_catalog.json` + `data/topic_catalog.json` + `data/browse_catalog.json` + `data/taxonomy.json` 自动生成（`SERIES` / `IP` / `AUTHORS` / `TAXONOMY` 四个常量），勿手改 |
 | `scripts/group.mjs` | IP 归并、拼音首字母/第二字母、内容分类、语言/形式判定、学习路线子类、专题匹配，同步与校验共用 |
+| `scripts/browse.mjs` | 科普/自然与社会情感专题采集，按关键词搜索 B 站并逐条校验可播放，写入 `data/browse_catalog.json` |
 | `scripts/authors.mjs` | 从本地目录聚合 UP 主，维护 `data/author_faces.json` 头像缓存 |
 | `spider-stub/com/github/catvod/crawler/Spider.java` | 编译用桩类，签名对齐 FongMi 的 `Spider`，不打进 jar |
 | `scripts/build-jar.mjs` | `javac` 编译 → `d8 --min-api 21` 转 dex → 打包 `spider/kids.jar` |
@@ -288,6 +298,7 @@ npm run sync:verify   # 同步后校验每个央视系列最新一集能否取�
 npm run check         # 校验名单字段、缺源列表、专题条目、九站点配置、作者聚合、IP 分组、年龄/路线/专题覆盖、jar md5
 npm run jar           # 只重建 spider/kids.jar（数据已生成时用）
 node scripts/authors.mjs  # 补齐作者头像缓存 data/author_faces.json（首次或新增作者后跑）
+node scripts/browse.mjs --target 110  # 采集科普/社会情感专题（可加 --section science|social）
 ```
 
 每日 03:17（北京时间）自动执行一次。接口失败时保留上一次的数据并标记 `stale`，不会清空目录。

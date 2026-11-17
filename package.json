@@ -12,7 +12,8 @@
     "jar": "node scripts/build-jar.mjs",
     "build": "node scripts/sync.mjs && node scripts/check.mjs",
     "expand": "node scripts/expand.mjs",
-    "topics": "node scripts/topics.mjs"
+    "topics": "node scripts/topics.mjs",
+    "browse": "node scripts/browse.mjs"
   },
   "engines": {
     "node": ">=20"

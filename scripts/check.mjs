@@ -46,6 +46,12 @@ async function main() {
   } catch (error) {
     topicCatalog = { english: [], chinese: [] };
   }
+  let browseCatalog = { science: [], social: [] };
+  try {
+    browseCatalog = await readJson("data/browse_catalog.json");
+  } catch (error) {
+    browseCatalog = { science: [], social: [] };
+  }
 
   const ages = new Set(taxonomy.ages.map((item) => item.id));
   const paths = new Set(taxonomy.paths.map((item) => item.id));
@@ -56,7 +62,7 @@ async function main() {
   const subjects = new Set((taxonomy.subjects || []).map((item) => item.id));
   const tagSet = new Set(taxonomy.tags || []);
 
-  const coverage = catalog.series.concat(curated.series || []).concat(open.series || []).concat(topicCatalog.english || []).concat(topicCatalog.chinese || []);
+  const coverage = catalog.series.concat(curated.series || []).concat(open.series || []).concat(topicCatalog.english || []).concat(topicCatalog.chinese || []).concat(browseCatalog.science || []).concat(browseCatalog.social || []);
 
   requireField(series.length >= 10, "series.json 条目过少");
   requireField(catalog.series.length === series.length, "catalog 与 series 数量不一致");
@@ -250,6 +256,40 @@ async function main() {
     }
   }
 
+  // 科普/自然与社会情感专题：条目按内容分类打标，B站「按内容」站点据此生成分类。
+  const BROWSE_KEYS = {
+    science: { name: "科学科普", tags: ["科学"] },
+    social: { name: "社会情感", tags: ["情绪", "安全"] },
+  };
+  const browseIds = new Set();
+  for (const [key, meta] of Object.entries(BROWSE_KEYS)) {
+    const list = browseCatalog[key] || [];
+    requireField(list.length >= 50, "科普/社会专题「" + meta.name + "」条目过少：" + list.length);
+    for (const item of list) {
+      requireField(Boolean(item.id) && /^bs-[0-9a-z]+$/.test(item.id), (item.id || "?") + " 的科普/社会 id 格式不正确");
+      requireField(!browseIds.has(item.id), "科普/社会 id 重复：" + item.id);
+      requireField(!openIds.has(item.id) && !curationIds.has(item.id) && !cctvIds.has(item.id) && !topicItemIds.has(item.id), "科普/社会 id 与已有条目重复：" + item.id);
+      browseIds.add(item.id);
+      requireField(item.source === "bili", item.id + " 的 source 必须是 bili");
+      requireField(/^BV[0-9A-Za-z]+$/.test(item.bvid || ""), item.id + " 的 bvid 格式不正确");
+      requireField(Boolean(item.name), item.id + " 缺少名称");
+      requireField(Number.isFinite(item.ageMin) && Number.isFinite(item.ageMax) && item.ageMin < item.ageMax, item.id + " 的年龄段不合法");
+      requireField(item.ageMin >= 0 && item.ageMax <= 12, item.id + " 的年龄段越界");
+      requireField(Array.isArray(item.paths) && item.paths.length > 0, item.id + " 未绑定学习路线");
+      for (const pathId of item.paths || []) {
+        requireField(paths.has(pathId), item.id + " 引用了未知路线 " + pathId);
+      }
+      requireField((item.tags || []).some((tag) => meta.tags.includes(tag)), item.id + " 缺少 " + meta.tags.join("/") + " 标签");
+      for (const tag of item.tags || []) {
+        requireField(tagSet.has(tag), item.id + " 的标签未登记：" + tag);
+      }
+      requireField(Array.isArray(item.list) && item.list.length === 1 && item.list[0] === "B站精选", item.id + " 的来源应固定为 B站精选");
+      requireField(Number.isFinite(item.episodes) && item.episodes > 0, item.id + " 缺少集数");
+      requireField(Boolean(item.latest), item.id + " 缺少更新标记");
+      requireField(Number.isFinite(item.order), item.id + " 缺少排序值");
+    }
+  }
+
   // 列表卡片的聚合结果：同一 IP 的多季只出现一张卡，专题和筛选都基于它做匹配。
   const organized = organize(coverage, taxonomy);
   const units = organized.groups.concat(coverage.filter((item) => !item.hid));
@@ -340,6 +380,12 @@ async function main() {
     requireField(Array.isArray(unit.ct) && unit.ct.length > 0, (unit.name || "?") + " 缺少内容分类，B站内容站点无法收录");
   }
 
+  // 英语启蒙、科学探索、安全情绪三个分类都要有足够的 IP 可逛。
+  const categoryCount = (id) => biliUnits.filter((unit) => (unit.ct || []).includes(id)).length;
+  requireField(categoryCount("ct-english") >= 50, "英语启蒙分类过少：" + categoryCount("ct-english"));
+  requireField(categoryCount("ct-science") >= 50, "科学探索分类过少：" + categoryCount("ct-science"));
+  requireField(categoryCount("ct-safety") >= 50, "安全情绪分类过少：" + categoryCount("ct-safety"));
+
   for (const id of ["tp-en-all", "tp-cn-all"]) {
     const topic = topicsById.get(id);
     requireField(Boolean(topic), "缺少专题：" + id);
@@ -427,9 +473,11 @@ async function main() {
   }
   console.log("名单来源：" + listCounts.join(" / "));
   console.log("系列：" + catalog.series.length + "（央视）+ " + (curated.series || []).length + "（名单）+ " + (open.series || []).length + "（采集站）+ " +
-    ((topicCatalog.english || []).length + (topicCatalog.chinese || []).length) + "（专题）");
+    ((topicCatalog.english || []).length + (topicCatalog.chinese || []).length) + "（专题）+ " +
+    ((browseCatalog.science || []).length + (browseCatalog.social || []).length) + "（科普/社会）");
   console.log("卡片：" + units.length + " 张，IP " + organized.groups.length + " 组（合并 " + groupedItems + " 条）");
-  console.log("B站：内容 " + biliUnits.length + " 张，作者 " + authors.length + " 位 / " + authorItems + " 部");
+  console.log("B站：内容 " + biliUnits.length + " 张（英语 " + categoryCount("ct-english") + " / 科普 " + categoryCount("ct-science") +
+    " / 安全情绪 " + categoryCount("ct-safety") + "），作者 " + authors.length + " 位 / " + authorItems + " 部");
   console.log("专题：" + taxonomy.topicGroups.length + " 组 / " + topicCount + " 个");
   console.log("年龄：" + ageCounts.join(" / "));
   console.log("路线：" + pathCounts.join(" / "));

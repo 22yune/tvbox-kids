@@ -21,7 +21,7 @@ const CONCURRENCY = Number(arg("concurrency", 3));
 const SEARCH_PAGES = Number(arg("pages", 2));
 const START_PAGE = Number(arg("start-page", 1));
 
-const BLOCK = /直播|回放|预告|花絮|解说|reaction|切片|盘点|混剪|剪辑|群像|高燃|燃向|踩点|鬼畜|沙雕|搞笑|挑战|憋笑|整活|吐槽|段子|广告|带货|游戏|成人|恐怖|鬼片|恋爱|相亲|考研|雅思|托福|四六级|四级|六级|专升本|公务员|教资|教师资格|招聘|招生|培训机构|网课|课程表|课件|教案|试卷|真题|答案|搬运|侵权|家长必看|老师必看|测评|开箱|试看|抢先|抖音|神曲|情歌|伤感情歌|失恋|单曲循环|高音质|无损|BGM|高考|中考|高中|必修|选修|人教版|押题|考点|提分|捞分|上分|满分|冲刺|一轮复习|二轮复习|应试|期末考试|期末上分|歌单|PLAYLIST|playlist|化妆|霉霉|万能模板|万能公式|童年阴影|模拟恐惧|黑暗的真相|脑腐|克苏鲁|历史书太小|背上下五千年|落笔即封神|惊魂未定|下饭|meme|猫meme|世界各地的神话|Ted-ED|TED-Ed|学霸|高分作文|答题方法|答题技巧|选择题|论述类|实用类|信息类|推歌|单曲收集|欧美顶流|经典英文歌|百听不厌|一生必听|纯享版|前奏秒杀|氛围混响|耳机|𝗣𝗹𝗮𝘆𝗹𝗶𝘀𝘁|Taylor Swift|Justin Bieber|贾斯汀比伯|英文歌女王|适合跟唱|英文歌教唱|动画MV|动漫MV|声乐MV|MV合集|小少焱|驱魔|鬼车|民间怪谈|怪谈|灵异|禁忌|淘汰赛|单挑作业|文化糟粕|糟粕|小苹果|初中英语总复习|一周速通|音标|语法|背单词|记单词|词汇量|口语课|英语口语|新概念|KET|四六级|考研|雅思|托福|纪录片|电影|美剧|剧集|配音|演讲|辩论|播客|TED|书法|毛笔|硬笔|道教|黑神话|助眠|棺材|妖王|阴谋|批判|人民日报|微短剧|相声|苗阜|口才|普通话|废除汉字|排行榜|八仙过海|狗吐人言|越来越没存在感|拼音教学|老师怎么教|重难点/i;
+export const BLOCK = /直播|回放|预告|花絮|解说|reaction|切片|盘点|混剪|剪辑|群像|高燃|燃向|踩点|鬼畜|沙雕|搞笑|挑战|憋笑|整活|吐槽|段子|广告|带货|游戏|成人|恐怖|鬼片|恋爱|相亲|考研|雅思|托福|四六级|四级|六级|专升本|公务员|教资|教师资格|招聘|招生|培训机构|网课|课程表|课件|教案|试卷|真题|答案|搬运|侵权|家长必看|老师必看|测评|开箱|试看|抢先|抖音|神曲|情歌|伤感情歌|失恋|单曲循环|高音质|无损|BGM|高考|中考|高中|必修|选修|人教版|押题|考点|提分|捞分|上分|满分|冲刺|一轮复习|二轮复习|应试|期末考试|期末上分|歌单|PLAYLIST|playlist|化妆|霉霉|万能模板|万能公式|童年阴影|模拟恐惧|黑暗的真相|脑腐|克苏鲁|历史书太小|背上下五千年|落笔即封神|惊魂未定|下饭|meme|猫meme|世界各地的神话|Ted-ED|TED-Ed|学霸|高分作文|答题方法|答题技巧|选择题|论述类|实用类|信息类|推歌|单曲收集|欧美顶流|经典英文歌|百听不厌|一生必听|纯享版|前奏秒杀|氛围混响|耳机|𝗣𝗹𝗮𝘆𝗹𝗶𝘀𝘁|Taylor Swift|Justin Bieber|贾斯汀比伯|英文歌女王|适合跟唱|英文歌教唱|动画MV|动漫MV|声乐MV|MV合集|小少焱|驱魔|鬼车|民间怪谈|怪谈|灵异|禁忌|淘汰赛|单挑作业|文化糟粕|糟粕|小苹果|初中英语总复习|一周速通|音标|语法|背单词|记单词|词汇量|口语课|英语口语|新概念|KET|四六级|考研|雅思|托福|纪录片|电影|美剧|剧集|配音|演讲|辩论|播客|TED|书法|毛笔|硬笔|道教|黑神话|助眠|棺材|妖王|阴谋|批判|人民日报|微短剧|相声|苗阜|口才|普通话|废除汉字|排行榜|八仙过海|狗吐人言|越来越没存在感|拼音教学|老师怎么教|重难点/i;
 
 const TOPICS = {
   english: {
@@ -197,7 +197,7 @@ const TOPICS = {
   },
 };
 
-function parseDuration(value) {
+export function parseDuration(value) {
   const parts = String(value || "").split(":").map(Number);
   if (parts.some((part) => !Number.isFinite(part))) return 0;
   if (parts.length === 2) return parts[0] * 60 + parts[1];
@@ -205,7 +205,7 @@ function parseDuration(value) {
   return 0;
 }
 
-function titleKey(title) {
+export function titleKey(title) {
   return title.replace(/[\s\u200b-\u200f\ufeff]/g, "").replace(/[!-/:-@[-`{-~，。！？、；：""''《》【】（）·—…]/g, "").toLowerCase();
 }
 
@@ -227,7 +227,7 @@ function refineLevel(topic, levelId, title) {
   return order[Math.max(0, index)];
 }
 
-function cleanName(value) {
+export function cleanName(value) {
   return strip(value)
     .replace(/\s+/g, " ")
     .replace(/&amp;/g, "&")
@@ -452,7 +452,10 @@ async function main() {
   console.log("写入 data/topic_catalog.json：" + Object.keys(TOPICS).map((key) => TOPICS[key].name + " " + (output[key] || []).length).join(" / "));
 }
 
-main().catch((error) => {
-  console.error(error);
-  process.exit(1);
-});
+// 只在直接执行时采集；被 browse.mjs 导入时复用上面的清洗与判定函数。
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  main().catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });
+}

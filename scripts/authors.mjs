@@ -117,7 +117,8 @@ function coverage() {
   const curated = readCatalog("data/curated_catalog.json").series || [];
   const open = readCatalog("data/open_catalog.json").series || [];
   const topic = readCatalog("data/topic_catalog.json");
-  return catalog.concat(curated, open, topic.english || [], topic.chinese || []);
+  const browse = readCatalog("data/browse_catalog.json");
+  return catalog.concat(curated, open, topic.english || [], topic.chinese || [], browse.science || [], browse.social || []);
 }
 
 // 用作者播放量最高那条视频的详情换取头像，结果写回缓存；失败保留上一次的值。
