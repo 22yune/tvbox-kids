@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-17T10:07:19.856Z",
+  "updatedAt": "2026-11-18T01:40:34.357Z",
   "source": "cctv",
   "series": [
     {
@@ -29,14 +29,14 @@
         "情绪"
       ],
       "desc": "面向低幼宝宝的启蒙栏目，包含儿歌、律动、认知游戏和生活习惯。建议家长陪伴观看。",
-      "pic": "https://p1.img.cctvpic.com/fmspic/2026/11/17/38decc5cb1c2451f8abec726cfc11733-1.jpg",
-      "latest": "《小小智慧树》 20261117",
-      "latestTime": 1794899293793,
-      "latestGuid": "38decc5cb1c2451f8abec726cfc11733",
+      "pic": "https://p4.img.cctvpic.com/fmspic/2026/11/18/d676b14f781c4314a99282f78fb699af-1.jpg",
+      "latest": "《小小智慧树》 20261118",
+      "latestTime": 1794965896787,
+      "latestGuid": "d676b14f781c4314a99282f78fb699af",
       "count": 1000,
       "stale": false,
-      "playable": false,
-      "verifyReason": "fetch failed"
+      "playable": true,
+      "verifyReason": "OK"
     },
     {
       "id": "cctv-zhs",
@@ -65,14 +65,14 @@
         "情绪"
       ],
       "desc": "央视少儿经典幼儿栏目，涵盖手工、儿歌、生活习惯和情绪认知。",
-      "pic": "https://p4.img.cctvpic.com/fmspic/2026/11/16/30f8a867b81e41de943e257a0ece37dd-1.jpg",
-      "latest": "《智慧树》 20261116",
-      "latestTime": 1794831854639,
-      "latestGuid": "30f8a867b81e41de943e257a0ece37dd",
+      "pic": "https://p5.img.cctvpic.com/fmspic/2026/11/17/2c5a02c9fcc84b048625a68c195092d8-1.jpg",
+      "latest": "《智慧树》 20261117",
+      "latestTime": 1794913331645,
+      "latestGuid": "2c5a02c9fcc84b048625a68c195092d8",
       "count": 1000,
       "stale": false,
-      "playable": false,
-      "verifyReason": "fetch failed"
+      "playable": true,
+      "verifyReason": "OK"
     },
     {
       "id": "cctv-qqb",
@@ -103,8 +103,8 @@
       "latestGuid": "05b8276f8d934129aa9e57e51b21f2fc",
       "count": 943,
       "stale": false,
-      "playable": false,
-      "verifyReason": "fetch failed"
+      "playable": true,
+      "verifyReason": "OK"
     },
     {
       "id": "cctv-dfc",
@@ -164,8 +164,8 @@
       "latestGuid": "22b435a67e2a4ded3a34c9a1ab8fd925",
       "count": 987,
       "stale": false,
-      "playable": false,
-      "verifyReason": "fetch failed"
+      "playable": true,
+      "verifyReason": "OK"
     },
     {
       "id": "cctv-dhdfy",
@@ -187,14 +187,14 @@
         "动画"
       ],
       "desc": "央视少儿动画连播栏目，按日期更新，适合作为日常动画入口。",
-      "pic": "https://p4.img.cctvpic.com/fmspic/2026/11/17/47a279fba2a64840a85b4077606463da-1.jpg",
-      "latest": "《动画大放映》 20261117 14:05",
-      "latestTime": 1794905895536,
-      "latestGuid": "47a279fba2a64840a85b4077606463da",
+      "pic": "https://p3.img.cctvpic.com/fmspic/2026/11/17/5a139a9cae3c490daaf7c067ef8527ba-1.jpg",
+      "latest": "《动画大放映》 20261117 18:35 2/2",
+      "latestTime": 1794925094688,
+      "latestGuid": "5a139a9cae3c490daaf7c067ef8527ba",
       "count": 1000,
       "stale": false,
-      "playable": false,
-      "verifyReason": "fetch failed"
+      "playable": true,
+      "verifyReason": "OK"
     },
     {
       "id": "cctv-kldb",
@@ -224,8 +224,8 @@
       "latestGuid": "553bbcc9b18541a6a54378859fb5efc8",
       "count": 1000,
       "stale": false,
-      "playable": false,
-      "verifyReason": "fetch failed"
+      "playable": true,
+      "verifyReason": "OK"
     },
     {
       "id": "cctv-yykd",
@@ -253,8 +253,8 @@
       "latestGuid": "14ca77cf1d954e19868e167bc1ba277d",
       "count": 865,
       "stale": false,
-      "playable": false,
-      "verifyReason": "fetch failed"
+      "playable": true,
+      "verifyReason": "OK"
     },
     {
       "id": "cctv-dwhhb",
@@ -307,8 +307,8 @@
       "latestGuid": "2574a24b894e49098aa42db549cd9f89",
       "count": 365,
       "stale": false,
-      "playable": false,
-      "verifyReason": "fetch failed"
+      "playable": true,
+      "verifyReason": "OK"
     },
     {
       "id": "cctv-zmkm",
@@ -481,10 +481,10 @@
         "人文"
       ],
       "desc": "用孩子的视角讲新闻，适合培养信息理解和公共表达。",
-      "pic": "https://p4.img.cctvpic.com/fmspic/2026/11/17/90502a0758de4427936c1b2c4ac8d625-1.jpg",
-      "latest": "《新闻袋袋裤》 20261117",
-      "latestTime": 1794878896661,
-      "latestGuid": "90502a0758de4427936c1b2c4ac8d625",
+      "pic": "https://p5.img.cctvpic.com/fmspic/2026/11/18/e6de1478eb0946278763caa3d7f8d908-1.jpg",
+      "latest": "《新闻袋袋裤》 20261118",
+      "latestTime": 1794964577610,
+      "latestGuid": "e6de1478eb0946278763caa3d7f8d908",
       "count": 1000,
       "stale": false,
       "playable": true,
