@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-20T01:20:05.460Z",
+  "updatedAt": "2026-11-21T00:51:44.721Z",
   "source": "cctv",
   "series": [
     {
@@ -29,10 +29,10 @@
         "情绪"
       ],
       "desc": "面向低幼宝宝的启蒙栏目，包含儿歌、律动、认知游戏和生活习惯。建议家长陪伴观看。",
-      "pic": "https://p4.img.cctvpic.com/fmspic/2026/11/19/1c0bc62e79b8461f96b77b0c4329a0bb-1.jpg",
-      "latest": "《小小智慧树》 20261119",
-      "latestTime": 1795050977048,
-      "latestGuid": "1c0bc62e79b8461f96b77b0c4329a0bb",
+      "pic": "https://p5.img.cctvpic.com/fmspic/2026/11/20/e23c59eb12aa4e4cb2b593a9ba7bb3a2-1.jpg",
+      "latest": "《小小智慧树》 20261120",
+      "latestTime": 1795139180102,
+      "latestGuid": "e23c59eb12aa4e4cb2b593a9ba7bb3a2",
       "count": 1000,
       "stale": false,
       "playable": true,
@@ -65,10 +65,10 @@
         "情绪"
       ],
       "desc": "央视少儿经典幼儿栏目，涵盖手工、儿歌、生活习惯和情绪认知。",
-      "pic": "https://p1.img.cctvpic.com/fmspic/2026/11/19/fb5f257d577d4bd8b9598056d08a2482-1.jpg",
-      "latest": "《智慧树》 20261119",
-      "latestTime": 1795090818160,
-      "latestGuid": "fb5f257d577d4bd8b9598056d08a2482",
+      "pic": "https://p4.img.cctvpic.com/fmspic/2026/11/20/030ebbb1a8c94cdb8470953a4f509de3-1.jpg",
+      "latest": "《智慧树》 20261120",
+      "latestTime": 1795171820258,
+      "latestGuid": "030ebbb1a8c94cdb8470953a4f509de3",
       "count": 1000,
       "stale": false,
       "playable": true,
@@ -187,10 +187,10 @@
         "动画"
       ],
       "desc": "央视少儿动画连播栏目，按日期更新，适合作为日常动画入口。",
-      "pic": "https://p4.img.cctvpic.com/fmspic/2026/11/20/6311888c47e64761ab748b2ad11a3080-1.jpg",
-      "latest": "《动画大放映》 20261120 06:35",
-      "latestTime": 1795134860491,
-      "latestGuid": "6311888c47e64761ab748b2ad11a3080",
+      "pic": "https://p5.img.cctvpic.com/fmspic/2026/11/20/bc0656c4a3b34c839f166c82413c579c-1.jpg",
+      "latest": "《动画大放映》 20261120 18:35 2/2",
+      "latestTime": 1795185140309,
+      "latestGuid": "bc0656c4a3b34c839f166c82413c579c",
       "count": 1000,
       "stale": false,
       "playable": true,
