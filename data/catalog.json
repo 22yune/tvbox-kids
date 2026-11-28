@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-27T02:16:40.393Z",
+  "updatedAt": "2026-11-28T02:02:00.556Z",
   "source": "cctv",
   "series": [
     {
@@ -65,10 +65,10 @@
         "情绪"
       ],
       "desc": "央视少儿经典幼儿栏目，涵盖手工、儿歌、生活习惯和情绪认知。",
-      "pic": "https://p3.img.cctvpic.com/fmspic/2026/11/26/4ec982818efe4184a974639d1898e049-1.jpg",
-      "latest": "《智慧树》 20261126",
-      "latestTime": 1795694424147,
-      "latestGuid": "4ec982818efe4184a974639d1898e049",
+      "pic": "https://p4.img.cctvpic.com/fmspic/2026/11/27/b9e8a235339b437c85a1c9114cb71213-1.jpg",
+      "latest": "《智慧树》 20261127",
+      "latestTime": 1795776269730,
+      "latestGuid": "b9e8a235339b437c85a1c9114cb71213",
       "count": 1000,
       "stale": false,
       "playable": true,
@@ -187,10 +187,10 @@
         "动画"
       ],
       "desc": "央视少儿动画连播栏目，按日期更新，适合作为日常动画入口。",
-      "pic": "https://p5.img.cctvpic.com/fmspic/2026/11/27/3fa4dcc0165449dba5f05b5d0e98190f-1.jpg",
-      "latest": "《动画大放映》 20261127 06:35",
-      "latestTime": 1795740270725,
-      "latestGuid": "3fa4dcc0165449dba5f05b5d0e98190f",
+      "pic": "https://p1.img.cctvpic.com/fmspic/2026/11/28/28f3f322b0be416bb5d6be517419d307-1.jpg",
+      "latest": "《动画大放映》 20261128 06:00",
+      "latestTime": 1795828231366,
+      "latestGuid": "28f3f322b0be416bb5d6be517419d307",
       "count": 1000,
       "stale": false,
       "playable": true,
